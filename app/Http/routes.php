@@ -15,6 +15,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('list_fund', 'FundController@listFund');
+Route::get('fund_ago', 'FundController@fundAgo');
+Route::get('fund_request', 'FundController@fundRequest');
+
+Route::get('fund_form', 'FundController@fundForm');
+Route::get('fund_manage', 'FundController@fundManage');
+Route::post('fund_insert_update', 'FundController@fundInsertUpdate');
+Route::get('fund_delete/{id}', 'FundController@fundDelete');
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -26,12 +35,12 @@ Route::get('/', function () {
 |
 */
 
-Route::group(['middleware' => ['web']], function () {
-    //
-});
+// Route::group(['middleware' => ['web']], function () {
+//     //
+// });
 
-Route::group(['middleware' => 'web'], function () {
-    Route::auth();
+// Route::group(['middleware' => 'web'], function () {
+//     Route::auth();
 
-    Route::get('/home', 'HomeController@index');
-});
+//     Route::get('/home', 'HomeController@index');
+// });

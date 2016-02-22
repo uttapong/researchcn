@@ -18,7 +18,11 @@
         <!-- BEGIN PAGE ACTIONS -->
         <!-- DOC: Remove "hide" class to enable the page header actions -->
         <div class="page-actions">
-            <div class="btn-group">
+            <a href="fund_form" class="btn btn-circle btn-outline red">
+                <i class="fa fa-plus"></i>&nbsp;
+                <span class="hidden-sm hidden-xs">เพิ่มทุนใหม่&nbsp;</span>&nbsp;
+            </a>
+            <!-- <div class="btn-group">
                 <button type="button" class="btn btn-circle btn-outline red dropdown-toggle" data-toggle="dropdown">
                     <i class="fa fa-plus"></i>&nbsp;
                     <span class="hidden-sm hidden-xs">เพิ่มทุนใหม่&nbsp;</span>&nbsp;
@@ -51,14 +55,14 @@
                         </a>
                     </li>
                 </ul>
-            </div>
+            </div> -->
         </div>
         <!-- END PAGE ACTIONS -->
         <!-- BEGIN PAGE TOP -->
         <div class="page-top">
             <!-- BEGIN HEADER SEARCH BOX -->
             <!-- DOC: Apply "search-form-expanded" right after the "search-form" class to have half expanded search box -->
-            <form class="search-form search-form-expanded" action="page_general_search_3.html" method="GET">
+            <!-- <form class="search-form search-form-expanded" action="page_general_search_3.html" method="GET">
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search..." name="query">
                     <span class="input-group-btn">
@@ -67,7 +71,7 @@
                         </a>
                     </span>
                 </div>
-            </form>
+            </form> -->
             <!-- END HEADER SEARCH BOX -->
             <!-- BEGIN TOP NAVIGATION MENU -->
             <div class="top-menu">

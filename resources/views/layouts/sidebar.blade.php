@@ -11,71 +11,73 @@
         <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
         <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
         <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
-        <ul class="page-sidebar-menu  page-header-fixed page-sidebar-menu-hover-submenu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
-            <li class="nav-item start ">
+        <ul class="page-sidebar-menu  page-header-fixed page-sidebar-menu-hover-submenu" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+            <li class="nav-item">
                 <a href="javascript:;" class="nav-link nav-toggle">
-                    <i class="icon-home"></i>
-                    <span class="title">รายชื่อทุนทั้งหมด</span>
+                    <i class="icon-layers"></i>
+                    <span class="title" style="margin-top: 12px">รายชื่อทุนทั้งหมด</span>
                     <span class="arrow"></span>
                 </a>
                 <ul class="sub-menu">
-                    <li class="nav-item start ">
-                        <a href="index.html" class="nav-link ">
-                            <i class="icon-bar-chart"></i>
+                    <li class="nav-item">
+                        <a href="list_fund" class="nav-link">
+                            <i class="icon-layers"></i>
                             <span class="title">ทุนปัจจุบัน</span>
                         </a>
                     </li>
-                    <li class="nav-item start ">
-                        <a href="dashboard_2.html" class="nav-link ">
-                            <i class="icon-bulb"></i>
+                    <li class="nav-item">
+                        <a href="fund_ago" class="nav-link">
+                            <i class="icon-layers"></i>
                             <span class="title">ทุนที่ผ่านมา</span>
-                            <span class="badge badge-success">8</span>
+                            <!-- <span class="badge badge-success">1</span> -->
                         </a>
                     </li>
-                    <li class="nav-item start ">
-                        <a href="dashboard_3.html" class="nav-link ">
-                            <i class="icon-graph"></i>
+                    <li class="nav-item">
+                        <a href="fund_request" class="nav-link">
+                            <i class="icon-layers"></i>
                             <span class="title">ทุนที่ท่านเสนอขอ</span>
-                            <span class="badge badge-danger">1</span>
+                            <!-- <span class="badge badge-danger">1</span> -->
                         </a>
                     </li>
                 </ul>
             </li>
 
-            <li class="nav-item  ">
+            <li class="nav-item">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-settings"></i>
-                    <span class="title">Admin</span>
+                    <span class="title" style="margin-top: 12px">Admin</span>
                     <span class="arrow"></span>
                 </a>
                 <ul class="sub-menu">
-                    <li class="nav-item  ">
-                        <a href="form_controls.html" class="nav-link ">
+                    <li class="nav-item">
+                        <a href="fund_manage" class="nav-link">
+                            <i class="icon-settings"></i>
                             <span class="title">จัดการทุนทั้งหมด
                         </a>
                     </li>
-                    <li class="nav-item  ">
-                        <a href="form_controls_md.html" class="nav-link ">
+                    <li class="nav-item">
+                        <a href="form_controls_md.html" class="nav-link">
+                            <i class="icon-settings"></i>
                             <span class="title">จัดการผู้ใช้งาน
                         </a>
                     </li>
                 </ul>
             </li>
-            <li class="nav-item  ">
+            <li class="nav-item">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-user"></i>
-                    <span class="title">ข้อมูลส่วนตัว</span>
+                    <span class="title" style="margin-top: 12px">ข้อมูลส่วนตัว</span>
                     <span class="arrow"></span>
                 </a>
                 <ul class="sub-menu">
-                    <li class="nav-item  ">
-                        <a href="page_user_profile_1.html" class="nav-link ">
+                    <li class="nav-item">
+                        <a href="page_user_profile_1.html" class="nav-link">
                             <i class="icon-user"></i>
                             <span class="title">ข้อมูลผู้ขอทุน</span>
                         </a>
                     </li>
-                    <li class="nav-item  ">
-                        <a href="page_user_profile_1_account.html" class="nav-link ">
+                    <li class="nav-item">
+                        <a href="page_user_profile_1_account.html" class="nav-link">
                             <i class="icon-user-female"></i>
                             <span class="title">ข้อมูลการเข้าใช้งานระบบ</span>
                         </a>
