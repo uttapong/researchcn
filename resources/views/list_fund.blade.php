@@ -24,8 +24,8 @@
                                             <?php print ($fund->name) ?>
                                         </td>
                                         <td align="right">
-                                            <button type="button" data-id="<?php print ($fund->id) ?>" class="btn btn-info" data-singleton="true" data-toggle="confirmation" data-placement="right" data-btn-ok-label="ตกลง" data-btn-cancel-label="ยกเลิก" data-original-title="ยืนยันการสมัคร <?php print($fund->name) ?>">
-                                                สมัครทุน
+                                            <button type="button" data-id="<?php print ($fund->id) ?>" class="btn btn-info" data-singleton="true" data-toggle="confirmation" data-placement="right" data-btn-ok-label="ตกลง" data-btn-cancel-label="ยกเลิก" data-original-title="ยืนยันการสมัคร <?php print($fund->name) ?>" {{ $fund->registered ? 'disabled' : null }}>
+                                                {{ $fund->registered ? 'สมัครแล้ว' : 'สมัครทุน' }}
                                             </button>
                                         </td>
                                     </tr>
@@ -47,7 +47,7 @@
 
         // Event on click confirm box
         $('[data-toggle="confirmation"]').on("confirmed.bs.confirmation", function () {
-            window.location = "fund_register/" + $(this).attr("data-id");
+            window.location = "register_fund/" + $(this).attr("data-id");
         })
     });
 </script>

@@ -2,16 +2,30 @@
 
 namespace App\Http\Controllers;
 
-use Storage;
 use App\Fund as Fund;
+use App\Application as Application;
 use Illuminate\Http\Request;
 
 class FundController extends Controller {
 	public function listFund() {
+		// $userId = Auth::user();
+		$userId = 1;
+		$applications = Application::where('owner', $userId)->get();
+
+		$checkRegistered = [];
+		for ($i=0; $i < count($applications); $i++) {
+			array_push($checkRegistered, $applications[$i]->fund);
+		}
+
+		$funds = Fund::where('apply_start', '<=', new \DateTime('today'))->where('apply_end', '>=', new \DateTime('today'))->get();
+		for ($i=0; $i < count($funds); $i++) {
+			if (in_array($funds[$i]->id, $checkRegistered)) {
+				$funds[$i]->registered = true;
+			}
+		}
+
 		return view('list_fund', [
-			'funds' => Fund::where('apply_start', '<=', new \DateTime('today'))
-			->where('apply_end', '>=', new \DateTime('today'))
-			->get()
+			'funds' => $funds
 		]);
 	}
 

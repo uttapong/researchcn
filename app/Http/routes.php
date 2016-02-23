@@ -24,6 +24,8 @@ Route::get('fund_manage', 'FundController@fundManage');
 Route::post('fund_insert_update', 'FundController@fundInsertUpdate');
 Route::get('fund_delete/{id}', 'FundController@fundDelete');
 
+Route::get('register_fund/{fundId}', 'ApplicationController@registerFund');
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
