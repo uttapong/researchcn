@@ -57,13 +57,15 @@ class InitTables extends Migration
           $table->rememberToken();
           $table->timestamps();//ตรงนี้มันจะสร้าง create_at เป็น datetime จะเปลี่ยนทุกครั้งที่มีการอัพเดท record ฮับ
       });
-      
+
       Schema::create('uploads', function (Blueprint $table) {
           $table->bigIncrements('id');// id ของไฟล์ที่อัพโหลด
           $table->string('file_path',200);// เอาไว้เก็บ path ของไฟล์นั้นๆ หมูแก๊บสร้างไว้โฟลเดอร์นึงเอาไว้เก็บไฟล์ได้เลยนะครับ ที่ไหนก็ได้
           $table->string('status',20); //สถานะของไฟล์ว่า uploaded(เพิ่มอัพโหลด), approved(อนุมัติ), rejected(ปฏิเสธ, ไฟล์ใช้ไม่ได้)
           $table->bigInteger('filetype')->unsigned();// เอาไว้อ้างอิงว่าเป็นไฟล์ประเภทไหนจากตาราง filetypes คับ เอา id จาก filetypes มาใส่ได้เลย
           $table->foreign('filetype')->references('id')->on('filetypes')->onDelete('cascade');
+          $table->bigInteger('application_id')->unsigned();// เอาไว้อ้างอิงว่าเป็นไฟล์ประเภทไหนจากตาราง filetypes คับ เอา id จาก filetypes มาใส่ได้เลย
+          $table->foreign('application_id')->references('id')->on('applications')->onDelete('cascade');
           $table->rememberToken();
           $table->timestamps();//ตรงนี้มันจะสร้าง create_at เป็น datetime จะเปลี่ยนทุกครั้งที่มีการอัพเดท record ฮับ
       });
