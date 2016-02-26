@@ -14,7 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('test', 'HomeController@test');
+Route::get('test', 'HomeController@testfund');
 Route::get('list_fund', 'FundController@listFund');
 Route::get('fund_ago', 'FundController@fundAgo');
 Route::get('fund_request', 'ApplicationController@fundStatus');
