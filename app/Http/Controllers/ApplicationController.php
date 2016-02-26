@@ -17,4 +17,15 @@ class ApplicationController extends Controller {
 
 		return redirect('list_fund');
 	}
+
+	public function fundStatus() {
+		// $userId = Auth::user();
+		$userId = 1;
+		$applications = Application::where('owner', $userId)->user;
+		print ($applications);
+
+		// return view('fund_request', [
+		// 	'funds' => Fund::get()
+		// ]);
+	}
 }

@@ -15,6 +15,6 @@ class Fund extends Model
 
     public function applications()
     {
-        return $this->hasMany('App\Application','fund');
+        return $this->hasMany('App\Application', 'fund');
     }
 }

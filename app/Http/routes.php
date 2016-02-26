@@ -17,7 +17,7 @@ Route::get('/', function () {
 Route::get('test', 'HomeController@test');
 Route::get('list_fund', 'FundController@listFund');
 Route::get('fund_ago', 'FundController@fundAgo');
-Route::get('fund_request', 'FundController@fundRequest');
+Route::get('fund_request', 'ApplicationController@fundStatus');
 
 Route::get('fund_form', 'FundController@fundForm');
 Route::get('fund_manage', 'FundController@fundManage');

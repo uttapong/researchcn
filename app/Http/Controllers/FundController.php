@@ -35,12 +35,6 @@ class FundController extends Controller {
 		]);
 	}
 
-	public function fundRequest() {
-		return view('fund_request', [
-			'funds' => Fund::get()
-		]);
-	}
-
 	public function fundManage() {
 		return view('admin.fund_manage', [
 			'funds' => Fund::get()
