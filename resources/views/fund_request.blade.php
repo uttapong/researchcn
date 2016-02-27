@@ -40,22 +40,24 @@
                                     <?php foreach($funds as $index=>$fund) { ?>
                                         <tr>
                                             <td>
-                                                <?php print($index + 1) ?>
+                                                {{ $index + 1 }}
                                             </td>
                                             <td>
-                                                <?php print($fund->name) ?>
+                                                {{ $fund->name }}
                                             </td>
                                             <td>
-                                                สมัครขอทุน
+                                                {{ $fund->currentStep }}
                                             </td>
                                             <td>
-                                                <span class="label label-sm label-success"> Approved </span>
+                                                <span class="label label-sm label-{{ $fund->statusClass }}"> {{ $fund->statusTitle }} </span>
                                             </td>
                                             <td>
-                                                <a href="#">
-                                                    ทำสัญญารับทุน
-                                                    <span aria-hidden="true" class="icon-arrow-right"></span>
-                                                </a>
+                                                {!! 
+                                                    $fund->nextStep
+                                                        ? '<a href="#">' . $fund->nextStep . ' ' .
+                                                            '<span aria-hidden="true" class="icon-arrow-right"></span></a>'
+                                                        : null
+                                                !!}
                                             </td>
                                         </tr>
                                     <?php } ?>
