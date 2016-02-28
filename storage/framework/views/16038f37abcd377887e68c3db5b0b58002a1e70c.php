@@ -20,6 +20,7 @@
 
 
                                                 <form action="<?php echo e(route('new_research')); ?>" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                                  <input id="_token" name="_token" type="hidden" value="<?php echo e(csrf_token()); ?>" ">
                                                     <div class="form-body">
                                                       <?php if(count($errors) > 0): ?>
     <div class="alert alert-danger col-md-12">
