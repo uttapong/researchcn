@@ -33,6 +33,8 @@ Route::group(['middleware' => 'web','prefix' => 'rscn'], function () {
     Route::auth();
 
     Route::get('home', 'ResearchCenterController@index');
+
+    Route::post('new_research', [ 'as' => 'new_research', 'uses' => 'ResearchCenterController@add']);
 });
 /*
 |--------------------------------------------------------------------------

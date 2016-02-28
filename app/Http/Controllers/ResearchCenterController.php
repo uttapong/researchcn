@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use Bouncer;
-
+use App\Research as Research;
 class ResearchCenterController extends Controller
 {
     /**
@@ -30,16 +30,25 @@ class ResearchCenterController extends Controller
 
 
     public function add(Request $request){
+
+
       $this->validate($request, [
           'title' => 'required|unique:researchs|max:100',
           'authors' => 'required|max:200',
           'keywords' => 'required|max:200',
           'abstract' => 'required',
-          'file_path' => 'required|max:200',
+          'fulltext_file_path' => 'required|mimes:pdf,doc,docx',
           'type' => 'required',
           'publication_name' => 'required|max:200',
           'published_year' => 'required|max:200'
       ]);
+
+      Research::create($request);
+      if ($request->hasFile('fulltext_file_path')->isValid()) {
+    //$request->file('photo')->move($destinationPath);
+
+        $request->file('photo')->move($destinationPath, $fileName);
+      }
     }
     // public function test(){
     //   //$user = Fund::find(1)->user;

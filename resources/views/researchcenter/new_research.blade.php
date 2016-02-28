@@ -22,6 +22,7 @@
 
 
                                                 <form action="{{route('new_research')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                                  <input id="_token" name="_token" type="hidden" value="{{ csrf_token() }}" >
                                                     <div class="form-body">
                                                       @if (count($errors) > 0)
     <div class="alert alert-danger col-md-12">
@@ -36,7 +37,7 @@
                                                       <div class="form-group">
                                                           <label class="col-md-3 control-label">Type</label>
                                                           <div class="col-md-4">
-                                                            <select class="form-control">
+                                                            <select class="form-control" name="type">
                                                       <option value="1">บทความวิจัย</option>
                                                       <option value="2">บทความวิชาการ</option>
                                                   </select>
