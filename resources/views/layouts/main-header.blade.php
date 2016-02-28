@@ -6,7 +6,7 @@
         <div class="page-logo">
             <a href="#">
               <!-- ระบบติดตามทุน -->
-                <img src="layouts/layout2/img/logo-default.png" alt="logo" class="logo-default" /> </a>
+                <img src="{{ asset('layouts/layout2/img/logo-default.png') }}" alt="logo" class="logo-default" /> </a>
             <div class="menu-toggler sidebar-toggler">
                 <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
             </div>
@@ -17,12 +17,21 @@
         <!-- END RESPONSIVE MENU TOGGLER -->
         <!-- BEGIN PAGE ACTIONS -->
         <!-- DOC: Remove "hide" class to enable the page header actions -->
-        @if(Auth::user())
+
         <div class="page-actions">
-            <a href="fund_form" class="btn btn-circle btn-outline red">
+            <!-- <a href="fund_form" class="btn btn-circle btn-outline red">
                 <i class="fa fa-plus"></i>&nbsp;
                 <span class="hidden-sm hidden-xs">เพิ่มทุนใหม่&nbsp;</span>&nbsp;
-            </a>
+            </a> -->
+            @if(Auth::user())
+            @if(Auth::user()&&Auth::user()->is('admin_research_center'))
+            <a href="{{route('rscn_home')}}"><h3>ศูนย์วิจัยการการพยาบาลและพฤติกรรมศาสตร์</h3></a>
+            @elseif(Auth::user()&&Auth::user()->is('admin_research_work'))
+            <a href="{{route('rscn_home')}}"><h3>งานวิจัยบริการวิชาการ และวิเทศน์สัมพันธ์</h3></a>
+            @endif
+            @else
+            <a href="{{route('home')}}"><h3>ระบบเว็บสารสนเทศน์ คณะพยาบาลศาสตร์ มหาวิทยาลัยธรรมศาสตร์</h3></a>
+            @endif
             <!-- <div class="btn-group">
                 <button type="button" class="btn btn-circle btn-outline red dropdown-toggle" data-toggle="dropdown">
                     <i class="fa fa-plus"></i>&nbsp;
@@ -58,7 +67,6 @@
                 </ul>
             </div> -->
         </div>
-         @endif
         <!-- END PAGE ACTIONS -->
         <!-- BEGIN PAGE TOP -->
         <div class="page-top">
@@ -255,122 +263,12 @@
                         </ul>
                     </li>
                     <!-- END INBOX DROPDOWN -->
-                    <!-- BEGIN TODO DROPDOWN -->
-                    <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-                    <li class="dropdown dropdown-extended dropdown-tasks" id="header_task_bar">
-                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                            <i class="icon-calendar"></i>
-                            <span class="badge badge-default"> 3 </span>
-                        </a>
-                        <ul class="dropdown-menu extended tasks">
-                            <li class="external">
-                                <h3>You have
-                                    <span class="bold">12 pending</span> tasks</h3>
-                                <a href="app_todo.html">view all</a>
-                            </li>
-                            <li>
-                                <ul class="dropdown-menu-list scroller" style="height: 275px;" data-handle-color="#637283">
-                                    <li>
-                                        <a href="javascript:;">
-                                            <span class="task">
-                                                <span class="desc">New release v1.2 </span>
-                                                <span class="percent">30%</span>
-                                            </span>
-                                            <span class="progress">
-                                                <span style="width: 40%;" class="progress-bar progress-bar-success" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
-                                                    <span class="sr-only">40% Complete</span>
-                                                </span>
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:;">
-                                            <span class="task">
-                                                <span class="desc">Application deployment</span>
-                                                <span class="percent">65%</span>
-                                            </span>
-                                            <span class="progress">
-                                                <span style="width: 65%;" class="progress-bar progress-bar-danger" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">
-                                                    <span class="sr-only">65% Complete</span>
-                                                </span>
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:;">
-                                            <span class="task">
-                                                <span class="desc">Mobile app release</span>
-                                                <span class="percent">98%</span>
-                                            </span>
-                                            <span class="progress">
-                                                <span style="width: 98%;" class="progress-bar progress-bar-success" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100">
-                                                    <span class="sr-only">98% Complete</span>
-                                                </span>
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:;">
-                                            <span class="task">
-                                                <span class="desc">Database migration</span>
-                                                <span class="percent">10%</span>
-                                            </span>
-                                            <span class="progress">
-                                                <span style="width: 10%;" class="progress-bar progress-bar-warning" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
-                                                    <span class="sr-only">10% Complete</span>
-                                                </span>
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:;">
-                                            <span class="task">
-                                                <span class="desc">Web server upgrade</span>
-                                                <span class="percent">58%</span>
-                                            </span>
-                                            <span class="progress">
-                                                <span style="width: 58%;" class="progress-bar progress-bar-info" aria-valuenow="58" aria-valuemin="0" aria-valuemax="100">
-                                                    <span class="sr-only">58% Complete</span>
-                                                </span>
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:;">
-                                            <span class="task">
-                                                <span class="desc">Mobile development</span>
-                                                <span class="percent">85%</span>
-                                            </span>
-                                            <span class="progress">
-                                                <span style="width: 85%;" class="progress-bar progress-bar-success" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
-                                                    <span class="sr-only">85% Complete</span>
-                                                </span>
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:;">
-                                            <span class="task">
-                                                <span class="desc">New UI release</span>
-                                                <span class="percent">38%</span>
-                                            </span>
-                                            <span class="progress progress-striped">
-                                                <span style="width: 38%;" class="progress-bar progress-bar-important" aria-valuenow="18" aria-valuemin="0" aria-valuemax="100">
-                                                    <span class="sr-only">38% Complete</span>
-                                                </span>
-                                            </span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- END TODO DROPDOWN -->
+
                     <!-- BEGIN USER LOGIN DROPDOWN -->
                     <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
                     <li class="dropdown dropdown-user">
                         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                            <img alt="" class="img-circle" src="layouts/layout2/img/avatar3_small.jpg" />
+                            <img alt="" class="img-circle" src="{{ asset('layouts/layout2/img/avatar3_small.jpg') }}" />
                             <span class="username username-hide-on-mobile">  {{Auth::user()->name}} </span>
                             <i class="fa fa-angle-down"></i>
                         </a>
@@ -397,11 +295,7 @@
                             </li>
                             <li class="divider"> </li>
                             <li>
-                                <a href="page_user_lock_1.html">
-                                    <i class="icon-lock"></i> Lock Screen </a>
-                            </li>
-                            <li>
-                                <a href="page_user_login_1.html">
+                                <a href="{{route('logout')}}">
                                     <i class="icon-key"></i> Log Out </a>
                             </li>
                         </ul>
@@ -409,13 +303,21 @@
                     <!-- END USER LOGIN DROPDOWN -->
                     <!-- BEGIN QUICK SIDEBAR TOGGLER -->
                     <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-                    <li class="dropdown dropdown-extended quick-sidebar-toggler">
-                        <span class="sr-only">Toggle Quick Sidebar</span>
-                        <i class="icon-logout"></i>
-                    </li>
+
                     <!-- END QUICK SIDEBAR TOGGLER -->
                 </ul>
-            </div>@endif
+            </div>
+            @else
+            <div class="top-menu">
+                <ul class="nav navbar-nav pull-right">
+
+            <li class="dropdown dropdown-user">
+                <a href="{{route('login')}}" class="btn btn-info"> Sign in
+                </a>
+            </li>
+          </ul>
+        </div>
+            @endif
             <!-- END TOP NAVIGATION MENU -->
         </div>
         <!-- END PAGE TOP -->

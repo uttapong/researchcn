@@ -27,24 +27,22 @@ Route::get('fund_delete/{id}', 'FundController@fundDelete');
 Route::get('register_fund/{fundId}', 'ApplicationController@registerFund');
 
 
-// Authentication routes...
-Route::get('auth/login', 'Auth\AuthController@getLogin');
-Route::post('auth/login', 'Auth\AuthController@postLogin');
-Route::get('auth/logout', 'Auth\AuthController@getLogout');
+Route::get('rswk_home', [ 'as' => 'rswk_home', 'uses' => 'FundController@listFund']);
 
-// Registration routes...
-Route::get('auth/register', 'Auth\AuthController@getRegister');
-Route::post('auth/register', 'Auth\AuthController@postRegister');
-
-Route::any('logout', function () {
-    Auth:logout();
-});
+Route::any('logout', ['as' => 'logout', function () {
+    //
+}]);
+Route::any('login', ['as' => 'login', function () {
+    //Route::auth();
+}]);
 
 Route::group(['middleware' => 'web','prefix' => 'rscn'], function () {
-    Route::auth();
+    // Route::auth();
+    Route::get('', 'ResearchCenterController@index');
+    Route::get('home', [ 'as' => 'rscn_home', 'uses' => 'ResearchCenterController@index']);
+    Route::post('simple_search', [ 'as' => 'simple_search', 'uses' => 'ResearchCenterController@simplesearch']);
 
-    Route::get('home', 'ResearchCenterController@index');
-
+    Route::get('new_research', 'ResearchCenterController@new_research');
     Route::post('new_research', [ 'as' => 'new_research', 'uses' => 'ResearchCenterController@add']);
 });
 /*

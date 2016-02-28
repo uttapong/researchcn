@@ -23,8 +23,8 @@ class CreateRscnTables extends Migration
             $table->string('publication_name',200);
             $table->string('published_year',200);
             $table->string('issue',3);
-            $table->string('published_month',3);
-            $table->string('published_page',10);
+            $table->string('published_month',50);
+            $table->string('published_page',20);
             $table->integer('creator')->unsigned(); // id ของคนสร้างประกาศทุนนี้ครับ อ้างอิงจากตาราง users ฮับผม
             $table->index('creator');
             $table->foreign('creator')->references('id')->on('users')->onDelete('cascade');

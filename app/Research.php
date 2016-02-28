@@ -6,14 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Research extends Model
 {
-     protected $table = 'research';
+     protected $table = 'researchs';
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'title', 'authors', 'abstract','type','publication_name','published_year','issue','published_month','published_page'
+        'title', 'authors','keywords', 'abstract','type','publication_name','published_year','issue','published_month','published_page','creator','file_path'
     ];
 
     /**
@@ -24,4 +24,10 @@ class Research extends Model
     protected $hidden = [
         'password', 'remember_token',
     ];
+    public function getShortTitle(){
+      return  iconv_substr($this->title, 0,60, "UTF-8")."...";
+    }
+    public function getShortAbstract(){
+      return  iconv_substr($this->abstract, 0,300, "UTF-8")."...";
+    }
 }

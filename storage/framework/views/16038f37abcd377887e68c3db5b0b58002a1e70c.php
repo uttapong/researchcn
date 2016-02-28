@@ -6,13 +6,7 @@
                                                     <span class="caption-subject font-red-sunglo bold uppercase">Add New Research</span>
                                                     <span class="caption-helper"></span>
                                                 </div>
-                                                <div class="actions">
-                                                    <div class="portlet-input input-inline input-small">
-                                                        <div class="input-icon right">
-                                                            <i class="icon-magnifier"></i>
-                                                            <input type="text" class="form-control input-circle" placeholder="search..."> </div>
-                                                    </div>
-                                                </div>
+                                              
                                             </div>
                                             <div class="portlet-body form">
                                                 <!-- BEGIN FORM-->
@@ -20,8 +14,13 @@
 
 
                                                 <form action="<?php echo e(route('new_research')); ?>" method="post" enctype="multipart/form-data" class="form-horizontal">
-                                                  <input id="_token" name="_token" type="hidden" value="<?php echo e(csrf_token()); ?>" ">
+                                                  <input id="_token" name="_token" type="hidden" value="<?php echo e(csrf_token()); ?>" >
                                                     <div class="form-body">
+                                                      <?php if(isset($msg)): ?>
+                                                      <div class="alert alert-dismissible alert-<?php echo e($alert_type); ?>" role="alert">
+                                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                        <?php echo e($msg); ?></div>
+                                                      <?php endif; ?>
                                                       <?php if(count($errors) > 0): ?>
     <div class="alert alert-danger col-md-12">
         <ul>
@@ -32,12 +31,13 @@
     </div>
 <?php endif; ?>
 
+
                                                       <div class="form-group">
                                                           <label class="col-md-3 control-label">Type</label>
                                                           <div class="col-md-4">
-                                                            <select class="form-control">
-                                                      <option value="1">บทความวิจัย</option>
-                                                      <option value="2">บทความวิชาการ</option>
+                                                            <select class="form-control" name="type">
+                                                      <option value="research">บทความวิจัย</option>
+                                                      <option value="academic">บทความวิชาการ</option>
                                                   </select>
                                                           </div>
                                                       </div>
@@ -68,7 +68,7 @@
                                                         <div class="form-group">
                                                             <label class="col-md-3 control-label">Full text file upload</label>
                                                             <div class="col-md-4">
-                                                                <input type="file" name="full_text_file" id="exampleInputFile">
+                                                                <input type="file" name="fulltext_file" id="exampleInputFile">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
@@ -98,7 +98,7 @@
                                                         <div class="form-group">
                                                             <label class="col-md-3 control-label">Pages</label>
                                                             <div class="col-md-4">
-                                                                <input type="text" class="form-control"  name="published_pages" placeholder="">
+                                                                <input type="text" class="form-control"  name="published_page" placeholder="">
                                                             </div>
                                                         </div>
 

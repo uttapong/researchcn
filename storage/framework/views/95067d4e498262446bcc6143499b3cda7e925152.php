@@ -89,11 +89,14 @@
 
             <?php if(Auth::user()&&Auth::user()->is('admin_research_center')): ?>
             <li class="nav-item">
-                <a href="javascript:;" class="nav-link nav-toggle">
+                <a href="<?php echo e(route('new_research')); ?>" class="nav-link nav-toggle">
                     <i class="icon-plus"></i>
                     <span class="title" style="margin-top: 12px">เพิ่มงานวิจัย</span>
                     <span class="arrow"></span>
                 </a>
+
+            </li>
+            <li class="nav-item">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-plus"></i>
                     <span class="title" style="margin-top: 12px">เพิ่มสิ่งประดิษฐ์และรางวัล</span>

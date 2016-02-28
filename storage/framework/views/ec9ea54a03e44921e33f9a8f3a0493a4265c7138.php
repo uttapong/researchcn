@@ -32,7 +32,7 @@
         <link href="<?php echo e(asset('pages/css/search.min.css')); ?>" rel="stylesheet" type="text/css" />
         <!-- END PAGE LEVEL STYLES -->
         <!-- BEGIN THEME LAYOUT STYLES -->
-        <link href="<?php echo e(asset('layouts/layout2/css/layout.min.css')); ?>" rel="stylesheet" type="text/css" />
+        <link href="<?php echo e(asset('layouts/layout2/css/layout.css')); ?>" rel="stylesheet" type="text/css" />
         <link href="<?php echo e(asset('layouts/layout2/css/themes/blue.min.css')); ?>" rel="stylesheet" type="text/css" id="style_color" />
         <link href="<?php echo e(asset('layouts/layout2/css/custom.min.css')); ?>" rel="stylesheet" type="text/css" />
         <!-- END THEME LAYOUT STYLES -->

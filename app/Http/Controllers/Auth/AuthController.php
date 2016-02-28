@@ -73,4 +73,5 @@ class AuthController extends Controller
         $user->assign('reader');
         return $user;
     }
+
 }
