@@ -1,22 +1,20 @@
-@extends('layouts.app')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="portlet light portlet-fit portlet-form ">
                 <div class="portlet-title">
                     <div class="caption font-red">
-                        <i class="{{ $fund ? 'fa fa-edit' : 'icon-plus' }} font-red"></i>
-                        <span class="caption-subject bold uppercase">&nbsp;{{ $fund ? 'แก้ไขทุน' : 'เพิ่มทุนใหม่' }}</span>
+                        <i class="<?php echo e($fund ? 'fa fa-edit' : 'icon-plus'); ?> font-red"></i>
+                        <span class="caption-subject bold uppercase">&nbsp;<?php echo e($fund ? 'แก้ไขทุน' : 'เพิ่มทุนใหม่'); ?></span>
                     </div>
                 </div>
                 <div class="portlet-body">
                     <!-- BEGIN FORM-->
                     <form action="fund_insert_update" method="post" id="form" class="form-horizontal" enctype="multipart/form-data">
                         <div class="form-body">
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            <input type="hidden" name="id" value="{{ $fund ? $fund->id : null }}">
+                            <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
+                            <input type="hidden" name="id" value="<?php echo e($fund ? $fund->id : null); ?>">
 
                             <div class="alert alert-danger display-hide">
                                 <button class="close" data-close="alert"></button>
@@ -24,7 +22,8 @@
                             </div>
                             <div class="alert alert-success display-hide">
                                 <button class="close" data-close="alert"></button>
-                                {{ $fund ? 'แก้ไขทุนสำเร็จ' : 'เพิ่มทุนใหม่สำเร็จ' }}
+                                <?php echo e($fund ? 'แก้ไขทุนสำเร็จ' : 'เพิ่มทุนใหม่สำเร็จ'); ?>
+
                             </div>
                             <h3 class="form-section">Fund Info</h3>
                             <div class="form-group margin-top-20">
@@ -34,7 +33,7 @@
                                 <div class="col-md-5">
                                     <div class="input-icon right">
                                         <i class="fa"></i>
-                                        <input type="text" class="form-control" name="name" value="{{ $fund ? $fund->name : null }}"/>
+                                        <input type="text" class="form-control" name="name" value="<?php echo e($fund ? $fund->name : null); ?>"/>
                                     </div>
                                 </div>
                             </div>
@@ -43,7 +42,7 @@
                                 </label>
                                 <div class="col-md-5">
                                     <input type="file" class="form-control" name="contract_file"/>
-                                    <span class="help-block">{{ $fund ? $fund->contract_file : null }}</span>
+                                    <span class="help-block"><?php echo e($fund ? $fund->contract_file : null); ?></span>
                                 </div>
                             </div>
                             <div class="form-group margin-top-20">
@@ -52,7 +51,7 @@
                                 <div class="col-md-8">
                                     <div class="input-icon right">
                                         <i class="fa"></i>
-                                        <textarea class="form-control" rows="4" name="description" style="resize: none;"/>{{ $fund ? $fund->description : null }}</textarea>
+                                        <textarea class="form-control" rows="4" name="description" style="resize: none;"/><?php echo e($fund ? $fund->description : null); ?></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -64,7 +63,7 @@
                                 </label>
                                 <div class="col-md-5">
                                     <div class="input-group date date-picker" data-date-format="dd-mm-yyyy" data-date-start-date="+0d">
-                                        <input type="text" class="form-control" readonly="" name="apply_start" value="{{ $fund ? $fund->apply_start : null }}">
+                                        <input type="text" class="form-control" readonly="" name="apply_start" value="<?php echo e($fund ? $fund->apply_start : null); ?>">
                                         <span class="input-group-btn">
                                             <button class="btn default" type="button" style="height: 34px">
                                                 <i class="fa fa-calendar"></i>
@@ -81,7 +80,7 @@
                                     <div class="input-icon right">
                                         <i class="fa"></i>
                                         <div class="input-group date date-picker" data-date-format="dd-mm-yyyy" data-date-start-date="+0d">
-                                            <input type="text" class="form-control" readonly="" name="apply_end" value="{{ $fund ? $fund->apply_end : null }}">
+                                            <input type="text" class="form-control" readonly="" name="apply_end" value="<?php echo e($fund ? $fund->apply_end : null); ?>">
                                             <span class="input-group-btn">
                                                 <button class="btn default" type="button" style="height: 34px">
                                                     <i class="fa fa-calendar"></i>
@@ -101,7 +100,7 @@
                                     <div class="input-icon right">
                                         <i class="fa"></i>
                                         <div class="input-group date date-picker" data-date-format="dd-mm-yyyy" data-date-start-date="+0d">
-                                            <input type="text" class="form-control" readonly="" name="upload_start" value="{{ $fund ? $fund->upload_start : null }}">
+                                            <input type="text" class="form-control" readonly="" name="upload_start" value="<?php echo e($fund ? $fund->upload_start : null); ?>">
                                             <span class="input-group-btn">
                                                 <button class="btn default" type="button" style="height: 34px">
                                                     <i class="fa fa-calendar"></i>
@@ -119,7 +118,7 @@
                                     <div class="input-icon right">
                                         <i class="fa"></i>
                                         <div class="input-group date date-picker" data-date-format="dd-mm-yyyy" data-date-start-date="+0d">
-                                            <input type="text" class="form-control" readonly="" name="upload_end" value="{{ $fund ? $fund->upload_end : null }}">
+                                            <input type="text" class="form-control" readonly="" name="upload_end" value="<?php echo e($fund ? $fund->upload_end : null); ?>">
                                             <span class="input-group-btn">
                                                 <button class="btn default" type="button" style="height: 34px">
                                                     <i class="fa fa-calendar"></i>
@@ -139,7 +138,7 @@
                                     <div class="input-icon right">
                                         <i class="fa"></i>
                                         <div class="input-group date date-picker" data-date-format="dd-mm-yyyy" data-date-start-date="+0d">
-                                            <input type="text" class="form-control" readonly="" name="contract_end" value="{{ $fund ? $fund->contract_end : null }}">
+                                            <input type="text" class="form-control" readonly="" name="contract_end" value="<?php echo e($fund ? $fund->contract_end : null); ?>">
                                             <span class="input-group-btn">
                                                 <button class="btn default" type="button" style="height: 34px">
                                                     <i class="fa fa-calendar"></i>
@@ -226,4 +225,6 @@
         })
     });
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

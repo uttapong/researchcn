@@ -2,14 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Fund as Fund;
 use App\Application as Application;
 use Illuminate\Http\Request;
 
 class FundController extends Controller {
+
+	public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
 	public function listFund() {
-		// $userId = Auth::user();
-		$userId = 1;
+		$userId = Auth::user()->id;
 		$applications = Application::where('owner', $userId)->get();
 
 		$checkRegistered = [];
@@ -24,13 +30,13 @@ class FundController extends Controller {
 			}
 		}
 
-		return view('list_fund', [
+		return view('funds.list_fund', [
 			'funds' => $funds
 		]);
 	}
 
 	public function fundAgo() {
-		return view('fund_ago', [
+		return view('funds.fund_ago', [
 			'funds' => Fund::where('apply_end', '<', new \DateTime('today'))->get()
 		]);
 	}
@@ -72,6 +78,9 @@ class FundController extends Controller {
 		if ($id == 0) {
 			// Insert new record
 			$fund = new Fund;
+
+			$userId = Auth::user()->id;
+			$fund->creator = $userId;
 		}
 		else {
 			// Update old record
@@ -89,7 +98,9 @@ class FundController extends Controller {
 		if ($request->hasFile('contract_file')) {
 			if ($fund->contract_file) {
 				// Remove old file from directory
-				unlink($fund->contract_file);
+				if (file_exists($fund->contract_file)) {
+					unlink($fund->contract_file);
+				}
 			}
 
 			// Copy new file to directory
@@ -98,9 +109,6 @@ class FundController extends Controller {
 			$contract_file->move('file/', $fileName);
 			$fund->contract_file = 'file/' . $fileName;
 		}
-
-		// $userId = Auth::user();
-		$fund->creator = 1;
 
 		$fund->save();
 
@@ -112,5 +120,13 @@ class FundController extends Controller {
 		$fund->delete();
 
 		return redirect('fund_manage');
+	}
+
+	public function formSignedAgreement() {
+		return view('funds.form_signed_agreement');
+	}
+
+	public function signedAgreementfundInsertUpdate(Request $request) {
+		return redirect('fund_request');
 	}
 }

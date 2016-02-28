@@ -156,7 +156,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-        Silber\Bouncer\BouncerServiceProvider::class,
+        // Silber\Bouncer\BouncerServiceProvider::class,
 
     ],
 

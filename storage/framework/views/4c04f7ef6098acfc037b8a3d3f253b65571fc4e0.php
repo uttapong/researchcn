@@ -1,6 +1,4 @@
-@extends('layouts.app')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
@@ -9,7 +7,7 @@
                     <div class="caption">
                         <span class="caption-subject font-red sbold uppercase">ทุนที่ท่านเสนอขอ</span>
                     </div>
-                    <div class="actions">
+                    <!-- <div class="actions">
                         <div class="btn-group btn-group-devided" data-toggle="buttons">
                             <label class="btn btn-transparent red btn-outline btn-circle btn-sm active">
                                 <input type="radio" name="options" class="toggle" id="option1">สถานะ</label>
@@ -18,7 +16,7 @@
                                 <input type="radio" name="options" class="toggle" id="option1">ขั้นตอน</label>
                             </label>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="portlet-body">
                     <?php if (count($funds) == 0) {
@@ -40,31 +38,29 @@
                                     <?php foreach($funds as $index=>$fund) { ?>
                                         <tr>
                                             <td>
-                                                {{ $index + 1 }}
+                                                <?php echo e($index + 1); ?>
+
                                             </td>
                                             <td>
-                                                {{ $fund->name }}
+                                                <?php echo e($fund->name); ?>
+
                                             </td>
                                             <td>
-                                                {{ $fund->currentStep }}
+                                                <?php echo e($fund->currentStep); ?>
+
                                             </td>
                                             <td>
-                                                <span class="label label-sm label-{{ $fund->statusClass }}"> {{ $fund->statusTitle }} </span>
+                                                <span class="label label-sm label-<?php echo e($fund->statusClass); ?>"> <?php echo e($fund->statusTitle); ?> </span>
                                             </td>
                                             <td>
-                                                {!! 
-                                                    $fund->nextStep
-                                                        ? '<a href="#">' . $fund->nextStep . ' ' .
+                                                <?php echo $fund->nextStep
+                                                        ? '<a href="' . $fund->linkNextStep . '">' . $fund->nextStep . ' ' .
                                                             '<span aria-hidden="true" class="icon-arrow-right"></span></a>'
-                                                        : null
-                                                !!}
+                                                        : null; ?>
+
                                             </td>
                                         </tr>
                                     <?php } ?>
-                                    <!-- <span class="label label-sm label-success"> Approved </span>
-                                    <span class="label label-sm label-info"> Pending </span>
-                                    <span class="label label-sm label-warning"> Suspended </span>
-                                    <span class="label label-sm label-danger"> Blocked </span> -->
                                 </tbody>
                             </table>
                         </div>
@@ -81,4 +77,6 @@
         $('.nav-item a:eq(0), .nav-item a:eq(3)').append("<span class='selected'></span>");
     });
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
