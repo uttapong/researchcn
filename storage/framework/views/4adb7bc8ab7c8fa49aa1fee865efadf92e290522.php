@@ -1,80 +1,79 @@
-@extends('layouts.app')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Register</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
-                        {!! csrf_field() !!}
+                    <form class="form-horizontal" role="form" method="POST" action="<?php echo e(url('/register')); ?>">
+                        <?php echo csrf_field(); ?>
 
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+
+                        <div class="form-group<?php echo e($errors->has('name') ? ' has-error' : ''); ?>">
                             <label class="col-md-4 control-label">ชื่อ - สกุล</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="name" value="{{ old('name') }}">
+                                <input type="text" class="form-control" name="name" value="<?php echo e(old('name')); ?>">
 
-                                @if ($errors->has('name'))
+                                <?php if($errors->has('name')): ?>
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
+                                        <strong><?php echo e($errors->first('name')); ?></strong>
                                     </span>
-                                @endif
+                                <?php endif; ?>
                             </div>
                         </div>
-                        <div class="form-group{{ $errors->has('idcard') ? ' has-error' : '' }}">
+                        <div class="form-group<?php echo e($errors->has('idcard') ? ' has-error' : ''); ?>">
                             <label class="col-md-4 control-label">เลขบัตรประชาชน</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="idcard" value="{{ old('idcard') }}">
+                                <input type="text" class="form-control" name="idcard" value="<?php echo e(old('idcard')); ?>">
 
-                                @if ($errors->has('idcard'))
+                                <?php if($errors->has('idcard')): ?>
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('idcard') }}</strong>
+                                        <strong><?php echo e($errors->first('idcard')); ?></strong>
                                     </span>
-                                @endif
+                                <?php endif; ?>
                             </div>
                         </div>
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                        <div class="form-group<?php echo e($errors->has('email') ? ' has-error' : ''); ?>">
                             <label class="col-md-4 control-label">อีเมล์</label>
 
                             <div class="col-md-6">
-                                <input type="email" class="form-control" name="email" value="{{ old('email') }}">
+                                <input type="email" class="form-control" name="email" value="<?php echo e(old('email')); ?>">
 
-                                @if ($errors->has('email'))
+                                <?php if($errors->has('email')): ?>
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong><?php echo e($errors->first('email')); ?></strong>
                                     </span>
-                                @endif
+                                <?php endif; ?>
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                        <div class="form-group<?php echo e($errors->has('password') ? ' has-error' : ''); ?>">
                             <label class="col-md-4 control-label">Password</label>
 
                             <div class="col-md-6">
                                 <input type="password" class="form-control" name="password">
 
-                                @if ($errors->has('password'))
+                                <?php if($errors->has('password')): ?>
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
+                                        <strong><?php echo e($errors->first('password')); ?></strong>
                                     </span>
-                                @endif
+                                <?php endif; ?>
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
+                        <div class="form-group<?php echo e($errors->has('password_confirmation') ? ' has-error' : ''); ?>">
                             <label class="col-md-4 control-label">Confirm Password</label>
 
                             <div class="col-md-6">
                                 <input type="password" class="form-control" name="password_confirmation">
 
-                                @if ($errors->has('password_confirmation'))
+                                <?php if($errors->has('password_confirmation')): ?>
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('password_confirmation') }}</strong>
+                                        <strong><?php echo e($errors->first('password_confirmation')); ?></strong>
                                     </span>
-                                @endif
+                                <?php endif; ?>
                             </div>
                         </div>
 
@@ -91,4 +90,6 @@
         </div>
     </div>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

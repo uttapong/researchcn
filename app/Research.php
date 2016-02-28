@@ -2,19 +2,18 @@
 
 namespace App;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Silber\Bouncer\Database\HasRolesAndAbilities;
+use Illuminate\Database\Eloquent\Model;
 
-class User extends Authenticatable
+class Research extends Model
 {
-     use HasRolesAndAbilities;
+     protected $table = 'research';
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','idcard'
+        'title', 'authors', 'abstract','type','publication_name','published_year','issue','published_month','published_page'
     ];
 
     /**

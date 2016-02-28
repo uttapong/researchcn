@@ -17,7 +17,7 @@
         <!-- END RESPONSIVE MENU TOGGLER -->
         <!-- BEGIN PAGE ACTIONS -->
         <!-- DOC: Remove "hide" class to enable the page header actions -->
-        @if(Auth::user())
+        <?php if(Auth::user()): ?>
         <div class="page-actions">
             <a href="fund_form" class="btn btn-circle btn-outline red">
                 <i class="fa fa-plus"></i>&nbsp;
@@ -58,7 +58,7 @@
                 </ul>
             </div> -->
         </div>
-         @endif
+         <?php endif; ?>
         <!-- END PAGE ACTIONS -->
         <!-- BEGIN PAGE TOP -->
         <div class="page-top">
@@ -76,7 +76,7 @@
             </form> -->
             <!-- END HEADER SEARCH BOX -->
             <!-- BEGIN TOP NAVIGATION MENU -->
-            @if(Auth::user())
+            <?php if(Auth::user()): ?>
             <div class="top-menu">
                 <ul class="nav navbar-nav pull-right">
                     <!-- BEGIN NOTIFICATION DROPDOWN -->
@@ -371,7 +371,7 @@
                     <li class="dropdown dropdown-user">
                         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                             <img alt="" class="img-circle" src="layouts/layout2/img/avatar3_small.jpg" />
-                            <span class="username username-hide-on-mobile">  {{Auth::user()->name}} </span>
+                            <span class="username username-hide-on-mobile">  <?php echo e(Auth::user()->name); ?> </span>
                             <i class="fa fa-angle-down"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-default">
@@ -415,7 +415,7 @@
                     </li>
                     <!-- END QUICK SIDEBAR TOGGLER -->
                 </ul>
-            </div>@endif
+            </div><?php endif; ?>
             <!-- END TOP NAVIGATION MENU -->
         </div>
         <!-- END PAGE TOP -->

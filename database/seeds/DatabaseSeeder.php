@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Filetype;
+use App\Role;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -33,6 +34,11 @@ class DatabaseSeeder extends Seeder
         Filetype::create(['name' => 'Manuscript']);
         Filetype::create(['name' => 'หลักฐานตอบรับการตีพิมพ์']);
         Filetype::create(['name' => 'หลักฐานการเบิกเงินงวดที่ 2 และ 3 พร้อมตารางสรุปค่าใช้จ่าย']);
+
+        Role::create(['name' => 'admin_research_work','display_name'=>'Administrator Research Work','description'=>'User is allowed to manage and edit other users']);
+        Role::create(['name' => 'admin_research_center','display_name'=>'Administrator Research Center','description'=>'User is allowed to manage and edit other users']);
+        Role::create(['name' => 'reader','display_name'=>'Normal User','description'=>'Normal user can access both Research Work Site and Reseach Center Site']);
+        
 
     }
 }

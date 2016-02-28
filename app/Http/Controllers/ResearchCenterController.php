@@ -4,10 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use Illuminate\Http\Request;
-use App\Fund as Fund;
 use Bouncer;
 
-class HomeController extends Controller
+class ResearchCenterController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -26,7 +25,21 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('researchcenter.new_research');
+    }
+
+
+    public function add(Request $request){
+      $this->validate($request, [
+          'title' => 'required|unique:researchs|max:100',
+          'authors' => 'required|max:200',
+          'keywords' => 'required|max:200',
+          'abstract' => 'required',
+          'file_path' => 'required|max:200',
+          'type' => 'required',
+          'publication_name' => 'required|max:200',
+          'published_year' => 'required|max:200'
+      ]);
     }
     // public function test(){
     //   //$user = Fund::find(1)->user;

@@ -12,7 +12,7 @@
         <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
         <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
         <ul class="page-sidebar-menu  page-header-fixed page-sidebar-menu-hover-submenu" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
-            @if(Auth::user()->is('admin_research_work'))
+            <?php if(Auth::user()->is('admin_research_work')): ?>
             <li class="nav-item">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-layers"></i>
@@ -85,9 +85,9 @@
                     </li>
                 </ul>
             </li>
-            @endif
+            <?php endif; ?>
 
-            @if(Auth::user()->is('admin_research_center'))
+            <?php if(Auth::user()->is('admin_research_center')): ?>
             <li class="nav-item">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-plus"></i>
@@ -144,7 +144,7 @@
                     </li>
                 </ul>
             </li>
-            @endif
+            <?php endif; ?>
 
         </ul>
         <!-- END SIDEBAR MENU -->

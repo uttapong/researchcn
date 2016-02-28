@@ -26,6 +26,25 @@ Route::get('fund_delete/{id}', 'FundController@fundDelete');
 
 Route::get('register_fund/{fundId}', 'ApplicationController@registerFund');
 
+
+// Authentication routes...
+Route::get('auth/login', 'Auth\AuthController@getLogin');
+Route::post('auth/login', 'Auth\AuthController@postLogin');
+Route::get('auth/logout', 'Auth\AuthController@getLogout');
+
+// Registration routes...
+Route::get('auth/register', 'Auth\AuthController@getRegister');
+Route::post('auth/register', 'Auth\AuthController@postRegister');
+
+Route::any('logout', function () {
+    Auth:logout();
+});
+
+Route::group(['middleware' => 'web','prefix' => 'rscn'], function () {
+    Route::auth();
+
+    Route::get('home', 'ResearchCenterController@index');
+});
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -41,8 +60,9 @@ Route::get('register_fund/{fundId}', 'ApplicationController@registerFund');
 //     //
 // });
 
-// Route::group(['middleware' => 'web'], function () {
-//     Route::auth();
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
 
-//     Route::get('/home', 'HomeController@index');
-// });
+    Route::get('/home', 'HomeController@index');
+    Route::post('new_research', [ 'as' => 'new_research'],'ResearchCenterController@add');
+});
