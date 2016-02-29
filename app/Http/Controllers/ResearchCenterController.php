@@ -40,6 +40,19 @@ class ResearchCenterController extends Controller
       return view('researchcenter.home', ['researchs' => $researchs]);
     }
 
+    public function advancesearch(Request $request)
+    {
+      $title=$request->input('title');
+      $text=$request->input('fulltext');
+      $kw=$request->input('keyword');
+      $pub=$request->input('publication');
+      $year=$request->input('year');
+      $authors=$request->input('authors');
+      $researchs = Research::where('title', 'like', "%{$title}%")->orWhere('abstract', 'like', "%{$text}%")->orWhere('keywords', 'like', "%{$kw}%")->orWhere('authors', 'like', "%{$authors}%")->orWhere('publication_name', 'like', "%{$pub}%")->orWhere('published_year', 'like', "%{$year}%")->paginate(4);
+
+      return view('researchcenter.home', ['researchs' => $researchs]);
+    }
+
     public function replace(array $input)
  {
      $this->getInputSource()->replace($input);

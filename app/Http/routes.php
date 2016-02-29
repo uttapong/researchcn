@@ -14,6 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::any('home', [ 'as' => 'home', function () {
+    return view('welcome');
+}]);
+
 Route::get('test', 'HomeController@testfund');
 
 Route::get('rswk_home', [ 'as' => 'rswk_home', 'uses' => 'FundController@listFund']);
@@ -30,6 +35,7 @@ Route::group(['middleware' => 'web','prefix' => 'rscn'], function () {
     Route::get('', 'ResearchCenterController@index');
     Route::get('home', [ 'as' => 'rscn_home', 'uses' => 'ResearchCenterController@index']);
     Route::post('simple_search', [ 'as' => 'simple_search', 'uses' => 'ResearchCenterController@simplesearch']);
+    Route::post('advance_search', [ 'as' => 'advance_search', 'uses' => 'ResearchCenterController@advancesearch']);
 
     Route::get('new_research', 'ResearchCenterController@new_research');
     Route::post('new_research', [ 'as' => 'new_research', 'uses' => 'ResearchCenterController@add']);

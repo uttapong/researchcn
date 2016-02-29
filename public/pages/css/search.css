@@ -1,5 +1,5 @@
 /* Cubic Bezier Transition */
-/* 
+/*
 Search Page
 ***/
 .search-page .bordered {
@@ -8,7 +8,7 @@ Search Page
 
 .search-page .search-bar {
   padding: 20px;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
   background-color: #fff; }
   .search-page .search-bar input {
     border: none;
@@ -18,7 +18,6 @@ Search Page
   .search-page .search-bar button {
     color: #fff;
     height: 55px;
-    width: 130px;
     margin-left: -3px;
     margin-top: -2px; }
   .search-page .search-bar .search-desc {

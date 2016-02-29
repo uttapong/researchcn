@@ -1,4 +1,9 @@
 <?php $__env->startSection('content'); ?>
+<style>
+.adv-search input, .adv-search button{
+  margin: 3px 0 3px 0
+}
+</style>
 <div class="search-page search-content-1">
                         <div class="search-bar ">
                             <div class="row">
@@ -19,9 +24,57 @@
                                       </form>
                                     </div>
                                 </div>
-                                <div class="col-md-5">
+                                <div class="col-md-2" >
+                                  <div style="padding-right: 15px;">
+                                  <button  class="btn btn-warning" onclick="$('#advance_search_bar').slideToggle()">
+                                      <i class="fa fa-search-plus fa-fw"></i>Advance Search</button>
+                                  </div>
+                                </div>
+                                <div class="col-md-3">
                                     <p class="search-desc clearfix"> Global Search; Search from all information of the articles such as title, abstract, keywords or other readable text information </p>
                                 </div>
+
+                            </div>
+                        </div>
+                        <div id="advance_search_bar" style="background-color: white;padding: 10px;margin-bottom: 10px;display:none;">
+                            <div class="row">
+                                <form action="<?php echo e(route('advance_search')); ?>" method="post" class="col-md-12" >
+                                <div class="col-md-5 adv-search">
+                                    <div class="input-group">
+                                        <!-- <input type="text" class="form-control" placeholder="Search for..."> -->
+                                        <div class="input-group">
+
+                                                            <input id="_token" name="_token" type="hidden" value="<?php echo e(csrf_token()); ?>" >
+                                                            <input id="" class="form-control" type="text" name="title" placeholder="Title">
+                                                            <input id="" class="form-control" type="text" name="fulltext" placeholder="Fulltext/Abstract">
+                                                            <input id="" class="form-control" type="text" name="publication" placeholder="Publication Name">
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="col-md-5 adv-search" >
+                                  <div class="input-group">
+                                      <!-- <input type="text" class="form-control" placeholder="Search for..."> -->
+                                      <div class="input-group">
+
+                                                          <input id="_token" name="_token" type="hidden" value="<?php echo e(csrf_token()); ?>" >
+                                                          <input id="" class="form-control" type="text" name="keywords" placeholder="Keywords">
+                                                          <input id="" class="form-control" type="text" name="year" placeholder="Published Year">
+
+                                                          <input id="" class="form-control" type="text" name="authors" placeholder="Authors">
+
+
+                                      </div>
+
+                                  </div>
+                                </div>
+                                <div class="col-md-2">
+                                  <button  class="btn btn-success"><i class="fa fa-search-plus fa-fw"></i> Search</button>
+
+                                </div>
+                                </form>
                             </div>
                         </div>
                         <div class="row">

@@ -29,7 +29,7 @@
         <link href="<?php echo e(asset('css/plugins.min.css')); ?>" rel="stylesheet" type="text/css" />
         <!-- END THEME GLOBAL STYLES -->
         <!-- BEGIN PAGE LEVEL STYLES -->
-        <link href="<?php echo e(asset('pages/css/search.min.css')); ?>" rel="stylesheet" type="text/css" />
+        <link href="<?php echo e(asset('pages/css/search.css')); ?>" rel="stylesheet" type="text/css" />
         <!-- END PAGE LEVEL STYLES -->
         <!-- BEGIN THEME LAYOUT STYLES -->
         <link href="<?php echo e(asset('layouts/layout2/css/layout.css')); ?>" rel="stylesheet" type="text/css" />
