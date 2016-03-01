@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use Auth;
 use App\Fund as Fund;
+use App\Upload as Upload;
 use App\Application as Application;
 use Illuminate\Http\Request;
 
@@ -122,11 +124,170 @@ class FundController extends Controller {
 		return redirect('fund_manage');
 	}
 
-	public function formSignedAgreement() {
-		return view('funds.form_signed_agreement');
+	public function formSignedAgreement(Request $request) {
+		$request_id = $request->get('request_id', null);
+		$application = Application::find($request_id);
+
+		if (!$application) {
+			return redirect('fund_request');
+		}
+		return view('funds.form_signed_agreement', [
+			'request_id' => $request_id
+		]);
 	}
 
-	public function signedAgreementfundInsertUpdate(Request $request) {
+	public function signedAgreementInsertUpdate(Request $request) {
+		$this->uploadFile($request, 'file_1', 1);
+		$this->uploadFile($request, 'file_2', 2);
+
+		$this->updateAppStatus($request, 'signed_agreement');
+
 		return redirect('fund_request');
+	}
+
+	public function formFirstPayment(Request $request) {
+		$request_id = $request->get('request_id', null);
+		$application = Application::find($request_id);
+
+		if (!$application) {
+			return redirect('fund_request');
+		}
+		return view('funds.form_first_payment', [
+			'request_id' => $request_id
+		]);
+	}
+
+	public function firstPaymentInsertUpdate(Request $request) {
+		$this->uploadFile($request, 'file_3');
+		$this->uploadFile($request, 'file_4');
+		$this->uploadFile($request, 'file_5');
+		$this->uploadFile($request, 'file_6');
+
+		$this->updateAppStatus($request, 'first_payment');
+
+		return redirect('fund_request');
+	}
+
+	public function formSecondPayment(Request $request) {
+		$request_id = $request->get('request_id', null);
+		$application = Application::find($request_id);
+
+		if (!$application) {
+			return redirect('fund_request');
+		}
+		return view('funds.form_second_payment', [
+			'request_id' => $request_id
+		]);
+	}
+
+	public function secondPaymentInsertUpdate(Request $request) {
+		$this->uploadFile($request, 'file_7');
+		$this->uploadFile($request, 'file_8');
+		$this->uploadFile($request, 'file_9');
+
+		$this->updateAppStatus($request, 'second_payment');
+
+		return redirect('fund_request');
+	}
+
+	public function formSecondProgressReport(Request $request) {
+		$request_id = $request->get('request_id', null);
+		$application = Application::find($request_id);
+
+		if (!$application) {
+			return redirect('fund_request');
+		}
+		return view('funds.form_second_progress_report', [
+			'request_id' => $request_id
+		]);
+	}
+
+	public function secondProgressReportInsertUpdate(Request $request) {
+		$this->uploadFile($request, 'file_10');
+		$this->uploadFile($request, 'file_11');
+
+		$this->updateAppStatus($request, 'second_progress_report');
+
+		return redirect('fund_request');
+	}
+
+	public function formFinalized(Request $request) {
+		$request_id = $request->get('request_id', null);
+		$application = Application::find($request_id);
+
+		if (!$application) {
+			return redirect('fund_request');
+		}
+		return view('funds.form_finalized', [
+			'request_id' => $request_id
+		]);
+	}
+
+	public function finalizedInsertUpdate(Request $request) {
+		$this->uploadFile($request, 'file_12');
+		$this->uploadFile($request, 'file_13');
+
+		$this->updateAppStatus($request, 'finalized');
+
+		return redirect('fund_request');
+	}
+
+	public function formProjectFinished(Request $request) {
+		$request_id = $request->get('request_id', null);
+		$application = Application::find($request_id);
+
+		if (!$application) {
+			return redirect('fund_request');
+		}
+		return view('funds.form_project_finished', [
+			'request_id' => $request_id
+		]);
+	}
+
+	public function projectFinishedInsertUpdate(Request $request) {
+		$this->uploadFile($request, 'file_17');
+		$this->uploadFile($request, 'file_18');
+		$this->uploadFile($request, 'file_19');
+		$this->uploadFile($request, 'file_20');
+		$this->uploadFile($request, 'file_21');
+
+		$this->updateAppStatus($request, 'project_finished');
+
+		return redirect('fund_request');
+	}
+
+	private function uploadFile($request, $name_input) {
+		$application_id = $request->input('request_id', 0);
+		$file = $request->file($name_input, null);
+		$upload = new Upload;
+		if ($request->hasFile($name_input)) {
+			if ($upload->file_path) {
+				// Remove old file from directory
+				if (file_exists($upload->file_path)) {
+					unlink($upload->file_path);
+				}
+			}
+
+			// Copy new file to directory
+			$hash = md5(microtime());
+			$fileName = $hash . '.' . $file->getClientOriginalExtension();
+			$file->move('file/', $fileName);
+			$upload->file_path = 'file/' . $fileName;
+		}
+
+		$filetype = intval(str_replace('file_', '', $name_input));
+
+		$upload->status = 'uploaded';
+		$upload->filetype = $filetype;
+		$upload->application_id = $application_id;
+
+		$upload->save();
+	}
+
+	private function updateAppStatus($request, $status) {
+		$application_id = $request->input('request_id', 0);
+		$application = Application::find($application_id);
+		$application->status = $status;
+		$application->save();
 	}
 }

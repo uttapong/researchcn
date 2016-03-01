@@ -223,7 +223,7 @@
             submitHandler: function(e) {
                 i.show(), r.hide(), e[0].submit()
             }
-        })
+        });
     });
 </script>
 @endsection

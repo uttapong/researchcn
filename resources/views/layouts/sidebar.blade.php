@@ -57,9 +57,13 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="form_controls_md.html" class="nav-link">
+                        <!-- <a href="form_controls_md.html" class="nav-link">
                             <i class="icon-settings"></i>
                             <span class="title">จัดการผู้ใช้งาน
+                        </a> -->
+                        <a href="fund_user_request" class="nav-link">
+                            <i class="icon-settings"></i>
+                            <span class="title">คำร้องขอทุน
                         </a>
                     </li>
                 </ul>

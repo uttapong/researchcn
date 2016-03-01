@@ -1,7 +1,24 @@
 <?php $__env->startSection('content'); ?>
 <div class="container">
     <div class="row">
-        <div class="col-md-10 col-md-offset-1">
+        <div class="col-md-4">
+            <div class="portlet light portlet-fit portlet-form ">
+                <div class="portlet-title">
+                    <div class="caption font-red">
+                        <i class="icon-layers font-red"></i>
+                        <span class="caption-subject bold uppercase">&nbsp;ขั้นตอนทุน</span>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="form-body">
+                        <img src="img/funds/fund_step_1.png" class="img-responsive center-block">
+                    </div>
+                </div>
+                <!-- END VALIDATION STATES-->
+            </div>
+        </div>
+
+        <div class="col-md-8">
             <div class="portlet light portlet-fit portlet-form ">
                 <div class="portlet-title">
                     <div class="caption font-red">
@@ -14,7 +31,7 @@
                     <form action="signed_agreement_insert_update" method="post" id="form" class="form-horizontal" enctype="multipart/form-data">
                         <div class="form-body">
                             <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
-                            <!-- <input type="hidden" name="id" value=""> -->
+                            <input type="hidden" name="request_id" value="<?php echo e($request_id); ?>">
 
                             <div class="alert alert-danger display-hide">
                                 <button class="close" data-close="alert"></button>
@@ -26,7 +43,7 @@
                             </div>
                             <h3 class="form-section">เอกสารประกอบ</h3>
                             <div class="form-group margin-top-20">
-                                <label class="control-label col-md-3" style="padding-top: 0">หน้าบุ๊คแบงค์ของสหกรณ์ออมทรัพย์ มหาวิทยาลัยธรรมศาสตร์
+                                <label class="control-label col-md-5" style="padding-top: 0">หน้าบุ๊คแบงค์ของสหกรณ์ออมทรัพย์ มหาวิทยาลัยธรรมศาสตร์
                                 </label>
                                 <div class="col-md-5">
                                     <input type="file" class="form-control" name="file_1"/>
@@ -34,7 +51,7 @@
                                 </div>
                             </div>
                             <div class="form-group margin-top-20">
-                                <label class="control-label col-md-3">สัญญารับทุน
+                                <label class="control-label col-md-5">สัญญารับทุน
                                 </label>
                                 <div class="col-md-5">
                                     <input type="file" class="form-control" name="file_2"/>
@@ -44,7 +61,7 @@
 
                             <div class="form-actions">
                                 <div class="row">
-                                    <div class="col-md-offset-3 col-md-9">
+                                    <div class="col-md-offset-5 col-md-9">
                                         <button type="submit" class="btn btn-info">
                                             <i class="fa fa-check"></i>
                                             ตกลง
@@ -105,6 +122,8 @@
             }
         })
     });
+
+    $('.img-responsive.center-block').on('dragstart', function(event) { event.preventDefault(); });
 </script>
 <?php $__env->stopSection(); ?>
 

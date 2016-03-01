@@ -67,12 +67,27 @@ Route::group(['middleware' => 'web'], function () {
 
 	Route::get('fund_form', 'FundController@fundForm');
 	Route::get('fund_manage', 'FundController@fundManage');
+	Route::get('fund_user_request', 'ApplicationController@applicationUserRequest');
 	Route::post('fund_insert_update', 'FundController@fundInsertUpdate');
 	Route::get('fund_delete/{id}', 'FundController@fundDelete');
 
 	Route::get('register_fund/{fundId}', 'ApplicationController@registerFund');
 
+	Route::get('application_update/{appId}/{status}', 'ApplicationController@applicationUpdate');
+	Route::get('file_upload_update/{uploadId}/{status}', 'ApplicationController@fileUploadUpdate');
+
 	// funds form request by user
 	Route::get('form_signed_agreement', 'FundController@formSignedAgreement');
-	Route::post('signed_agreement_insert_update', 'FundController@signedAgreementfundInsertUpdate');
+	Route::get('form_first_payment', 'FundController@formFirstPayment');
+	Route::get('form_second_payment', 'FundController@formSecondPayment');
+	Route::get('form_second_progress_report', 'FundController@formSecondProgressReport');
+	Route::get('form_finalized', 'FundController@formFinalized');
+	Route::get('form_project_finished', 'FundController@formProjectFinished');
+
+	Route::post('signed_agreement_insert_update', 'FundController@signedAgreementInsertUpdate');
+	Route::post('first_payment_insert_update', 'FundController@firstPaymentInsertUpdate');
+	Route::post('second_payment_insert_update', 'FundController@secondPaymentInsertUpdate');
+	Route::post('second_progress_report_insert_update', 'FundController@secondProgressReportInsertUpdate');
+	Route::post('finalized_insert_update', 'FundController@finalizedInsertUpdate');
+	Route::post('project_finished_insert_update', 'FundController@projectFinishedInsertUpdate');
 });

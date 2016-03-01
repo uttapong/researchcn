@@ -54,7 +54,7 @@
                                             </td>
                                             <td>
                                                 <?php echo $fund->nextStep
-                                                        ? '<a href="' . $fund->linkNextStep . '">' . $fund->nextStep . ' ' .
+                                                        ? '<a href="' . $fund->linkNextStep . '?request_id=' . $fund->id . '">' . $fund->nextStep . ' ' .
                                                             '<span aria-hidden="true" class="icon-arrow-right"></span></a>'
                                                         : null; ?>
 

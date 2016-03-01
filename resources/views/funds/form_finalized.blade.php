@@ -13,7 +13,7 @@
                 </div>
                 <div class="portlet-body">
                     <div class="form-body">
-                        <img src="img/funds/fund_step_1.png" class="img-responsive center-block">
+                        <img src="img/funds/fund_step_5.png" class="img-responsive center-block">
                     </div>
                 </div>
                 <!-- END VALIDATION STATES-->
@@ -25,12 +25,12 @@
                 <div class="portlet-title">
                     <div class="caption font-red">
                         <i class="icon-layers font-red"></i>
-                        <span class="caption-subject bold uppercase">&nbsp;ทำสัญญารับทุน</span>
+                        <span class="caption-subject bold uppercase">&nbsp;ส่งผลงานครั้งสุดท้าย</span>
                     </div>
                 </div>
                 <div class="portlet-body">
                     <!-- BEGIN FORM-->
-                    <form action="signed_agreement_insert_update" method="post" id="form" class="form-horizontal" enctype="multipart/form-data">
+                    <form action="finalized_insert_update" method="post" id="form" class="form-horizontal" enctype="multipart/form-data">
                         <div class="form-body">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <input type="hidden" name="request_id" value="{{ $request_id }}">
@@ -45,18 +45,18 @@
                             </div>
                             <h3 class="form-section">เอกสารประกอบ</h3>
                             <div class="form-group margin-top-20">
-                                <label class="control-label col-md-5" style="padding-top: 0">หน้าบุ๊คแบงค์ของสหกรณ์ออมทรัพย์ มหาวิทยาลัยธรรมศาสตร์
+                                <label class="control-label col-md-5">บันทึกนำส่ง
                                 </label>
                                 <div class="col-md-5">
-                                    <input type="file" class="form-control" name="file_1"/>
+                                    <input type="file" class="form-control" name="file_12"/>
                                     <span class="help-block"></span>
                                 </div>
                             </div>
                             <div class="form-group margin-top-20">
-                                <label class="control-label col-md-5">สัญญารับทุน
+                                <label class="control-label col-md-5">(ร่าง) รายงานวิจัยฉบับสมบูรณ์ 2 เล่ม
                                 </label>
                                 <div class="col-md-5">
-                                    <input type="file" class="form-control" name="file_2"/>
+                                    <input type="file" class="form-control" name="file_13"/>
                                     <span class="help-block"></span>
                                 </div>
                             </div>
@@ -95,10 +95,10 @@
             focusInvalid: !1,
             ignore: "",
             rules: {
-                file_1: {
+                file_12: {
                     required: !0
                 },
-                file_2: {
+                file_13: {
                     required: !0
                 }
             },

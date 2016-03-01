@@ -59,19 +59,20 @@
                                             </td>
                                         </tr>
                                     <?php } ?>
-                            </tbody>
-                        </table>
-                    </div>
-                <?php } ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    <?php } ?>
+                </div>
+            </div>
+            <div class="actions">
+                <a href="fund_form" class="btn btn-circle btn-outline red margin-bottom-20">
+                    <i class="fa fa-plus"></i>&nbsp;
+                    <span class="hidden-sm hidden-xs">เพิ่มทุนใหม่&nbsp;</span>&nbsp;
+                </a>
             </div>
         </div>
-        <div class="actions">
-            <a href="fund_form" class="btn btn-circle btn-outline red margin-bottom-20">
-                <i class="fa fa-plus"></i>&nbsp;
-                <span class="hidden-sm hidden-xs">เพิ่มทุนใหม่&nbsp;</span>&nbsp;
-            </a>
     </div>
-</div>
 </div>
 <script type="text/javascript">
     $(document).ready(function () {
@@ -82,7 +83,7 @@
         // Event on click confirm box
         $('[data-toggle="confirmation"]').on("confirmed.bs.confirmation", function () {
             window.location = "fund_delete/" + $(this).attr("data-id");
-        })
+        });
     });
 </script>
 @endsection

@@ -33,7 +33,7 @@ class InitTables extends Migration
           $table->bigIncrements('id');//id ของการสมัครขอทุน ตรงนี้จะสร้างตอนที่เค้ากดปุ่มสมัครขอทุน ก่อนที่จะวิ่งไปให้ admin อนุมัติครับ
           $table->bigInteger('fund')->unsigned();
           $table->foreign('fund')->references('id')->on('funds')->onDelete('cascade');
-          $table->string('status',20);//สถานะของการสมัครขอทุนว่าถึงไหนแล้วครับ ที่พี่นึกออกจะมี
+          $table->string('status', 50);//สถานะของการสมัครขอทุนว่าถึงไหนแล้วครับ ที่พี่นึกออกจะมี
           /*
             applied(สมัครทุนแล้ว),approved(อนุมัติสมัครทุน)
             signed_agreement(ทำสัญญารับทุน), approved_agreement(อนุมัติสัญญารับทุน),rejected_agreement(ไม่อนุมัติสัญญารับทุน)

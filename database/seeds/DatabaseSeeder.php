@@ -22,9 +22,9 @@ class DatabaseSeeder extends Seeder
         Filetype::create(['name' => 'บันทึกนำส่งครั้งที่ 2']);
         Filetype::create(['name' => 'รายงานความก้าวหน้าครั้งที่ 1']);
         Filetype::create(['name' => 'หลักฐานการเบิกจ่ายงวดที่ 1 พร้อมตารางสรุปค่าใช้จ่าย']);
-        Filetype::create(['name' => 'บันทึกนำส่งครั้งที่ 2']);
-        Filetype::create(['name' => 'รายงานความก้าวหน้าครั้งที่ 2']);
         Filetype::create(['name' => 'บันทึกนำส่งครั้งที่ 3']);
+        Filetype::create(['name' => 'รายงานความก้าวหน้าครั้งที่ 2']);
+        Filetype::create(['name' => 'บันทึกนำส่งครั้งที่ 4']);
         Filetype::create(['name' => 'รายงานความก้าวหน้าครั้งที่ 3']);
         Filetype::create(['name' => 'บันทึกขอขยายเวลา']);
         Filetype::create(['name' => 'รายงานความก้าวหน้าครั้งที่ 4']);
