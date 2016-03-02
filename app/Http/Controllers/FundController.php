@@ -131,8 +131,12 @@ class FundController extends Controller {
 		if (!$application) {
 			return redirect('fund_request');
 		}
+
+		$upload = $this->getFileUpload(array(1, 2), $application->id);
+
 		return view('funds.form_signed_agreement', [
-			'request_id' => $request_id
+			'request_id' => $request_id,
+			'upload' => $upload
 		]);
 	}
 
@@ -152,8 +156,12 @@ class FundController extends Controller {
 		if (!$application) {
 			return redirect('fund_request');
 		}
+
+		$upload = $this->getFileUpload(array(3, 4, 5, 6), $application->id);
+
 		return view('funds.form_first_payment', [
-			'request_id' => $request_id
+			'request_id' => $request_id,
+			'upload' => $upload
 		]);
 	}
 
@@ -182,22 +190,6 @@ class FundController extends Controller {
 		]);
 	}
 
-	private function getFileUpload($filetypes, $application_id) {
-		$upload = [];
-		for ($j=0; $j < count($filetypes); $j++) {
-			$file = Upload::where('filetype', $filetypes[$j])
-			->where('application_id', $application_id)
-			->first();
-			if ($file->status != 'Reject') {
-				if ($file->status == 'Approve') { $file->html = '<label class="control-label icon-check"> <b>อนุมัติ</b></label>'; }
-				else { $file->html = '<label class="control-label icon-hourglass"> <b>รอการอนุมัติ</b></label>'; }
-			}
-			array_push($upload, $file);
-		}
-
-		return $upload;
-	}
-
 	public function secondPaymentInsertUpdate(Request $request) {
 		$this->uploadFile($request, 'file_7');
 		$this->uploadFile($request, 'file_8');
@@ -215,8 +207,12 @@ class FundController extends Controller {
 		if (!$application) {
 			return redirect('fund_request');
 		}
+
+		$upload = $this->getFileUpload(array(10, 11), $application->id);
+
 		return view('funds.form_second_progress_report', [
-			'request_id' => $request_id
+			'request_id' => $request_id,
+			'upload' => $upload
 		]);
 	}
 
@@ -236,8 +232,12 @@ class FundController extends Controller {
 		if (!$application) {
 			return redirect('fund_request');
 		}
+
+		$upload = $this->getFileUpload(array(12, 13), $application->id);
+
 		return view('funds.form_finalized', [
-			'request_id' => $request_id
+			'request_id' => $request_id,
+			'upload' => $upload
 		]);
 	}
 
@@ -257,8 +257,12 @@ class FundController extends Controller {
 		if (!$application) {
 			return redirect('fund_request');
 		}
+
+		$upload = $this->getFileUpload(array(17, 18, 19, 20, 21), $application->id);
+
 		return view('funds.form_project_finished', [
-			'request_id' => $request_id
+			'request_id' => $request_id,
+			'upload' => $upload
 		]);
 	}
 
@@ -300,6 +304,22 @@ class FundController extends Controller {
 		$upload->application_id = $application_id;
 
 		$upload->save();
+	}
+
+	private function getFileUpload($filetypes, $application_id) {
+		$upload = [];
+		for ($j=0; $j < count($filetypes); $j++) {
+			$file = Upload::where('filetype', $filetypes[$j])
+			->where('application_id', $application_id)
+			->first();
+			if ($file->status != 'Reject') {
+				if ($file->status == 'Approve') { $file->html = '<label class="control-label icon-check"> <b>อนุมัติ</b></label>'; }
+				else { $file->html = '<label class="control-label icon-hourglass"> <b>รอการอนุมัติ</b></label>'; }
+			}
+			array_push($upload, $file);
+		}
+
+		return $upload;
 	}
 
 	private function updateAppStatus($request, $status) {
