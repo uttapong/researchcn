@@ -50,7 +50,7 @@ class ApplicationController extends Controller {
 				"statusTitle" => "Pending", "statusClass" => "info"
 			),
 			"rejected_agreement" => array(
-				"currentStep" => "ทำสัญญารับทุน", "nextStep" => "", "linkNextStep" => "",
+				"currentStep" => "ทำสัญญารับทุน", "nextStep" => "แก้ไขไฟล์ที่ไม่ผ่านการอนุมติ", "linkNextStep" => "form_signed_agreement",
 				"statusTitle" => "Reject", "statusClass" => "danger"),
 			"approved_agreement" => array(
 				"currentStep" => "ทำสัญญารับทุน", "nextStep" => "เบิกเงินงวดที่ 1", "linkNextStep" => "form_first_payment",
@@ -62,7 +62,7 @@ class ApplicationController extends Controller {
 				"statusTitle" => "Pending", "statusClass" => "info"
 			),
 			"rejected_first_payment" => array(
-				"currentStep" => "เบิกเงินงวดที่ 1", "nextStep" => "", "linkNextStep" => "",
+				"currentStep" => "เบิกเงินงวดที่ 1", "nextStep" => "แก้ไขไฟล์ที่ไม่ผ่านการอนุมติ", "linkNextStep" => "form_first_payment",
 				"statusTitle" => "Reject", "statusClass" => "danger"
 			),
 			"approved_first_payment" => array(
@@ -75,7 +75,7 @@ class ApplicationController extends Controller {
 				"statusTitle" => "Pending", "statusClass" => "info"
 			),
 			"rejected_second_payment" => array(
-				"currentStep" => "รายงานความก้าวหน้าครั้งที่ 1", "nextStep" => "", "linkNextStep" => "",
+				"currentStep" => "รายงานความก้าวหน้าครั้งที่ 1", "nextStep" => "แก้ไขไฟล์ที่ไม่ผ่านการอนุมติ", "linkNextStep" => "form_second_payment",
 				"statusTitle" => "Reject", "statusClass" => "danger"
 			),
 			"approved_second_payment" => array(
@@ -88,7 +88,7 @@ class ApplicationController extends Controller {
 				"statusTitle" => "Pending", "statusClass" => "info"
 			),
 			"rejected_second_progress_report" => array(
-				"currentStep" => "รายงานความก้าวหน้าครั้งที่ 2", "nextStep" => "", "linkNextStep" => "",
+				"currentStep" => "รายงานความก้าวหน้าครั้งที่ 2", "nextStep" => "แก้ไขไฟล์ที่ไม่ผ่านการอนุมติ", "linkNextStep" => "form_second_payment",
 				"statusTitle" => "Reject", "statusClass" => "danger"
 			),
 			"approved_second_progress_report" => array(
@@ -101,11 +101,11 @@ class ApplicationController extends Controller {
 				"statusTitle" => "Pending", "statusClass" => "info"
 			),
 			"rejected_extend" => array(
-				"currentStep" => "ขอขยายเวลาส่งงาน", "nextStep" => "", "linkNextStep" => "",
+				"currentStep" => "ขอขยายเวลาส่งงาน", "nextStep" => "แก้ไขไฟล์ที่ไม่ผ่านการอนุมติ", "linkNextStep" => "form_finalized",
 				"statusTitle" => "Reject", "statusClass" => "danger"
 			),
 			"approved_extend" => array(
-				"currentStep" => "ขอขยายเวลาส่งงาน", "nextStep" => "ส่งผลงานครั้งสุดท้าย", "linkNextStep" => "",
+				"currentStep" => "ขอขยายเวลาส่งงาน", "nextStep" => "ส่งผลงานครั้งสุดท้าย", "linkNextStep" => "form_project_finished",
 				"statusTitle" => "Approve", "statusClass" => "success"
 			),
 
@@ -114,7 +114,7 @@ class ApplicationController extends Controller {
 				"statusTitle" => "Pending", "statusClass" => "info"
 			),
 			"rejected_finalized" => array(
-				"currentStep" => "ส่งผลงานครั้งสุดท้าย", "nextStep" => "", "linkNextStep" => "",
+				"currentStep" => "ส่งผลงานครั้งสุดท้าย", "nextStep" => "แก้ไขไฟล์ที่ไม่ผ่านการอนุมติ", "linkNextStep" => "form_finalized",
 				"statusTitle" => "Reject", "statusClass" => "danger"
 			),
 			"approved_finalized" => array(
@@ -127,7 +127,7 @@ class ApplicationController extends Controller {
 				"statusTitle" => "Pending", "statusClass" => "info"
 			),
 			"rejected_project_finished" => array(
-				"currentStep" => "ปิดโครงการ", "nextStep" => "", "linkNextStep" => "",
+				"currentStep" => "ปิดโครงการ", "nextStep" => "แก้ไขไฟล์ที่ไม่ผ่านการอนุมติ", "linkNextStep" => "form_project_finished",
 				"statusTitle" => "Reject", "statusClass" => "danger"
 			),
 			"approved_project_finished" => array(

@@ -172,12 +172,30 @@ class FundController extends Controller {
 		$request_id = $request->get('request_id', null);
 		$application = Application::find($request_id);
 
-		if (!$application) {
-			return redirect('fund_request');
-		}
+		if (!$application) { return redirect('fund_request'); }
+
+		$upload = $this->getFileUpload(array(7, 8, 9), $application->id);
+
 		return view('funds.form_second_payment', [
-			'request_id' => $request_id
+			'request_id' => $request_id,
+			'upload' => $upload
 		]);
+	}
+
+	private function getFileUpload($filetypes, $application_id) {
+		$upload = [];
+		for ($j=0; $j < count($filetypes); $j++) {
+			$file = Upload::where('filetype', $filetypes[$j])
+			->where('application_id', $application_id)
+			->first();
+			if ($file->status != 'Reject') {
+				if ($file->status == 'Approve') { $file->html = '<label class="control-label icon-check"> <b>อนุมัติ</b></label>'; }
+				else { $file->html = '<label class="control-label icon-hourglass"> <b>รอการอนุมัติ</b></label>'; }
+			}
+			array_push($upload, $file);
+		}
+
+		return $upload;
 	}
 
 	public function secondPaymentInsertUpdate(Request $request) {
