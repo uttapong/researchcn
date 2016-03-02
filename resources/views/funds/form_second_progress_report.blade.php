@@ -48,17 +48,33 @@
                                 <label class="control-label col-md-5">บันทึกนำส่ง
                                 </label>
                                 <div class="col-md-5">
-                                    <input type="file" class="form-control" name="file_10"/>
-                                    <span class="help-block"></span>
+                                    {!!
+                                        $upload[0]->status == 'Reject'
+                                        ? '<input type="file" class="form-control" name="file_10"/><span class="help-block">ไฟล์เก่าที่ไม่ผ่านการอนุมัติ <a href="' . $upload[0]->file_path . '"><span aria-hidden="true" class="icon-arrow-down"></span></a></span>'
+                                        : $upload[0]->html
+                                    !!}
                                 </div>
+                                {!!
+                                    $upload[0]->status == 'Reject'
+                                    ? '<label class="col-md-2 icon-close font-red" style="padding: 7px"> <b class="font-red">ไม่ผ่าน</b></label>'
+                                    : null
+                                !!}
                             </div>
                             <div class="form-group margin-top-20">
                                 <label class="control-label col-md-5">รายงานความก้าวหน้า
                                 </label>
                                 <div class="col-md-5">
-                                    <input type="file" class="form-control" name="file_11"/>
-                                    <span class="help-block"></span>
+                                    {!!
+                                        $upload[1]->status == 'Reject'
+                                        ? '<input type="file" class="form-control" name="file_11"/><span class="help-block">ไฟล์เก่าที่ไม่ผ่านการอนุมัติ <a href="' . $upload[1]->file_path . '"><span aria-hidden="true" class="icon-arrow-down"></span></a></span>'
+                                        : $upload[1]->html
+                                    !!}
                                 </div>
+                                {!!
+                                    $upload[1]->status == 'Reject'
+                                    ? '<label class="col-md-2 icon-close font-red" style="padding: 7px"> <b class="font-red">ไม่ผ่าน</b></label>'
+                                    : null
+                                !!}
                             </div>
 
                             <div class="form-actions">
