@@ -9,9 +9,9 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-Route::get('/', function () {
+Route::get('/', ['as'=>'base',function () {
     return view('welcome');
-});
+}]);
 Route::any('home', [ 'as' => 'home', function () {
     return view('welcome');
 }]);
@@ -25,12 +25,14 @@ Route::any('login', ['as' => 'login', function () {
 }]);
 Route::group(['middleware' => 'web','prefix' => 'rscn'], function () {
     // Route::auth();
-    Route::get('', 'ResearchCenterController@index');
+    Route::get('', [ 'as' => 'base_rscn', 'uses' => 'ResearchCenterController@index']);
     Route::get('home', [ 'as' => 'rscn_home', 'uses' => 'ResearchCenterController@index']);
     Route::post('simple_search', [ 'as' => 'simple_search', 'uses' => 'ResearchCenterController@simplesearch']);
     Route::post('advance_search', [ 'as' => 'advance_search', 'uses' => 'ResearchCenterController@advancesearch']);
     Route::get('new_research', 'ResearchCenterController@new_research');
     Route::post('new_research', [ 'as' => 'new_research', 'uses' => 'ResearchCenterController@add']);
+
+    Route::get('preview/{researchid}', [ 'as' => 'preview_research', 'uses' => 'ResearchCenterController@preview']);
 });
 /*
 |--------------------------------------------------------------------------

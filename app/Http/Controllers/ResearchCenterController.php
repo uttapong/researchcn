@@ -62,7 +62,10 @@ class ResearchCenterController extends Controller
   {
       $this->getInputSource()->add($input);
    }
-
+   public function preview($id){
+     $research=Research::find($id);
+     return response()->json($research);
+   }
    public function new_research(){
      $this->middleware('auth');
      return view('researchcenter.new_research');

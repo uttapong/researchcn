@@ -5,7 +5,49 @@
 .adv-search input, .adv-search button{
   margin: 3px 0 3px 0
 }
+.authors{
+  color:#36c6d3;
+ font-size: 1.2rem;
+}
+.published{
+  color:#444;
+ font-size: 1.2rem;
+}
+.keywords{
+  color:#444;
+ font-size: 1.2rem;
+}
+.fulltext{
+
+}
+.abstract{
+  font-size:1.2rem;
+}
 </style>
+<script>
+function getPreview(id){
+  $.ajax( "{{ route('base_rscn') }}/preview/"+id )
+  .done(function(msg) {
+    if(msg)$('#preview').show();
+    else $('#preview').hide();
+
+    $('#title').html(msg.title);
+    $('#authors').html(msg.authors);
+    $('#abstract').html(msg.abstract);
+    $('#keywords').html(msg.keywords);
+    $('#publication_name').html(msg.publication_name);
+    $('#published_month').html(msg.published_month);
+    $('#published_year').html(msg.title);
+    $('#issue').html(msg.issue);
+    $('#page').html(msg.page);
+    $('#download').html(msg.file_path);
+    if(msg.file_path)
+    $('#download').html('<a href="{{ route('base') }}/uploads/'+msg.id+'/'+msg.file_path+'" class="btn btn-success btn-xs" ><i class="fa fa-download fa-fw"></i> Download Full Text</a>');
+    else $('#download').html('-');
+
+  });
+}
+</script>
 <div class="search-page search-content-1">
                         <div class="search-bar ">
                             <div class="row">
@@ -50,7 +92,6 @@
                                                             <input id="" class="form-control" type="text" name="title" placeholder="Title">
                                                             <input id="" class="form-control" type="text" name="fulltext" placeholder="Fulltext/Abstract">
                                                             <input id="" class="form-control" type="text" name="publication" placeholder="Publication Name">
-
                                         </div>
 
                                     </div>
@@ -64,7 +105,6 @@
                                                           <input id="_token" name="_token" type="hidden" value="{{ csrf_token() }}" >
                                                           <input id="" class="form-control" type="text" name="keywords" placeholder="Keywords">
                                                           <input id="" class="form-control" type="text" name="year" placeholder="Published Year">
-
                                                           <input id="" class="form-control" type="text" name="authors" placeholder="Authors">
 
 
@@ -93,7 +133,7 @@
                                           </a>
                                             <div class="search-content">
                                                 <h2 class="search-title">
-                                                    <a href="javascript:;">{{$research->getShortTitle()}}</a>
+                                                    <a href="javascript:;" onclick="getPreview({{$research->id}})">{{$research->getShortTitle()}}</a>
                                                 </h2>
                                                 <p class="search-desc"> {{$research->getShortAbstract()}}</p>
                                             </div>
@@ -109,13 +149,18 @@
                                 <div class="portlet light ">
                                     <div class="portlet-title">
                                         <div class="caption">
-                                            <i class="icon-edit font-dark"></i>
-                                            <span class="caption-subject font-dark bold uppercase">Aricle Preview</span>
+                                            <span class="caption-subject font-dark bold uppercase" id="title">Aricle Preview</span>
+
                                         </div>
 
                                     </div>
-                                    <div id="preview" class="portlet-body">
-                                      Click an article to the left to view more details.
+                                    <div id="preview" style="display:none;" class="portlet-body">
+
+                                      <p class="authors">Author(s): <span id="authors"></span></p>
+                                      <p class="published">Published on<span id="publication_name"></span> <span id="published_month"></span> <span id="published_year"></span>,issue <span id="issue">,page <span id="page"></span></p>
+                                      <p class="keywords">Keywords: <span id="keywords"></span></p>
+                                      <p id="abstract"></p>
+                                      <p class="fulltext">Full text Download: <span id="download"></span><p>
                                     </div>
                                 </div>
                                 <!-- END PORTLET-->
