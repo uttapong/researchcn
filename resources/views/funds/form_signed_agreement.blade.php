@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
     <div class="row">
         <div class="col-md-4">
             <div class="portlet light portlet-fit portlet-form ">
@@ -79,7 +78,6 @@
             </div>
         </div>
     </div>
-</div>
 
 <script type="text/javascript">
     $(document).ready(function () {

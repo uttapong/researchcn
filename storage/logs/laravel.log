@@ -17461,3 +17461,12 @@ Stack trace:
 #62 C:\xampp\htdocs\researchcn\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(99): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
 #63 C:\xampp\htdocs\researchcn\public\index.php(54): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
 #64 {main}  
+[2016-03-02 15:25:15] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '=>' (T_DOUBLE_ARROW)' in /Users/pooh/Github/researchcn/app/Http/routes.php:40
+Stack trace:
+#0 {main}  
+[2016-03-02 15:38:46] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '=>' (T_DOUBLE_ARROW)' in /Users/pooh/Github/researchcn/app/Http/routes.php:40
+Stack trace:
+#0 {main}  
+[2016-03-02 15:39:54] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected ')', expecting ']'' in /Users/pooh/Github/researchcn/app/Http/routes.php:76
+Stack trace:
+#0 {main}  
