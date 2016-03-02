@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Routes File
@@ -10,35 +9,28 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
 Route::get('/', function () {
     return view('welcome');
 });
-
 Route::any('home', [ 'as' => 'home', function () {
     return view('welcome');
 }]);
-
 Route::get('test', 'HomeController@testfund');
-
 Route::get('rswk_home', [ 'as' => 'rswk_home', 'uses' => 'FundController@listFund']);
-
 Route::any('logout', ['as' => 'logout', function () {
     //
 }]);
 Route::any('login', ['as' => 'login', function () {
     //Route::auth();
 }]);
-
 Route::group(['middleware' => 'web','prefix' => 'rscn'], function () {
     // Route::auth();
     Route::get('', 'ResearchCenterController@index');
     Route::get('home', [ 'as' => 'rscn_home', 'uses' => 'ResearchCenterController@index']);
-    Route::post('simple_search', [ 'as' => 'simple_search','middleware' => 'auth', 'uses' => 'ResearchCenterController@simplesearch']);
-    Route::post('advance_search', [ 'as' => 'advance_search', 'middleware' => 'auth','uses' => 'ResearchCenterController@advancesearch']);
-
-    Route::get('new_research',['middleware' => 'auth', 'ResearchCenterController@new_research']);
-    Route::post('new_research', [ 'as' => 'new_research','middleware' => 'auth', 'uses' => 'ResearchCenterController@add']);
+    Route::post('simple_search', [ 'as' => 'simple_search', 'uses' => 'ResearchCenterController@simplesearch']);
+    Route::post('advance_search', [ 'as' => 'advance_search', 'uses' => 'ResearchCenterController@advancesearch']);
+    Route::get('new_research', 'ResearchCenterController@new_research');
+    Route::post('new_research', [ 'as' => 'new_research', 'uses' => 'ResearchCenterController@add']);
 });
 /*
 |--------------------------------------------------------------------------
@@ -50,19 +42,19 @@ Route::group(['middleware' => 'web','prefix' => 'rscn'], function () {
 | kernel and includes session state, CSRF protection, and more.
 |
 */
+Route::group(['middleware' => ['web']], function () {
+      Route::auth();
+});
 
-// Route::group(['middleware' => ['web']], function () {
-//     //
-// });
 
 Route::group(['middleware' => 'web','prefix' => 'rswk'], function () {
-  
 
+  Route::auth();
     Route::get('home', 'HomeController@index');
 
-    Route::get('list_fund', 'FundController@listFund');
-    Route::get('fund_ago', 'FundController@fundAgo');
-	Route::get('fund_request', 'ApplicationController@fundStatus');
+    Route::get('list_fund',[ 'as' => 'list_fund',  'uses' =>'FundController@listFund']);
+    Route::get('fund_ago', [ 'as' => 'fund_ago', 'uses' =>'FundController@fundAgo']);
+	Route::get('fund_request',[ 'as' => 'fund_request', 'uses' => 'ApplicationController@fundStatus']);
 
 
   Route::get('home', [ 'as' => 'rscn_home', 'uses' => 'ResearchCenterController@index']);

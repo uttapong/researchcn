@@ -22,7 +22,7 @@
                                     <div class="caption">
                                         <i class="icon-bubble font-red-mint"></i>
                                         <span class="caption-subject font-red-mint sbold">งานวิจัยบริการวิชาการ และวิเทศน์สัมพันธ์</span>
-                                        <p><a href="{{route('rswk_home')}}" class="btn green" > Go</a></p>
+                                        <p><a href="{{route('list_fund')}}" class="btn green" > Go</a></p>
                                     </div>
                                 </div>
                                 <div class="portlet-body">
