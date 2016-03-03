@@ -30,6 +30,7 @@ Route::group(['middleware' => 'web','prefix' => 'rscn'], function () {
     Route::get('', [ 'as' => 'base_rscn', 'uses' => 'ResearchCenterController@index']);
     Route::get('getfile/{researchid}', [ 'as' => 'get_research', 'uses' => 'ResearchCenterController@getfile']);
     Route::get('home', [ 'as' => 'rscn_home', 'uses' => 'ResearchCenterController@index']);
+    Route::get('dashboard', [ 'as' => 'dashboard_rscn', 'uses' => 'ResearchCenterController@dashboard']);
     Route::post('simple_search', [ 'as' => 'simple_search', 'uses' => 'ResearchCenterController@simplesearch']);
     Route::post('advance_search', [ 'as' => 'advance_search', 'uses' => 'ResearchCenterController@advancesearch']);
     Route::get('new_research', 'ResearchCenterController@new_research');
