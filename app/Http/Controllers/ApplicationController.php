@@ -27,7 +27,7 @@ class ApplicationController extends Controller {
 
 		$application->save();
 
-		return redirect('list_fund');
+		return redirect()->route('list_fund');
 	}
 
 	public function fundStatus() {
@@ -290,7 +290,7 @@ class ApplicationController extends Controller {
 		$application->status = $status;
 		$application->save();
 
-		return redirect('fund_user_request');
+		return redirect()->route('fund_user_request');
 	}
 
 	public function fileUploadUpdate($uploadId, $status) {
@@ -347,6 +347,6 @@ class ApplicationController extends Controller {
 			}
 		}
 
-		return redirect('fund_user_request');
+		return redirect()->route('fund_user_request');
 	}
 }

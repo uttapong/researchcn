@@ -153,6 +153,60 @@
             </li>
             @endif
 
+            @if(Auth::user()&&Auth::user()->is('reader'))
+            <li class="nav-item">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                    <i class="icon-layers"></i>
+                    <span class="title" style="margin-top: 12px">รายชื่อทุนทั้งหมด</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="nav-item">
+                        <a href="list_fund" class="nav-link">
+                            <i class="icon-layers"></i>
+                            <span class="title">ทุนปัจจุบัน</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="fund_ago" class="nav-link">
+                            <i class="icon-layers"></i>
+                            <span class="title">ทุนที่ผ่านมา</span>
+                            <!-- <span class="badge badge-success">1</span> -->
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="fund_request" class="nav-link">
+                            <i class="icon-layers"></i>
+                            <span class="title">ทุนที่ท่านเสนอขอ</span>
+                            <!-- <span class="badge badge-danger">1</span> -->
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav-item">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                    <i class="icon-user"></i>
+                    <span class="title" style="margin-top: 12px">ข้อมูลส่วนตัว</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="nav-item">
+                        <a href="page_user_profile_1.html" class="nav-link">
+                            <i class="icon-user"></i>
+                            <span class="title">ข้อมูลผู้ขอทุน</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="page_user_profile_1_account.html" class="nav-link">
+                            <i class="icon-user-female"></i>
+                            <span class="title">ข้อมูลการเข้าใช้งานระบบ</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            @endif
+
         </ul>
         <!-- END SIDEBAR MENU -->
     </div>

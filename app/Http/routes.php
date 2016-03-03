@@ -52,7 +52,7 @@ Route::group(['middleware' => ['web']], function () {
 Route::group(['middleware' => 'web','prefix' => 'rswk'], function () {
 
   Route::auth();
-    Route::get('home', 'HomeController@index');
+    Route::get('', [ 'as' => 'base_rswk', 'uses' => 'FundController@listFund']);
 
     Route::get('list_fund',[ 'as' => 'list_fund',  'uses' =>'FundController@listFund']);
     Route::get('fund_ago', [ 'as' => 'fund_ago', 'uses' =>'FundController@fundAgo']);

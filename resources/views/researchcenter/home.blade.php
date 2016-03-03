@@ -149,7 +149,8 @@ function getPreview(id){
                                 <div class="portlet light ">
                                     <div class="portlet-title">
                                         <div class="caption">
-                                            <span class="caption-subject font-dark bold uppercase" id="title">Aricle Preview</span>
+                                            <span class="caption-subject font-dark bold uppercase" id="title">Aricle Preview <span style="font-size: 10px;"><br />Click an article on the left to view information</span></span>
+
 
                                         </div>
 

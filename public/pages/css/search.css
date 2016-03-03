@@ -84,8 +84,8 @@ Search Page
       .search-content-1 .search-container > ul .search-item > .search-content {
         padding-left: 120px; }
         .search-content-1 .search-container > ul .search-item > .search-content > .search-title {
-          font-size: 20px;
-          margin: 10px 0 20px 0;
+          font-size: 14px;
+          margin: 10px 0 5px 0;
           font-weight: 600; }
           .search-content-1 .search-container > ul .search-item > .search-content > .search-title > a {
             color: #4e5a64; }
@@ -94,7 +94,7 @@ Search Page
               color: #49a7fa; }
         .search-content-1 .search-container > ul .search-item > .search-content > .search-desc {
           color: #a0a9b4;
-          font-size: 13px;
+          font-size: 12px;
           margin: 0; }
       .search-content-1 .search-container > ul .search-item:last-child {
         border: none; }

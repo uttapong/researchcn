@@ -114,14 +114,14 @@ class FundController extends Controller {
 
 		$fund->save();
 
-		return redirect('fund_manage');
+		return redirect()->route('fund_manage');
 	}
 
 	public function fundDelete($id) {
 		$fund = Fund::find($id);
 		$fund->delete();
 
-		return redirect('fund_manage');
+		return redirect()->route('fund_manage');
 	}
 
 	public function formSignedAgreement(Request $request) {
@@ -129,7 +129,7 @@ class FundController extends Controller {
 		$application = Application::find($request_id);
 
 		if (!$application) {
-			return redirect('fund_request');
+			return redirect()->route('fund_request');
 		}
 
 		$upload = $this->getFileUpload(array(1, 2), $application->id);
@@ -146,7 +146,7 @@ class FundController extends Controller {
 
 		$this->updateAppStatus($request, 'signed_agreement');
 
-		return redirect('fund_request');
+		return redirect()->route('fund_request');
 	}
 
 	public function formFirstPayment(Request $request) {
@@ -154,7 +154,7 @@ class FundController extends Controller {
 		$application = Application::find($request_id);
 
 		if (!$application) {
-			return redirect('fund_request');
+			return redirect()->route('fund_request');
 		}
 
 		$upload = $this->getFileUpload(array(3, 4, 5, 6), $application->id);
@@ -173,14 +173,14 @@ class FundController extends Controller {
 
 		$this->updateAppStatus($request, 'first_payment');
 
-		return redirect('fund_request');
+		return redirect()->route('fund_request');
 	}
 
 	public function formSecondPayment(Request $request) {
 		$request_id = $request->get('request_id', null);
 		$application = Application::find($request_id);
 
-		if (!$application) { return redirect('fund_request'); }
+		if (!$application) { return redirect()->route('fund_request'); }
 
 		$upload = $this->getFileUpload(array(7, 8, 9), $application->id);
 
@@ -197,7 +197,7 @@ class FundController extends Controller {
 
 		$this->updateAppStatus($request, 'second_payment');
 
-		return redirect('fund_request');
+		return redirect()->route('fund_request');
 	}
 
 	public function formSecondProgressReport(Request $request) {
@@ -205,7 +205,7 @@ class FundController extends Controller {
 		$application = Application::find($request_id);
 
 		if (!$application) {
-			return redirect('fund_request');
+			return redirect()->route('fund_request');
 		}
 
 		$upload = $this->getFileUpload(array(10, 11), $application->id);
@@ -222,7 +222,7 @@ class FundController extends Controller {
 
 		$this->updateAppStatus($request, 'second_progress_report');
 
-		return redirect('fund_request');
+		return redirect()->route('fund_request');
 	}
 
 	public function formFinalized(Request $request) {
@@ -230,7 +230,7 @@ class FundController extends Controller {
 		$application = Application::find($request_id);
 
 		if (!$application) {
-			return redirect('fund_request');
+			return redirect()->route('fund_request');
 		}
 
 		$upload = $this->getFileUpload(array(12, 13), $application->id);
@@ -247,7 +247,7 @@ class FundController extends Controller {
 
 		$this->updateAppStatus($request, 'finalized');
 
-		return redirect('fund_request');
+		return redirect()->route('fund_request');
 	}
 
 	public function formProjectFinished(Request $request) {
@@ -255,7 +255,7 @@ class FundController extends Controller {
 		$application = Application::find($request_id);
 
 		if (!$application) {
-			return redirect('fund_request');
+			return redirect()->route('fund_request');
 		}
 
 		$upload = $this->getFileUpload(array(17, 18, 19, 20, 21), $application->id);
@@ -275,7 +275,7 @@ class FundController extends Controller {
 
 		$this->updateAppStatus($request, 'project_finished');
 
-		return redirect('fund_request');
+		return redirect()->route('fund_request');
 	}
 
 	private function uploadFile($request, $name_input) {
@@ -309,14 +309,17 @@ class FundController extends Controller {
 	private function getFileUpload($filetypes, $application_id) {
 		$upload = [];
 		for ($j=0; $j < count($filetypes); $j++) {
+
 			$file = Upload::where('filetype', $filetypes[$j])
 			->where('application_id', $application_id)
 			->first();
-			if ($file->status != 'Reject') {
-				if ($file->status == 'Approve') { $file->html = '<label class="control-label icon-check"> <b>อนุมัติ</b></label>'; }
-				else { $file->html = '<label class="control-label icon-hourglass"> <b>รอการอนุมัติ</b></label>'; }
+			if($file){
+				if ($file->status != 'Reject') {
+					if ($file->status == 'Approve') { $file->html = '<label class="control-label icon-check"> <b>อนุมัติ</b></label>'; }
+					else { $file->html = '<label class="control-label icon-hourglass"> <b>รอการอนุมัติ</b></label>'; }
+				}
+				array_push($upload, $file);
 			}
-			array_push($upload, $file);
 		}
 
 		return $upload;

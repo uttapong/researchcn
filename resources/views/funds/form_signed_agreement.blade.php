@@ -12,7 +12,7 @@
                 </div>
                 <div class="portlet-body">
                     <div class="form-body">
-                        <img src="img/funds/fund_step_1.png" class="img-responsive center-block">
+                        <img src="{{ asset('img/funds/fund_step_1.png') }}" class="img-responsive center-block">
                     </div>
                 </div>
                 <!-- END VALIDATION STATES-->

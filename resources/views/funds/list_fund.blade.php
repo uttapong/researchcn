@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="row">
-        <div class="col-xs-12 col-md-12 col-lg-12">
+        <div class="col-xs-10 col-md-10 col-lg-10">
             <div class="portlet light portlet-fit ">
                 <div class="portlet-title">
                     <div class="caption">
@@ -45,7 +45,7 @@
 
         // Event on click confirm box
         $('[data-toggle="confirmation"]').on("confirmed.bs.confirmation", function () {
-            window.location = "register_fund/" + $(this).attr("data-id");
+            window.location = "{{route('base_rswk')}}/register_fund/" + $(this).attr("data-id");
         })
     });
 </script>
