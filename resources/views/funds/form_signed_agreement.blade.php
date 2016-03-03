@@ -48,14 +48,18 @@
                                 </label>
                                 <div class="col-md-5">
                                     {!!
-                                        $upload[0]->status == 'Reject'
-                                        ? '<input type="file" class="form-control" name="file_1"/><span class="help-block">ไฟล์เก่าที่ไม่ผ่านการอนุมัติ <a href="' . $upload[0]->file_path . '"><span aria-hidden="true" class="icon-arrow-down"></span></a></span>'
-                                        : $upload[0]->html
+                                        $upload ?
+                                            $upload[0]->status == 'Reject'
+                                            ? '<input type="file" class="form-control" name="file_1"/><span class="help-block">ไฟล์เก่าที่ไม่ผ่านการอนุมัติ <a href="' . $upload[0]->file_path . '"><span aria-hidden="true" class="icon-arrow-down"></span></a></span>'
+                                            : $upload[0]->html
+                                        : '<input type="file" class="form-control" name="file_1"/>'
                                     !!}
                                 </div>
                                 {!!
-                                    $upload[0]->status == 'Reject'
-                                    ? '<label class="col-md-2 icon-close font-red" style="padding: 7px"> <b class="font-red">ไม่ผ่าน</b></label>'
+                                    $upload ?
+                                        $upload[0]->status == 'Reject'
+                                        ? '<label class="col-md-2 icon-close font-red" style="padding: 7px"> <b class="font-red">ไม่ผ่าน</b></label>'
+                                        : null
                                     : null
                                 !!}
                             </div>
@@ -64,14 +68,18 @@
                                 </label>
                                 <div class="col-md-5">
                                     {!!
-                                        $upload[1]->status == 'Reject'
-                                        ? '<input type="file" class="form-control" name="file_2"/><span class="help-block">ไฟล์เก่าที่ไม่ผ่านการอนุมัติ <a href="' . $upload[1]->file_path . '"><span aria-hidden="true" class="icon-arrow-down"></span></a></span>'
-                                        : $upload[1]->html
+                                        $upload ?
+                                            $upload[1]->status == 'Reject'
+                                            ? '<input type="file" class="form-control" name="file_2"/><span class="help-block">ไฟล์เก่าที่ไม่ผ่านการอนุมัติ <a href="' . $upload[1]->file_path . '"><span aria-hidden="true" class="icon-arrow-down"></span></a></span>'
+                                            : $upload[1]->html
+                                        : '<input type="file" class="form-control" name="file_2"/>'
                                     !!}
                                 </div>
                                 {!!
-                                    $upload[1]->status == 'Reject'
-                                    ? '<label class="col-md-2 icon-close font-red" style="padding: 7px"> <b class="font-red">ไม่ผ่าน</b></label>'
+                                    $upload ?
+                                        $upload[1]->status == 'Reject'
+                                        ? '<label class="col-md-2 icon-close font-red" style="padding: 7px"> <b class="font-red">ไม่ผ่าน</b></label>'
+                                        : null
                                     : null
                                 !!}
                             </div>
