@@ -1,3 +1,11 @@
+<style>
+.thai{
+  font-family: 'Kanit', sans-serif !important;
+}
+a{
+  text-decoration: none !important;
+}
+</style>
 <!-- BEGIN HEADER -->
 <div class="page-header navbar navbar-fixed-top">
     <!-- BEGIN HEADER INNER -->
@@ -25,12 +33,12 @@
             </a> -->
             @if(Auth::user())
             @if(Auth::user()&&Auth::user()->is('admin_research_center'))
-            <a href="{{route('rscn_home')}}"><h3>ศูนย์วิจัยการการพยาบาลและพฤติกรรมศาสตร์</h3></a>
+            <a  href="{{route('rscn_home')}}"><h3 class="thai">ศูนย์วิจัยการการพยาบาลและพฤติกรรมศาสตร์</h3></a>
             @elseif(Auth::user()&&Auth::user()->is('admin_research_work'))
-            <a href="{{route('rscn_home')}}"><h3>งานวิจัยบริการวิชาการ และวิเทศน์สัมพันธ์</h3></a>
+            <a  href="{{route('rscn_home')}}"><h3 class="thai">งานวิจัยบริการวิชาการ และวิเทศน์สัมพันธ์</h3></a>
             @endif
             @else
-            <a href="{{route('home')}}"><h3>ระบบเว็บสารสนเทศน์ คณะพยาบาลศาสตร์ มหาวิทยาลัยธรรมศาสตร์</h3></a>
+            <a  href="{{route('home')}}"><h3 class="thai">คณะพยาบาลศาสตร์ มหาวิทยาลัยธรรมศาสตร์</h3></a>
             @endif
             <!-- <div class="btn-group">
                 <button type="button" class="btn btn-circle btn-outline red dropdown-toggle" data-toggle="dropdown">

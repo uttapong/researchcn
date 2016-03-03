@@ -23,9 +23,12 @@ Route::any('logout', ['as' => 'logout', function () {
 Route::any('login', ['as' => 'login', function () {
     //Route::auth();
 }]);
+
+Route::any('uploads', [ 'as' => 'uploads', 'middleware' => 'auth']);
 Route::group(['middleware' => 'web','prefix' => 'rscn'], function () {
     // Route::auth();
     Route::get('', [ 'as' => 'base_rscn', 'uses' => 'ResearchCenterController@index']);
+    Route::get('getfile/{researchid}', [ 'as' => 'get_research', 'uses' => 'ResearchCenterController@getfile']);
     Route::get('home', [ 'as' => 'rscn_home', 'uses' => 'ResearchCenterController@index']);
     Route::post('simple_search', [ 'as' => 'simple_search', 'uses' => 'ResearchCenterController@simplesearch']);
     Route::post('advance_search', [ 'as' => 'advance_search', 'uses' => 'ResearchCenterController@advancesearch']);

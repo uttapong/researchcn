@@ -11,7 +11,7 @@
                                     </div>
                                 </div>
                                 <div class="portlet-body">
-                                    <p> At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique. </p>
+                                    <p> คณะพยาบาลศาสตร์  เป็นศูนย์กลางวิจัยทางการพยาบาลเพื่อสร้างองค์ความรู้ในการแก้ไขปัญหาสาธารณสุขทั้งในระดับท้องถิ่นและระดับประเทศ เป็นคณะที่มีผลงานวิจัยที่มีคุณภาพในด้านการพยาบาล  โดยเฉพาะอย่างยิ่งการทำวิจัยเป็นทีม  การส่งเสริมสุขภาพของบุคคล  ครอบครัว  และชุมชน  และการพัฒนาระบบบริการพยาบาลการศึกษาพยาบาล  และการวิจัยสถาบัน  โดยคณะฯ  จะให้การสนับสนุนส่งเสริมให้อาจารย์ทุกคนได้มีการดำเนินการวิจัยโดยเฉพาะอย่างยิ่งการทำวิจัยเป็นทีม  และมีผลงานวิจัยอย่างสม่ำเสมอ</p>
                                     <p><a href="{{route('rscn_home')}}" class="btn green" > Go</a></p>
                                 </div>
                             </div>
@@ -22,11 +22,12 @@
                                     <div class="caption">
                                         <i class="icon-bubble font-red-mint"></i>
                                         <span class="caption-subject font-red-mint sbold">งานวิจัยบริการวิชาการ และวิเทศน์สัมพันธ์</span>
-                                        <p><a href="{{route('list_fund')}}" class="btn green" > Go</a></p>
+
                                     </div>
                                 </div>
                                 <div class="portlet-body">
-                                    <p> At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique. </p>
+                                    <p> คณะพยาบาลศาสตร์  เป็นศูนย์กลางวิจัยทางการพยาบาลเพื่อสร้างองค์ความรู้ในการแก้ไขปัญหาสาธารณสุขทั้งในระดับท้องถิ่นและระดับประเทศ เป็นคณะที่มีผลงานวิจัยที่มีคุณภาพในด้านการพยาบาล  โดยเฉพาะอย่างยิ่งการทำวิจัยเป็นทีม  การส่งเสริมสุขภาพของบุคคล  ครอบครัว  และชุมชน  และการพัฒนาระบบบริการพยาบาลการศึกษาพยาบาล  และการวิจัยสถาบัน  โดยคณะฯ  จะให้การสนับสนุนส่งเสริมให้อาจารย์ทุกคนได้มีการดำเนินการวิจัยโดยเฉพาะอย่างยิ่งการทำวิจัยเป็นทีม  และมีผลงานวิจัยอย่างสม่ำเสมอ</p>
+                                      <p><a href="{{route('list_fund')}}" class="btn green" > Go</a></p>
                                 </div>
                             </div>
                         </div>
