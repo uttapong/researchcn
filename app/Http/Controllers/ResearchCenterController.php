@@ -57,6 +57,10 @@ class ResearchCenterController extends Controller
  {
      $this->getInputSource()->replace($input);
   }
+  public function dashboard()
+{
+   return view('researchcenter.dashboard');
+}
   public function getfile($research_id){
     $this->middleware('auth');
     $research=Research::find($research_id);

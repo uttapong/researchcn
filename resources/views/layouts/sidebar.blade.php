@@ -160,7 +160,14 @@
                     </li>
                 </ul>
             </li>
-            
+            <li class="nav-item">
+                <a href="{{route('dashboard_rscn')}}" class="nav-link nav-toggle">
+                    <i class="icon-graph"></i>
+                    <span class="title" style="margin-top: 12px">สถิติงานวิจัย</span>
+                    <span class="arrow"></span>
+                </a>
+
+            </li>
             <li class="nav-item">
                 <a href="{{route('base_rscn')}}" class="nav-link nav-toggle">
                     <i class="icon-layers"></i>
