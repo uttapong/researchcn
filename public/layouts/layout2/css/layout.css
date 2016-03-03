@@ -59,14 +59,14 @@ Page Header
     display: block;
     width: 195px;
     height: 68px;
-    padding-left: 20px;
-    padding-right: 20px; }
+    padding-left: 2px;
+    padding-right: 2px; }
     .page-header.navbar .page-logo > .logo-image,
     .page-header.navbar .page-logo > a {
       display: block;
       float: left; }
     .page-header.navbar .page-logo .logo-default {
-      margin: 27px 0 0 0; }
+      margin: 2px 0 0 0; }
     .page-header.navbar .page-logo .logo-mini {
       display: none;
       margin-left: 5px; }

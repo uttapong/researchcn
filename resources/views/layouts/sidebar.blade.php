@@ -12,6 +12,45 @@
         <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
         <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
         <ul class="page-sidebar-menu  page-header-fixed page-sidebar-menu-hover-submenu" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+  @if(!Auth::user())
+          <li class="nav-item">
+              <a href="{{route('base_rscn')}}" class="nav-link nav-toggle">
+                  <i class="icon-layers"></i>
+                  <span class="title" style="margin-top: 12px">ฐานข้อมูลงานวิจัย</span>
+                  <span class="arrow"></span>
+              </a>
+
+          </li>
+          <li class="nav-item">
+              <a href="javascript:;" class="nav-link nav-toggle">
+                  <i class="icon-layers"></i>
+                  <span class="title" style="margin-top: 12px">รายชื่อทุนทั้งหมด</span>
+                  <span class="arrow"></span>
+              </a>
+              <ul class="sub-menu">
+                  <li class="nav-item">
+                      <a href="{{route('list_fund')}}" class="nav-link">
+                          <i class="icon-layers"></i>
+                          <span class="title">ทุนปัจจุบัน</span>
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a href="{{route('fund_ago')}}" class="nav-link">
+                          <i class="icon-layers"></i>
+                          <span class="title">ทุนที่ผ่านมา</span>
+                          <!-- <span class="badge badge-success">1</span> -->
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a href="{{route('fund_request')}}" class="nav-link">
+                          <i class="icon-layers"></i>
+                          <span class="title">ทุนที่ท่านเสนอขอ</span>
+                          <!-- <span class="badge badge-danger">1</span> -->
+                      </a>
+                  </li>
+              </ul>
+          </li>
+          @endif
             @if(Auth::user()&&Auth::user()->is('admin_research_work'))
             <li class="nav-item">
                 <a href="javascript:;" class="nav-link nav-toggle">
@@ -51,7 +90,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li class="nav-item">
-                        <a href="fund_manage" class="nav-link">
+                        <a href="{{route('fund_manage')}}" class="nav-link">
                             <i class="icon-settings"></i>
                             <span class="title">จัดการทุนทั้งหมด
                         </a>
@@ -63,7 +102,7 @@
                         </a> -->
                         <a href="fund_user_request" class="nav-link">
                             <i class="icon-settings"></i>
-                            <span class="title">คำร้องขอทุน
+                            <span class="title">รายชื่อผู้ขอทุน/อนุมัติเอกสาร
                         </a>
                     </li>
                 </ul>
@@ -92,6 +131,44 @@
             @endif
 
             @if(Auth::user()&&Auth::user()->is('admin_research_center'))
+            <li class="nav-item">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                    <i class="icon-layers"></i>
+                    <span class="title" style="margin-top: 12px">รายชื่อทุนทั้งหมด</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="nav-item">
+                        <a href="{{route('list_fund')}}" class="nav-link">
+                            <i class="icon-layers"></i>
+                            <span class="title">ทุนปัจจุบัน</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('fund_ago')}}" class="nav-link">
+                            <i class="icon-layers"></i>
+                            <span class="title">ทุนที่ผ่านมา</span>
+                            <!-- <span class="badge badge-success">1</span> -->
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('fund_request')}}" class="nav-link">
+                            <i class="icon-layers"></i>
+                            <span class="title">ทุนที่ท่านเสนอขอ</span>
+                            <!-- <span class="badge badge-danger">1</span> -->
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            
+            <li class="nav-item">
+                <a href="{{route('base_rscn')}}" class="nav-link nav-toggle">
+                    <i class="icon-layers"></i>
+                    <span class="title" style="margin-top: 12px">งานวิจัยทั้งหมด</span>
+                    <span class="arrow"></span>
+                </a>
+
+            </li>
             <li class="nav-item">
                 <a href="{{route('new_research')}}" class="nav-link nav-toggle">
                     <i class="icon-plus"></i>
@@ -154,35 +231,7 @@
             @endif
 
             @if(Auth::user()&&Auth::user()->is('reader'))
-            <li class="nav-item">
-                <a href="javascript:;" class="nav-link nav-toggle">
-                    <i class="icon-layers"></i>
-                    <span class="title" style="margin-top: 12px">รายชื่อทุนทั้งหมด</span>
-                    <span class="arrow"></span>
-                </a>
-                <ul class="sub-menu">
-                    <li class="nav-item">
-                        <a href="list_fund" class="nav-link">
-                            <i class="icon-layers"></i>
-                            <span class="title">ทุนปัจจุบัน</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="fund_ago" class="nav-link">
-                            <i class="icon-layers"></i>
-                            <span class="title">ทุนที่ผ่านมา</span>
-                            <!-- <span class="badge badge-success">1</span> -->
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="fund_request" class="nav-link">
-                            <i class="icon-layers"></i>
-                            <span class="title">ทุนที่ท่านเสนอขอ</span>
-                            <!-- <span class="badge badge-danger">1</span> -->
-                        </a>
-                    </li>
-                </ul>
-            </li>
+
 
             <li class="nav-item">
                 <a href="javascript:;" class="nav-link nav-toggle">

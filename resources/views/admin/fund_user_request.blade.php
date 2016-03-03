@@ -1,9 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-xs-12">
             <div class="portlet light portlet-fit ">
                 <div class="portlet-title">
                     <div class="caption">
@@ -41,9 +40,9 @@
                                                 <?php
                                                     $documents = $application->documents;
                                                     if ($documents) {
-                                                        for ($i=0; $i < count($documents); $i++) { 
+                                                        for ($i=0; $i < count($documents); $i++) {
                                                             print('<p style="margin-bottom: 25px">' . $application->documents[$i]['file_name']);
-                                                            print('&nbsp;<a href="' . $application->documents[$i]['file_path'] . '"><span aria-hidden="true" class="icon-arrow-down"></span></a>');
+                                                            print('&nbsp;<a href="'.route('base').'/' . $application->documents[$i]['file_path'] . '"><span aria-hidden="true" class="icon-arrow-down"></span></a>');
 
                                                             if ($application->documents[$i]['file_status'] == 'uploaded') {
                                                                 print('<span class="pull-right">');
@@ -84,7 +83,6 @@
             </div>
         </div>
     </div>
-</div>
 <script type="text/javascript">
     $(document).ready(function () {
         // Add class selected navigator

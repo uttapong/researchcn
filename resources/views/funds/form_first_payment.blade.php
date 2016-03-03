@@ -13,7 +13,7 @@
                 </div>
                 <div class="portlet-body">
                     <div class="form-body">
-                        <img src="img/funds/fund_step_2.png" class="img-responsive center-block">
+                        <img src="{{ asset('img/funds/fund_step_2.png') }}" class="img-responsive center-block">
                     </div>
                 </div>
                 <!-- END VALIDATION STATES-->
@@ -53,7 +53,7 @@
                                             $upload[0]->status == 'Reject'
                                             ? '<input type="file" class="form-control" name="file_3"/><span class="help-block">ไฟล์เก่าที่ไม่ผ่านการอนุมัติ <a href="' . $upload[0]->file_path . '"><span aria-hidden="true" class="icon-arrow-down"></span></a></span>'
                                             : $upload[0]->html
-                                        : null
+                                        : '<input type="file" class="form-control" name="file_3"/>'
                                     !!}
                                 </div>
                                 {!!
@@ -62,6 +62,7 @@
                                         ? '<label class="col-md-2 icon-close font-red" style="padding: 7px"> <b class="font-red">ไม่ผ่าน</b></label>'
                                         : null
                                     : null
+                                  : null
                                 !!}
                             </div>
                             <div class="form-group margin-top-20">
@@ -73,7 +74,7 @@
                                             $upload[1]->status == 'Reject'
                                             ? '<input type="file" class="form-control" name="file_4"/><span class="help-block">ไฟล์เก่าที่ไม่ผ่านการอนุมัติ <a href="' . $upload[1]->file_path . '"><span aria-hidden="true" class="icon-arrow-down"></span></a></span>'
                                             : $upload[1]->html
-                                        : null
+                                        : '<input type="file" class="form-control" name="file_4"/>'
                                     !!}
                                 </div>
                                 {!!
@@ -93,7 +94,7 @@
                                             $upload[2]->status == 'Reject'
                                             ? '<input type="file" class="form-control" name="file_5"/><span class="help-block">ไฟล์เก่าที่ไม่ผ่านการอนุมัติ <a href="' . $upload[2]->file_path . '"><span aria-hidden="true" class="icon-arrow-down"></span></a></span>'
                                             : $upload[2]->html
-                                        : null
+                                        : '<input type="file" class="form-control" name="file_5"/>'
                                     !!}
                                 </div>
                                 {!!
@@ -113,7 +114,7 @@
                                             $upload[3]->status == 'Reject'
                                             ? '<input type="file" class="form-control" name="file_6"/><span class="help-block">ไฟล์เก่าที่ไม่ผ่านการอนุมัติ <a href="' . $upload[3]->file_path . '"><span aria-hidden="true" class="icon-arrow-down"></span></a></span>'
                                             : $upload[3]->html
-                                        : null
+                                        : '<input type="file" class="form-control" name="file_6"/>'
                                     !!}
                                 </div>
                                 {!!
@@ -121,7 +122,7 @@
                                         $upload[3]->status == 'Reject'
                                         ? '<label class="col-md-2 icon-close font-red" style="padding: 7px"> <b class="font-red">ไม่ผ่าน</b></label>'
                                         : null
-                                    :null
+                                    : null
                                 !!}
                             </div>
 

@@ -53,7 +53,7 @@
                                             $upload[0]->status == 'Reject'
                                             ? '<input type="file" class="form-control" name="file_12"/><span class="help-block">ไฟล์เก่าที่ไม่ผ่านการอนุมัติ <a href="' . $upload[0]->file_path . '"><span aria-hidden="true" class="icon-arrow-down"></span></a></span>'
                                             : $upload[0]->html
-                                        : null
+                                        : '<input type="file" class="form-control" name="file_12"/>'
                                     !!}
                                 </div>
                                 {!!
@@ -73,7 +73,7 @@
                                             $upload[1]->status == 'Reject'
                                             ? '<input type="file" class="form-control" name="file_13"/><span class="help-block">ไฟล์เก่าที่ไม่ผ่านการอนุมัติ <a href="' . $upload[1]->file_path . '"><span aria-hidden="true" class="icon-arrow-down"></span></a></span>'
                                             : $upload[1]->html
-                                        : null
+                                        : '<input type="file" class="form-control" name="file_13"/>'
                                     !!}
                                 </div>
                                 {!!

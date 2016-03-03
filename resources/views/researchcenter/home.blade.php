@@ -42,7 +42,7 @@ function getPreview(id){
     $('#page').html(msg.page);
     $('#download').html(msg.file_path);
     if(msg.file_path)
-    $('#download').html('<a href="{{ route('base') }}/uploads/'+msg.id+'/'+msg.file_path+'" class="btn btn-success btn-xs" ><i class="fa fa-download fa-fw"></i> Download Full Text</a>');
+    $('#download').html('<a href="{{ URL('rscn/getfile')}}/'+msg.id+'" class="btn btn-success btn-xs" ><i class="fa fa-download fa-fw"></i> Download Full Text</a>');
     else $('#download').html('-');
 
   });

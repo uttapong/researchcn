@@ -44,7 +44,7 @@
                             </div>
                             <h3 class="form-section">เอกสารประกอบ</h3>
                             <div class="form-group margin-top-20">
-                                <label class="control-label col-md-5" style="padding-top: 0">หน้าบุ๊คแบงค์ของสหกรณ์ออมทรัพย์ มหาวิทยาลัยธรรมศาสตร์
+                                <label class="control-label col-md-5" style="padding-top: 0">หน้าบุ๊คแบงค์ของสหกรณ์ออมทรัพย์ มหาวิทยาลัยธรรมศาสตร์
                                 </label>
                                 <div class="col-md-5">
                                     {!!

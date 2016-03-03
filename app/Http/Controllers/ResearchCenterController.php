@@ -57,7 +57,14 @@ class ResearchCenterController extends Controller
  {
      $this->getInputSource()->replace($input);
   }
+  public function getfile($research_id){
+    $this->middleware('auth');
+    $research=Research::find($research_id);
+    if(Auth::user())
+    return redirect("/uploads/{$research->id}/{$research->file_path}");
 
+    return redirect()->route('login');
+  }
   public function merge(array $input)
   {
       $this->getInputSource()->add($input);
