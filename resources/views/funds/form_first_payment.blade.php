@@ -62,7 +62,6 @@
                                         ? '<label class="col-md-2 icon-close font-red" style="padding: 7px"> <b class="font-red">ไม่ผ่าน</b></label>'
                                         : null
                                     : null
-                                  : null
                                 !!}
                             </div>
                             <div class="form-group margin-top-20">

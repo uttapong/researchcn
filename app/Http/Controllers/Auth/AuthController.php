@@ -41,6 +41,11 @@ class AuthController extends Controller
         $this->middleware('guest', ['except' => 'logout']);
     }
 
+    public function detail($userid){
+      $user=App\User::find($userid);
+      return view('auth.detail',['user'=>$user]);
+    }
+
     /**
      * Get a validator for an incoming registration request.
      *
