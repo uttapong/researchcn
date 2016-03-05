@@ -62,9 +62,8 @@ Route::group(['middleware' => 'web','prefix' => 'rswk'], function () {
 	Route::get('fund_ago', [ 'as' => 'fund_ago', 'uses' =>'FundController@fundAgo']);
 	Route::get('fund_request',[ 'as' => 'fund_request', 'uses' => 'ApplicationController@fundStatus']);
 
-
-	Route::get('home', [ 'as' => 'rscn_home', 'uses' => 'ResearchCenterController@index']);
-	Route::get('fund_form', [ 'as' => 'fund_form','middleware' => 'auth', 'uses' => 'FundController@fundForm']);
+	Route::get('rscn_home', [ 'as' => 'rscn_home', 'uses' => 'ResearchCenterController@index']);
+  	Route::get('fund_form', [ 'as' => 'fund_form','middleware' => 'auth', 'uses' => 'FundController@fundForm']);
 
 	Route::get('fund_manage', [ 'as' => 'fund_manage','middleware' => 'auth', 'uses' =>'FundController@fundManage']);
 	Route::get('fund_user_request_choose', [ 'as' => 'fund_user_request_choose','middleware' => 'auth', 'uses' =>'ApplicationController@applicationUserRequestChoose']);

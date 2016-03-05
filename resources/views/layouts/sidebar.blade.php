@@ -222,7 +222,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li class="nav-item">
-                        <a href="page_user_profile_1.html" class="nav-link">
+                        <a href="{{route('user_detail',['userid'=>Auth::user()->id])}}" class="nav-link">
                             <i class="icon-user"></i>
                             <span class="title">ข้อมูลผู้ขอทุน</span>
                         </a>
