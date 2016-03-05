@@ -10,10 +10,10 @@
 |
 */
 Route::get('/', ['as'=>'base',function () {
-    return view('welcome');
+	return view('welcome');
 }]);
 Route::any('home', [ 'as' => 'home', function () {
-    return view('welcome');
+	return view('welcome');
 }]);
 Route::get('test', 'HomeController@testfund');
 Route::get('rswk_home', [ 'as' => 'rswk_home', 'uses' => 'FundController@listFund']);
@@ -27,16 +27,16 @@ Route::any('login', ['as' => 'login', function () {
 Route::any('uploads', [ 'as' => 'uploads', 'middleware' => 'auth']);
 Route::group(['middleware' => 'web','prefix' => 'rscn'], function () {
     // Route::auth();
-    Route::get('', [ 'as' => 'base_rscn', 'uses' => 'ResearchCenterController@index']);
-    Route::get('getfile/{researchid}', [ 'as' => 'get_research', 'uses' => 'ResearchCenterController@getfile']);
-    Route::get('home', [ 'as' => 'rscn_home', 'uses' => 'ResearchCenterController@index']);
-    Route::get('dashboard', [ 'as' => 'dashboard_rscn', 'uses' => 'ResearchCenterController@dashboard']);
-    Route::post('simple_search', [ 'as' => 'simple_search', 'uses' => 'ResearchCenterController@simplesearch']);
-    Route::post('advance_search', [ 'as' => 'advance_search', 'uses' => 'ResearchCenterController@advancesearch']);
-    Route::get('new_research', 'ResearchCenterController@new_research');
-    Route::post('new_research', [ 'as' => 'new_research', 'uses' => 'ResearchCenterController@add']);
+	Route::get('', [ 'as' => 'base_rscn', 'uses' => 'ResearchCenterController@index']);
+	Route::get('getfile/{researchid}', [ 'as' => 'get_research', 'uses' => 'ResearchCenterController@getfile']);
+	Route::get('home', [ 'as' => 'rscn_home', 'uses' => 'ResearchCenterController@index']);
+	Route::get('dashboard', [ 'as' => 'dashboard_rscn', 'uses' => 'ResearchCenterController@dashboard']);
+	Route::post('simple_search', [ 'as' => 'simple_search', 'uses' => 'ResearchCenterController@simplesearch']);
+	Route::post('advance_search', [ 'as' => 'advance_search', 'uses' => 'ResearchCenterController@advancesearch']);
+	Route::get('new_research', 'ResearchCenterController@new_research');
+	Route::post('new_research', [ 'as' => 'new_research', 'uses' => 'ResearchCenterController@add']);
 
-    Route::get('preview/{researchid}', [ 'as' => 'preview_research', 'uses' => 'ResearchCenterController@preview']);
+	Route::get('preview/{researchid}', [ 'as' => 'preview_research', 'uses' => 'ResearchCenterController@preview']);
 });
 /*
 |--------------------------------------------------------------------------
@@ -49,24 +49,25 @@ Route::group(['middleware' => 'web','prefix' => 'rscn'], function () {
 |
 */
 Route::group(['middleware' => ['web']], function () {
-      Route::auth();
+	Route::auth();
 });
 
 
 Route::group(['middleware' => 'web','prefix' => 'rswk'], function () {
 
-  Route::auth();
-    Route::get('', [ 'as' => 'base_rswk', 'uses' => 'FundController@listFund']);
+	Route::auth();
+	Route::get('', [ 'as' => 'base_rswk', 'uses' => 'FundController@listFund']);
 
-    Route::get('list_fund',[ 'as' => 'list_fund',  'uses' =>'FundController@listFund']);
-    Route::get('fund_ago', [ 'as' => 'fund_ago', 'uses' =>'FundController@fundAgo']);
+	Route::get('list_fund',[ 'as' => 'list_fund',  'uses' =>'FundController@listFund']);
+	Route::get('fund_ago', [ 'as' => 'fund_ago', 'uses' =>'FundController@fundAgo']);
 	Route::get('fund_request',[ 'as' => 'fund_request', 'uses' => 'ApplicationController@fundStatus']);
 
 
-  Route::get('home', [ 'as' => 'rscn_home', 'uses' => 'ResearchCenterController@index']);
-  Route::get('home', [ 'as' => 'fund_form','middleware' => 'auth', 'uses' => 'FundController@fundForm']);
+	Route::get('home', [ 'as' => 'rscn_home', 'uses' => 'ResearchCenterController@index']);
+	Route::get('fund_form', [ 'as' => 'fund_form','middleware' => 'auth', 'uses' => 'FundController@fundForm']);
 
 	Route::get('fund_manage', [ 'as' => 'fund_manage','middleware' => 'auth', 'uses' =>'FundController@fundManage']);
+	Route::get('fund_user_request_choose', [ 'as' => 'fund_user_request_choose','middleware' => 'auth', 'uses' =>'ApplicationController@applicationUserRequestChoose']);
 	Route::get('fund_user_request', [ 'as' => 'fund_user_request','middleware' => 'auth', 'uses' =>'ApplicationController@applicationUserRequest']);
 	Route::post('fund_insert_update',[ 'as' => 'fund_insert_update','middleware' => 'auth', 'uses' => 'FundController@fundInsertUpdate']);
 	Route::get('fund_delete/{id}',[ 'as' => 'fund_delete','middleware' => 'auth', 'uses' => 'FundController@fundDelete']);

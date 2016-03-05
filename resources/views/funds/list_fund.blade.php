@@ -2,11 +2,11 @@
 
 @section('content')
     <div class="row">
-        <div class="col-xs-10 col-md-10 col-lg-10">
+        <div class="col-xs-12 col-md-12 col-lg-10 col-lg-offset-1">
             <div class="portlet light portlet-fit ">
                 <div class="portlet-title">
                     <div class="caption">
-                        <span class="caption-subject font-red sbold uppercase">ทุนปัจจุบันทั้งหมด</span>
+                        <span class="font-red sbold">ทุนปัจจุบันทั้งหมด</span>
                     </div>
                 </div>
                 <div class="portlet-body">
@@ -23,7 +23,7 @@
                                             <?php print ($fund->name) ?>
                                         </td>
                                         <td align="right">
-                                            <button type="button" data-id="<?php print ($fund->id) ?>" class="btn btn-info" data-singleton="true" data-toggle="confirmation" data-placement="right" data-btn-ok-label="ตกลง" data-btn-cancel-label="ยกเลิก" data-original-title="ยืนยันการสมัคร <?php print($fund->name) ?>" {{ $fund->registered ? 'disabled' : null }}>
+                                            <button type="button" data-id="<?php print ($fund->id) ?>" class="btn btn-info" data-singleton="true" data-toggle="confirmation" data-placement="top" data-btn-ok-label="ตกลง" data-btn-cancel-label="ยกเลิก" data-original-title="ยืนยันการสมัคร <?php print($fund->name) ?>" {{ $fund->registered ? 'disabled' : null }}>
                                                 {{ $fund->registered ? 'สมัครแล้ว' : 'สมัครทุน' }}
                                             </button>
                                         </td>

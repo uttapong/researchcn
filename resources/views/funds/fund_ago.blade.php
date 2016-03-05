@@ -2,11 +2,11 @@
 
 @section('content')
     <div class="row">
-        <div class="col-xs-12 col-md-12 col-lg-12">
+        <div class="col-xs-12 col-md-12 col-lg-10 col-lg-offset-1">
             <div class="portlet light portlet-fit ">
                 <div class="portlet-title">
                     <div class="caption">
-                        <span class="caption-subject font-red sbold uppercase">ทุนที่ผ่านมา</span>
+                        <span class="font-red sbold">ทุนที่ผ่านมา</span>
                     </div>
                 </div>
                 <div class="portlet-body">

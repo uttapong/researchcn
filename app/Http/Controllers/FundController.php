@@ -52,6 +52,7 @@ class FundController extends Controller {
 	public function fundForm(Request $request) {
 		$id = $request->get('id', 0);
 		$fund = null;
+
 		if ($id != 0) {
 			$fund = Fund::find($id);
 			$fund->apply_start = date_format(date_create($fund->apply_start), "d-m-Y");
@@ -69,6 +70,7 @@ class FundController extends Controller {
 	public function fundInsertUpdate(Request $request) {
 		$id = $request->input('id', 0);
 		$name = $request->input('name');
+		$type = $request->input('type');
 		$description = $request->input('description');
 		$contract_file = $request->file('contract_file', null);
 		$apply_start = $request->input('apply_start');
@@ -90,6 +92,7 @@ class FundController extends Controller {
 		}
 
 		$fund->name = $name;
+		$fund->type = $type;
 		$fund->description = $description;
 		$fund->apply_start = date_format(date_create($apply_start), "Y-m-d");
 		$fund->apply_end = date_format(date_create($apply_end), "Y-m-d");
@@ -141,8 +144,8 @@ class FundController extends Controller {
 	}
 
 	public function signedAgreementInsertUpdate(Request $request) {
-		$this->uploadFile($request, 'file_1', 1);
-		$this->uploadFile($request, 'file_2', 2);
+		$this->uploadFile($request, 'file_1');
+		$this->uploadFile($request, 'file_2');
 
 		$this->updateAppStatus($request, 'signed_agreement');
 
@@ -281,7 +284,17 @@ class FundController extends Controller {
 	private function uploadFile($request, $name_input) {
 		$application_id = $request->input('request_id', 0);
 		$file = $request->file($name_input, null);
-		$upload = new Upload;
+		$filetype = intval(str_replace('file_', '', $name_input));
+
+		print($filetype);
+		$upload = Upload::where('application_id', $application_id)
+		->where('filetype', $filetype)
+		->first();
+
+		if (!$upload) {
+			$upload = new Upload;
+		}
+
 		if ($request->hasFile($name_input)) {
 			if ($upload->file_path) {
 				// Remove old file from directory
@@ -295,25 +308,23 @@ class FundController extends Controller {
 			$fileName = $hash . '.' . $file->getClientOriginalExtension();
 			$file->move('file/', $fileName);
 			$upload->file_path = 'file/' . $fileName;
+
+			$upload->status = 'uploaded';
+			$upload->filetype = $filetype;
+			$upload->application_id = $application_id;
+
+			$upload->save();
 		}
-
-		$filetype = intval(str_replace('file_', '', $name_input));
-
-		$upload->status = 'uploaded';
-		$upload->filetype = $filetype;
-		$upload->application_id = $application_id;
-
-		$upload->save();
 	}
 
 	private function getFileUpload($filetypes, $application_id) {
 		$upload = [];
 		for ($j=0; $j < count($filetypes); $j++) {
-
-			$file = Upload::where('filetype', $filetypes[$j])
-			->where('application_id', $application_id)
+			$file = Upload::where('application_id', $application_id)
+			->where('filetype', $filetypes[$j])
 			->first();
-			if($file){
+
+			if ($file) {
 				if ($file->status != 'Reject') {
 					if ($file->status == 'Approve') { $file->html = '<label class="control-label icon-check"> <b>อนุมัติ</b></label>'; }
 					else { $file->html = '<label class="control-label icon-hourglass"> <b>รอการอนุมัติ</b></label>'; }

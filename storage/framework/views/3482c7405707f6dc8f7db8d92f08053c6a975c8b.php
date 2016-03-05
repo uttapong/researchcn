@@ -1,11 +1,10 @@
 <?php $__env->startSection('content'); ?>
-<div class="container">
     <div class="row">
-        <div class="col-md-10 col-md-offset-1">
+        <div class="col-xs-12 col-md-12 col-lg-10 col-lg-offset-1">
             <div class="portlet light portlet-fit ">
                 <div class="portlet-title">
                     <div class="caption">
-                        <span class="caption-subject font-red sbold uppercase">ทุนปัจจุบันทั้งหมด</span>
+                        <span class="font-red sbold">ทุนปัจจุบันทั้งหมด</span>
                     </div>
                 </div>
                 <div class="portlet-body">
@@ -22,7 +21,7 @@
                                             <?php print ($fund->name) ?>
                                         </td>
                                         <td align="right">
-                                            <button type="button" data-id="<?php print ($fund->id) ?>" class="btn btn-info" data-singleton="true" data-toggle="confirmation" data-placement="right" data-btn-ok-label="ตกลง" data-btn-cancel-label="ยกเลิก" data-original-title="ยืนยันการสมัคร <?php print($fund->name) ?>" <?php echo e($fund->registered ? 'disabled' : null); ?>>
+                                            <button type="button" data-id="<?php print ($fund->id) ?>" class="btn btn-info" data-singleton="true" data-toggle="confirmation" data-placement="top" data-btn-ok-label="ตกลง" data-btn-cancel-label="ยกเลิก" data-original-title="ยืนยันการสมัคร <?php print($fund->name) ?>" <?php echo e($fund->registered ? 'disabled' : null); ?>>
                                                 <?php echo e($fund->registered ? 'สมัครแล้ว' : 'สมัครทุน'); ?>
 
                                             </button>
@@ -37,7 +36,6 @@
             </div>
         </div>
     </div>
-</div>
 <script type="text/javascript">
     $(document).ready(function () {
         // Add class selected navigator
@@ -46,7 +44,7 @@
 
         // Event on click confirm box
         $('[data-toggle="confirmation"]').on("confirmed.bs.confirmation", function () {
-            window.location = "register_fund/" + $(this).attr("data-id");
+            window.location = "<?php echo e(route('base_rswk')); ?>/register_fund/" + $(this).attr("data-id");
         })
     });
 </script>

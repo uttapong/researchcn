@@ -1,17 +1,17 @@
 <?php $__env->startSection('content'); ?>
-<div class="container">
-    <div class="row">
+<div class="row">
+    <div class="col-xs-12 col-md-12 col-lg-10 col-lg-offset-1">
         <div class="col-md-4">
             <div class="portlet light portlet-fit portlet-form ">
                 <div class="portlet-title">
                     <div class="caption font-red">
                         <i class="icon-layers font-red"></i>
                         <span class="caption-subject bold uppercase">&nbsp;ขั้นตอนทุน</span>
-                    </div>
+                    </div>  
                 </div>
                 <div class="portlet-body">
                     <div class="form-body">
-                        <img src="img/funds/fund_step_1.png" class="img-responsive center-block">
+                        <img src="<?php echo e(asset('img/funds/fund_step_1.png')); ?>" class="img-responsive center-block">
                     </div>
                 </div>
                 <!-- END VALIDATION STATES-->
@@ -43,20 +43,40 @@
                             </div>
                             <h3 class="form-section">เอกสารประกอบ</h3>
                             <div class="form-group margin-top-20">
-                                <label class="control-label col-md-5" style="padding-top: 0">หน้าบุ๊คแบงค์ของสหกรณ์ออมทรัพย์ มหาวิทยาลัยธรรมศาสตร์
+                                <label class="control-label col-md-5" style="padding-top: 0">หน้าบุ๊คแบงค์ของสหกรณ์ออมทรัพย์ มหาวิทยาลัยธรรมศาสตร์
                                 </label>
                                 <div class="col-md-5">
-                                    <input type="file" class="form-control" name="file_1"/>
-                                    <span class="help-block"></span>
+                                    <?php echo $upload ?
+                                            $upload[0]->status == 'Reject'
+                                            ? '<input type="file" class="form-control" name="file_1"/><span class="help-block">ไฟล์เก่าที่ไม่ผ่านการอนุมัติ <a href="'. route('base') . '/' . $upload[0]->file_path . '" download  title="ดาวน์โหลดเอกสาร"><span aria-hidden="true" class="icon-arrow-down"></span></a></span>'
+                                            : $upload[0]->html
+                                        : '<input type="file" class="form-control" name="file_1"/>'; ?>
+
                                 </div>
+                                <?php echo $upload ?
+                                        $upload[0]->status == 'Reject'
+                                        ? '<label class="col-md-2 icon-close font-red" style="padding: 7px"> <b class="font-red">ไม่ผ่าน</b></label>'
+                                        : null
+                                    : null; ?>
+
                             </div>
                             <div class="form-group margin-top-20">
                                 <label class="control-label col-md-5">สัญญารับทุน
                                 </label>
                                 <div class="col-md-5">
-                                    <input type="file" class="form-control" name="file_2"/>
-                                    <span class="help-block"></span>
+                                    <?php echo $upload ?
+                                            $upload[1]->status == 'Reject'
+                                            ? '<input type="file" class="form-control" name="file_2"/><span class="help-block">ไฟล์เก่าที่ไม่ผ่านการอนุมัติ <a href="'. route('base') . '/' . $upload[1]->file_path . '" download  title="ดาวน์โหลดเอกสาร"><span aria-hidden="true" class="icon-arrow-down"></span></a></span>'
+                                            : $upload[1]->html
+                                        : '<input type="file" class="form-control" name="file_2"/>'; ?>
+
                                 </div>
+                                <?php echo $upload ?
+                                        $upload[1]->status == 'Reject'
+                                        ? '<label class="col-md-2 icon-close font-red" style="padding: 7px"> <b class="font-red">ไม่ผ่าน</b></label>'
+                                        : null
+                                    : null; ?>
+
                             </div>
 
                             <div class="form-actions">
@@ -85,8 +105,8 @@
 
         // Validate input value
         var e = $("#form"),
-            r = $(".alert-danger", e),
-            i = $(".alert-success", e);
+        r = $(".alert-danger", e),
+        i = $(".alert-success", e);
         e.validate({
             errorElement: "span",
             errorClass: "help-block help-block-error",

@@ -2,12 +2,12 @@
 
 @section('content')
     <div class="row">
-        <div class="col-xs-12 col-md-12 col-lg-12">
+        <div class="col-xs-12 col-md-12 col-lg-10 col-lg-offset-1">
             <div class="portlet light portlet-fit portlet-form ">
                 <div class="portlet-title">
                     <div class="caption font-red">
                         <i class="{{ $fund ? 'fa fa-edit' : 'icon-plus' }} font-red"></i>
-                        <span class="caption-subject bold uppercase">&nbsp;{{ $fund ? 'แก้ไขทุน' : 'เพิ่มทุนใหม่' }}</span>
+                        <span class="bold">&nbsp;{{ $fund ? 'แก้ไขทุน' : 'เพิ่มทุนใหม่' }}</span>
                     </div>
                 </div>
                 <div class="portlet-body">
@@ -34,6 +34,24 @@
                                     <div class="input-icon right">
                                         <i class="fa"></i>
                                         <input type="text" class="form-control" name="name" value="{{ $fund ? $fund->name : null }}"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group margin-top-20">
+                                <label class="control-label col-md-3">ประเภทของทุน
+                                    <span class="required"> * </span>
+                                </label>
+                                <div class="col-md-5">
+                                    <div class="input-icon right">
+                                        <i class="fa"></i>
+                                        <select id="fund_type" class="form-control" name="type">
+                                            <option value="">----- &nbsp;กรุณาเลือก&nbsp; -----</option>
+                                            <option value="บทความวิจัย">บทความวิจัย</option>
+                                            <option value="ผลงานวิชาการ">ผลงานวิชาการ</option>
+                                            <option value="ตำรา">ตำรา</option>
+                                            <option value="สิ่งประดิษฐ์">สิ่งประดิษฐ์</option>
+                                            <option value="รางวัล">รางวัล</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -171,6 +189,11 @@
     $(document).ready(function () {
         $('a[href="fund_form"]').hide();
 
+        // iInitial Data
+        if ('{{ $fund }}') {
+            $("#fund_type").val('{{ $fund ? $fund->type : null }}');
+        }
+
         // Validate input value
         var e = $("#form"),
             r = $(".alert-danger", e),
@@ -184,6 +207,9 @@
                 name: {
                     required: !0,
                     minlength: 3
+                },
+                type: {
+                    required: !0
                 },
                 apply_start: {
                     required: !0

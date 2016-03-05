@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
+<div class="row">
+    <div class="col-xs-12 col-md-12 col-lg-10 col-lg-offset-1">
         <div class="col-md-4">
             <div class="portlet light portlet-fit portlet-form ">
                 <div class="portlet-title">
@@ -13,7 +13,7 @@
                 </div>
                 <div class="portlet-body">
                     <div class="form-body">
-                        <img src="img/funds/fund_step_6.png" class="img-responsive center-block">
+                        <img src="{{ asset('img/funds/fund_step_6.png') }}" class="img-responsive center-block">
                     </div>
                 </div>
                 <!-- END VALIDATION STATES-->
@@ -51,7 +51,7 @@
                                     {!!
                                         $upload ?
                                             $upload[0]->status == 'Reject'
-                                            ? '<input type="file" class="form-control" name="file_17"/><span class="help-block">ไฟล์เก่าที่ไม่ผ่านการอนุมัติ <a href="' . $upload[0]->file_path . '"><span aria-hidden="true" class="icon-arrow-down"></span></a></span>'
+                                            ? '<input type="file" class="form-control" name="file_17"/><span class="help-block">ไฟล์เก่าที่ไม่ผ่านการอนุมัติ <a href="'. route('base') . '/' . $upload[0]->file_path . '" download  title="ดาวน์โหลดเอกสาร"><span aria-hidden="true" class="icon-arrow-down"></span></a></span>'
                                             : $upload[0]->html
                                         : '<input type="file" class="form-control" name="file_17"/>'
                                     !!}
@@ -71,7 +71,7 @@
                                     {!!
                                         $upload ?
                                             $upload[1]->status == 'Reject'
-                                            ? '<input type="file" class="form-control" name="file_18"/><span class="help-block">ไฟล์เก่าที่ไม่ผ่านการอนุมัติ <a href="' . $upload[1]->file_path . '"><span aria-hidden="true" class="icon-arrow-down"></span></a></span>'
+                                            ? '<input type="file" class="form-control" name="file_18"/><span class="help-block">ไฟล์เก่าที่ไม่ผ่านการอนุมัติ <a href="'. route('base') . '/' . $upload[1]->file_path . '" download  title="ดาวน์โหลดเอกสาร"><span aria-hidden="true" class="icon-arrow-down"></span></a></span>'
                                             : $upload[1]->html
                                         : '<input type="file" class="form-control" name="file_18"/>'
                                     !!}
@@ -91,7 +91,7 @@
                                     {!!
                                         $upload ?
                                             $upload[2]->status == 'Reject'
-                                            ? '<input type="file" class="form-control" name="file_19"/><span class="help-block">ไฟล์เก่าที่ไม่ผ่านการอนุมัติ <a href="' . $upload[2]->file_path . '"><span aria-hidden="true" class="icon-arrow-down"></span></a></span>'
+                                            ? '<input type="file" class="form-control" name="file_19"/><span class="help-block">ไฟล์เก่าที่ไม่ผ่านการอนุมัติ <a href="'. route('base') . '/' . $upload[2]->file_path . '" download  title="ดาวน์โหลดเอกสาร"><span aria-hidden="true" class="icon-arrow-down"></span></a></span>'
                                             : $upload[2]->html
                                         : '<input type="file" class="form-control" name="file_19"/>'
                                     !!}
@@ -111,7 +111,7 @@
                                     {!!
                                         $upload ?
                                             $upload[3]->status == 'Reject'
-                                            ? '<input type="file" class="form-control" name="file_20"/><span class="help-block">ไฟล์เก่าที่ไม่ผ่านการอนุมัติ <a href="' . $upload[3]->file_path . '"><span aria-hidden="true" class="icon-arrow-down"></span></a></span>'
+                                            ? '<input type="file" class="form-control" name="file_20"/><span class="help-block">ไฟล์เก่าที่ไม่ผ่านการอนุมัติ <a href="'. route('base') . '/' . $upload[3]->file_path . '" download  title="ดาวน์โหลดเอกสาร"><span aria-hidden="true" class="icon-arrow-down"></span></a></span>'
                                             : $upload[3]->html
                                         : '<input type="file" class="form-control" name="file_20"/>'
                                     !!}
@@ -131,7 +131,7 @@
                                     {!!
                                         $upload ?
                                             $upload[4]->status == 'Reject'
-                                            ? '<input type="file" class="form-control" name="file_21"/><span class="help-block">ไฟล์เก่าที่ไม่ผ่านการอนุมัติ <a href="' . $upload[4]->file_path . '"><span aria-hidden="true" class="icon-arrow-down"></span></a></span>'
+                                            ? '<input type="file" class="form-control" name="file_21"/><span class="help-block">ไฟล์เก่าที่ไม่ผ่านการอนุมัติ <a href="'. route('base') . '/' . $upload[4]->file_path . '" download  title="ดาวน์โหลดเอกสาร"><span aria-hidden="true" class="icon-arrow-down"></span></a></span>'
                                             : $upload[4]->html
                                         : '<input type="file" class="form-control" name="file_21"/>'
                                     !!}

@@ -14,11 +14,11 @@
 ?>
 
     <div class="row">
-        <div class="col-xs-12 col-md-12 col-lg-12">
+        <div class="col-xs-12 col-md-12 col-lg-10 col-lg-offset-1">
             <div class="portlet light portlet-fit ">
                 <div class="portlet-title">
                     <div class="caption">
-                        <span class="caption-subject font-red sbold uppercase">จัดการทุนทั้งหมด</span>
+                        <span class="font-red sbold">จัดการทุนทั้งหมด</span>
                     </div>
                 </div>
                 <div class="portlet-body">
@@ -30,10 +30,11 @@
                             <table class="table table-condensed table-hover table-light">
                                 <thead>
                                     <tr class="uppercase">
-                                        <th width="25%"> ชื่อทุน </th>
-                                        <th width="25%"> วันที่เปิดรับสมัคร </th>
-                                        <th width="25%"> วันสิ้นสุดรับสมัคร </th>
-                                        <th width="25%"> </th>
+                                        <th width="20%"> ชื่อทุน </th>
+                                        <th width="20%"> ประเภททุน </th>
+                                        <th width="20%"> วันที่เปิดรับสมัคร </th>
+                                        <th width="20%"> วันสิ้นสุดรับสมัคร </th>
+                                        <th width="20%"> </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -41,6 +42,9 @@
                                         <tr>
                                             <td align="left">
                                                 <?php print ($fund->name) ?>
+                                            </td>
+                                            <td align="left">
+                                                <?php print ($fund->type) ?>
                                             </td>
                                             <td align="left">
                                                 <?php print (DateThai($fund->apply_start)) ?>
@@ -52,7 +56,7 @@
                                                 <a href="fund_form?id={{ $fund->id }}" class="btn btn-info">
                                                     <i class="fa fa-edit"></i>&nbsp;แก้ไข
                                                 </a>
-                                                <button type="button" data-id="<?php print ($fund->id) ?>" class="btn btn-danger" data-singleton="true" data-toggle="confirmation" data-placement="right" data-btn-ok-label="ตกลง" data-btn-cancel-label="ยกเลิก" data-original-title="ยืนยันการลบ <?php print($fund->name) ?>">
+                                                <button type="button" data-id="<?php print ($fund->id) ?>" class="btn btn-danger" data-singleton="true" data-toggle="confirmation" data-placement="top" data-btn-ok-label="ตกลง" data-btn-cancel-label="ยกเลิก" data-original-title="ยืนยันการลบ <?php print($fund->name) ?>">
                                                     <i class="fa fa-trash-o"></i>&nbsp;ลบ
                                                 </button>
                                             </td>
@@ -65,7 +69,7 @@
                 </div>
             </div>
             <div class="actions">
-                <a href="fund_form" class="btn btn-circle btn-outline red margin-bottom-20">
+                <a href="{{route('fund_form')}}" class="btn btn-circle btn-outline red margin-bottom-20">
                     <i class="fa fa-plus"></i>&nbsp;
                     <span class="hidden-sm hidden-xs">เพิ่มทุนใหม่&nbsp;</span>&nbsp;
                 </a>

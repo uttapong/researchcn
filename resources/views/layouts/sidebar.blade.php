@@ -60,20 +60,20 @@
                 </a>
                 <ul class="sub-menu">
                     <li class="nav-item">
-                        <a href="list_fund" class="nav-link">
+                        <a href="{{route('list_fund')}}" class="nav-link">
                             <i class="icon-layers"></i>
                             <span class="title">ทุนปัจจุบัน</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="fund_ago" class="nav-link">
+                        <a href="{{route('fund_ago')}}" class="nav-link">
                             <i class="icon-layers"></i>
                             <span class="title">ทุนที่ผ่านมา</span>
                             <!-- <span class="badge badge-success">1</span> -->
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="fund_request" class="nav-link">
+                        <a href="{{route('fund_request')}}" class="nav-link">
                             <i class="icon-layers"></i>
                             <span class="title">ทุนที่ท่านเสนอขอ</span>
                             <!-- <span class="badge badge-danger">1</span> -->
@@ -100,7 +100,7 @@
                             <i class="icon-settings"></i>
                             <span class="title">จัดการผู้ใช้งาน
                         </a> -->
-                        <a href="fund_user_request" class="nav-link">
+                        <a href="{{route('fund_user_request_choose')}}" class="nav-link">
                             <i class="icon-settings"></i>
                             <span class="title">รายชื่อผู้ขอทุน/อนุมัติเอกสาร
                         </a>

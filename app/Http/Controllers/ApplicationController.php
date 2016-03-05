@@ -156,7 +156,13 @@ class ApplicationController extends Controller {
 		]);
 	}
 
-	public function applicationUserRequest() {
+	public function applicationUserRequestChoose() {
+		return view('admin.fund_user_request_choose', [
+			'funds' => Fund::get()
+		]);
+	}
+
+	public function applicationUserRequest(Request $request) {
 		$statusObject = array(
 			"applied" => array(
 				"step" => "สมัครขอทุน", "appStatus" => "Pending", "approve" => "approved", "reject" => "rejected"
@@ -173,7 +179,7 @@ class ApplicationController extends Controller {
 				"files" => array(1, 2)
 			),
 			"rejected_agreement" => array(
-				"step" => "ทำสัญญารับทุน", "appStatus" => "Reject"
+				"step" => "ทำสัญญารับทุน", "appStatus" => "Reject", "files" => array(1, 2)
 			),
 			"approved_agreement" => array(
 				"step" => "ทำสัญญารับทุน", "appStatus" => "Approve"
@@ -184,7 +190,7 @@ class ApplicationController extends Controller {
 				"files" => array(3, 4, 5, 6)
 			),
 			"rejected_first_payment" => array(
-				"step" => "เบิกเงินงวดที่ 1", "appStatus" => "Reject"
+				"step" => "เบิกเงินงวดที่ 1", "appStatus" => "Reject", "files" => array(3, 4, 5, 6)
 			),
 			"approved_first_payment" => array(
 				"step" => "เบิกเงินงวดที่ 1", "appStatus" => "Approve"
@@ -194,7 +200,7 @@ class ApplicationController extends Controller {
 				"step" => "รายงานความก้าวหน้าครั้งที่ 1", "appStatus" => "Pending", "approve" => "approved_second_payment", "reject" => "rejected_second_payment", "files" => array(7, 8, 9)
 			),
 			"rejected_second_payment" => array(
-				"step" => "รายงานความก้าวหน้าครั้งที่ 1", "appStatus" => "Reject"
+				"step" => "รายงานความก้าวหน้าครั้งที่ 1", "appStatus" => "Reject", "files" => array(7, 8, 9)
 			),
 			"approved_second_payment" => array(
 				"step" => "รายงานความก้าวหน้าครั้งที่ 1", "appStatus" => "Approve"
@@ -204,27 +210,29 @@ class ApplicationController extends Controller {
 				"step" => "รายงานความก้าวหน้าครั้งที่ 2", "appStatus" => "Pending", "approve" => "approved_second_progress_report", "reject" => "rejected_second_progress_report", "files" => array(10, 11)
 			),
 			"rejected_second_progress_report" => array(
-				"step" => "รายงานความก้าวหน้าครั้งที่ 2", "appStatus" => "Reject"
+				"step" => "รายงานความก้าวหน้าครั้งที่ 2", "appStatus" => "Reject", "files" => array(10, 11)
 			),
 			"approved_second_progress_report" => array(
 				"step" => "รายงานความก้าวหน้าครั้งที่ 2", "appStatus" => "Approve"
 			),
 
 			"request_extend" => array(
-				"step" => "ขอขยายเวลาส่งงาน", "appStatus" => "Pending", "approve" => "approved_extend", "reject" => "rejected_extend"
+				"step" => "ขอขยายเวลาส่งงาน", "appStatus" => "Pending", "approve" => "approved_extend", "reject" => "rejected_extend",
+				"files" => array(14, 15, 16)
 			),
 			"rejected_extend" => array(
-				"step" => "ขอขยายเวลาส่งงาน", "appStatus" => "Reject"
+				"step" => "ขอขยายเวลาส่งงาน", "appStatus" => "Reject", "files" => array(14, 15, 16)
 			),
 			"approved_extend" => array(
 				"step" => "ขอขยายเวลาส่งงาน", "appStatus" => "Approve"
 			),
 
 			"finalized" => array(
-				"step" => "ส่งผลงานครั้งสุดท้าย", "appStatus" => "Pending", "approve" => "approved_finalized", "reject" => "rejected_finalized", "files" => array(12, 13)
+				"step" => "ส่งผลงานครั้งสุดท้าย", "appStatus" => "Pending", "approve" => "approved_finalized", "reject" => "rejected_finalized",
+				"files" => array(12, 13)
 			),
 			"rejected_finalized" => array(
-				"step" => "ส่งผลงานครั้งสุดท้าย", "appStatus" => "Reject"
+				"step" => "ส่งผลงานครั้งสุดท้าย", "appStatus" => "Reject", "files" => array(12, 13)
 			),
 			"approved_finalized" => array(
 				"step" => "ส่งผลงานครั้งสุดท้าย", "appStatus" => "Approve"
@@ -235,29 +243,38 @@ class ApplicationController extends Controller {
 				"files" => array(17, 18, 19, 20, 21)
 			),
 			"rejected_project_finished" => array(
-				"step" => "ปิดโครงการ", "appStatus" => "Reject"
+				"step" => "ปิดโครงการ", "appStatus" => "Reject", "files" => array(17, 18, 19, 20, 21)
 			),
 			"approved_project_finished" => array(
 				"step" => "ปิดโครงการ", "appStatus" => "Approve"
 			)
 		);
 
+		$id = $request->get('id', null);
+
 		$applications = DB::table('applications')
 		->join('funds', 'applications.fund', '=', 'funds.id')
 		->join('users', 'applications.owner', '=', 'users.id')
+		->where('fund', $id)
 		->select('applications.id', 'applications.status', 'funds.name as fundName', 'users.name as userName')
 		->get();
+
+		if (!$applications) {
+			return redirect()->route('fund_user_request_choose');
+		}
 
 		for ($i=0; $i < count($applications); $i++) {
 			$applications[$i]->step = $statusObject[$applications[$i]->status]['step'];
 			$applications[$i]->appStatus = $statusObject[$applications[$i]->status]['appStatus'];
 			$applications[$i]->documents = null;
 
-			if ($applications[$i]->appStatus == 'Pending') {
-				$applications[$i]->approve = $statusObject[$applications[$i]->status]['approve'];
-				$applications[$i]->reject = $statusObject[$applications[$i]->status]['reject'];
+			if ($applications[$i]->appStatus != 'Approve' ) {
+				if ($applications[$i]->appStatus == 'Pending') {
+					$applications[$i]->approve = $statusObject[$applications[$i]->status]['approve'];
+					$applications[$i]->reject = $statusObject[$applications[$i]->status]['reject'];
+				}
 
-				if ($applications[$i]->status != 'applied') {
+				if ($applications[$i]->status != 'applied' && $applications[$i]->status != 'rejected') {
 					$documents = [];
 					$files = $statusObject[$applications[$i]->status]['files'];
 					for ($j=0; $j < count($files); $j++) {
@@ -281,7 +298,8 @@ class ApplicationController extends Controller {
 		}
 
 		return view('admin.fund_user_request', [
-			'applications' => $applications
+			'applications' => $applications,
+			'fundName' => Fund::find($id)->name
 		]);
 	}
 
@@ -290,7 +308,7 @@ class ApplicationController extends Controller {
 		$application->status = $status;
 		$application->save();
 
-		return redirect()->route('fund_user_request');
+		return redirect()->route('fund_user_request', array('id' => $application->id));
 	}
 
 	public function fileUploadUpdate($uploadId, $status) {
@@ -325,15 +343,21 @@ class ApplicationController extends Controller {
 		$upload->status = $status;
 		$upload->save();
 
-		$app_status = Application::find($upload->application_id)->status;
-		print($app_status);
+		$appStatus = Application::find($upload->application_id)->status;
+
+		$rejectList = ["rejected", "rejected_agreement", "rejected_first_payment", "rejected_second_payment", "rejected_second_progress_report", "rejected_extend", "rejected_finalized", "rejected_project_finished"];
+
+		if (in_array($appStatus, $rejectList)) {
+			// Application status = reject force return
+			return redirect()->route('fund_user_request', array('id' => $upload->application_id));
+		}
 
 		$checkReject = Upload::where('application_id', $upload->application_id)
 		->where('status', 'Reject')
 		->count();
 
 		if ($checkReject != 0) {
-			$this->applicationUpdate($upload->application_id, $statusObject[$app_status]['reject']);
+			$this->applicationUpdate($upload->application_id, $statusObject[$appStatus]['reject']);
 		}
 		else {
 			$allUploadFile = Upload::where('application_id', $upload->application_id)->count();
@@ -343,10 +367,8 @@ class ApplicationController extends Controller {
 			->count();
 
 			if ($allUploadFile == $allUploadApprove) {
-				$this->applicationUpdate($upload->application_id, $statusObject[$app_status]['approve']);
+				$this->applicationUpdate($upload->application_id, $statusObject[$appStatus]['approve']);
 			}
 		}
-
-		return redirect()->route('fund_user_request');
 	}
 }
