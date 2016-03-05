@@ -50,7 +50,7 @@ Route::group(['middleware' => 'web','prefix' => 'rscn'], function () {
 */
 Route::group(['middleware' => ['web']], function () {
       Route::auth();
-      Route::get('user/{userid}', [ 'as' => 'user_detail', 'uses' => 'Auth\AuthController@detail']);
+      //Route::get('user/{userid}', [ 'as' => 'user_detail', 'uses' => 'Auth\AuthController@detail']);
 });
 
 
