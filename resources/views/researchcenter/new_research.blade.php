@@ -8,7 +8,7 @@
                                                     <span class="caption-subject font-red-sunglo bold uppercase">Add New Research</span>
                                                     <span class="caption-helper"></span>
                                                 </div>
-                                              
+
                                             </div>
                                             <div class="portlet-body form">
                                                 <!-- BEGIN FORM-->
@@ -38,8 +38,12 @@
                                                           <label class="col-md-3 control-label">Type</label>
                                                           <div class="col-md-4">
                                                             <select class="form-control" name="type">
-                                                      <option value="research">บทความวิจัย</option>
-                                                      <option value="academic">บทความวิชาการ</option>
+                                                      <option value="article">บทความวิจัย</option>
+                                                      <option value="research">ผลงานวิจัย</option>
+                                                      <option value="academic">ผลงานวิชาการ</option>
+                                                      <option value="book">ตำรา</option>
+                                                      <option value="invention">สิ่งประดิษฐ์</option>
+                                                      <option value="award">รางวัล</option>
                                                   </select>
                                                           </div>
                                                       </div>
