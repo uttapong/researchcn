@@ -1,6 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+<script>
+function showField(name){
+  $(".option").hide();
+  $("."+name).show();
+}
+</script>
 <div class="portlet light bordered">
                                             <div class="portlet-title">
                                                 <div class="caption">
@@ -24,7 +30,7 @@
                                                       <div class="form-group">
                                                           <label class="col-md-3 control-label">Type</label>
                                                           <div class="col-md-4">
-                                                            <select class="form-control" name="type">
+                                                            <select class="form-control" name="type" onchange="showField($(this).val())">
                                                       <option value="article">บทความวิจัย</option>
                                                       <option value="research">ผลงานวิจัย</option>
                                                       <option value="academic">ผลงานวิชาการ</option>
@@ -34,6 +40,18 @@
                                                   </select>
                                                           </div>
                                                       </div>
+
+                                                      <div class="form-group">
+                                                          <label class="col-md-3 control-label">Research Field</label>
+                                                          <div class="col-md-4">
+                                                            <select class="form-control" name="type">
+                                                              @foreach($fields as $field)
+                                                      <option value="{{$field->id}}">{{$field->name}}</option>
+                                                      @endforeach
+                                                  </select>
+                                                          </div>
+                                                      </div>
+
                                                         <div class="form-group">
                                                             <label class="col-md-3 control-label">Title</label>
                                                             <div class="col-md-4">
@@ -61,7 +79,19 @@
                                                         <div class="form-group">
                                                             <label class="col-md-3 control-label">Full text file upload</label>
                                                             <div class="col-md-4">
-                                                                <input type="file" name="fulltext_file" id="exampleInputFile">
+                                                                <input type="file" name="fulltext_file" >
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group option article research academic book">
+                                                            <label class="col-md-3 control-label">Article file upload</label>
+                                                            <div class="col-md-4">
+                                                                <input type="file" name="article_file" >
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group option book" style="display:none;">
+                                                            <label class="col-md-3 control-label">Cover,Table of Contents,Preface file upload</label>
+                                                            <div class="col-md-4">
+                                                                <input type="file" name="cover_file" >
                                                             </div>
                                                         </div>
                                                         <div class="form-group">

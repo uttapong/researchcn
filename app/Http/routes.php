@@ -28,7 +28,7 @@ Route::group(['middleware' => 'web','prefix' => 'rscn'], function () {
 	Route::get('', [ 'as' => 'base_rscn', 'uses' => 'ResearchCenterController@index']);
 	Route::get('getfile/{researchid}', [ 'as' => 'get_research', 'uses' => 'ResearchCenterController@getfile']);
 	Route::get('home', [ 'as' => 'rscn_home', 'uses' => 'ResearchCenterController@index']);
-	Route::get('dashboard', [ 'as' => 'dashboard_rscn', 'uses' => 'ResearchCenterController@dashboard']);
+	Route::get('dashboard_rscn', [ 'as' => 'dashboard_rscn', 'uses' => 'ResearchCenterController@dashboard']);
 	Route::post('simple_search', [ 'as' => 'simple_search', 'uses' => 'ResearchCenterController@simplesearch']);
 	Route::post('advance_search', [ 'as' => 'advance_search', 'uses' => 'ResearchCenterController@advancesearch']);
 	Route::get('new_research', 'ResearchCenterController@new_research');
@@ -59,6 +59,8 @@ Route::group(['middleware' => ['web','auth']], function () {
   Route::post('user_update/{userid}',[ 'as' => 'user_update',  'uses' =>'UserController@update']);
   Route::get('user_manage',[ 'as' => 'user_manage',  'uses' =>'UserController@manage']);
   Route::get('user_approve/{userid}/{status}',[ 'as' => 'user_approve',  'uses' =>'UserController@approve']);
+
+  Route::get('dashboard', [ 'as' => 'dashboard', 'uses' => 'HomeController@dashboard']);
 });
 
 

@@ -8,6 +8,7 @@ use Bouncer;
 use Auth;
 use DB;
 use App\Research as Research;
+use App\Researchfield;
 class ResearchCenterController extends Controller
 {
     /**
@@ -79,7 +80,8 @@ class ResearchCenterController extends Controller
    }
    public function new_research(){
      $this->middleware('auth');
-     return view('researchcenter.new_research');
+     $fields=Researchfield::all();
+     return view('researchcenter.new_research',['fields'=>$fields]);
    }
     public function add(Request $request){
       $this->middleware('auth');
@@ -94,24 +96,39 @@ class ResearchCenterController extends Controller
           'publication_name' => 'required|max:200',
           'published_year' => 'required|max:200'
       ]);
-      $upload_file=$request->file('fulltext_file');
-      $fileName=md5(microtime()).".".$upload_file->getClientOriginalExtension();
-      // $merge=array('file_path' =>$fileName,'creator'=>Auth::user()->id);
-      // print_r(array_merge($request->all(),$merge));
-      $request->merge(array('file_path' =>$fileName));
-      $request->merge(array('creator'=>Auth::user()->id));
-      // $request->input('file_path')=$fileName;
-      // $request->input('creator')=Auth::user()->id;
-      $research=Research::create(array_merge($request->all()));
-      if ($request->hasFile('fulltext_file')) {
-    //$request->file('photo')->move($destinationPath);
-       $research_id = $research->id;
+      $fulltext_file=$request->file('fulltext_file');
+      $fulltext_filename=md5(microtime()).".".$fulltext_file->getClientOriginalExtension();
 
-       $destinationPath='uploads/'.$research_id.'/';
-
-        $upload_file->move($destinationPath, $fileName);
+      if($request->hasFile('article_file'))
+      {
+        $article_file=$request->file('article_file');
+        $article_filename=md5(microtime()).".".$article_file->getClientOriginalExtension();
+        $request->merge(array('article_file' =>$fulltext_filename));
       }
-      if($research)return view('researchcenter.new_research',['alert_type'=>'success','msg'=>'Successfully insert new research.']);
+
+      if($request->hasFile('cover_file'))
+      {
+        $cover_file=$request->file('cover_file');
+        $cover_filename=md5(microtime()).".".$cover_file->getClientOriginalExtension();
+        $request->merge(array('cover_file' =>$cover_filename));
+      }
+
+      $request->merge(array('full_text_file' =>$fulltext_filename));
+      $request->merge(array('creator'=>Auth::user()->id));
+
+      $research=Research::create(array_merge($request->all()));
+      $research_id = $research->id;
+      $destinationPath='uploads/'.$research_id.'/';
+
+      if ($request->hasFile('fulltext_file'))$fulltext_file->move($destinationPath, $fulltext_filename);
+      if ($request->hasFile('article_file')) $article_file->move($destinationPath, $article_filename);
+      if ($request->hasFile('cover_file')) $cover_file->move($destinationPath, $cover_filename);
+
+      if($research){
+
+        $fields=Researchfield::all();
+        return view('researchcenter.new_research',['fields'=>$fields,'alert_type'=>'success','msg'=>'Successfully insert new research.']);
+      }
     }
     // public function test(){
     //   //$user = Fund::find(1)->user;

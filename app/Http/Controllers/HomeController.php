@@ -28,6 +28,11 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function dashboard()
+  {
+     return view('dashboard');
+  }
     // public function test(){
     //   //$user = Fund::find(1)->user;
     //   $applications=Fund::find(1)->applications;

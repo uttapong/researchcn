@@ -13,7 +13,7 @@ class Research extends Model
      * @var array
      */
     protected $fillable = [
-        'title', 'authors','keywords', 'abstract','type','publication_name','published_year','issue','published_month','published_page','creator','file_path'
+        'title', 'authors','field','keywords', 'abstract','type','publication_name','published_year','issue','published_month','published_page','creator','full_text_file','article_file','cover_file'
     ];
 
     /**
