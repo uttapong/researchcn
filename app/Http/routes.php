@@ -82,6 +82,7 @@ Route::group(['middleware' => 'web','prefix' => 'rswk'], function () {
 	Route::get('form_second_payment',[ 'as' => 'form_second_payment','middleware' => 'auth', 'uses' => 'FundController@formSecondPayment']);
 	Route::get('form_second_progress_report',[ 'as' => 'form_second_progress_report','middleware' => 'auth', 'uses' => 'FundController@formSecondProgressReport']);
 	Route::get('form_finalized', [ 'as' => 'form_finalized','middleware' => 'auth', 'uses' =>'FundController@formFinalized']);
+	Route::get('form_request_extend', [ 'as' => 'form_request_extend','middleware' => 'auth', 'uses' =>'FundController@formRequestExtend']);
 	Route::get('form_project_finished',[ 'as' => 'form_project_finished','middleware' => 'auth', 'uses' => 'FundController@formProjectFinished']);
 
 	Route::post('signed_agreement_insert_update',[ 'as' => 'signed_agreement_insert_update','middleware' => 'auth', 'uses' => 'FundController@signedAgreementInsertUpdate']);
@@ -89,5 +90,6 @@ Route::group(['middleware' => 'web','prefix' => 'rswk'], function () {
 	Route::post('second_payment_insert_update',[ 'as' => 'second_payment_insert_update','middleware' => 'auth', 'uses' => 'FundController@secondPaymentInsertUpdate']);
 	Route::post('second_progress_report_insert_update',[ 'as' => 'second_progress_report_insert_update','middleware' => 'auth', 'uses' => 'FundController@secondProgressReportInsertUpdate']);
 	Route::post('finalized_insert_update',[ 'as' => 'finalized_insert_update','middleware' => 'auth', 'uses' => 'FundController@finalizedInsertUpdate']);
+	Route::post('request_extend_insert_update',[ 'as' => 'request_extend_insert_update','middleware' => 'auth', 'uses' => 'FundController@requestExtendInsertUpdate']);
 	Route::post('project_finished_insert_update', [ 'as' => 'project_finished_insert_update','middleware' => 'auth', 'uses' =>'FundController@projectFinishedInsertUpdate']);
 });

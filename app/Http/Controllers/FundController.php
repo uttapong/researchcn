@@ -253,6 +253,32 @@ class FundController extends Controller {
 		return redirect()->route('fund_request');
 	}
 
+	public function formRequestExtend(Request $request) {
+		$request_id = $request->get('request_id', null);
+		$application = Application::find($request_id);
+
+		if (!$application) {
+			return redirect()->route('fund_request');
+		}
+
+		$upload = $this->getFileUpload(array(14, 15, 16), $application->id);
+
+		return view('funds.form_request_extend', [
+			'request_id' => $request_id,
+			'upload' => $upload
+		]);
+	}
+
+	public function requestExtendInsertUpdate(Request $request) {
+		$this->uploadFile($request, 'file_14');
+		$this->uploadFile($request, 'file_15');
+		$this->uploadFile($request, 'file_16');
+
+		$this->updateAppStatus($request, 'request_extend');
+
+		return redirect()->route('fund_request');
+	}
+
 	public function formProjectFinished(Request $request) {
 		$request_id = $request->get('request_id', null);
 		$application = Application::find($request_id);

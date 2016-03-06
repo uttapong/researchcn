@@ -55,6 +55,10 @@
                                                     $fund->nextStep
                                                         ? '<a href="' . $fund->linkNextStep . '?request_id=' . $fund->id . '">' . $fund->nextStep . ' ' .
                                                             '<span aria-hidden="true" class="icon-arrow-right"></span></a>'
+                                                        : null,
+                                                    $fund->status == 'approved_second_progress_report'
+                                                        ? '&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="' . $requestExtend['link'] . '?request_id=' . $fund->id . '">' . $requestExtend['step'] . ' ' .
+                                                            '<span aria-hidden="true" class="icon-arrow-right"></span></a>'
                                                         : null
                                                 !!}
                                             </td>

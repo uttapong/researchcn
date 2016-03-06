@@ -22,50 +22,51 @@
                     </div>
                 </div>
                 <div class="portlet-body">
-                    <?php if (count($funds) == 0) {
-                        print('<div class="text-center">คลิกปุ่ม "เพิ่มทุนใหม่" เพื่อสร้างทุน</div>');
-                    }
-                    else {?>
-                        <div class="table-scrollable table-scrollable-borderless">
-                            <table class="table table-condensed table-hover table-light">
-                                <thead>
-                                    <tr class="uppercase">
-                                        <th width="20%"> ชื่อทุน </th>
-                                        <th width="20%"> ประเภททุน </th>
-                                        <th width="20%"> วันที่เปิดรับสมัคร </th>
-                                        <th width="20%"> วันสิ้นสุดรับสมัคร </th>
-                                        <th width="20%"> </th>
+                    @if (count($funds) == 0)
+                        <div class="text-center">คลิกปุ่ม "เพิ่มทุนใหม่" เพื่อสร้างทุน</div>
+                    @else
+                        <table class="table table-striped table-hover order-column" id="dataTable">
+                            <thead>
+                                <tr class="uppercase">
+                                    <th width="5%"> # </th>
+                                    <th width="20%"> ชื่อทุน </th>
+                                    <th width="20%"> ประเภททุน </th>
+                                    <th width="20%"> วันที่เปิดรับสมัคร </th>
+                                    <th width="20%"> วันสิ้นสุดรับสมัคร </th>
+                                    <th width="15%"> </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($funds as $index=>$fund)
+                                    <tr>
+                                        <td align="center">
+                                            <?php print ($index + 1) ?>
+                                        </td>
+                                        <td>
+                                            <?php print ($fund->name) ?>
+                                        </td>
+                                        <td>
+                                            <?php print ($fund->type) ?>
+                                        </td>
+                                        <td>
+                                            <?php print (DateThai($fund->apply_start)) ?>
+                                        </td>
+                                        <td>
+                                            <?php print (DateThai($fund->apply_end)) ?>
+                                        </td>
+                                        <td align="right">
+                                            <a href="fund_form?id={{ $fund->id }}" class="btn btn-info">
+                                                <i class="fa fa-edit"></i>&nbsp;แก้ไข
+                                            </a>
+                                            <button type="button" data-id="<?php print ($fund->id) ?>" class="btn btn-danger" data-singleton="true" data-toggle="confirmation" data-placement="top" data-btn-ok-label="ตกลง" data-btn-cancel-label="ยกเลิก" data-original-title="ยืนยันการลบ <?php print($fund->name) ?>">
+                                                <i class="fa fa-trash-o"></i>&nbsp;ลบ
+                                            </button>
+                                        </td>
                                     </tr>
-                                </thead>
-                                <tbody>
-                                    <?php foreach($funds as $fund) { ?>
-                                        <tr>
-                                            <td align="left">
-                                                <?php print ($fund->name) ?>
-                                            </td>
-                                            <td align="left">
-                                                <?php print ($fund->type) ?>
-                                            </td>
-                                            <td align="left">
-                                                <?php print (DateThai($fund->apply_start)) ?>
-                                            </td>
-                                            <td align="left">
-                                                <?php print (DateThai($fund->apply_end)) ?>
-                                            </td>
-                                            <td align="right">
-                                                <a href="fund_form?id={{ $fund->id }}" class="btn btn-info">
-                                                    <i class="fa fa-edit"></i>&nbsp;แก้ไข
-                                                </a>
-                                                <button type="button" data-id="<?php print ($fund->id) ?>" class="btn btn-danger" data-singleton="true" data-toggle="confirmation" data-placement="top" data-btn-ok-label="ตกลง" data-btn-cancel-label="ยกเลิก" data-original-title="ยืนยันการลบ <?php print($fund->name) ?>">
-                                                    <i class="fa fa-trash-o"></i>&nbsp;ลบ
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    <?php } ?>
-                                </tbody>
-                            </table>
-                        </div>
-                    <?php } ?>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    @endif
                 </div>
             </div>
             <div class="actions">
@@ -81,6 +82,48 @@
         // Add class selected navigator
         $('.nav-item:eq(4), .nav-item:eq(5)').addClass("active open");
         $('.nav-item a:eq(4), .nav-item a:eq(5)').append("<span class='selected'></span>");
+
+        // Initial data table
+        $('#dataTable').DataTable({
+            language: {
+                aria: {
+                    sortAscending: ": activate to sort column ascending",
+                    sortDescending: ": activate to sort column descending"
+                },
+                emptyTable: "No data available in table",
+                info: "Showing _START_ to _END_ of _TOTAL_ records",
+                infoEmpty: "No records found",
+                infoFiltered: "(filtered1 from _MAX_ total records)",
+                lengthMenu: "Show _MENU_",
+                search: "Search:",
+                zeroRecords: "No matching records found",
+                paginate: {
+                    previous: "Prev",
+                    next: "Next",
+                    last: "Last",
+                    first: "First"
+                }
+            },
+            bStateSave: !0,
+            pagingType: "bootstrap_extended",
+            lengthMenu: [
+                [10, 15, 20, -1],
+                [10, 15, 20, "All"]
+            ],
+            columnDefs: [
+                {
+                    orderable: !1,
+                    targets: [5]
+                },
+                {
+                    searchable: !1,
+                    targets: [5]
+                }
+            ],
+            order: [
+                [0, "asc"]
+            ]
+        });
 
         // Event on click confirm box
         $('[data-toggle="confirmation"]').on("confirmed.bs.confirmation", function () {

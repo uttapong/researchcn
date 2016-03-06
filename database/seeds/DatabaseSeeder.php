@@ -25,9 +25,9 @@ class DatabaseSeeder extends Seeder
         Filetype::create(['name' => 'บันทึกนำส่งครั้งที่ 3']);
         Filetype::create(['name' => 'รายงานความก้าวหน้าครั้งที่ 2']);
         Filetype::create(['name' => 'บันทึกนำส่งครั้งที่ 4']);
-        Filetype::create(['name' => 'รายงานความก้าวหน้าครั้งที่ 3']);
+        Filetype::create(['name' => '(ร่าง) รายงานวิจัยฉบับสมบูรณ์ 2 เล่ม']);
         Filetype::create(['name' => 'บันทึกขอขยายเวลา']);
-        Filetype::create(['name' => 'รายงานความก้าวหน้าครั้งที่ 4']);
+        Filetype::create(['name' => 'รายงานความก้าวหน้าครั้งที่ 3']);
         Filetype::create(['name' => 'รายงานวิจัยบางส่วน']);
         Filetype::create(['name' => 'บันทึกขอปิดโครงการ']);
         Filetype::create(['name' => 'รายงานวิจัยฉบับสมบูรณ์']);

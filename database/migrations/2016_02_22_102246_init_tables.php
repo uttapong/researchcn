@@ -16,7 +16,8 @@ class InitTables extends Migration
           $table->bigIncrements('id');//id ของทุน
           $table->string('name');//ชื่อทุน ตรงนี้อาจสั้นบ้างยาวบ้าง
           $table->text('description');// คำอธิบาย เป็นภาษาไทยยาวๆ ไม่แน่ใจว่าเขาอยากให้ใส่เป็น code html ได้หรือเปล่าแต่ทำเป็น text ธรรมดาก่อนละกันเน๊อะ
-          $table->string('contract_file',200);//เอาไว้ใส่ path ของ ไฟล์สัญญาน่าจะอัพโหลดเป็น .doc .docx หรือ pdf คับ
+          $table->string('type', 50);//เอาไว้ใส่ path ของ ไฟล์สัญญาน่าจะอัพโหลดเป็น .doc .docx หรือ pdf คับ
+          $table->string('contract_file', 200);//เอาไว้ใส่ path ของ ไฟล์สัญญาน่าจะอัพโหลดเป็น .doc .docx หรือ pdf คับ
           $table->date('apply_start');//วันเริ่มต้นที่สามารถสมัครขอทุน
           $table->date('apply_end');//วันสุดท้ายของการสมัครขอทุน
           $table->date('upload_start');//วันเริ่มต้นส่งเอกสาร
@@ -40,7 +41,7 @@ class InitTables extends Migration
             first_payment(เบิกเงินงวดที่ 1), approved_first_payment(อนุมัติเบิกเงินงวดที่ 1),rejected_first_payment(ไม่อนุมัติเบิกเงินงวดที่ 1)
             second_payment(เบิกเงินงวดที่ 2 อันนี้จะรวมกับรายงานความก้าวหน้าครั้งที่ 1), approved_first_payment(อนุมัติเบิกเงินงวดที่ 2), rejected_first_payment(ไม่อนุมัติเบิกเงินงวดที่ 2)
             2ndprogressreport(รายงานความก้าวหน้าครั้งที่ 2), approved_2ndprogressreport(อนุมัติรายงานความก้าวหน้าครั้งที่ 2), rejected_2ndprogressreport(ไม่อนุมัติรายงานความก้าวหน้าครั้งที่ 2)
-            request_extend(ขอขยายเวลาส่งงาน), approved_extend(อนุมัติขอขยายเวลาส่งงาน), rejected_extend(ไม่อนุมัติขอขยายเวลาส่งงาน)
+            request_extend(ขอขยายเวลา), approved_extend(อนุมัติขอขยายเวลา), rejected_extend(ไม่อนุมัติขอขยายเวลา)
             finalized(ส่งผลงานครั้งสุดท้าบ), approved_finalized(อนุมัติส่งผลงานครั้งสุดท้าบ), rejected_finalized(ไม่อนุมัติส่งผลงานครั้งสุดท้าบ)
             finalized(ส่งผลงานครั้งสุดท้าบ), approved_finalized(อนุมัติส่งผลงานครั้งสุดท้าบ), rejected_finalized(ไม่อนุมัติส่งผลงานครั้งสุดท้าบ)
             project_finished(ปิดโครงการ)

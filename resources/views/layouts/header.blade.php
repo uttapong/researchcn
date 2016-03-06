@@ -24,6 +24,8 @@
         <!-- BEGIN PAGE LEVEL PLUGINS -->
         <link href="{{ asset('plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('plugins/fancybox/source/jquery.fancybox.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('plugins/datatables/datatables.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('plugins/datatables/plugins/bootstrap/datatables.bootstrap.css') }}" rel="stylesheet" type="text/css" />
         <!-- END PAGE LEVEL PLUGINS -->
         <!-- BEGIN THEME GLOBAL STYLES -->
         <link href="{{ asset('css/components.min.css') }}" rel="stylesheet" id="style_components" type="text/css" />
@@ -53,6 +55,9 @@
         <script src="{{ asset('plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}" type="text/javascript"></script>
         <script src="{{ asset('plugins/fancybox/source/jquery.fancybox.pack.js') }}" type="text/javascript"></script>
         <script src="{{ asset('plugins/bootstrap-confirmation/bootstrap-confirmation.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('scripts/datatable.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('plugins/datatables/datatables.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('plugins/datatables/plugins/bootstrap/datatables.bootstrap.js') }}" type="text/javascript"></script>
         <!-- END PAGE LEVEL PLUGINS -->
         <!-- BEGIN THEME GLOBAL SCRIPTS -->
         <script src="{{ asset('scripts/app.min.js') }}" type="text/javascript"></script>

@@ -4,7 +4,7 @@
             <div class="portlet light portlet-fit ">
                 <div class="portlet-title">
                     <div class="caption">
-                        <span class="caption-subject font-red sbold uppercase">ทุนที่ท่านเสนอขอ</span>
+                        <span class="font-red sbold">ทุนที่ท่านเสนอขอ</span>
                     </div>
                     <!-- <div class="actions">
                         <div class="btn-group btn-group-devided" data-toggle="buttons">
@@ -54,6 +54,10 @@
                                             <td>
                                                 <?php echo $fund->nextStep
                                                         ? '<a href="' . $fund->linkNextStep . '?request_id=' . $fund->id . '">' . $fund->nextStep . ' ' .
+                                                            '<span aria-hidden="true" class="icon-arrow-right"></span></a>'
+                                                        : null,
+                                                    $fund->status == 'approved_second_progress_report'
+                                                        ? '&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="' . $requestExtend['link'] . '?request_id=' . $fund->id . '">' . $requestExtend['step'] . ' ' .
                                                             '<span aria-hidden="true" class="icon-arrow-right"></span></a>'
                                                         : null; ?>
 
