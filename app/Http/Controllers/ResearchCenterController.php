@@ -103,7 +103,8 @@ class ResearchCenterController extends Controller
       {
         $article_file=$request->file('article_file');
         $article_filename=md5(microtime()).".".$article_file->getClientOriginalExtension();
-        $request->merge(array('article_file' =>$fulltext_filename));
+        print_r($article_filename);
+        $request->merge(array('article_file' =>$article_filename));
       }
 
       if($request->hasFile('cover_file'))

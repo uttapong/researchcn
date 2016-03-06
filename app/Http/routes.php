@@ -10,21 +10,11 @@
 |
 */
 
-Route::get('test', 'HomeController@testfund');
-Route::get('rswk_home', [ 'as' => 'rswk_home', 'uses' => 'FundController@listFund']);
-Route::any('logout', ['as' => 'logout', function () {
-    //
-}]);
-Route::any('login', ['as' => 'login', function () {
-    //Route::auth();
-}]);
-
-
 
 Route::any('uploads', [ 'as' => 'uploads', 'middleware' => 'auth']);
 
 Route::group(['middleware' => 'web','prefix' => 'rscn'], function () {
-    // Route::auth();
+
 	Route::get('', [ 'as' => 'base_rscn', 'uses' => 'ResearchCenterController@index']);
 	Route::get('getfile/{researchid}', [ 'as' => 'get_research', 'uses' => 'ResearchCenterController@getfile']);
 	Route::get('home', [ 'as' => 'rscn_home', 'uses' => 'ResearchCenterController@index']);
@@ -46,14 +36,45 @@ Route::group(['middleware' => 'web','prefix' => 'rscn'], function () {
 | kernel and includes session state, CSRF protection, and more.
 |
 */
+Route::group(['middleware' => ['web']], function () {
+  Route::Auth();
+  //
+  // Route::get('login', 'Auth\AuthController@showLoginForm');
+  // Route::post('login', 'Auth\AuthController@login');
+  // Route::get('logout', 'Auth\AuthController@logout');
+  //
+  // // Registration Routes...
+  // Route::get('register', 'Auth\AuthController@showRegistrationForm');
+  // Route::post('register', 'Auth\AuthController@register');
+  Route::get('login',[ 'as' => 'login',  'uses' =>'Auth\AuthController@showLoginForm']);
+  // Route::post('login',[ 'as' => 'login',  'uses' =>'Auth\AuthController@login']);
+  Route::get('logout',[ 'as' => 'logout',  'uses' =>'Auth\AuthController@logout']);
+  Route::get('register', 'Auth\AuthController@showRegistrationForm');
+  Route::post('register', 'Auth\AuthController@register');
+});
+// Route::get('login', 'Auth\AuthController@showLoginForm');
+
+
+// Route::get('login', 'Auth\AuthController@showLoginForm');
+// Route::post('login', 'Auth\AuthController@login');
+// Route::get('logout', 'Auth\AuthController@logout');
+//
+// // Registration Routes...
+// Route::get('register', 'Auth\AuthController@showRegistrationForm');
+// Route::post('register', 'Auth\AuthController@register');
+
+Route::any('/', [ 'as' => 'base', function () {
+  return view('welcome');
+}]);
+
 Route::group(['middleware' => ['web','auth']], function () {
-	Route::auth();
-  Route::get('/', ['as'=>'base',function () {
-  	return view('welcome');
-  }]);
+
   Route::any('home', [ 'as' => 'home', function () {
   	return view('welcome');
   }]);
+
+
+
 
   Route::get('user_update/{userid}',[ 'as' => 'user_detail',  'uses' =>'UserController@detail']);
   Route::post('user_update/{userid}',[ 'as' => 'user_update',  'uses' =>'UserController@update']);
@@ -66,7 +87,6 @@ Route::group(['middleware' => ['web','auth']], function () {
 
 Route::group(['middleware' => 'web','prefix' => 'rswk'], function () {
 
-	Route::auth();
 	Route::get('', [ 'as' => 'base_rswk', 'uses' => 'FundController@listFund']);
 
 	Route::get('list_fund',[ 'as' => 'list_fund',  'uses' =>'FundController@listFund']);
