@@ -23,7 +23,8 @@ Route::any('logout', ['as' => 'logout', function () {
 Route::any('login', ['as' => 'login', function () {
     //Route::auth();
 }]);
-
+Route::get('user_update/{userid}',[ 'as' => 'user_detail',  'uses' =>'Auth\AuthController@detail']);
+Route::post('user_update/{userid}',[ 'as' => 'user_update',  'uses' =>'Auth\AuthController@update']);
 Route::any('uploads', [ 'as' => 'uploads', 'middleware' => 'auth']);
 Route::group(['middleware' => 'web','prefix' => 'rscn'], function () {
     // Route::auth();
@@ -50,6 +51,7 @@ Route::group(['middleware' => 'web','prefix' => 'rscn'], function () {
 */
 Route::group(['middleware' => ['web']], function () {
 	Route::auth();
+
 });
 
 

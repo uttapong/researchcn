@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
@@ -42,8 +43,42 @@ class AuthController extends Controller
     }
 
     public function detail($userid){
-      $user=App\User::find($userid);
+      $user=User::find($userid);
       return view('auth.detail',['user'=>$user]);
+    }
+
+    public function manage($userid){
+      $users=User::all()->paginate(10);
+      return view('auth.manage',['users'=>$users]);
+    }
+    public function update(Request $request,$userid){
+      $user=User::find($userid);
+      if(!$user)return view('auth.detail',['alert_type'=>'danger','msg'=>'User not found!']);
+
+      //  print_r($request->all());
+      // $this->validate($request, [
+      //     'name' => 'required|max:255',
+      //     'email' => 'required|email|max:255|unique:users',
+      //     'idcard' => 'required|max:13|unique:users'
+      // ]);
+      $v = Validator::make($request->all(), [
+        'name' => 'required|max:255',
+        'password'=>'confirmed',
+             'email' => 'required|email|max:255|unique:users,email,'.$user->id,
+            'idcard' => 'required|max:13|unique:users,idcard,'.$user->id,
+          ]);
+
+     if ($v->fails())
+     {
+         return view('auth.detail',['errors'=>$v->errors(),'user'=>$user]);
+     }
+
+      $user->name =$request->input('name');
+      $user->idcard =$request->input('idcard');
+      $user->email =$request->input('email');
+      if($request->input('password'))$user->password =bcrypt($request->input('keyword'));
+      if($user->save())return view('auth.detail',['user'=>$user,'alert_type'=>'success','msg'=>"User's information has been successfully updated."]);
+      return view('auth.detail',['user'=>$user,'alert_type'=>'danger','msg'=>"User's update failed."]);
     }
 
     /**
@@ -57,7 +92,7 @@ class AuthController extends Controller
         return Validator::make($data, [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|confirmed|min:6',
+            'password' => 'required|confirmed|min:8',
             'idcard' => 'required|max:13|unique:users'
         ]);
     }

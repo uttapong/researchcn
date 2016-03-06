@@ -214,27 +214,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="nav-item">
-                <a href="javascript:;" class="nav-link nav-toggle">
-                    <i class="icon-user"></i>
-                    <span class="title" style="margin-top: 12px">ข้อมูลส่วนตัว</span>
-                    <span class="arrow"></span>
-                </a>
-                <ul class="sub-menu">
-                    <li class="nav-item">
-                        <a href="{{route('user_detail',['userid'=>Auth::user()->id])}}" class="nav-link">
-                            <i class="icon-user"></i>
-                            <span class="title">ข้อมูลผู้ขอทุน</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="page_user_profile_1_account.html" class="nav-link">
-                            <i class="icon-user-female"></i>
-                            <span class="title">ข้อมูลการเข้าใช้งานระบบ</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
+
             @endif
 
             @if(Auth::user()&&Auth::user()->is('reader'))
@@ -248,9 +228,9 @@
                 </a>
                 <ul class="sub-menu">
                     <li class="nav-item">
-                        <a href="page_user_profile_1.html" class="nav-link">
+                        <a href="{{route('user_detail',['userid'=>Auth::user()->id])}}" class="nav-link">
                             <i class="icon-user"></i>
-                            <span class="title">ข้อมูลผู้ขอทุน</span>
+                            <span class="title">ข้อมูลส่วนตัว</span>
                         </a>
                     </li>
                     <li class="nav-item">

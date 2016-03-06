@@ -282,7 +282,7 @@ a{
                         </a>
                         <ul class="dropdown-menu dropdown-menu-default">
                             <li>
-                                <a href="page_user_profile_1.html">
+                                <a href="{{route('user_detail',['userid'=>Auth::user()->id])}}">
                                     <i class="icon-user"></i> My Profile </a>
                             </li>
                             <li>
