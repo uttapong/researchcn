@@ -14,3 +14,10 @@
 </div>
 @endif
 @endif
+
+@if(Session::has('msg'))
+
+    <div class="alert alert-dismissible alert-{{ Session::get('alert_type') }}" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      {{ Session::get('success') }}</div>
+@endif

@@ -201,17 +201,30 @@
                 </a>
                 <ul class="sub-menu">
                     <li class="nav-item">
-                        <a href="fund_manage" class="nav-link">
+                        <a href="{{route('fund_manage')}}" class="nav-link">
                             <i class="icon-settings"></i>
                             <span class="title">จัดการทุนทั้งหมด
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="form_controls_md.html" class="nav-link">
-                            <i class="icon-settings"></i>
-                            <span class="title">จัดการผู้ใช้งาน
-                        </a>
-                    </li>
+                </ul>
+            </li>
+
+            @endif
+
+            @if(Auth::user()&&(Auth::user()->is('admin_research_center')||Auth::user()->is('admin_research_work')))
+            <li class="nav-item">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                    <i class="icon-settings"></i>
+                    <span class="title" style="margin-top: 12px">ผู้ดูแลระบบ</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                  <li class="nav-item">
+                      <a href="{{route('user_manage')}}" class="nav-link">
+                          <i class="icon-settings"></i>
+                          <span class="title">จัดการผู้ใช้งาน
+                      </a>
+                  </li>
                 </ul>
             </li>
 

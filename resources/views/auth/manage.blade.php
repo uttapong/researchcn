@@ -3,21 +3,13 @@
 @section('content')
 <div class="row">
                         <div class="col-md-12">
-                            <div class="note note-success">
-                                <p> Please try to re-size your browser window in order to see the tables in responsive mode. </p>
-                            </div>
 
                             <!-- BEGIN SAMPLE TABLE PORTLET-->
+                            @include('message')
                             <div class="portlet box green">
                                 <div class="portlet-title">
                                     <div class="caption">
                                         <i class="fa fa-cogs"></i>User Management</div>
-                                    <div class="tools">
-                                        <a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
-                                        <a href="#portlet-config" data-toggle="modal" class="config" data-original-title="" title=""> </a>
-                                        <a href="javascript:;" class="reload" data-original-title="" title=""> </a>
-                                        <a href="javascript:;" class="remove" data-original-title="" title=""> </a>
-                                    </div>
                                 </div>
                                 <div class="portlet-body">
                                     <div class="table-responsive">
@@ -33,30 +25,22 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                              @foreach ($users as  $index => $user)
                                                 <tr>
-                                                    <td> 1 </td>
-                                                    <td> Table cell </td>
-                                                    <td> Table cell </td>
-                                                    <td> Table cell </td>
-                                                    <td> Table cell </td>
-                                                    <td> Table cell </td>
+                                                    <td> {{$index+1}} </td>
+                                                    <td> {{$user->name}} </td>
+                                                    <td> {{$user->idcard}} </td>
+                                                    <td> {{$user->email}} </td>
+                                                    <td> @if($user->status=='pending' or $user->status=='')
+                                                        <a class='btn btn-xs btn-primary' href='{{route('user_approve',['userid'=>$user->id,'status'=>'approved'])}}'>Approve</a>
+                                                        <a class='btn btn-xs btn-danger' href='{{route('user_approve',['userid'=>$user->id,'status'=>'rejected'])}}'>Reject</a>
+                                                        @else
+                                                        {{$user->status}}
+                                                        @endif
+                                                    </td>
+                                                    <td> <a class='btn btn-xs btn-info' href='{{route('user_detail',['userid'=>$user->id])}}'>Edit</a></td>
                                                 </tr>
-                                                <tr>
-                                                    <td> 2 </td>
-                                                    <td> Table cell </td>
-                                                    <td> Table cell </td>
-                                                    <td> Table cell </td>
-                                                    <td> Table cell </td>
-                                                    <td> Table cell </td>
-                                                </tr>
-                                                <tr>
-                                                    <td> 3 </td>
-                                                    <td> Table cell </td>
-                                                    <td> Table cell </td>
-                                                    <td> Table cell </td>
-                                                    <td> Table cell </td>
-                                                    <td> Table cell </td>
-                                                </tr>
+                                                @endforeach
                                             </tbody>
                                         </table>
                                     </div>

@@ -9,12 +9,7 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-Route::get('/', ['as'=>'base',function () {
-	return view('welcome');
-}]);
-Route::any('home', [ 'as' => 'home', function () {
-	return view('welcome');
-}]);
+
 Route::get('test', 'HomeController@testfund');
 Route::get('rswk_home', [ 'as' => 'rswk_home', 'uses' => 'FundController@listFund']);
 Route::any('logout', ['as' => 'logout', function () {
@@ -23,9 +18,11 @@ Route::any('logout', ['as' => 'logout', function () {
 Route::any('login', ['as' => 'login', function () {
     //Route::auth();
 }]);
-Route::get('user_update/{userid}',[ 'as' => 'user_detail',  'uses' =>'Auth\AuthController@detail']);
-Route::post('user_update/{userid}',[ 'as' => 'user_update',  'uses' =>'Auth\AuthController@update']);
+
+
+
 Route::any('uploads', [ 'as' => 'uploads', 'middleware' => 'auth']);
+
 Route::group(['middleware' => 'web','prefix' => 'rscn'], function () {
     // Route::auth();
 	Route::get('', [ 'as' => 'base_rscn', 'uses' => 'ResearchCenterController@index']);
@@ -49,9 +46,19 @@ Route::group(['middleware' => 'web','prefix' => 'rscn'], function () {
 | kernel and includes session state, CSRF protection, and more.
 |
 */
-Route::group(['middleware' => ['web']], function () {
+Route::group(['middleware' => ['web','auth']], function () {
 	Route::auth();
+  Route::get('/', ['as'=>'base',function () {
+  	return view('welcome');
+  }]);
+  Route::any('home', [ 'as' => 'home', function () {
+  	return view('welcome');
+  }]);
 
+  Route::get('user_update/{userid}',[ 'as' => 'user_detail',  'uses' =>'UserController@detail']);
+  Route::post('user_update/{userid}',[ 'as' => 'user_update',  'uses' =>'UserController@update']);
+  Route::get('user_manage',[ 'as' => 'user_manage',  'uses' =>'UserController@manage']);
+  Route::get('user_approve/{userid}/{status}',[ 'as' => 'user_approve',  'uses' =>'UserController@approve']);
 });
 
 

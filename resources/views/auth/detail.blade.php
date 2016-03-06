@@ -17,22 +17,7 @@
                                     <form class="form-horizontal" role="form"  method="POST" action="{{route('user_update',['userid'=>$user->id])}}">
                                       {!! csrf_field() !!}
                                         <div class="form-body">
-                                          @if(isset($msg))
-                                          <div class="alert alert-dismissible alert-{{$alert_type}}" role="alert">
-                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                            {{$msg}}</div>
-                                          @endif
-                                          @if(isset($errors))
-                                          @if (count($errors) > 0)
-                                          <div class="alert alert-danger col-md-12">
-                                          <ul>
-                                          @foreach ($errors->all() as $error)
-                                          <li>{{ $error }}</li>
-                                          @endforeach
-                                          </ul>
-                                          </div>
-                                          @endif
-                                          @endif
+                                          @include('message')
                                           <input type="hidden" name="id"  value="{{$user->id}}" />
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label">Name</label>
@@ -52,6 +37,16 @@
                                                     <input type="text" name="email" class="form-control input-inline input-medium" value="{{$user->email}}" placeholder="Enter text">
                                                 </div>
                                             </div>
+                                            <div class="form-group">
+                                                          <label class="col-md-3 control-label">Type</label>
+                                                          <div class="col-md-3">
+                                                            <select class="form-control" name="status">
+                                                      <option value="pending" @if($user->status=='pending') selected='selected' @endif>pending</option>
+                                                      <option value="approved" @if($user->status=='approved') selected='selected' @endif>approved</option>
+                                                      <option value="rejected" @if($user->status=='rejected') selected='selected' @endif>rejected</option>
+                                                  </select>
+                                                          </div>
+                                                      </div>
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label">Change Password</label>
                                                 <div class="col-md-9">
