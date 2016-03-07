@@ -2,8 +2,8 @@
 
 @section('content')
     <div class="row">
-        <div class="col-xs-12 col-md-12 col-lg-12">
-            <div class="portlet light portlet-fit ">
+        <div class="col-xs-12 col-md-12 col-lg-10 col-lg-offset-1">
+            <div class="portlet light portlet-fit">
                 <div class="portlet-title">
                     <div class="caption">
                         <span class="font-red sbold">ทุนที่ท่านเสนอขอ</span>
@@ -75,8 +75,8 @@
 <script type="text/javascript">
     $(document).ready(function () {
         // Add class selected navigator
-        $('.nav-item:eq(0), .nav-item:eq(3)').addClass("active open");
-        $('.nav-item a:eq(0), .nav-item a:eq(3)').append("<span class='selected'></span>");
+        $('#main_fund, #sub3_fund').addClass("active open");
+        $('#main_fund a, #sub3_fund a').append("<span class='selected'></span>");
     });
 </script>
 @endsection

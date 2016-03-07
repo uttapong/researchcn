@@ -101,7 +101,9 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        $('a[href="fund_form"]').hide();
+        // Add class selected navigator
+        $('#main_fund').addClass("active open");
+        $('#main_fund a').append("<span class='selected'></span>");
 
         // Validate input value
         var e = $("#form"),

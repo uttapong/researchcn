@@ -17,7 +17,6 @@ class InitTables extends Migration
           $table->string('name');//ชื่อทุน ตรงนี้อาจสั้นบ้างยาวบ้าง
           $table->text('description');// คำอธิบาย เป็นภาษาไทยยาวๆ ไม่แน่ใจว่าเขาอยากให้ใส่เป็น code html ได้หรือเปล่าแต่ทำเป็น text ธรรมดาก่อนละกันเน๊อะ
           $table->string('type', 50);//เอาไว้ใส่ path ของ ไฟล์สัญญาน่าจะอัพโหลดเป็น .doc .docx หรือ pdf คับ
-          $table->string('contract_file', 200);//เอาไว้ใส่ path ของ ไฟล์สัญญาน่าจะอัพโหลดเป็น .doc .docx หรือ pdf คับ
           $table->date('apply_start');//วันเริ่มต้นที่สามารถสมัครขอทุน
           $table->date('apply_end');//วันสุดท้ายของการสมัครขอทุน
           $table->date('upload_start');//วันเริ่มต้นส่งเอกสาร

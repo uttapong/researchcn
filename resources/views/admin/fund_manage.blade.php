@@ -15,7 +15,7 @@
 
     <div class="row">
         <div class="col-xs-12 col-md-12 col-lg-10 col-lg-offset-1">
-            <div class="portlet light portlet-fit ">
+            <div class="portlet light portlet-fit">
                 <div class="portlet-title">
                     <div class="caption">
                         <span class="font-red sbold">จัดการทุนทั้งหมด</span>
@@ -80,8 +80,8 @@
 <script type="text/javascript">
     $(document).ready(function () {
         // Add class selected navigator
-        $('.nav-item:eq(4), .nav-item:eq(5)').addClass("active open");
-        $('.nav-item a:eq(4), .nav-item a:eq(5)').append("<span class='selected'></span>");
+        $('#main_fund, #sub4_fund').addClass("active open");
+        $('#main_fund a, #sub4_fund a').append("<span class='selected'></span>");
 
         // Initial data table
         $('#dataTable').DataTable({

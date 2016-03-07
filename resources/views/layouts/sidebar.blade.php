@@ -13,35 +13,34 @@
         <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
         <ul class="page-sidebar-menu  page-header-fixed page-sidebar-menu-hover-submenu" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
   @if(!Auth::user())
-          <li class="nav-item">
+          <li class="nav-item" id="main_data_research">
               <a href="{{route('base_rscn')}}" class="nav-link nav-toggle">
                   <i class="icon-layers"></i>
                   <span class="title" style="margin-top: 12px">ฐานข้อมูลงานวิจัย</span>
                   <span class="arrow"></span>
               </a>
-
           </li>
-          <li class="nav-item">
+          <li class="nav-item" id="main_fund">
               <a href="javascript:;" class="nav-link nav-toggle">
                   <i class="icon-layers"></i>
                   <span class="title" style="margin-top: 12px">ทุนวิจัย</span>
                   <span class="arrow"></span>
               </a>
               <ul class="sub-menu">
-                  <li class="nav-item">
+                  <li class="nav-item" id="sub1_fund">
                       <a href="{{route('list_fund')}}" class="nav-link">
                           <i class="icon-layers"></i>
                           <span class="title">ทุนปัจจุบัน</span>
                       </a>
                   </li>
-                  <li class="nav-item">
+                  <li class="nav-item" id="sub2_fund">
                       <a href="{{route('fund_ago')}}" class="nav-link">
                           <i class="icon-layers"></i>
                           <span class="title">ทุนที่ผ่านมา</span>
                           <!-- <span class="badge badge-success">1</span> -->
                       </a>
                   </li>
-                  <li class="nav-item">
+                  <li class="nav-item" id="sub3_fund">
                       <a href="{{route('fund_request')}}" class="nav-link">
                           <i class="icon-layers"></i>
                           <span class="title">ทุนที่ท่านเสนอขอ</span>
@@ -52,54 +51,54 @@
           </li>
           @endif
             @if(Auth::user()&&Auth::user()->is('admin'))
-            <li class="nav-item">
+            <li class="nav-item" id="main_stats">
                 <a href="{{route('dashboard')}}" class="nav-link nav-toggle">
                     <i class="icon-graph"></i>
                     <span class="title" style="margin-top: 12px">สถิติทั้งหมด</span>
                     <span class="arrow"></span>
                 </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" id="main_search_research">
                 <a href="{{route('base_rscn')}}" class="nav-link nav-toggle">
                     <i class="icon-magnifier"></i>
                     <span class="title" style="margin-top: 12px">ค้นหางานวิจัย</span>
                     <span class="arrow"></span>
                 </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" id="main_fund">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-layers"></i>
                     <span class="title" style="margin-top: 12px">ทุนวิจัย</span>
                     <span class="arrow"></span>
                 </a>
                 <ul class="sub-menu">
-                    <li class="nav-item">
+                    <li class="nav-item" id="sub1_fund">
                         <a href="{{route('list_fund')}}" class="nav-link">
                             <i class="icon-layers"></i>
                             <span class="title">ทุนปัจจุบัน</span>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" id="sub2_fund">
                         <a href="{{route('fund_ago')}}" class="nav-link">
                             <i class="icon-clock"></i>
                             <span class="title">ทุนที่ผ่านมา</span>
                             <!-- <span class="badge badge-success">1</span> -->
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" id="sub3_fund">
                         <a href="{{route('fund_request')}}" class="nav-link">
                             <i class="icon-user-following"></i>
                             <span class="title">ทุนที่ท่านเสนอขอ</span>
                             <!-- <span class="badge badge-danger">1</span> -->
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" id="sub4_fund">
                         <a href="{{route('fund_manage')}}" class="nav-link">
                             <i class="icon-list"></i>
                             <span class="title">จัดการทุนทั้งหมด
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" id="sub5_fund">
                         <a href="{{route('fund_user_request_choose')}}" class="nav-link">
                             <i class="icon-user"></i>
                             <span class="title">รายชื่อผู้ขอทุน/อนุมัติเอกสาร
@@ -107,32 +106,32 @@
                     </li>
                 </ul>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" id="main_data_research">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-briefcase"></i>
                     <span class="title" style="margin-top: 12px">ฐานข้อมูลงานวิจัย</span>
                     <span class="arrow"></span>
                 </a>
                 <ul class="sub-menu">
-                    <li class="nav-item">
+                    <li class="nav-item" id="sub1_data_research">
                         <a href="{{route('dashboard_rscn')}}" class="nav-link">
                             <i class="icon-graph"></i>
                             <span class="title">สถิติงานวิจัย
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" id="sub2_data_research">
                         <a href="{{route('base_rscn')}}" class="nav-link">
                             <i class="icon-list"></i>
                             <span class="title">งานวิจัยทั้งหมด
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" id="sub3_data_research">
                         <a href="{{route('new_research')}}" class="nav-link">
                             <i class="icon-plus"></i>
                             <span class="title">เพิ่มงานวิจัย
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" id="sub4_data_research">
                         <a href="{{route('fund_manage')}}" class="nav-link">
                             <i class="icon-trophy"></i>
                             <span class="title">เพิ่มสิ่งประดิษฐ์และรางวัล
@@ -144,14 +143,14 @@
             @endif
 
             @if(Auth::user()&&Auth::user()->is('admin'))
-            <li class="nav-item">
+            <li class="nav-item" id="main_admin">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-settings"></i>
                     <span class="title" style="margin-top: 12px">ผู้ดูแลระบบ</span>
                     <span class="arrow"></span>
                 </a>
                 <ul class="sub-menu">
-                  <li class="nav-item">
+                  <li class="nav-item" id="sub1_admin">
                       <a href="{{route('user_manage')}}" class="nav-link">
                           <i class="icon-user"></i>
                           <span class="title">จัดการผู้ใช้งาน</span>

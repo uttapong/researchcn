@@ -3,7 +3,7 @@
 @section('content')
     <div class="row">
         <div class="col-xs-12 col-md-12 col-lg-10 col-lg-offset-1">
-            <div class="portlet light portlet-fit ">
+            <div class="portlet light portlet-fit">
                 <div class="portlet-title">
                     <div class="caption">
                         <span class="font-red sbold">ทุนปัจจุบันทั้งหมด</span>
@@ -40,8 +40,8 @@
 <script type="text/javascript">
     $(document).ready(function () {
         // Add class selected navigator
-        $('.nav-item:eq(0), .nav-item:eq(1)').addClass("active open");
-        $('.nav-item a:eq(0), .nav-item a:eq(1)').append("<span class='selected'></span>");
+        $('#main_fund, #sub1_fund').addClass("active open");
+        $('#main_fund a, #sub1_fund a').append("<span class='selected'></span>");
 
         // Event on click confirm box
         $('[data-toggle="confirmation"]').on("confirmed.bs.confirmation", function () {

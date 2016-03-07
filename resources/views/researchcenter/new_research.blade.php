@@ -149,4 +149,11 @@ function showField(name){
                                                 <!-- END FORM-->
                                             </div>
                                         </div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        // Add class selected navigator
+        $('#main_data_research, #sub3_data_research').addClass("active open");
+        $('#main_data_research a, #sub3_data_research a').append("<span class='selected'></span>");
+    });
+</script>
 @endsection

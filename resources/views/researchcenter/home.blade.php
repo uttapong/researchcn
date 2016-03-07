@@ -155,4 +155,11 @@ function getPreview(id){
 
                         </div>
                     </div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        // Add class selected navigator
+        $('#main_search_research').addClass("active open");
+        $('#main_search_research a').append("<span class='selected'></span>");
+    });
+</script>
 @endsection

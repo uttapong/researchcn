@@ -2,8 +2,8 @@
 
 @section('content')
     <div class="row">
-        <div class="col-xs-12 col-md-12 col-lg-12">
-            <div class="portlet light portlet-fit ">
+        <div class="col-xs-12 col-md-12 col-lg-10 col-lg-offset-1">
+            <div class="portlet light portlet-fit">
                 <div class="portlet-title">
                     <div class="caption">
                         <a href="{{ route('fund_user_request_choose') }}" class="font-red">
@@ -94,8 +94,8 @@
 <script type="text/javascript">
     $(document).ready(function () {
         // Add class selected navigator
-        $('.nav-item:eq(4), .nav-item:eq(6)').addClass("active open");
-        $('.nav-item a:eq(4), .nav-item a:eq(6)').append("<span class='selected'></span>");
+        $('#main_fund, #sub5_fund').addClass("active open");
+        $('#main_fund a, #sub5_fund a').append("<span class='selected'></span>");
 
         // Initial data table
         $('#dataTable').DataTable({

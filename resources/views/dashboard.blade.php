@@ -165,4 +165,11 @@
                             <!-- END PORTLET-->
                         </div>
                     </div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        // Add class selected navigator
+        $('#main_stats').addClass("active open");
+        $('#main_stats a').append("<span class='selected'></span>");
+    });
+</script>
 @endsection

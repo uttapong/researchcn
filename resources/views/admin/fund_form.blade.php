@@ -3,7 +3,7 @@
 @section('content')
     <div class="row">
         <div class="col-xs-12 col-md-12 col-lg-10 col-lg-offset-1">
-            <div class="portlet light portlet-fit portlet-form ">
+            <div class="portlet light portlet-fit portlet-form">
                 <div class="portlet-title">
                     <div class="caption font-red">
                         <i class="{{ $fund ? 'fa fa-edit' : 'icon-plus' }} font-red"></i>
@@ -187,7 +187,9 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        $('a[href="fund_form"]').hide();
+        // Add class selected navigator
+        $('#main_fund, #sub4_fund').addClass("active open");
+        $('#main_fund a, #sub4_fund a').append("<span class='selected'></span>");
 
         // iInitial Data
         if ('{{ $fund }}') {
