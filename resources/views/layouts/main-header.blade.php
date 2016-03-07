@@ -42,7 +42,7 @@ a{
         <!-- END PAGE ACTIONS -->
         <!-- BEGIN PAGE TOP -->
         <div class="page-top">
-          
+
             @if(Auth::user())
             <div class="top-menu">
                 <ul class="nav navbar-nav pull-right">
@@ -151,71 +151,22 @@ a{
                     <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
                     <li class="dropdown dropdown-extended dropdown-inbox" id="header_inbox_bar">
                         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                            <i class="icon-envelope-open"></i>
-                            <span class="badge badge-default"> 4 </span>
+                            {{ trans('header.lang') }}
+                              <i class="fa fa-angle-down"></i>
                         </a>
                         <ul class="dropdown-menu">
                             <li class="external">
-                                <h3>You have
-                                    <span class="bold">7 New</span> Messages</h3>
-                                <a href="app_inbox.html">view all</a>
+                                <h3>Select Language</h3>
                             </li>
                             <li>
                                 <ul class="dropdown-menu-list scroller" style="height: 275px;" data-handle-color="#637283">
                                     <li>
-                                        <a href="#">
-                                            <span class="photo">
-                                                <img src="{{ asset('layouts/layout3/img/avatar2.jpg') }}" class="img-circle" alt=""> </span>
-                                            <span class="subject">
-                                                <span class="from"> Lisa Wong </span>
-                                                <span class="time">Just Now </span>
-                                            </span>
-                                            <span class="message"> Vivamus sed auctor nibh congue nibh. auctor nibh auctor nibh... </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <span class="photo">
-                                                <img src="{{ asset('layouts/layout3/img/avatar3.jpg') }}" class="img-circle" alt=""> </span>
-                                            <span class="subject">
-                                                <span class="from"> Richard Doe </span>
-                                                <span class="time">16 mins </span>
-                                            </span>
-                                            <span class="message"> Vivamus sed congue nibh auctor nibh congue nibh. auctor nibh auctor nibh... </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <span class="photo">
-                                                <img src="{{ asset('layouts/layout3/img/avatar1.jpg') }}" class="img-circle" alt=""> </span>
-                                            <span class="subject">
-                                                <span class="from"> Bob Nilson </span>
-                                                <span class="time">2 hrs </span>
-                                            </span>
-                                            <span class="message"> Vivamus sed nibh auctor nibh congue nibh. auctor nibh auctor nibh... </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <span class="photo">
-                                                <img src="{{ asset('layouts/layout3/img/avatar2.jpg') }}" class="img-circle" alt=""> </span>
-                                            <span class="subject">
-                                                <span class="from"> Lisa Wong </span>
-                                                <span class="time">40 mins </span>
-                                            </span>
-                                            <span class="message"> Vivamus sed auctor 40% nibh congue nibh... </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <span class="photo">
-                                                <img src="{{ asset('layouts/layout3/img/avatar3.jpg') }}" class="img-circle" alt=""> </span>
-                                            <span class="subject">
-                                                <span class="from"> Richard Doe </span>
-                                                <span class="time">46 mins </span>
-                                            </span>
-                                            <span class="message"> Vivamus sed congue nibh auctor nibh congue nibh. auctor nibh auctor nibh... </span>
-                                        </a>
+                                        <a href="{{route('lang',['locale'=>'th'])}}"><span class="subject">
+                                              ภาษาไทย
+                                            </span></a>
+                                            <a href="{{route('lang',['locale'=>'en'])}}"><span class="subject">
+                                                  English
+                                                </span></a>
                                     </li>
                                 </ul>
                             </li>
@@ -235,22 +186,6 @@ a{
                             <li>
                                 <a href="{{route('user_detail',['userid'=>Auth::user()->id])}}">
                                     <i class="icon-user"></i> My Profile </a>
-                            </li>
-                            <li>
-                                <a href="app_calendar.html">
-                                    <i class="icon-calendar"></i> My Calendar </a>
-                            </li>
-                            <li>
-                                <a href="app_inbox.html">
-                                    <i class="icon-envelope-open"></i> My Inbox
-                                    <span class="badge badge-danger"> 3 </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="app_todo_2.html">
-                                    <i class="icon-rocket"></i> My Tasks
-                                    <span class="badge badge-success"> 7 </span>
-                                </a>
                             </li>
                             <li class="divider"> </li>
                             <li>

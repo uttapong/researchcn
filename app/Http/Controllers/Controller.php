@@ -10,4 +10,12 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+    public function __construct () {
+        $lang = Session::get ('locale');
+        if ($lang != null) \App::setLocale($lang);
+        else {
+          Session::set('locale','en');
+          App::setLocale('en');
+        }
+    }
 }

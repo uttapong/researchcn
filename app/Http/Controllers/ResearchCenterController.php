@@ -28,7 +28,7 @@ class ResearchCenterController extends Controller
      */
     public function index()
     {
-      $researchs = Research::paginate(4);
+      $researchs = Research::orderBy('created_at', 'desc')->paginate(4);
 
       return view('researchcenter.home', ['researchs' => $researchs]);
     }
@@ -36,7 +36,7 @@ class ResearchCenterController extends Controller
     public function simplesearch(Request $request)
     {
       $kw=$request->input('keyword');
-      $researchs = Research::where('title', 'like', "%{$kw}%")->orWhere('abstract', 'like', "%{$kw}%")->orWhere('keywords', 'like', "%{$kw}%")->orWhere('authors', 'like', "%{$kw}%")->orWhere('publication_name', 'like', "%{$kw}%")->paginate(4);
+      $researchs = Research::where('title', 'like', "%{$kw}%")->orWhere('abstract', 'like', "%{$kw}%")->orWhere('keywords', 'like', "%{$kw}%")->orWhere('authors', 'like', "%{$kw}%")->orWhere('publication_name', 'like', "%{$kw}%")->orderBy('created_at', 'desc')->paginate(4);
 
       return view('researchcenter.home', ['researchs' => $researchs]);
     }
@@ -49,7 +49,7 @@ class ResearchCenterController extends Controller
       $pub=$request->input('publication');
       $year=$request->input('year');
       $authors=$request->input('authors');
-      $researchs = Research::where('title', 'like', "%{$title}%")->orWhere('abstract', 'like', "%{$text}%")->orWhere('keywords', 'like', "%{$kw}%")->orWhere('authors', 'like', "%{$authors}%")->orWhere('publication_name', 'like', "%{$pub}%")->orWhere('published_year', 'like', "%{$year}%")->paginate(4);
+      $researchs = Research::where('title', 'like', "%{$title}%")->orWhere('abstract', 'like', "%{$text}%")->orWhere('keywords', 'like', "%{$kw}%")->orWhere('authors', 'like', "%{$authors}%")->orWhere('publication_name', 'like', "%{$pub}%")->orWhere('published_year', 'like', "%{$year}%")->orderBy('created_at', 'desc')->paginate(4);
 
       return view('researchcenter.home', ['researchs' => $researchs]);
     }
@@ -66,7 +66,7 @@ class ResearchCenterController extends Controller
     $this->middleware('auth');
     $research=Research::find($research_id);
     if(Auth::user())
-    return redirect("/uploads/{$research->id}/{$research->file_path}");
+    return redirect("/uploads/{$research->id}/{$research->full_text_file}");
 
     return redirect()->route('login');
   }
@@ -83,6 +83,10 @@ class ResearchCenterController extends Controller
      $fields=Researchfield::all();
      return view('researchcenter.new_research',['fields'=>$fields]);
    }
+   public function detail($id){
+     $research=Research::find($id);
+     return view('researchcenter.detail',['research'=>$research]);
+   }
     public function add(Request $request){
       $this->middleware('auth');
 
@@ -94,8 +98,10 @@ class ResearchCenterController extends Controller
           'fulltext_file' => 'required|mimes:pdf,doc,docx',
           'type' => 'required',
           'publication_name' => 'required|max:200',
-          'published_year' => 'required|max:200'
+          'published_year' => 'required|max:200',
+          'cited_count'=>'integer'
       ]);
+
       $fulltext_file=$request->file('fulltext_file');
       $fulltext_filename=md5(microtime()).".".$fulltext_file->getClientOriginalExtension();
 
@@ -103,15 +109,14 @@ class ResearchCenterController extends Controller
       {
         $article_file=$request->file('article_file');
         $article_filename=md5(microtime()).".".$article_file->getClientOriginalExtension();
-        print_r($article_filename);
-        $request->merge(array('article_file' =>$article_filename));
+        // $request->merge(array('article_file' =>$article_filename));
       }
 
       if($request->hasFile('cover_file'))
       {
         $cover_file=$request->file('cover_file');
         $cover_filename=md5(microtime()).".".$cover_file->getClientOriginalExtension();
-        $request->merge(array('cover_file' =>$cover_filename));
+        // $request->merge(array('cover_file' =>$cover_filename));
       }
 
       $request->merge(array('full_text_file' =>$fulltext_filename));
@@ -122,9 +127,16 @@ class ResearchCenterController extends Controller
       $destinationPath='uploads/'.$research_id.'/';
 
       if ($request->hasFile('fulltext_file'))$fulltext_file->move($destinationPath, $fulltext_filename);
-      if ($request->hasFile('article_file')) $article_file->move($destinationPath, $article_filename);
-      if ($request->hasFile('cover_file')) $cover_file->move($destinationPath, $cover_filename);
-
+      if ($request->hasFile('article_file')) {
+        $article_file->move($destinationPath, $article_filename);
+        $research->article_file=$article_filename;
+        $research->save();
+      }
+      if ($request->hasFile('cover_file')){
+        $cover_file->move($destinationPath, $cover_filename);
+        $research->cover_file=$cover_filename;
+        $research->save();
+      }
       if($research){
 
         $fields=Researchfield::all();

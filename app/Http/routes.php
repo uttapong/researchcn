@@ -13,6 +13,11 @@
 
 Route::any('uploads', [ 'as' => 'uploads', 'middleware' => 'auth']);
 
+Route::get('lang/{locale}',[ 'as' => 'lang', function ($locale) {
+    App::setLocale($locale);
+    return Redirect::back();
+}]);
+
 Route::group(['middleware' => 'web','prefix' => 'rscn'], function () {
 
 	Route::get('', [ 'as' => 'base_rscn', 'uses' => 'ResearchCenterController@index']);
@@ -23,6 +28,7 @@ Route::group(['middleware' => 'web','prefix' => 'rscn'], function () {
 	Route::post('advance_search', [ 'as' => 'advance_search', 'uses' => 'ResearchCenterController@advancesearch']);
 	Route::get('new_research', 'ResearchCenterController@new_research');
 	Route::post('new_research', [ 'as' => 'new_research', 'uses' => 'ResearchCenterController@add']);
+  Route::post('research_detail/{researchid}', [ 'as' => 'research_detail', 'uses' => 'ResearchCenterController@detail']);
 
 	Route::get('preview/{researchid}', [ 'as' => 'preview_research', 'uses' => 'ResearchCenterController@preview']);
 });
@@ -38,14 +44,6 @@ Route::group(['middleware' => 'web','prefix' => 'rscn'], function () {
 */
 Route::group(['middleware' => ['web']], function () {
   Route::Auth();
-  //
-  // Route::get('login', 'Auth\AuthController@showLoginForm');
-  // Route::post('login', 'Auth\AuthController@login');
-  // Route::get('logout', 'Auth\AuthController@logout');
-  //
-  // // Registration Routes...
-  // Route::get('register', 'Auth\AuthController@showRegistrationForm');
-  // Route::post('register', 'Auth\AuthController@register');
   Route::get('login',[ 'as' => 'login',  'uses' =>'Auth\AuthController@showLoginForm']);
   // Route::post('login',[ 'as' => 'login',  'uses' =>'Auth\AuthController@login']);
   Route::get('logout',[ 'as' => 'logout',  'uses' =>'Auth\AuthController@logout']);
@@ -58,19 +56,15 @@ Route::group(['middleware' => ['web']], function () {
 // Route::get('login', 'Auth\AuthController@showLoginForm');
 // Route::post('login', 'Auth\AuthController@login');
 // Route::get('logout', 'Auth\AuthController@logout');
-//
-// // Registration Routes...
-// Route::get('register', 'Auth\AuthController@showRegistrationForm');
-// Route::post('register', 'Auth\AuthController@register');
 
 Route::any('/', [ 'as' => 'base', function () {
-  return view('welcome');
+  return view('dashboard');
 }]);
 
 Route::group(['middleware' => ['web','auth']], function () {
 
   Route::any('home', [ 'as' => 'home', function () {
-  	return view('welcome');
+  	return view('dashboard');
   }]);
 
 

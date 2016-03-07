@@ -120,7 +120,7 @@ function getPreview(id){
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-7">
+                            <div class="col-md-12">
                                 <div class="search-container ">
                                   @if(count($researchs)<=0)
                                   <div class="alert  alert-danger" role="alert" style="margin-top: 10px;">No search result found!</div>
@@ -128,14 +128,22 @@ function getPreview(id){
                                     <ul>
                                       @foreach ($researchs as $research)
                                         <li class="search-item clearfix">
-                                          <a href="javascriptt:;">
-                                              <img src="{{ asset('pages/img/page_general_search/01.jpg') }}">
-                                          </a>
                                             <div class="search-content">
                                                 <h2 class="search-title">
-                                                    <a href="javascript:;" onclick="getPreview({{$research->id}})">{{$research->getShortTitle()}}</a>
+                                                    <a href="{{route('research_detail',['researchid'=>$research->id])}}" >{{$research->getShortTitle()}}</a>
                                                 </h2>
-                                                <p class="search-desc"> {{$research->getShortAbstract()}}</p>
+                                                <p class="search-desc">
+                                                  <strong> Author(s): </strong>{{$research->authors}}
+                                                <strong> Published on </strong>{{$research->publication_name}} @if($research->issue) <strong>Issue </strong>{{$research->issue}}@endif
+                                                @if($research->page) <strong>Page </strong>{{$research->page}}@endif
+                                                @if($research->keywords) <strong>Keywords </strong>{{$research->keywords}}@endif
+                                              </p>
+                                                  <p class="search-desc">
+                                                  @if($research->article_file)  <a href="{{route('base')}}/uploads/{{$research->id}}/{{$research->article_file}}" class='btn btn-xs btn-info'><span class="glyphicon glyphicon-download" aria-hidden="true"></span> Article Download</a>
+                                                  @endif
+                                                    @if($research->full_text_file)
+                                                  <a href="{{ route('get_research',['researchid'=>$research->id])}}" class='btn btn-xs btn-danger'><span class="glyphicon glyphicon-download" aria-hidden="true"></span> Full Text Download</a></p>
+                                                  @endif
                                             </div>
                                         </li>
                                         @endforeach
@@ -144,28 +152,7 @@ function getPreview(id){
 
                                 </div>
                             </div>
-                            <div class="col-md-5">
-                                <!-- BEGIN PORTLET-->
-                                <div class="portlet light ">
-                                    <div class="portlet-title">
-                                        <div class="caption">
-                                            <span class="caption-subject font-dark bold uppercase" id="title">Aricle Preview <span style="font-size: 10px;"><br />Click an article on the left to view information</span></span>
 
-
-                                        </div>
-
-                                    </div>
-                                    <div id="preview" style="display:none;" class="portlet-body">
-
-                                      <p class="authors">Author(s): <span id="authors"></span></p>
-                                      <p class="published">Published on<span id="publication_name"></span> <span id="published_month"></span> <span id="published_year"></span>,issue <span id="issue">,page <span id="page"></span></p>
-                                      <p class="keywords">Keywords: <span id="keywords"></span></p>
-                                      <p id="abstract"></p>
-                                      <p class="fulltext">Full text Download: <span id="download"></span><p>
-                                    </div>
-                                </div>
-                                <!-- END PORTLET-->
-                            </div>
                         </div>
                     </div>
 @endsection

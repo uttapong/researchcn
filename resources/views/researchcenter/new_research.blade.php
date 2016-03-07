@@ -26,7 +26,6 @@ function showField(name){
                                                     <div class="form-body">
                                                       @include('message')
 
-
                                                       <div class="form-group">
                                                           <label class="col-md-3 control-label">Type</label>
                                                           <div class="col-md-4">
@@ -122,6 +121,18 @@ function showField(name){
                                                             <label class="col-md-3 control-label">Pages</label>
                                                             <div class="col-md-4">
                                                                 <input type="text" class="form-control"  name="published_page" placeholder="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-md-3 control-label">Cited Link</label>
+                                                            <div class="col-md-4">
+                                                                <input type="text" class="form-control"  name="cited" placeholder="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-md-3 control-label">Cited Count</label>
+                                                            <div class="col-md-1">
+                                                                <input type="text" class="form-control"  name="cited_count" placeholder="">
                                                             </div>
                                                         </div>
 

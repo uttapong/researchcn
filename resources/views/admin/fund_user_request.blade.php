@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="row">
-        <div class="col-xs-12 col-md-12 col-lg-10 col-lg-offset-1">
+        <div class="col-xs-12 col-md-12 col-lg-12">
             <div class="portlet light portlet-fit ">
                 <div class="portlet-title">
                     <div class="caption">
@@ -55,7 +55,7 @@
                                                         else {
                                                             print('<span class="pull-right">');
                                                             print('<b>' . $application->documents[$i]['file_status'] . '</b>');
-                                                            if ($application->documents[$i]['file_status'] == 'Approve') 
+                                                            if ($application->documents[$i]['file_status'] == 'Approve')
                                                                 print(' <span class="icon-check font-green-sharp" style="margin-right: 7px">');
                                                             else print(' <span class="icon-close font-red" style="margin-right: 7px">');
                                                             print('</span>');
@@ -73,7 +73,7 @@
                                                     else {
                                                         print('<span class="pull-right">');
                                                         print('<b>' . $application->appStatus . '</b>');
-                                                        if ($application->appStatus == 'Approve') 
+                                                        if ($application->appStatus == 'Approve')
                                                             print(' <span class="icon-check font-green-sharp" style="margin-right: 7px">');
                                                         else print(' <span class="icon-close font-red" style="margin-right: 7px">');
                                                         print('</span>');

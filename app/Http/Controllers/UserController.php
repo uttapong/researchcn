@@ -10,6 +10,7 @@ use DB;
 use App\Research as Research;
 use App\User;
 use Validator;
+use App;
 class UserController extends Controller
 {
     /**
@@ -19,6 +20,7 @@ class UserController extends Controller
      */
     public function __construct()
     {
+      App::setLocale('en');
 
     }
 

@@ -13,7 +13,7 @@ class Research extends Model
      * @var array
      */
     protected $fillable = [
-        'title', 'authors','field','keywords', 'abstract','type','publication_name','published_year','issue','published_month','published_page','creator','full_text_file','article_file','cover_file'
+        'title', 'authors','field','keywords', 'abstract','type','publication_name','published_year','issue','published_month','published_page','creator','cited','cited_count','full_text_file','article_file','cover_file'
     ];
 
     /**
@@ -25,7 +25,7 @@ class Research extends Model
         'password', 'remember_token',
     ];
     public function getShortTitle(){
-      return  iconv_substr($this->title, 0,60, "UTF-8")."...";
+      return  iconv_substr($this->title, 0,120, "UTF-8");
     }
     public function getShortAbstract(){
       return  iconv_substr($this->abstract, 0,300, "UTF-8")."...";

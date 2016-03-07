@@ -60,6 +60,13 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a href="{{route('base_rscn')}}" class="nav-link nav-toggle">
+                    <i class="icon-magnifier"></i>
+                    <span class="title" style="margin-top: 12px">ค้นหางานวิจัย</span>
+                    <span class="arrow"></span>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-layers"></i>
                     <span class="title" style="margin-top: 12px">ทุนวิจัย</span>
@@ -74,27 +81,27 @@
                     </li>
                     <li class="nav-item">
                         <a href="{{route('fund_ago')}}" class="nav-link">
-                            <i class="icon-layers"></i>
+                            <i class="icon-clock"></i>
                             <span class="title">ทุนที่ผ่านมา</span>
                             <!-- <span class="badge badge-success">1</span> -->
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="{{route('fund_request')}}" class="nav-link">
-                            <i class="icon-layers"></i>
+                            <i class="icon-user-following"></i>
                             <span class="title">ทุนที่ท่านเสนอขอ</span>
                             <!-- <span class="badge badge-danger">1</span> -->
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="{{route('fund_manage')}}" class="nav-link">
-                            <i class="icon-settings"></i>
+                            <i class="icon-list"></i>
                             <span class="title">จัดการทุนทั้งหมด
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="{{route('fund_user_request_choose')}}" class="nav-link">
-                            <i class="icon-settings"></i>
+                            <i class="icon-user"></i>
                             <span class="title">รายชื่อผู้ขอทุน/อนุมัติเอกสาร
                         </a>
                     </li>
@@ -102,32 +109,32 @@
             </li>
             <li class="nav-item">
                 <a href="javascript:;" class="nav-link nav-toggle">
-                    <i class="icon-settings"></i>
+                    <i class="icon-briefcase"></i>
                     <span class="title" style="margin-top: 12px">ฐานข้อมูลงานวิจัย</span>
                     <span class="arrow"></span>
                 </a>
                 <ul class="sub-menu">
                     <li class="nav-item">
                         <a href="{{route('dashboard_rscn')}}" class="nav-link">
-                            <i class="icon-settings"></i>
+                            <i class="icon-graph"></i>
                             <span class="title">สถิติงานวิจัย
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="{{route('base_rscn')}}" class="nav-link">
-                            <i class="icon-settings"></i>
+                            <i class="icon-list"></i>
                             <span class="title">งานวิจัยทั้งหมด
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="{{route('new_research')}}" class="nav-link">
-                            <i class="icon-settings"></i>
+                            <i class="icon-plus"></i>
                             <span class="title">เพิ่มงานวิจัย
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="{{route('fund_manage')}}" class="nav-link">
-                            <i class="icon-settings"></i>
+                            <i class="icon-trophy"></i>
                             <span class="title">เพิ่มสิ่งประดิษฐ์และรางวัล
                         </a>
                     </li>
@@ -146,8 +153,8 @@
                 <ul class="sub-menu">
                   <li class="nav-item">
                       <a href="{{route('user_manage')}}" class="nav-link">
-                          <i class="icon-settings"></i>
-                          <span class="title">จัดการผู้ใช้งาน
+                          <i class="icon-user"></i>
+                          <span class="title">จัดการผู้ใช้งาน</span>
                       </a>
                   </li>
                 </ul>
@@ -173,7 +180,7 @@
                     </li>
                     <li class="nav-item">
                         <a href="page_user_profile_1_account.html" class="nav-link">
-                            <i class="icon-user-female"></i>
+                            <i class="icon-lock"></i>
                             <span class="title">ข้อมูลการเข้าใช้งานระบบ</span>
                         </a>
                     </li>
