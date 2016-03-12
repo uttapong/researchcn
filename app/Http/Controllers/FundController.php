@@ -6,6 +6,7 @@ use DB;
 use Auth;
 use App\Fund as Fund;
 use App\Upload as Upload;
+use App\Download as Download;
 use App\Application as Application;
 use Illuminate\Http\Request;
 
@@ -61,6 +62,7 @@ class FundController extends Controller {
 				$fund->upload_start = date_format(date_create($fund->upload_start), "d-m-Y");
 				$fund->upload_end = date_format(date_create($fund->upload_end), "d-m-Y");
 				$fund->contract_end = date_format(date_create($fund->contract_end), "d-m-Y");
+				$fund->created_date = date_format($fund->created_at, "d-m-Y");
 			}
 		}
 
@@ -144,9 +146,44 @@ class FundController extends Controller {
 
 	public function fundFileUploadInsert(Request $request) {
 		$id = $request->input('id', 0);
+		$completed=[];
 
-		print($id);
+		if ($request->hasFile('files')) {
+			$files = $request->file('files', null);
+			foreach ($files as $key => $file) {
+				$fileSize=$file->getSize();
+				$fileName = $file->getClientOriginalName();
+				// $filePath=
+				$filePath='file/'.$fileName;
+				$file->move('file/',$fileName);
+				$download=Download::create(['file_path'=>$filePath,'fund_id'=>$id]);
+				if($download){
+					array_push($completed,(object) array('name' => $fileName,'size'=>$fileSize,'url'=>url('/').'/'.$filePath));
+				}
+			}
+		}
+			return response()->json(['files'=>$completed]);
+
 	}
+
+	public function fundFileDelete(Request $request,$downloadid) {
+		$id = $request->input('id', 0);
+		$result=null;
+		$download=Download::find($downloadid);
+		if ($download) {
+			// Remove old file from directory
+			if (file_exists($download->file_path)) {
+				$result=unlink($download->file_path);
+				$download->delete();
+			}
+		}
+		if($result)
+		return response()->json(['id'=>$downloadid]);
+
+		return response()->json(['error'=>'Error, can not remove file.']);
+
+	}
+
 
 	public function formSignedAgreement(Request $request) {
 		$request_id = $request->get('request_id', null);

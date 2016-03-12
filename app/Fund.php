@@ -17,4 +17,7 @@ class Fund extends Model
     {
         return $this->hasMany('App\Application', 'fund');
     }
+    public function downloads(){
+      return $this->hasMany('App\Download','fund_id');
+    }
 }

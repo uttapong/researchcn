@@ -1,0 +1,7 @@
+
+.file_list{
+  list-style-type: none;
+}
+.file_list .date{
+  font-size:0.8em;
+}

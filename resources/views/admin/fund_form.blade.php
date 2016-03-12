@@ -65,6 +65,32 @@
                                     </div>
                                 </div>
                             </div>
+                            @if($fund->downloads)
+                            <div class="form-group margin-top-20">
+                              <label class="control-label col-md-3">เอกสารสำหรับดาวน์โหลด</label>
+                              <div class="col-md-8">
+
+                                              @foreach($fund->downloads as $download)
+                                                <li class="file_list" id="download_{{$download->id}}">
+
+
+                                                    <div class="list-item-content">
+                                                          <div style="float:left">
+                                                            <a href="{{route('base')}}/{{$download->file_path}}"><i class="fa fa-file"></i> {{$download->filename()}}</a>
+                                                            <p class='date'><i class="fa fa-clock-o"></i> {{$download->created_at}}</p>
+                                                          </div>
+                                                            <div style="float:right">
+                                                              <!-- <button class="btn green-sharp btn-large" data-toggle="confirmation" data-original-title="Are you sure ?" title="" aria-describedby="confirmation706230">Default configuration</button> -->
+                                                            <button downloadid="{{$download->id}}" class='confirm btn btn-danger' type="button" data-toggle="confirmation" data-original-title="Are you sure ?" title=""  class='btn btn-danger'><i class="icon-close"></i></button>
+                                                          </div>
+                                                          <div class="clearfix"></div>
+                                                    </div>
+                                                    <div class='error'></div>
+                                                </li>
+@endforeach
+                              </div>
+                            </div>
+                            @endif
                             <div class="form-group margin-top-20">
                                 <label class="control-label col-md-3">
                                 </label>
@@ -72,9 +98,9 @@
                                     <div class="input-icon right">
                                         <button id="file_upload" type="button" class="btn btn-success">
                                             <i class="glyphicon glyphicon-upload"></i>
-                                            <span>อัพโหลดแบบฟอร์ม</span>
+                                            <span>อัพโหลดเอกสารเพิ่ม</span>
                                         </button>
-                                        <span class="help-block">* ต้องทำรายการเพิ่มทุนให้เรียบร้อยก่อน ถึงจะสามารถใช้งานอัพโหลดแบบฟอร์มได้</span>
+                                        <span class="help-block alert alert-info">* ต้องทำรายการเพิ่มทุนให้เรียบร้อยก่อน จึงจะสามารถใช้งานอัพโหลดเอกสารได้</span>
                                     </div>
                                 </div>
                             </div>
@@ -191,6 +217,11 @@
     </div>
 <script type="text/javascript">
     $(document).ready(function () {
+
+        $(".confirm").on("confirmed.bs.confirmation",function(){
+          confirmDelete(this.getAttribute("downloadid"));
+        }
+        );
         // Add class selected navigator
         $('#main_fund, #sub4_fund').addClass("active open");
         $('#main_fund a, #sub4_fund a').append("<span class='selected'></span>");
@@ -264,6 +295,20 @@
                 window.location = "{{ $fund ? route('fund_form_file_upload', array('id' => $fund->id)) : null }}";
             }
         });
+
     });
+
+
+    function confirmDelete(downloadid){
+      $.ajax( {
+        url: "{{ route('base_rswk') }}/fund_file_delete/"+downloadid,
+        dataType: 'json'
+      })
+      .done(function(msg) {
+        if(msg.id)$('#download_'+msg.id).slideUp();
+        else $('#download_'+downloadid+">.error").html("<span class='alert alert-danger'>"+msg.error+"</span>");
+
+      });
+    }
 </script>
 @endsection
