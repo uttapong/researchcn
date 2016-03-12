@@ -26,6 +26,9 @@
         <link href="{{ asset('plugins/fancybox/source/jquery.fancybox.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('plugins/datatables/datatables.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('plugins/datatables/plugins/bootstrap/datatables.bootstrap.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('plugins/jquery-file-upload/blueimp-gallery/blueimp-gallery.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('plugins/jquery-file-upload/css/jquery.fileupload.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('plugins/jquery-file-upload/css/jquery.fileupload-ui.css') }}" rel="stylesheet" type="text/css" />
         <!-- END PAGE LEVEL PLUGINS -->
         <!-- BEGIN THEME GLOBAL STYLES -->
         <link href="{{ asset('css/components.min.css') }}" rel="stylesheet" id="style_components" type="text/css" />
@@ -58,6 +61,20 @@
         <script src="{{ asset('scripts/datatable.js') }}" type="text/javascript"></script>
         <script src="{{ asset('plugins/datatables/datatables.min.js') }}" type="text/javascript"></script>
         <script src="{{ asset('plugins/datatables/plugins/bootstrap/datatables.bootstrap.js') }}" type="text/javascript"></script>
+
+        <script src="{{ asset('plugins/jquery-file-upload/js/vendor/jquery.ui.widget.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('plugins/jquery-file-upload/js/vendor/tmpl.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('plugins/jquery-file-upload/js/vendor/load-image.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('plugins/jquery-file-upload/js/vendor/canvas-to-blob.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('plugins/jquery-file-upload/blueimp-gallery/jquery.blueimp-gallery.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('plugins/jquery-file-upload/js/jquery.iframe-transport.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('plugins/jquery-file-upload/js/jquery.fileupload.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('plugins/jquery-file-upload/js/jquery.fileupload-process.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('plugins/jquery-file-upload/js/jquery.fileupload-image.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('plugins/jquery-file-upload/js/jquery.fileupload-audio.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('plugins/jquery-file-upload/js/jquery.fileupload-video.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('plugins/jquery-file-upload/js/jquery.fileupload-validate.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('plugins/jquery-file-upload/js/jquery.fileupload-ui.js') }}" type="text/javascript"></script>
         <!-- END PAGE LEVEL PLUGINS -->
         <!-- BEGIN THEME GLOBAL SCRIPTS -->
         <script src="{{ asset('scripts/app.min.js') }}" type="text/javascript"></script>

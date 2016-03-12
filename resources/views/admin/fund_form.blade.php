@@ -56,20 +56,25 @@
                                 </div>
                             </div>
                             <div class="form-group margin-top-20">
-                                <label class="control-label col-md-3">เอกสารสัญญาทุน
-                                </label>
-                                <div class="col-md-5">
-                                    <input type="file" class="form-control" name="contract_file"/>
-                                    <span class="help-block">{{ $fund ? $fund->contract_file : null }}</span>
-                                </div>
-                            </div>
-                            <div class="form-group margin-top-20">
                                 <label class="control-label col-md-3">รายละเอียดทุน
                                 </label>
                                 <div class="col-md-8">
                                     <div class="input-icon right">
                                         <i class="fa"></i>
                                         <textarea class="form-control" rows="4" name="description" style="resize: none;"/>{{ $fund ? $fund->description : null }}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group margin-top-20">
+                                <label class="control-label col-md-3">
+                                </label>
+                                <div class="col-md-8">
+                                    <div class="input-icon right">
+                                        <button id="file_upload" type="button" class="btn btn-success">
+                                            <i class="glyphicon glyphicon-upload"></i>
+                                            <span>อัพโหลดแบบฟอร์ม</span>
+                                        </button>
+                                        <span class="help-block">* ต้องทำรายการเพิ่มทุนให้เรียบร้อยก่อน ถึงจะสามารถใช้งานอัพโหลดแบบฟอร์มได้</span>
                                     </div>
                                 </div>
                             </div>
@@ -184,7 +189,6 @@
             </div>
         </div>
     </div>
-
 <script type="text/javascript">
     $(document).ready(function () {
         // Add class selected navigator
@@ -248,6 +252,16 @@
             },
             submitHandler: function(e) {
                 i.show(), r.hide(), e[0].submit()
+            }
+        });
+
+        $('#file_upload').click(function () {
+            var fund = '{{ $fund }}';
+            if (!fund) {
+                alert('ต้องทำรายการเพิ่มทุนให้เรียบร้อยก่อน');
+            }
+            else {
+                window.location = "{{ $fund ? route('fund_form_file_upload', array('id' => $fund->id)) : null }}";
             }
         });
     });

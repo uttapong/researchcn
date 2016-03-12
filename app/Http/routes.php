@@ -28,7 +28,7 @@ Route::group(['middleware' => 'web','prefix' => 'rscn'], function () {
 	Route::post('advance_search', [ 'as' => 'advance_search', 'uses' => 'ResearchCenterController@advancesearch']);
 	Route::get('new_research', 'ResearchCenterController@new_research');
 	Route::post('new_research', [ 'as' => 'new_research', 'uses' => 'ResearchCenterController@add']);
-  Route::post('research_detail/{researchid}', [ 'as' => 'research_detail', 'uses' => 'ResearchCenterController@detail']);
+  	Route::post('research_detail/{researchid}', [ 'as' => 'research_detail', 'uses' => 'ResearchCenterController@detail']);
 
 	Route::get('preview/{researchid}', [ 'as' => 'preview_research', 'uses' => 'ResearchCenterController@preview']);
 });
@@ -89,11 +89,13 @@ Route::group(['middleware' => 'web','prefix' => 'rswk'], function () {
 
 	Route::get('rscn_home', [ 'as' => 'rscn_home', 'uses' => 'ResearchCenterController@index']);
   	Route::get('fund_form', [ 'as' => 'fund_form','middleware' => 'auth', 'uses' => 'FundController@fundForm']);
+  	Route::get('fund_form_file_upload', [ 'as' => 'fund_form_file_upload','middleware' => 'auth', 'uses' => 'FundController@fundFormFileUpload']);
 
 	Route::get('fund_manage', [ 'as' => 'fund_manage','middleware' => 'auth', 'uses' =>'FundController@fundManage']);
 	Route::get('fund_user_request_choose', [ 'as' => 'fund_user_request_choose','middleware' => 'auth', 'uses' =>'ApplicationController@applicationUserRequestChoose']);
 	Route::get('fund_user_request', [ 'as' => 'fund_user_request','middleware' => 'auth', 'uses' =>'ApplicationController@applicationUserRequest']);
 	Route::post('fund_insert_update',[ 'as' => 'fund_insert_update','middleware' => 'auth', 'uses' => 'FundController@fundInsertUpdate']);
+	Route::post('fund_file_upload_insert',[ 'as' => 'fund_file_upload_insert','middleware' => 'auth', 'uses' => 'FundController@fundFileUploadInsert']);
 	Route::get('fund_delete/{id}',[ 'as' => 'fund_delete','middleware' => 'auth', 'uses' => 'FundController@fundDelete']);
 
 	Route::get('register_fund/{fundId}',[ 'as' => 'register_fund','middleware' => 'auth', 'uses' => 'ApplicationController@registerFund']);

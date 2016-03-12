@@ -55,11 +55,13 @@ class FundController extends Controller {
 
 		if ($id != 0) {
 			$fund = Fund::find($id);
-			$fund->apply_start = date_format(date_create($fund->apply_start), "d-m-Y");
-			$fund->apply_end = date_format(date_create($fund->apply_end), "d-m-Y");
-			$fund->upload_start = date_format(date_create($fund->upload_start), "d-m-Y");
-			$fund->upload_end = date_format(date_create($fund->upload_end), "d-m-Y");
-			$fund->contract_end = date_format(date_create($fund->contract_end), "d-m-Y");
+			if ($fund) {
+				$fund->apply_start = date_format(date_create($fund->apply_start), "d-m-Y");
+				$fund->apply_end = date_format(date_create($fund->apply_end), "d-m-Y");
+				$fund->upload_start = date_format(date_create($fund->upload_start), "d-m-Y");
+				$fund->upload_end = date_format(date_create($fund->upload_end), "d-m-Y");
+				$fund->contract_end = date_format(date_create($fund->contract_end), "d-m-Y");
+			}
 		}
 
 		return view('admin.fund_form', [
@@ -125,6 +127,25 @@ class FundController extends Controller {
 		$fund->delete();
 
 		return redirect()->route('fund_manage');
+	}
+
+	public function fundFormFileUpload(Request $request) {
+		$fundId = $request->get('id', 0);
+
+		$fund = Fund::find($fundId);
+		if (!$fund) {
+			return redirect()->route('fund_manage');
+		}
+
+		return view('admin.fund_form_file_upload', [
+			'fundId' => $fundId
+		]);
+	}
+
+	public function fundFileUploadInsert(Request $request) {
+		$id = $request->input('id', 0);
+
+		print($id);
 	}
 
 	public function formSignedAgreement(Request $request) {
