@@ -33,7 +33,7 @@ a{
             </a> -->
 
             @if(Auth::user()&&Auth::user()->is('admin'))
-            <a  href="{{route('rscn_home')}}"><h3 class="thai">Administration Panel</h3></a>
+            <a  href="{{route('rscn_home')}}"><h3 class="thai">{{trans('header.admin_title')}}</h3></a>
             @else
             <a  href="{{route('home')}}"><h3 class="thai">คณะพยาบาลศาสตร์ มหาวิทยาลัยธรรมศาสตร์</h3></a>
             @endif
@@ -56,8 +56,8 @@ a{
                         <ul class="dropdown-menu">
                             <li class="external">
                                 <h3>
-                                    <span class="bold">12 pending</span> notifications</h3>
-                                <a href="page_user_profile_1.html">view all</a>
+                                    <span class="bold">12 </span>{{trans('header.pending_notification')}}</h3>
+                                <a href="page_user_profile_1.html">{{trans('header.view_all')}}</a>
                             </li>
                             <li>
                                 <ul class="dropdown-menu-list scroller" style="height: 250px;" data-handle-color="#637283">
@@ -156,7 +156,7 @@ a{
                         </a>
                         <ul class="dropdown-menu">
                             <li class="external">
-                                <h3>Select Language {{App::getLocale()}}</h3>
+                                <h3>Select Language </h3>
                             </li>
                             <li>
                                 <ul class="dropdown-menu-list scroller" style="height: 275px;" data-handle-color="#637283">
@@ -185,12 +185,12 @@ a{
                         <ul class="dropdown-menu dropdown-menu-default">
                             <li>
                                 <a href="{{route('user_detail',['userid'=>Auth::user()->id])}}">
-                                    <i class="icon-user"></i> My Profile </a>
+                                    <i class="icon-user"></i> {{trans('header.my_profile')}} </a>
                             </li>
                             <li class="divider"> </li>
                             <li>
                                 <a href="{{route('logout')}}">
-                                    <i class="icon-key"></i> Log Out </a>
+                                    <i class="icon-key"></i> {{trans('header.log_out')}}</a>
                             </li>
                         </ul>
                     </li>
