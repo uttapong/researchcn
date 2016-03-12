@@ -13,10 +13,11 @@
 
 Route::any('uploads', [ 'as' => 'uploads', 'middleware' => 'auth']);
 
-Route::get('lang/{locale}',[ 'as' => 'lang', function ($locale) {
-    App::setLocale($locale);
-    return Redirect::back();
-}]);
+// Route::get('lang/{locale}',[ 'as' => 'lang', function ($locale) {
+//     App::setLocale($locale);
+//     return Redirect::back();
+// }]);
+
 
 Route::group(['middleware' => 'web','prefix' => 'rscn'], function () {
 
@@ -49,6 +50,12 @@ Route::group(['middleware' => ['web']], function () {
   Route::get('logout',[ 'as' => 'logout',  'uses' =>'Auth\AuthController@logout']);
   Route::get('register', 'Auth\AuthController@showRegistrationForm');
   Route::post('register', 'Auth\AuthController@register');
+
+
+  Route::get('lang/{lang}', ['as'=>'lang.switch', 'uses'=>'HomeController@switchLang']);
+  Route::any('/', [ 'as' => 'base', function () {
+    return view('dashboard');
+  }]);
 });
 // Route::get('login', 'Auth\AuthController@showLoginForm');
 
@@ -57,9 +64,7 @@ Route::group(['middleware' => ['web']], function () {
 // Route::post('login', 'Auth\AuthController@login');
 // Route::get('logout', 'Auth\AuthController@logout');
 
-Route::any('/', [ 'as' => 'base', function () {
-  return view('dashboard');
-}]);
+
 
 Route::group(['middleware' => ['web','auth']], function () {
 

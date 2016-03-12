@@ -156,15 +156,15 @@ a{
                         </a>
                         <ul class="dropdown-menu">
                             <li class="external">
-                                <h3>Select Language</h3>
+                                <h3>Select Language {{App::getLocale()}}</h3>
                             </li>
                             <li>
                                 <ul class="dropdown-menu-list scroller" style="height: 275px;" data-handle-color="#637283">
                                     <li>
-                                        <a href="{{route('lang',['locale'=>'th'])}}"><span class="subject">
+                                        <a href="{{ route('lang.switch', 'th') }}"><span class="subject">
                                               ภาษาไทย
                                             </span></a>
-                                            <a href="{{route('lang',['locale'=>'en'])}}"><span class="subject">
+                                            <a href="{{ route('lang.switch', 'en') }}"><span class="subject">
                                                   English
                                                 </span></a>
                                     </li>

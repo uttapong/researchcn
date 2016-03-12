@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'url' => 'http://researchcn.local',
+    'url' => 'http://localhost/researchcn/',
 
     /*
     |--------------------------------------------------------------------------
