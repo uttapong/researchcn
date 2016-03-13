@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Authentication Language Lines
@@ -29,6 +28,5 @@ return [
     'administration'=>'Administration',
     'manage_users'=>'Manage Users',
     'register'=>'Register',
-
 
 ];

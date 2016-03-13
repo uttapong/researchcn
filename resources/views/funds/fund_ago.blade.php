@@ -6,28 +6,27 @@
             <div class="portlet light portlet-fit">
                 <div class="portlet-title">
                     <div class="caption">
-                        <span class="font-red sbold">ทุนที่ผ่านมา</span>
+                        <span class="font-red sbold">{{ trans('fund.recent_funds-title') }}</span>
                     </div>
                 </div>
                 <div class="portlet-body">
-                    <?php if (count($funds) == 0) {
-                        print('<div class="text-center">ไม่มีทุนที่ผ่านมา</div>');
-                    }
-                    else {?>
+                    @if(count($funds) == 0)
+                        <div class="text-center">{{ trans('fund.recent_funds-not_have') }}</div>
+                    @else
                         <div class="table-scrollable table-scrollable-borderless">
                             <table class="table table-hover table-light">
                                 <tbody>
-                                    <?php foreach($funds as $fund) { ?>
-                                    <tr>
-                                        <td align="left">
-                                            <?php print ($fund->name) ?>
-                                        </td>
-                                    </tr>
-                                    <?php } ?>
+                                    @foreach($funds as $fund)
+                                        <tr>
+                                            <td align="left">
+                                                {{ $fund->name }}
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
-                    <?php } ?>
+                    @endif
                 </div>
             </div>
         </div>

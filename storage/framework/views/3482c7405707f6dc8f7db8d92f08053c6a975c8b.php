@@ -4,65 +4,68 @@
             <div class="portlet light portlet-fit">
                 <div class="portlet-title">
                     <div class="caption">
-                        <span class="font-red sbold">ทุนปัจจุบันทั้งหมด</span>
+                        <span class="font-red sbold"><?php echo e(trans('fund.current_funds-title')); ?></span>
                     </div>
                 </div>
                 <div class="portlet-body">
-                    <?php if (count($funds) == 0) {
-                        print('<div class="text-center">ปัจจุบันไม่มีทุนที่สามารถสมัครได้</div>');
-                    }
-                    else {?>
+                    <?php if(count($funds) == 0): ?>
+                        <div class="text-center"><?php echo e(trans('fund.current_funds-not_have')); ?></div>
+                    <?php else: ?>
                         <div class="table-scrollable table-scrollable-borderless">
                             <table class="table table-hover table-light">
                                 <tbody>
-                                    <?php foreach($funds as $fund) { ?>
-                                    <tr>
-                                        <td align="left">
-                                            <?php print ($fund->name) ?>
-                                        </td>
-                                        <td align="right">
-                                            <button type="button" data-id="<?php print ($fund->id) ?>" class="btn btn-info" data-singleton="true" data-toggle="confirmation" data-placement="top" data-btn-ok-label="ตกลง" data-btn-cancel-label="ยกเลิก" data-original-title="ยืนยันการสมัคร <?php print($fund->name) ?>" <?php echo e($fund->registered ? 'disabled' : null); ?>>
-                                                <?php echo e($fund->registered ? 'สมัครแล้ว' : 'สมัครทุน'); ?>
+                                    <?php foreach($funds as $fund): ?>
+                                        <tr>
+                                            <td align="left">
+                                                <?php echo e($fund->name); ?>
 
-                                            </button>
-                                            <button type="button" class="btn btn-primary" onclick="$('#files_'+<?php echo e($fund->id); ?>).toggle();"><i class="fa fa-download"></i> Download files</button>
-                                        </td>
-                                    </tr>
-                                    <tr id="files_<?php echo e($fund->id); ?>" style="display:none;padding: 0 5px 5px 5px;background-color: #efefef;">
-                                      <td align="left" colspan="2">
-                                        <?php if($fund->downloads): ?>
-                                        <div class="form-group margin-top-20">
-                                          <label class="control-label col-md-3">เอกสารสำหรับดาวน์โหลด</label>
-                                          <div class="col-md-8">
+                                            </td>
+                                            <td align="right">
+                                                <?php if(count($fund->downloads) > 0): ?>
+                                                    <button type="button" class="btn btn-primary" onclick="$('#files_'+<?php echo e($fund->id); ?>).toggle();">
+                                                        <i class="fa fa-download"></i> Download files
+                                                    </button>
+                                                <?php endif; ?>
+                                                <button type="button" data-id="<?php print ($fund->id) ?>" class="btn btn-info" data-singleton="true" data-toggle="confirmation" data-placement="top" data-btn-ok-label="ตกลง" data-btn-cancel-label="ยกเลิก" data-original-title="<?php echo e(trans('fund.current_funds-confirm_apply') . ' ' . $fund->name); ?>" <?php echo e($fund->registered ? 'disabled' : null); ?>>
+                                                    <?php echo e($fund->registered ? trans('fund.current_funds-applied_btn') : trans('fund.current_funds-apply_btn')); ?>
 
-                                                          <?php foreach($fund->downloads as $download): ?>
-                                                            <li class="file_list" id="download_<?php echo e($download->id); ?>">
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr id="files_<?php echo e($fund->id); ?>" style="display:none;padding: 0 5px 5px 5px;background-color: #efefef;">
+                                            <td align="left" colspan="2">
+                                                <?php if(count($fund->downloads) > 0): ?>
+                                                    <div class="form-group margin-top-20">
+                                                        <label class="control-label col-md-3">เอกสารสำหรับดาวน์โหลด</label>
+                                                        <div class="col-md-8">
+                                                            <?php foreach($fund->downloads as $download): ?>
+                                                                <li class="file_list" id="download_<?php echo e($download->id); ?>">
+                                                                    <div class="list-item-content">
+                                                                        <div style="float:left">
+                                                                            <a href="<?php echo e(route('base')); ?>/<?php echo e($download->file_path); ?>" download>
+                                                                                <i class="fa fa-file"></i> <?php echo e($download->filename()); ?>
 
+                                                                            </a>
+                                                                            <p class='date'>
+                                                                                <i class="fa fa-clock-o"></i> <?php echo e($download->created_at); ?>
 
-                                                                <div class="list-item-content">
-                                                                      <div style="float:left">
-                                                                        <a href="<?php echo e(route('base')); ?>/<?php echo e($download->file_path); ?>"><i class="fa fa-file"></i> <?php echo e($download->filename()); ?></a>
-                                                                        <p class='date'><i class="fa fa-clock-o"></i> <?php echo e($download->created_at); ?></p>
-                                                                      </div>
-                                                                        <div style="float:right">
-                                                                          <!-- <button class="btn green-sharp btn-large" data-toggle="confirmation" data-original-title="Are you sure ?" title="" aria-describedby="confirmation706230">Default configuration</button> -->
-                                                                        <button downloadid="<?php echo e($download->id); ?>" class='confirm btn btn-danger' type="button" data-toggle="confirmation" data-original-title="Are you sure ?" title=""  class='btn btn-danger'><i class="icon-close"></i></button>
-                                                                      </div>
-                                                                      <div class="clearfix"></div>
-                                                                </div>
-                                                                <div class='error'></div>
-                                                            </li>
-            <?php endforeach; ?>
-                                          </div>
-                                        </div>
-                                        <?php endif; ?>
-                                      </td>
-                                    </tr>
-                                    <?php } ?>
+                                                                            </p>
+                                                                        </div>
+                                                                        <div class="clearfix"></div>
+                                                                    </div>
+                                                                    <div class='error'></div>
+                                                                </li>
+                                                            <?php endforeach; ?>
+                                                        </div>
+                                                    </div>
+                                                <?php endif; ?>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
                                 </tbody>
                             </table>
                         </div>
-                    <?php } ?>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

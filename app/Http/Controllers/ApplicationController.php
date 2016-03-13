@@ -261,8 +261,9 @@ class ApplicationController extends Controller {
 		->where('fund', $id)
 		->select('applications.id', 'applications.status', 'funds.name as fundName', 'users.name as userName')
 		->get();
-
-		if (!$applications) {
+		
+		$fund = Fund::find($id);
+		if (!$fund) {
 			return redirect()->route('fund_user_request_choose');
 		}
 
@@ -302,7 +303,7 @@ class ApplicationController extends Controller {
 
 		return view('admin.fund_user_request', [
 			'applications' => $applications,
-			'fundName' => Fund::find($id)->name
+			'fundName' => $fund->name
 		]);
 	}
 
