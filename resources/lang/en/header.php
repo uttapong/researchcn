@@ -14,7 +14,21 @@ return [
     */
 
     'lang' => 'English',
+    'admin_title'=>'Administration Panel',
+    'select_lang'=>'Select languange',
+    'my_profile'=>'My Profile',
+    'log_out'=>'Log out',
+    'pending_notification'=>'Pending notifications',
+    'view_all'=>'View all',
+    'admin_title'=>'Administration Panel',
+    'admin_title'=>'Administration Panel',
+    'admin_title'=>'Administration Panel',
+    'admin_title'=>'Administration Panel',
+    'admin_title'=>'Administration Panel',
+    'admin_title'=>'Administration Panel',
+    'admin_title'=>'Administration Panel',
+
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 
- 
+
 ];

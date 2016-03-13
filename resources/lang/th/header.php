@@ -14,6 +14,11 @@ return [
     */
 
     'lang' => 'ภาษาไทย',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'admin_title'=>'หน้าผู้ดูแลระบบ',
+    'select_lang'=>'เลือกภาษา',
+    'my_profile'=>'ข้อมูลผู้ใช้งาน',
+    'log_out'=>'ออกจากระบบ',
+    'pending_notification'=>'การแจ้งเตือนที่ไม่ได้อ่าน',
+    'view_all'=>'ดูทั้งหมด',
 
 ];

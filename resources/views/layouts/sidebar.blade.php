@@ -16,34 +16,34 @@
           <li class="nav-item" id="main_data_research">
               <a href="{{route('base_rscn')}}" class="nav-link nav-toggle">
                   <i class="icon-layers"></i>
-                  <span class="title" style="margin-top: 12px">ฐานข้อมูลงานวิจัย</span>
+                  <span class="title" style="margin-top: 12px">{{trans('menu.research_database')}}</span>
                   <span class="arrow"></span>
               </a>
           </li>
           <li class="nav-item" id="main_fund">
               <a href="javascript:;" class="nav-link nav-toggle">
                   <i class="icon-layers"></i>
-                  <span class="title" style="margin-top: 12px">ทุนวิจัย</span>
+                  <span class="title" style="margin-top: 12px">{{trans('menu.fund')}}</span>
                   <span class="arrow"></span>
               </a>
               <ul class="sub-menu">
                   <li class="nav-item" id="sub1_fund">
                       <a href="{{route('list_fund')}}" class="nav-link">
                           <i class="icon-layers"></i>
-                          <span class="title">ทุนปัจจุบัน</span>
+                          <span class="title">{{trans('menu.current_funds')}}</span>
                       </a>
                   </li>
                   <li class="nav-item" id="sub2_fund">
                       <a href="{{route('fund_ago')}}" class="nav-link">
                           <i class="icon-layers"></i>
-                          <span class="title">ทุนที่ผ่านมา</span>
+                          <span class="title">{{trans('menu.recent_funds')}}</span>
                           <!-- <span class="badge badge-success">1</span> -->
                       </a>
                   </li>
                   <li class="nav-item" id="sub3_fund">
                       <a href="{{route('fund_request')}}" class="nav-link">
                           <i class="icon-layers"></i>
-                          <span class="title">ทุนที่ท่านเสนอขอ</span>
+                          <span class="title">{{trans('menu.applied_funds')}}</span>
                           <!-- <span class="badge badge-danger">1</span> -->
                       </a>
                   </li>
@@ -54,54 +54,54 @@
             <li class="nav-item" id="main_stats">
                 <a href="{{route('dashboard')}}" class="nav-link nav-toggle">
                     <i class="icon-graph"></i>
-                    <span class="title" style="margin-top: 12px">สถิติทั้งหมด</span>
+                    <span class="title" style="margin-top: 12px">{{trans('menu.all_stat')}}</span>
                     <span class="arrow"></span>
                 </a>
             </li>
             <li class="nav-item" id="main_search_research">
                 <a href="{{route('base_rscn')}}" class="nav-link nav-toggle">
                     <i class="icon-magnifier"></i>
-                    <span class="title" style="margin-top: 12px">ค้นหางานวิจัย</span>
+                    <span class="title" style="margin-top: 12px">{{trans('menu.search')}}</span>
                     <span class="arrow"></span>
                 </a>
             </li>
             <li class="nav-item" id="main_fund">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-layers"></i>
-                    <span class="title" style="margin-top: 12px">ทุนวิจัย</span>
+                    <span class="title" style="margin-top: 12px">{{trans('menu.fund')}}</span>
                     <span class="arrow"></span>
                 </a>
                 <ul class="sub-menu">
                     <li class="nav-item" id="sub1_fund">
                         <a href="{{route('list_fund')}}" class="nav-link">
                             <i class="icon-layers"></i>
-                            <span class="title">ทุนปัจจุบัน</span>
+                            <span class="title">{{trans('menu.current_funds')}}</span>
                         </a>
                     </li>
                     <li class="nav-item" id="sub2_fund">
                         <a href="{{route('fund_ago')}}" class="nav-link">
                             <i class="icon-clock"></i>
-                            <span class="title">ทุนที่ผ่านมา</span>
+                            <span class="title">{{trans('menu.recent_funds')}}</span>
                             <!-- <span class="badge badge-success">1</span> -->
                         </a>
                     </li>
                     <li class="nav-item" id="sub3_fund">
                         <a href="{{route('fund_request')}}" class="nav-link">
                             <i class="icon-user-following"></i>
-                            <span class="title">ทุนที่ท่านเสนอขอ</span>
+                            <span class="title">{{trans('menu.applied_funds')}}</span>
                             <!-- <span class="badge badge-danger">1</span> -->
                         </a>
                     </li>
                     <li class="nav-item" id="sub4_fund">
                         <a href="{{route('fund_manage')}}" class="nav-link">
                             <i class="icon-list"></i>
-                            <span class="title">จัดการทุนทั้งหมด
+                            <span class="title">{{trans('menu.manage_funds')}}
                         </a>
                     </li>
                     <li class="nav-item" id="sub5_fund">
                         <a href="{{route('fund_user_request_choose')}}" class="nav-link">
                             <i class="icon-user"></i>
-                            <span class="title">รายชื่อผู้ขอทุน/อนุมัติเอกสาร
+                            <span class="title">{{trans('menu.applicator_list')}}
                         </a>
                     </li>
                 </ul>
@@ -109,32 +109,32 @@
             <li class="nav-item" id="main_data_research">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-briefcase"></i>
-                    <span class="title" style="margin-top: 12px">ฐานข้อมูลงานวิจัย</span>
+                    <span class="title" style="margin-top: 12px">{{trans('menu.research_database')}}</span>
                     <span class="arrow"></span>
                 </a>
                 <ul class="sub-menu">
                     <li class="nav-item" id="sub1_data_research">
                         <a href="{{route('dashboard_rscn')}}" class="nav-link">
                             <i class="icon-graph"></i>
-                            <span class="title">สถิติงานวิจัย
+                            <span class="title">{{trans('menu.research_stat')}}
                         </a>
                     </li>
                     <li class="nav-item" id="sub2_data_research">
                         <a href="{{route('base_rscn')}}" class="nav-link">
                             <i class="icon-list"></i>
-                            <span class="title">งานวิจัยทั้งหมด
+                            <span class="title">{{trans('menu.all_research')}}
                         </a>
                     </li>
                     <li class="nav-item" id="sub3_data_research">
                         <a href="{{route('new_research')}}" class="nav-link">
                             <i class="icon-plus"></i>
-                            <span class="title">เพิ่มงานวิจัย
+                            <span class="title">{{trans('menu.add_research')}}
                         </a>
                     </li>
                     <li class="nav-item" id="sub4_data_research">
                         <a href="{{route('fund_manage')}}" class="nav-link">
                             <i class="icon-trophy"></i>
-                            <span class="title">เพิ่มสิ่งประดิษฐ์และรางวัล
+                            <span class="title">{{trans('menu.add_patent')}}
                         </a>
                     </li>
                 </ul>
@@ -146,14 +146,14 @@
             <li class="nav-item" id="main_admin">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-settings"></i>
-                    <span class="title" style="margin-top: 12px">ผู้ดูแลระบบ</span>
+                    <span class="title" style="margin-top: 12px">{{trans('menu.administration')}}</span>
                     <span class="arrow"></span>
                 </a>
                 <ul class="sub-menu">
                   <li class="nav-item" id="sub1_admin">
                       <a href="{{route('user_manage')}}" class="nav-link">
                           <i class="icon-user"></i>
-                          <span class="title">จัดการผู้ใช้งาน</span>
+                          <span class="title">{{trans('menu.manage_users')}}</span>
                       </a>
                   </li>
                 </ul>
@@ -167,20 +167,20 @@
             <li class="nav-item">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-user"></i>
-                    <span class="title" style="margin-top: 12px">ข้อมูลส่วนตัว</span>
+                    <span class="title" style="margin-top: 12px">{{trans('menu.user')}}</span>
                     <span class="arrow"></span>
                 </a>
                 <ul class="sub-menu">
                     <li class="nav-item">
                         <a href="{{route('user_detail',['userid'=>Auth::user()->id])}}" class="nav-link">
                             <i class="icon-user"></i>
-                            <span class="title">ข้อมูลส่วนตัว</span>
+                            <span class="title">{{trans('menu.user_profile')}}</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="page_user_profile_1_account.html" class="nav-link">
                             <i class="icon-lock"></i>
-                            <span class="title">ข้อมูลการเข้าใช้งานระบบ</span>
+                            <span class="title">{{trans('menu.usage_log')}}</span>
                         </a>
                     </li>
                 </ul>

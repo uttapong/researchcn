@@ -45,10 +45,6 @@
                                                                         <a href="{{route('base')}}/{{$download->file_path}}"><i class="fa fa-file"></i> {{$download->filename()}}</a>
                                                                         <p class='date'><i class="fa fa-clock-o"></i> {{$download->created_at}}</p>
                                                                       </div>
-                                                                        <div style="float:right">
-                                                                          <!-- <button class="btn green-sharp btn-large" data-toggle="confirmation" data-original-title="Are you sure ?" title="" aria-describedby="confirmation706230">Default configuration</button> -->
-                                                                        <button downloadid="{{$download->id}}" class='confirm btn btn-danger' type="button" data-toggle="confirmation" data-original-title="Are you sure ?" title=""  class='btn btn-danger'><i class="icon-close"></i></button>
-                                                                      </div>
                                                                       <div class="clearfix"></div>
                                                                 </div>
                                                                 <div class='error'></div>
