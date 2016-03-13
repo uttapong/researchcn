@@ -14,6 +14,7 @@ return [
     'keyword' => 'Keyword',
     'keywords' => 'Keywords',
     'search' => 'Search',
+    'fulltext_abstract' => 'Full Text/Abstract',
     'advance_search' => 'Advance Search',
     'search_desc' => 'Global Search; Search from all information of research',
     'authors' => "Authors",

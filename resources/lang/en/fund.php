@@ -12,44 +12,46 @@ return [
     |
     */
 
-    'current_funds-title' => 'All Current Funds',
-    'current_funds-not_have_fund' => 'Not have the fund, Can\'t apply',
-    'current_funds-doc_download' => 'Documents for download',
+    'current_funds-title' => 'Current Funds',
+    'current_funds-not_have_fund' => 'There is no availabled funds for apply',
+    'current_funds-doc_download' => 'Availabled Documents',
     'current_funds-apply_btn' => 'Apply',
     'current_funds-applied_btn' => 'Applied',
-    'current_funds-confirm_apply' => 'Confirm apply',
+    'current_funds-confirm_apply' => 'Confirm application',
+
+    'recent_funds-not_have' => 'There is no currently application',
 
     'recent_funds-title' => 'Recent Funds',
-    'recent_funds-not_have_fund' => 'Not have recent fund',
+    'recent_funds-not_have_fund' => 'No recent fund',
 
     'form_user_request-state_fund' => 'State Fund',
     'form_user_request-documentation' => 'Documentation',
     'form_user_request-fail' => 'Rejected',
     'form_user_request-old_file' => 'Old files disapproved',
-    'form_user_request-error-message' => 'Please insert document all fields',
-    'form_user_request-success-message' => 'Send document success',
+    'form_user_request-error-message' => 'Please insert all required fields',
+    'form_user_request-success-message' => 'Document uploaded successfully',
     'form_user_request-submit_btn' => 'Save',
 
-    'applied_funds-title' => 'Your Applied Funds',
-    'applied_funds-not_have' => 'Not have applied fund',
+    'applied_funds-title' => 'Your Applications',
+    'applied_funds-not_have' => 'No Application',
     'applied_funds-table' => array(
         'title' => 'Fund Name',
-        'step' => 'Step',
+        'step' => 'Application Progress',
         'status' => 'Status',
         'next_step' => 'Proceed to the next step'
     ),
 
     'manage_funds-title' => 'Manage Funds',
-    'manage_funds-not_have' => 'Click "Add New Fund" button for create fund',
+    'manage_funds-not_have' => 'Click "Add New Fund" button to create fund',
     'manage_funds-edit_btn' => 'Edit',
     'manage_funds-delete_btn' => 'Delete',
     'manage_funds-new_fund_btn' => 'Add New Fund',
-    'manage_funds-confirm_delete' => 'Confirm delete',
+    'manage_funds-confirm_delete' => 'Confirm deletion',
     'manage_funds-table' => array(
         'title' => 'Fund Name',
         'type' => 'Fund type',
-        'start_Apply' => 'Start Date Apply',
-        'end_apply' => 'End Date Apply'
+        'start_Apply' => 'Application start',
+        'end_apply' => 'Application End'
     ),
     'manage_funds-month_format' => Array("", "JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"),
     'manage_funds-year_format' => '0',
@@ -65,9 +67,9 @@ return [
     'add_funds-select' => 'Please Select',
     'add_funds-form2-1' => 'Start Date Apply',
     'add_funds-form2-2' => 'End Date Apply',
-    'add_funds-form2-3' => 'Start Date Submit Document',
-    'add_funds-form2-4' => 'End Date Submit Document',
-    'add_funds-form2-5' => 'End Date Project',
+    'add_funds-form2-3' => 'Start document submission date',
+    'add_funds-form2-4' => 'End document end date',
+    'add_funds-form2-5' => 'Project deadline',
     'add_funds-error-message' => 'Please make sure all required fields are filled out correctly',
     'add_funds-success-message-add' => 'Add new fund success',
     'add_funds-success-message-edit' => 'Edit fund success',
@@ -79,12 +81,12 @@ return [
     'add_funds_file_uplaod-back_btn' => 'Back to Fund Info',
 
     'applicator_list-title' => 'Select Fund',
-    'applicator_list-not_have' => 'Not have the fund',
+    'applicator_list-not_have' => 'No fund found',
 
-    'applicator_user_requesst-not_have' => 'This fund not have request from user',
+    'applicator_user_requesst-not_have' => 'No application avaliabled',
     'applicator_user_requesst-table' => array(
         'title' => 'User Name',
-        'step' => 'Step Request',
+        'step' => 'Request Progress',
         'document' => 'Document',
     )
 ];

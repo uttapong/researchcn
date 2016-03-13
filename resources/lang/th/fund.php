@@ -18,6 +18,7 @@ return [
     'current_funds-apply_btn' => 'สมัครทุน',
     'current_funds-applied_btn' => 'สมัครแล้ว',
     'current_funds-confirm_apply' => 'ยืนยันการสมัคร',
+    'recent_funds-not_have' => 'ยังไม่ได้สมัครทุน',
 
     'recent_funds-title' => 'ทุนวิจัยที่ผ่านมา',
     'recent_funds-not_have' => 'ไม่มีทุนที่ผ่านมา',

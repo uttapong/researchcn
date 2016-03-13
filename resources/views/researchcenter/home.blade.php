@@ -105,7 +105,7 @@ function getPreview(id){
                                                           <input id="_token" name="_token" type="hidden" value="{{ csrf_token() }}" >
                                                           <input id="" class="form-control" type="text" name="keywords" placeholder="{{trans('research.keywords')}}">
                                                           <input id="" class="form-control" type="text" name="year" placeholder="{{trans('research.published_year')}}">
-                                                          <input id="" class="form-control" type="text" name="authors" placeholder="{{trans('research.author')}}">
+                                                          <input id="" class="form-control" type="text" name="authors" placeholder="{{trans('research.authors')}}">
 
 
                                       </div>
