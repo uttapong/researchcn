@@ -156,17 +156,23 @@ class FundController extends Controller {
 				// $filePath=
 				$filePath='file/'.$fileName;
 				$file->move('file/',$fileName);
-				$download=Download::create(['file_path'=>$filePath,'fund_id'=>$id]);
-				if($download){
-					array_push($completed,(object) array('name' => $fileName,'size'=>$fileSize,'url'=>url('/').'/'.$filePath));
+				$download = Download::create(['file_path'=>$filePath,'fund_id'=>$id]);
+				if ($download) {
+					array_push(
+						$completed,(object) array(
+							'name' => $fileName,'size' => $fileSize, 'url' => url('/').'/'.$filePath,
+							'deleteUrl' => route('fund_file_delete', array('download_id' => $download))
+							// 'deleteUrl' => url('/').'/'.$filePath
+						)
+					);
 				}
 			}
 		}
-			return response()->json(['files'=>$completed]);
 
+		return response()->json(['files'=>$completed]);
 	}
 
-	public function fundFileDelete(Request $request,$downloadid) {
+	public function fundFileDelete(Request $request, $downloadid) {
 		$id = $request->input('id', 0);
 		$result=null;
 		$download=Download::find($downloadid);

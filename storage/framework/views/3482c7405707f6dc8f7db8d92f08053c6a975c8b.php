@@ -25,7 +25,38 @@
                                                 <?php echo e($fund->registered ? 'สมัครแล้ว' : 'สมัครทุน'); ?>
 
                                             </button>
+                                            <button type="button" class="btn btn-primary" onclick="$('#files_'+<?php echo e($fund->id); ?>).toggle();"><i class="fa fa-download"></i> Download files</button>
                                         </td>
+                                    </tr>
+                                    <tr id="files_<?php echo e($fund->id); ?>" style="display:none;padding: 0 5px 5px 5px;background-color: #efefef;">
+                                      <td align="left" colspan="2">
+                                        <?php if($fund->downloads): ?>
+                                        <div class="form-group margin-top-20">
+                                          <label class="control-label col-md-3">เอกสารสำหรับดาวน์โหลด</label>
+                                          <div class="col-md-8">
+
+                                                          <?php foreach($fund->downloads as $download): ?>
+                                                            <li class="file_list" id="download_<?php echo e($download->id); ?>">
+
+
+                                                                <div class="list-item-content">
+                                                                      <div style="float:left">
+                                                                        <a href="<?php echo e(route('base')); ?>/<?php echo e($download->file_path); ?>"><i class="fa fa-file"></i> <?php echo e($download->filename()); ?></a>
+                                                                        <p class='date'><i class="fa fa-clock-o"></i> <?php echo e($download->created_at); ?></p>
+                                                                      </div>
+                                                                        <div style="float:right">
+                                                                          <!-- <button class="btn green-sharp btn-large" data-toggle="confirmation" data-original-title="Are you sure ?" title="" aria-describedby="confirmation706230">Default configuration</button> -->
+                                                                        <button downloadid="<?php echo e($download->id); ?>" class='confirm btn btn-danger' type="button" data-toggle="confirmation" data-original-title="Are you sure ?" title=""  class='btn btn-danger'><i class="icon-close"></i></button>
+                                                                      </div>
+                                                                      <div class="clearfix"></div>
+                                                                </div>
+                                                                <div class='error'></div>
+                                                            </li>
+            <?php endforeach; ?>
+                                          </div>
+                                        </div>
+                                        <?php endif; ?>
+                                      </td>
                                     </tr>
                                     <?php } ?>
                                 </tbody>

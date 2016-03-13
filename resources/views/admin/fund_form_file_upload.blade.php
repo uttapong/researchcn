@@ -7,7 +7,7 @@
                 <div class="portlet-title">
                     <div class="caption font-red">
                         <i class="glyphicon glyphicon-upload font-red"></i>
-                        <span class="bold">&nbsp;อัพโหลดแบบฟอร์ม</span>
+                        <span class="bold">&nbsp;อัพโหลดเอกสาร</span>
                     </div>
                 </div>
                 <div class="portlet-body">
@@ -62,6 +62,9 @@
                 </div>
                 <!-- END VALIDATION STATES-->
             </div>
+            <a href="{{ route('fund_form', array('id' => $fundId)) }}" type="button" class="btn btn-default">
+            <i class="glyphicon glyphicon-chevron-left"></i> กลับหน้ารายละเอียดทุน
+            </a>
         </div>
     </div>
 <script type="text/javascript">
