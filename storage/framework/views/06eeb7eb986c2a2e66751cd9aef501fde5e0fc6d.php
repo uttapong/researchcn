@@ -6,7 +6,7 @@
                 <div class="portlet-title">
                     <div class="caption font-red">
                         <i class="icon-layers font-red"></i>
-                        <span class="caption-subject bold uppercase">&nbsp;ขั้นตอนทุน</span>
+                        <span class="caption-subject bold">&nbsp;<?php echo e(trans('fund.form_user_request-state_fund')); ?></span>
                     </div>  
                 </div>
                 <div class="portlet-body">
@@ -35,27 +35,29 @@
 
                             <div class="alert alert-danger display-hide">
                                 <button class="close" data-close="alert"></button>
-                                กรุณาใส่เอกสารให้ครบทุกช่อง
+                                <?php echo e(trans('fund.form_user_request-error-message')); ?>
+
                             </div>
                             <div class="alert alert-success display-hide">
                                 <button class="close" data-close="alert"></button>
-                                ทำสัญญารับทุนสำเร็จ
+                                <?php echo e(trans('fund.form_user_request-success-message')); ?>
+
                             </div>
-                            <h3 class="form-section">เอกสารประกอบ</h3>
+                            <h3 class="form-section"><?php echo e(trans('fund.form_user_request-documentation')); ?></h3>
                             <div class="form-group margin-top-20">
                                 <label class="control-label col-md-5" style="padding-top: 0">หน้าบุ๊คแบงค์ของสหกรณ์ออมทรัพย์ มหาวิทยาลัยธรรมศาสตร์
                                 </label>
                                 <div class="col-md-5">
                                     <?php echo $upload ?
                                             $upload[0]->status == 'Reject'
-                                            ? '<input type="file" class="form-control" name="file_1"/><span class="help-block">ไฟล์เก่าที่ไม่ผ่านการอนุมัติ <a href="'. route('base') . '/' . $upload[0]->file_path . '" download  title="ดาวน์โหลดเอกสาร"><span aria-hidden="true" class="icon-arrow-down"></span></a></span>'
+                                            ? '<input type="file" class="form-control" name="file_1"/><span class="help-block">' . trans("fund.form_user_request-old_file") . ' ' . '<a href="'. route('base') . '/' . $upload[0]->file_path . '" download  title="ดาวน์โหลดเอกสาร"><span aria-hidden="true" class="icon-arrow-down"></span></a></span>'
                                             : $upload[0]->html
                                         : '<input type="file" class="form-control" name="file_1"/>'; ?>
 
                                 </div>
                                 <?php echo $upload ?
                                         $upload[0]->status == 'Reject'
-                                        ? '<label class="col-md-2 icon-close font-red" style="padding: 7px"> <b class="font-red">ไม่ผ่าน</b></label>'
+                                        ? '<label class="col-md-2 icon-close font-red" style="padding: 7px"> <b class="font-red">' . ' ' . trans("fund.form_user_request-fail") . '</b></label>'
                                         : null
                                     : null; ?>
 
@@ -66,14 +68,14 @@
                                 <div class="col-md-5">
                                     <?php echo $upload ?
                                             $upload[1]->status == 'Reject'
-                                            ? '<input type="file" class="form-control" name="file_2"/><span class="help-block">ไฟล์เก่าที่ไม่ผ่านการอนุมัติ <a href="'. route('base') . '/' . $upload[1]->file_path . '" download  title="ดาวน์โหลดเอกสาร"><span aria-hidden="true" class="icon-arrow-down"></span></a></span>'
+                                            ? '<input type="file" class="form-control" name="file_2"/><span class="help-block">' . trans("fund.form_user_request-old_file") . ' ' . '<a href="'. route('base') . '/' . $upload[1]->file_path . '" download  title="ดาวน์โหลดเอกสาร"><span aria-hidden="true" class="icon-arrow-down"></span></a></span>'
                                             : $upload[1]->html
                                         : '<input type="file" class="form-control" name="file_2"/>'; ?>
 
                                 </div>
                                 <?php echo $upload ?
                                         $upload[1]->status == 'Reject'
-                                        ? '<label class="col-md-2 icon-close font-red" style="padding: 7px"> <b class="font-red">ไม่ผ่าน</b></label>'
+                                        ? '<label class="col-md-2 icon-close font-red" style="padding: 7px"><b class="font-red">' . ' ' . trans("fund.form_user_request-fail") . '</b></label>'
                                         : null
                                     : null; ?>
 
@@ -84,7 +86,8 @@
                                     <div class="col-md-offset-5 col-md-9">
                                         <button type="submit" class="btn btn-info">
                                             <i class="fa fa-check"></i>
-                                            ตกลง
+                                            <?php echo e(trans('fund.form_user_request-submit_btn')); ?>
+
                                         </button>
                                     </div>
                                 </div>

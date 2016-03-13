@@ -7,7 +7,7 @@
             <div class="portlet-title">
                 <div class="caption font-red">
                     <i class="{{ $fund ? 'fa fa-edit' : 'icon-plus' }} font-red"></i>
-                    <span class="bold">&nbsp;{{ $fund ? 'แก้ไขทุน' : 'เพิ่มทุนใหม่' }}</span>
+                    <span class="bold">&nbsp;{{ $fund ? trans('fund.add_funds-title-edit') : trans('fund.add_funds-title-add') }}</span>
                 </div>
             </div>
             <div class="portlet-body">
@@ -19,15 +19,15 @@
 
                         <div class="alert alert-danger display-hide">
                             <button class="close" data-close="alert"></button>
-                            กรุณาใส่ข้อมูลให้ครบทุกช่อง
+                            {{ trans('fund.add_funds-error-message') }}
                         </div>
                         <div class="alert alert-success display-hide">
                             <button class="close" data-close="alert"></button>
-                            {{ $fund ? 'แก้ไขทุนสำเร็จ' : 'เพิ่มทุนใหม่สำเร็จ' }}
+                            {{ $fund ? trans('fund.add_funds-success-message-edit') : trans('fund.add_funds-success-message-add') }}
                         </div>
-                        <h3 class="form-section">Fund Info</h3>
+                        <h3 class="form-section">{{ trans('fund.add_funds-sub_title1') }}</h3>
                         <div class="form-group margin-top-20">
-                            <label class="control-label col-md-3">ชื่อทุน
+                            <label class="control-label col-md-3">{{ trans('fund.add_funds-form1-1') }}
                                 <span class="required"> * </span>
                             </label>
                             <div class="col-md-5">
@@ -38,14 +38,14 @@
                             </div>
                         </div>
                         <div class="form-group margin-top-20">
-                            <label class="control-label col-md-3">ประเภทของทุน
+                            <label class="control-label col-md-3">{{ trans('fund.add_funds-form1-2') }}
                                 <span class="required"> * </span>
                             </label>
                             <div class="col-md-5">
                                 <div class="input-icon right">
                                     <i class="fa"></i>
                                     <select id="fund_type" class="form-control" name="type">
-                                        <option value="">----- &nbsp;กรุณาเลือก&nbsp; -----</option>
+                                        <option value="">----- &nbsp;{{ trans('fund.add_funds-select') }}&nbsp; -----</option>
                                         <option value="บทความวิจัย">บทความวิจัย</option>
                                         <option value="ผลงานวิชาการ">ผลงานวิชาการ</option>
                                         <option value="ตำรา">ตำรา</option>
@@ -56,7 +56,7 @@
                             </div>
                         </div>
                         <div class="form-group margin-top-20">
-                            <label class="control-label col-md-3">รายละเอียดทุน
+                            <label class="control-label col-md-3">{{ trans('fund.add_funds-form1-3') }}
                             </label>
                             <div class="col-md-8">
                                 <div class="input-icon right">
@@ -66,15 +66,17 @@
                             </div>
                         </div>
                         <div class="form-group margin-top-20">
-                            <label class="control-label col-md-3">เอกสารสำหรับดาวน์โหลด</label>
+                            <label class="control-label col-md-3">{{ trans('fund.add_funds-form1-4') }}</label>
                             <div class="col-md-8">
                                 @if($fund && $fund->downloads)
                                     @foreach($fund->downloads as $download)
                                         <li class="file_list" id="download_{{$download->id}}">
                                             <div class="list-item-content">
                                                 <div style="float:left">
-                                                    <a href="{{route('base')}}/{{$download->file_path}}" download><i class="fa fa-file"></i> {{$download->filename()}}</a>
-                                                    <p class='date'><i class="fa fa-clock-o"></i> {{$download->created_at}}</p>
+                                                    <a href="{{route('base')}}/{{$download->file_path}}" download>
+                                                        <i class="fa fa-file"></i> {{ $download->filename() }}
+                                                    </a>
+                                                    <p class='date'><i class="fa fa-clock-o"></i> {{ $download->created_at }}</p>
                                                 </div>
                                                 <div style="float:right">
                                                     <!-- <button class="btn green-sharp btn-large" data-toggle="confirmation" data-original-title="Are you sure ?" title="" aria-describedby="confirmation706230">Default configuration</button> -->
@@ -91,18 +93,18 @@
                                 <div class="input-icon right">
                                     <button id="file_upload" type="button" class="btn btn-success">
                                         <i class="glyphicon glyphicon-upload"></i>
-                                        <span>อัพโหลดเอกสารเพิ่ม</span>
+                                        <span>{{ trans('fund.add_funds-upload_btn') }}</span>
                                     </button>
                                      @if(!$fund)
-                                        <span class="help-block alert alert-info">* ต้องทำรายการเพิ่มทุนให้เรียบร้อยก่อน จึงจะสามารถใช้งานอัพโหลดเอกสารได้</span>
+                                        <span class="help-block alert alert-info">* {{ trans('fund.add_funds-upload_note') }}</span>
                                      @endif
                                 </div>
                             </div>
                         </div>
 
-                        <h3 class="form-section">Fund Duration</h3>
+                        <h3 class="form-section">{{ trans('fund.add_funds-sub_title2') }}</h3>
                         <div class="form-group margin-top-20">
-                            <label class="control-label col-md-3">วันที่เปิดรับสมัคร
+                            <label class="control-label col-md-3">{{ trans('fund.add_funds-form2-1') }}
                                 <span class="required"> * </span>
                             </label>
                             <div class="col-md-5">
@@ -117,7 +119,7 @@
                             </div>
                         </div>
                         <div class="form-group margin-top-20">
-                            <label class="control-label col-md-3">วันสิ้นสุดรับสมัคร
+                            <label class="control-label col-md-3">{{ trans('fund.add_funds-form2-2') }}
                                 <span class="required"> * </span>
                             </label>
                             <div class="col-md-5">
@@ -137,7 +139,7 @@
 
                         <hr width="90%" style="margin: auto;" />
                         <div class="form-group margin-top-20">
-                            <label class="control-label col-md-3">วันเริ่มต้นส่งเอกสาร
+                            <label class="control-label col-md-3">{{ trans('fund.add_funds-form2-3') }}
                                 <span class="required"> * </span>
                             </label>
                             <div class="col-md-5">
@@ -155,7 +157,7 @@
                             </div>
                         </div>
                         <div class="form-group margin-top-20">
-                            <label class="control-label col-md-3">วันสิ้นสุดส่งเอกสาร
+                            <label class="control-label col-md-3">{{ trans('fund.add_funds-form2-4') }}
                                 <span class="required"> * </span>
                             </label>
                             <div class="col-md-5">
@@ -175,7 +177,7 @@
 
                         <hr width="90%" style="margin: auto;" />
                         <div class="form-group margin-top-20">
-                            <label class="control-label col-md-3">วันสิ้นสุดโครงการ
+                            <label class="control-label col-md-3">{{ trans('fund.add_funds-form2-5') }}
                                 <span class="required"> * </span>
                             </label>
                             <div class="col-md-5">
@@ -197,7 +199,7 @@
                                 <div class="col-md-offset-3 col-md-9">
                                     <button type="submit" class="btn btn-info">
                                         <i class="fa fa-check"></i>
-                                        ตกลง
+                                        {{ trans('fund.add_funds-submit_btn') }}
                                     </button>
                                 </div>
                             </div>
@@ -284,7 +286,7 @@
         $('#file_upload').click(function () {
             var fund = '{{ $fund }}';
             if (!fund) {
-                alert('ต้องทำรายการเพิ่มทุนให้เรียบร้อยก่อน');
+                alert("{{ trans('fund.add_funds-upload_note') }}");
             }
             else {
                 window.location = "{{ $fund ? route('fund_form_file_upload', array('id' => $fund->id)) : null }}";

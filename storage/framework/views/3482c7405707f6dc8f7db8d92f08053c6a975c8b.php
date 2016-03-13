@@ -36,7 +36,7 @@
                                             <td align="left" colspan="2">
                                                 <?php if(count($fund->downloads) > 0): ?>
                                                     <div class="form-group margin-top-20">
-                                                        <label class="control-label col-md-3">เอกสารสำหรับดาวน์โหลด</label>
+                                                        <label class="control-label col-md-3"><?php echo e(trans('fund.current_funds-doc_download')); ?></label>
                                                         <div class="col-md-8">
                                                             <?php foreach($fund->downloads as $download): ?>
                                                                 <li class="file_list" id="download_<?php echo e($download->id); ?>">

@@ -7,7 +7,7 @@
                 <div class="portlet-title">
                     <div class="caption font-red">
                         <i class="glyphicon glyphicon-upload font-red"></i>
-                        <span class="bold">&nbsp;อัพโหลดเอกสาร</span>
+                        <span class="bold">&nbsp;{{ trans('fund.add_funds_file_uplaod-title') }}</span>
                     </div>
                 </div>
                 <div class="portlet-body">
@@ -63,7 +63,7 @@
                 <!-- END VALIDATION STATES-->
             </div>
             <a href="{{ route('fund_form', array('id' => $fundId)) }}" type="button" class="btn btn-default">
-            <i class="glyphicon glyphicon-chevron-left"></i> กลับหน้ารายละเอียดทุน
+            <i class="glyphicon glyphicon-chevron-left"></i> {{ trans('fund.add_funds_file_uplaod-back_btn') }}
             </a>
         </div>
     </div>

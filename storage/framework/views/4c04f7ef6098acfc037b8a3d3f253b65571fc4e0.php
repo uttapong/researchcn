@@ -24,7 +24,7 @@
                         <div class="table-scrollable table-scrollable-borderless">
                             <table class="table table-hover table-light">
                                 <thead>
-                                    <tr class="uppercase">
+                                    <tr>
                                         <th> </th>
                                         <th> <?php echo e(trans('fund.applied_funds-table.title')); ?> </th>
                                         <th> <?php echo e(trans('fund.applied_funds-table.step')); ?> </th>

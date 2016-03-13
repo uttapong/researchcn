@@ -161,8 +161,7 @@ class FundController extends Controller {
 					array_push(
 						$completed,(object) array(
 							'name' => $fileName,'deleteType'=>'DELETE','size' => $fileSize, 'url' => url('/').'/'.$filePath,
-							'deleteUrl' => route('fund_file_delete',array('download_id' => $download))
-							// 'deleteUrl' => url('/').'/'.$filePath
+							'deleteUrl' => route('fund_file_delete', array('download_id' => $download))
 						)
 					);
 				}
@@ -416,8 +415,8 @@ class FundController extends Controller {
 
 			if ($file) {
 				if ($file->status != 'Reject') {
-					if ($file->status == 'Approve') { $file->html = '<label class="control-label icon-check"> <b>อนุมัติ</b></label>'; }
-					else { $file->html = '<label class="control-label icon-hourglass"> <b>รอการอนุมัติ</b></label>'; }
+					if ($file->status == 'Approve') { $file->html = '<label class="control-label icon-check"> <b>Approved</b></label>'; }
+					else { $file->html = '<label class="control-label icon-hourglass"> <b>Pending</b></label>'; }
 				}
 				array_push($upload, $file);
 			}

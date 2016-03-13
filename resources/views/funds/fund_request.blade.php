@@ -26,7 +26,7 @@
                         <div class="table-scrollable table-scrollable-borderless">
                             <table class="table table-hover table-light">
                                 <thead>
-                                    <tr class="uppercase">
+                                    <tr>
                                         <th> </th>
                                         <th> {{ trans('fund.applied_funds-table.title') }} </th>
                                         <th> {{ trans('fund.applied_funds-table.step') }} </th>

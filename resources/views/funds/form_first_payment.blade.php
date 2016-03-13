@@ -8,7 +8,7 @@
                 <div class="portlet-title">
                     <div class="caption font-red">
                         <i class="icon-layers font-red"></i>
-                        <span class="caption-subject bold uppercase">&nbsp;ขั้นตอนทุน</span>
+                        <span class="caption-subject bold">&nbsp;{{ trans('fund.form_user_request-state_fund') }}</span>
                     </div>
                 </div>
                 <div class="portlet-body">
@@ -25,7 +25,7 @@
                 <div class="portlet-title">
                     <div class="caption font-red">
                         <i class="icon-layers font-red"></i>
-                        <span class="caption-subject bold uppercase">&nbsp;เบิกเงินงวดที่ 1</span>
+                        <span class="caption-subject bold">&nbsp;เบิกเงินงวดที่ 1</span>
                     </div>
                 </div>
                 <div class="portlet-body">
@@ -37,13 +37,13 @@
 
                             <div class="alert alert-danger display-hide">
                                 <button class="close" data-close="alert"></button>
-                                กรุณาใส่เอกสารให้ครบทุกช่อง
+                                {{ trans('fund.form_user_request-error-message') }}
                             </div>
                             <div class="alert alert-success display-hide">
                                 <button class="close" data-close="alert"></button>
-                                ทำสัญญารับทุนสำเร็จ
+                                {{ trans('fund.form_user_request-success-message') }}
                             </div>
-                            <h3 class="form-section">เอกสารประกอบ</h3>
+                            <h3 class="form-section">{{ trans('fund.form_user_request-documentation') }}</h3>
                             <div class="form-group margin-top-20">
                                 <label class="control-label col-md-5">บันทึกนำส่ง
                                 </label>
@@ -51,7 +51,7 @@
                                     {!!
                                         $upload ?
                                             $upload[0]->status == 'Reject'
-                                            ? '<input type="file" class="form-control" name="file_3"/><span class="help-block">ไฟล์เก่าที่ไม่ผ่านการอนุมัติ <a href="'. route('base') . '/' . $upload[0]->file_path . '" download  title="ดาวน์โหลดเอกสาร"><span aria-hidden="true" class="icon-arrow-down"></span></a></span>'
+                                            ? '<input type="file" class="form-control" name="file_3"/><span class="help-block">' . trans("fund.form_user_request-old_file") . ' ' . '<a href="'. route('base') . '/' . $upload[0]->file_path . '" download  title="ดาวน์โหลดเอกสาร"><span aria-hidden="true" class="icon-arrow-down"></span></a></span>'
                                             : $upload[0]->html
                                         : '<input type="file" class="form-control" name="file_3"/>'
                                     !!}
@@ -59,7 +59,7 @@
                                 {!!
                                     $upload ?
                                         $upload[0]->status == 'Reject'
-                                        ? '<label class="col-md-2 icon-close font-red" style="padding: 7px"> <b class="font-red">ไม่ผ่าน</b></label>'
+                                        ? '<label class="col-md-2 icon-close font-red" style="padding: 7px"> <b class="font-red">' . ' ' . trans("fund.form_user_request-fail") . '</b></label>'
                                         : null
                                     : null
                                 !!}
@@ -71,7 +71,7 @@
                                     {!!
                                         $upload ?
                                             $upload[1]->status == 'Reject'
-                                            ? '<input type="file" class="form-control" name="file_4"/><span class="help-block">ไฟล์เก่าที่ไม่ผ่านการอนุมัติ <a href="'. route('base') . '/' . $upload[1]->file_path . '" download  title="ดาวน์โหลดเอกสาร"><span aria-hidden="true" class="icon-arrow-down"></span></a></span>'
+                                            ? '<input type="file" class="form-control" name="file_4"/><span class="help-block">' . trans("fund.form_user_request-old_file") . ' ' . '<a href="'. route('base') . '/' . $upload[1]->file_path . '" download  title="ดาวน์โหลดเอกสาร"><span aria-hidden="true" class="icon-arrow-down"></span></a></span>'
                                             : $upload[1]->html
                                         : '<input type="file" class="form-control" name="file_4"/>'
                                     !!}
@@ -79,7 +79,7 @@
                                 {!!
                                     $upload ?
                                         $upload[1]->status == 'Reject'
-                                        ? '<label class="col-md-2 icon-close font-red" style="padding: 7px"> <b class="font-red">ไม่ผ่าน</b></label>'
+                                        ? '<label class="col-md-2 icon-close font-red" style="padding: 7px"> <b class="font-red">' . ' ' . trans("fund.form_user_request-fail") . '</b></label>'
                                         : null
                                     : null
                                 !!}
@@ -91,7 +91,7 @@
                                     {!!
                                         $upload ?
                                             $upload[2]->status == 'Reject'
-                                            ? '<input type="file" class="form-control" name="file_5"/><span class="help-block">ไฟล์เก่าที่ไม่ผ่านการอนุมัติ <a href="'. route('base') . '/' . $upload[2]->file_path . '" download  title="ดาวน์โหลดเอกสาร"><span aria-hidden="true" class="icon-arrow-down"></span></a></span>'
+                                            ? '<input type="file" class="form-control" name="file_5"/><span class="help-block">' . trans("fund.form_user_request-old_file") . ' ' . '<a href="'. route('base') . '/' . $upload[2]->file_path . '" download  title="ดาวน์โหลดเอกสาร"><span aria-hidden="true" class="icon-arrow-down"></span></a></span>'
                                             : $upload[2]->html
                                         : '<input type="file" class="form-control" name="file_5"/>'
                                     !!}
@@ -99,7 +99,7 @@
                                 {!!
                                     $upload ?
                                         $upload[2]->status == 'Reject'
-                                        ? '<label class="col-md-2 icon-close font-red" style="padding: 7px"> <b class="font-red">ไม่ผ่าน</b></label>'
+                                        ? '<label class="col-md-2 icon-close font-red" style="padding: 7px"> <b class="font-red">' . ' ' . trans("fund.form_user_request-fail") . '</b></label>'
                                         : null
                                     : null
                                 !!}
@@ -111,7 +111,7 @@
                                     {!!
                                         $upload ?
                                             $upload[3]->status == 'Reject'
-                                            ? '<input type="file" class="form-control" name="file_6"/><span class="help-block">ไฟล์เก่าที่ไม่ผ่านการอนุมัติ <a href="'. route('base') . '/' . $upload[3]->file_path . '" download  title="ดาวน์โหลดเอกสาร"><span aria-hidden="true" class="icon-arrow-down"></span></a></span>'
+                                            ? '<input type="file" class="form-control" name="file_6"/><span class="help-block">' . trans("fund.form_user_request-old_file") . ' ' . '<a href="'. route('base') . '/' . $upload[3]->file_path . '" download  title="ดาวน์โหลดเอกสาร"><span aria-hidden="true" class="icon-arrow-down"></span></a></span>'
                                             : $upload[3]->html
                                         : '<input type="file" class="form-control" name="file_6"/>'
                                     !!}
@@ -119,7 +119,7 @@
                                 {!!
                                     $upload ?
                                         $upload[3]->status == 'Reject'
-                                        ? '<label class="col-md-2 icon-close font-red" style="padding: 7px"> <b class="font-red">ไม่ผ่าน</b></label>'
+                                        ? '<label class="col-md-2 icon-close font-red" style="padding: 7px"> <b class="font-red">' . ' ' . trans("fund.form_user_request-fail") . '</b></label>'
                                         : null
                                     : null
                                 !!}
@@ -130,7 +130,7 @@
                                     <div class="col-md-offset-5 col-md-9">
                                         <button type="submit" class="btn btn-info">
                                             <i class="fa fa-check"></i>
-                                            ตกลง
+                                            {{ trans('fund.form_user_request-submit_btn') }}
                                         </button>
                                     </div>
                                 </div>

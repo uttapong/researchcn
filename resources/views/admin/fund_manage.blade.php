@@ -4,10 +4,10 @@
 <?php
     function DateThai ($strDate)
     {
-        $strYear = date("Y",strtotime($strDate)) + 543;
+        $strYear = date("Y",strtotime($strDate)) + intval(trans('fund.manage_funds-year_format'));
         $strMonth = date("n",strtotime($strDate));
         $strDay = date("j",strtotime($strDate));
-        $strMonthCut = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
+        $strMonthCut = trans('fund.manage_funds-month_format');
         $strMonthThai = $strMonthCut[$strMonth];
         return "$strDay $strMonthThai $strYear";
     }
@@ -27,12 +27,12 @@
                     @else
                         <table class="table table-striped table-hover order-column" id="dataTable">
                             <thead>
-                                <tr class="uppercase">
+                                <tr>
                                     <th width="5%"> # </th>
-                                    <th width="20%"> ชื่อทุน </th>
-                                    <th width="20%"> ประเภททุน </th>
-                                    <th width="20%"> วันที่เปิดรับสมัคร </th>
-                                    <th width="20%"> วันสิ้นสุดรับสมัคร </th>
+                                    <th width="20%"> {{ trans('fund.manage_funds-table.title') }} </th>
+                                    <th width="20%"> {{ trans('fund.manage_funds-table.type') }} </th>
+                                    <th width="20%"> {{ trans('fund.manage_funds-table.start_Apply') }} </th>
+                                    <th width="20%"> {{ trans('fund.manage_funds-table.end_apply') }} </th>
                                     <th width="15%"> </th>
                                 </tr>
                             </thead>
@@ -56,10 +56,10 @@
                                         </td>
                                         <td align="right">
                                             <a href="fund_form?id={{ $fund->id }}" class="btn btn-info">
-                                                <i class="fa fa-edit"></i>&nbsp;แก้ไข
+                                                <i class="fa fa-edit"></i>&nbsp;{{ trans('fund.manage_funds-edit_btn') }}
                                             </a>
-                                            <button type="button" data-id="<?php print ($fund->id) ?>" class="btn btn-danger" data-singleton="true" data-toggle="confirmation" data-placement="top" data-btn-ok-label="ตกลง" data-btn-cancel-label="ยกเลิก" data-original-title="ยืนยันการลบ <?php print($fund->name) ?>">
-                                                <i class="fa fa-trash-o"></i>&nbsp;ลบ
+                                            <button type="button" data-id="<?php print ($fund->id) ?>" class="btn btn-danger" data-singleton="true" data-toggle="confirmation" data-placement="top" data-btn-ok-label="ตกลง" data-btn-cancel-label="ยกเลิก" data-original-title="{{ trans('fund.manage_funds-confirm_delete') . ' ' . $fund->name }}">
+                                                <i class="fa fa-trash-o"></i>&nbsp;{{ trans('fund.manage_funds-delete_btn') }}
                                             </button>
                                         </td>
                                     </tr>

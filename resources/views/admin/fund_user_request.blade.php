@@ -14,15 +14,15 @@
                 </div>
                 <div class="portlet-body">
                     @if (count($applications) == 0)
-                        <div class="text-center">ยังไม่มีการร้องขอจากผู้ขอทุน</div>
+                        <div class="text-center">{{ trans('fund.applicator_user_requesst-not_have') }}</div>
                     @else
                         <table class="table table-striped table-hover order-column" id="dataTable">
                             <thead>
-                                <tr class="uppercase">
+                                <tr>
                                     <th width="5%"> # </th>
-                                    <th width="25%"> ชื่อผู้สมัคร </th>
-                                    <th width="25%"> ขั้นตอน </th>
-                                    <th> เอกสาร </th>
+                                    <th width="25%"> {{ trans('fund.applicator_user_requesst-table.title') }} </th>
+                                    <th width="25%"> {{ trans('fund.applicator_user_requesst-table.step') }} </th>
+                                    <th> {{ trans('fund.applicator_user_requesst-table.document') }} </th>
                                 </tr>
                             </thead>
                             <tbody>

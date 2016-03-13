@@ -6,12 +6,12 @@
             <div class="portlet light portlet-fit">
                 <div class="portlet-title">
                     <div class="caption">
-                        <span class="font-red sbold icon-list">&nbsp;&nbsp;เลือกทุน</span>
+                        <span class="font-red sbold">{{ trans('fund.applicator_list-title') }}</span>
                     </div>
                 </div>
                 <div class="portlet-body">
                     @if (count($funds) == 0)
-                        <div class="text-center">ยังไม่มีทุนใดใด</div>
+                        <div class="text-center">{{ trans('fund.applicator_list-not_have') }}</div>
                     @else
                         <div class="clearfix">
                             <div class="col-xs-8 col-xs-offset-2 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
