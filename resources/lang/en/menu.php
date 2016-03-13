@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Authentication Language Lines
@@ -14,20 +13,18 @@ return [
     */
 
     'all_stat' => 'All Usage Statistics',
-    'search'=>'Research Search',
-    'fund'=>'Research Funds',
-    'current_funds'=>'Current Funds',
-    'recent_funds'=>'Recent Funds',
-    'applied_funds'=>'Applied Funds',
-    'manage_funds'=>'Manage Funds',
-    'applicator_list'=>'Applications List',
-    'research_stat'=>'Research Usage Statistics',
-    'research_database'=>'Research Database',
-    'all_research'=>'All Research',
-    'add_research'=>'Add Research',
-    'add_patent'=>'Add Patent',
-    'administration'=>'Administration',
-    'manage_users'=>'Manage Users',
-
-
+    'search' => 'Research Search',
+    'fund' => 'Research Funds',
+    'current_funds' => 'Current Funds',
+    'recent_funds' => 'Recent Funds',
+    'applied_funds' => 'Applied Funds',
+    'manage_funds' => 'Manage Funds',
+    'applicator_list' => 'Applications List',
+    'research_stat' => 'Research Usage Statistics',
+    'research_database' => 'Research Database',
+    'all_research' => 'All Research',
+    'add_research' => 'Add Research',
+    'add_patent' => 'Add Patent',
+    'administration' => 'Administration',
+    'manage_users' => 'Manage Users',
 ];

@@ -18,12 +18,12 @@
             <div class="portlet light portlet-fit">
                 <div class="portlet-title">
                     <div class="caption">
-                        <span class="font-red sbold">จัดการทุนทั้งหมด</span>
+                        <span class="font-red sbold">{{ trans('fund.manage_funds-title') }}</span>
                     </div>
                 </div>
                 <div class="portlet-body">
                     @if (count($funds) == 0)
-                        <div class="text-center">คลิกปุ่ม "เพิ่มทุนใหม่" เพื่อสร้างทุน</div>
+                        <div class="text-center">{{ trans('fund.manage_funds-not_have') }}</div>
                     @else
                         <table class="table table-striped table-hover order-column" id="dataTable">
                             <thead>
@@ -72,7 +72,7 @@
             <div class="actions">
                 <a href="{{route('fund_form')}}" class="btn btn-circle btn-outline red margin-bottom-20">
                     <i class="fa fa-plus"></i>&nbsp;
-                    <span class="hidden-sm hidden-xs">เพิ่มทุนใหม่&nbsp;</span>&nbsp;
+                    <span class="hidden-sm hidden-xs">{{ trans('fund.manage_funds-new_fund_btn') }}&nbsp;</span>&nbsp;
                 </a>
             </div>
         </div>

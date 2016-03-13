@@ -4,7 +4,7 @@
             <div class="portlet light portlet-fit">
                 <div class="portlet-title">
                     <div class="caption">
-                        <span class="font-red sbold">ทุนที่ท่านเสนอขอ</span>
+                        <span class="font-red sbold"><?php echo e(trans('fund.applied_funds-title')); ?></span>
                     </div>
                     <!-- <div class="actions">
                         <div class="btn-group btn-group-devided" data-toggle="buttons">
@@ -18,23 +18,22 @@
                     </div> -->
                 </div>
                 <div class="portlet-body">
-                    <?php if (count($funds) == 0) {
-                        print('<div class="text-center">ไม่มีทุนที่ท่านสเนอขอ</div>');
-                    }
-                    else {?>
+                    <?php if(count($funds) == 0): ?>
+                        <div class="text-center"><?php echo e(trans('fund.applied_funds-not_have')); ?></div>
+                    <?php else: ?>
                         <div class="table-scrollable table-scrollable-borderless">
                             <table class="table table-hover table-light">
                                 <thead>
                                     <tr class="uppercase">
                                         <th> </th>
-                                        <th> ชื่อทุน </th>
-                                        <th> ขั้นตอน </th>
-                                        <th> สถานะ </th>
-                                        <th> ดำเนินการขั้นต่อไป </th>
+                                        <th> <?php echo e(trans('fund.applied_funds-table.title')); ?> </th>
+                                        <th> <?php echo e(trans('fund.applied_funds-table.step')); ?> </th>
+                                        <th> <?php echo e(trans('fund.applied_funds-table.status')); ?> </th>
+                                        <th> <?php echo e(trans('fund.applied_funds-table.next_step')); ?> </th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach($funds as $index=>$fund) { ?>
+                                    <?php foreach($funds as $index=>$fund): ?>
                                         <tr>
                                             <td>
                                                 <?php echo e($index + 1); ?>
@@ -49,7 +48,7 @@
 
                                             </td>
                                             <td>
-                                                <span class="label label-sm label-<?php echo e($fund->statusClass); ?>"> <?php echo e($fund->statusTitle); ?> </span>
+                                                <span class="label label-sm label-<?php echo e($fund->statusClass); ?>"> <?php echo e($fund->statusTitle); ?></span>
                                             </td>
                                             <td>
                                                 <?php echo $fund->nextStep
@@ -63,11 +62,11 @@
 
                                             </td>
                                         </tr>
-                                    <?php } ?>
+                                    <?php endforeach; ?>
                                 </tbody>
                             </table>
                         </div>
-                    <?php } ?>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

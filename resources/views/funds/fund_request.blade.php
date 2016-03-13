@@ -6,7 +6,7 @@
             <div class="portlet light portlet-fit">
                 <div class="portlet-title">
                     <div class="caption">
-                        <span class="font-red sbold">ทุนที่ท่านเสนอขอ</span>
+                        <span class="font-red sbold">{{ trans('fund.applied_funds-title') }}</span>
                     </div>
                     <!-- <div class="actions">
                         <div class="btn-group btn-group-devided" data-toggle="buttons">
@@ -20,23 +20,22 @@
                     </div> -->
                 </div>
                 <div class="portlet-body">
-                    <?php if (count($funds) == 0) {
-                        print('<div class="text-center">ไม่มีทุนที่ท่านสเนอขอ</div>');
-                    }
-                    else {?>
+                    @if(count($funds) == 0)
+                        <div class="text-center">{{ trans('fund.applied_funds-not_have') }}</div>
+                    @else
                         <div class="table-scrollable table-scrollable-borderless">
                             <table class="table table-hover table-light">
                                 <thead>
                                     <tr class="uppercase">
                                         <th> </th>
-                                        <th> ชื่อทุน </th>
-                                        <th> ขั้นตอน </th>
-                                        <th> สถานะ </th>
-                                        <th> ดำเนินการขั้นต่อไป </th>
+                                        <th> {{ trans('fund.applied_funds-table.title') }} </th>
+                                        <th> {{ trans('fund.applied_funds-table.step') }} </th>
+                                        <th> {{ trans('fund.applied_funds-table.status') }} </th>
+                                        <th> {{ trans('fund.applied_funds-table.next_step') }} </th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach($funds as $index=>$fund) { ?>
+                                    @foreach($funds as $index=>$fund)
                                         <tr>
                                             <td>
                                                 {{ $index + 1 }}
@@ -48,7 +47,7 @@
                                                 {{ $fund->currentStep }}
                                             </td>
                                             <td>
-                                                <span class="label label-sm label-{{ $fund->statusClass }}"> {{ $fund->statusTitle }} </span>
+                                                <span class="label label-sm label-{{ $fund->statusClass }}"> {{ $fund->statusTitle }}</span>
                                             </td>
                                             <td>
                                                 {!!
@@ -63,11 +62,11 @@
                                                 !!}
                                             </td>
                                         </tr>
-                                    <?php } ?>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
-                    <?php } ?>
+                    @endif
                 </div>
             </div>
         </div>
