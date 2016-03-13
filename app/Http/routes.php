@@ -48,7 +48,7 @@ Route::group(['middleware' => ['web']], function () {
   Route::get('login',[ 'as' => 'login',  'uses' =>'Auth\AuthController@showLoginForm']);
   // Route::post('login',[ 'as' => 'login',  'uses' =>'Auth\AuthController@login']);
   Route::get('logout',[ 'as' => 'logout',  'uses' =>'Auth\AuthController@logout']);
-  Route::get('register', 'Auth\AuthController@showRegistrationForm');
+  Route::get('register', [ 'as' => 'register',  'uses' =>'Auth\AuthController@showRegistrationForm']);
   Route::post('register', 'Auth\AuthController@register');
 
 
@@ -101,7 +101,7 @@ Route::group(['middleware' => 'web','prefix' => 'rswk'], function () {
 	Route::get('fund_user_request', [ 'as' => 'fund_user_request','middleware' => 'auth', 'uses' =>'ApplicationController@applicationUserRequest']);
 	Route::post('fund_insert_update',[ 'as' => 'fund_insert_update','middleware' => 'auth', 'uses' => 'FundController@fundInsertUpdate']);
 	Route::any('fund_file_upload_insert',[ 'as' => 'fund_file_upload_insert','middleware' => 'auth', 'uses' => 'FundController@fundFileUploadInsert']);
-  Route::get('fund_file_delete/{download_id}',[ 'as' => 'fund_file_delete','middleware' => 'auth', 'uses' => 'FundController@fundFileDelete']);
+  Route::any('fund_file_delete/{download_id}',[ 'as' => 'fund_file_delete','middleware' => 'auth', 'uses' => 'FundController@fundFileDelete']);
 	Route::get('fund_delete/{id}',[ 'as' => 'fund_delete','middleware' => 'auth', 'uses' => 'FundController@fundDelete']);
 
 	Route::get('register_fund/{fundId}',[ 'as' => 'register_fund','middleware' => 'auth', 'uses' => 'ApplicationController@registerFund']);

@@ -13,6 +13,13 @@
         <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
         <ul class="page-sidebar-menu  page-header-fixed page-sidebar-menu-hover-submenu" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
   @if(!Auth::user())
+  <li class="nav-item" id="main_data_research">
+      <a href="{{route('register')}}" class="nav-link nav-toggle">
+            <i class="icon-user-following"></i>
+          <span class="title" style="margin-top: 12px">{{trans('menu.register')}}</span>
+          <span class="arrow"></span>
+      </a>
+  </li>
           <li class="nav-item" id="main_data_research">
               <a href="{{route('base_rscn')}}" class="nav-link nav-toggle">
                   <i class="icon-layers"></i>
@@ -131,12 +138,12 @@
                             <span class="title">{{trans('menu.add_research')}}
                         </a>
                     </li>
-                    <li class="nav-item" id="sub4_data_research">
+                    <!-- <li class="nav-item" id="sub4_data_research">
                         <a href="{{route('fund_manage')}}" class="nav-link">
                             <i class="icon-trophy"></i>
                             <span class="title">{{trans('menu.add_patent')}}
                         </a>
-                    </li>
+                    </li> -->
                 </ul>
             </li>
 

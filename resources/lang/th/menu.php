@@ -29,5 +29,6 @@ return [
     'administration'=>'ดูแลระบบ',
     'manage_users'=>'จัดการผู้ใช้งาน',
 
+    'register'=>'ลงทะเบียนผู้ใช้งาน',
 
 ];

@@ -9,7 +9,7 @@
                                 <div class="portlet-title">
                                     <div class="caption">
                                         <i class="icon-settings font-dark"></i>
-                                        <span class="caption-subject font-dark sbold uppercase">User Information</span>
+                                        <span class="caption-subject font-dark sbold uppercase">{{trans('admin.user_info')}}</span>
                                     </div>
 
                                 </div>
@@ -20,43 +20,43 @@
                                           @include('message')
                                           <input type="hidden" name="id"  value="{{$user->id}}" />
                                             <div class="form-group">
-                                                <label class="col-md-3 control-label">Name</label>
+                                                <label class="col-md-3 control-label">{{trans('admin.name')}}</label>
                                                 <div class="col-md-9">
                                                     <input type="text" name="name" class="form-control input-inline input-medium" value="{{$user->name}}" placeholder="Enter text">
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="col-md-3 control-label">National ID Card</label>
+                                                <label class="col-md-3 control-label">{{trans('admin.national_id')}}</label>
                                                 <div class="col-md-9">
                                                     <input type="text" name="idcard" class="form-control input-inline input-medium" value="{{$user->idcard}}" placeholder="Enter text">
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="col-md-3 control-label">Email</label>
+                                                <label class="col-md-3 control-label">{{trans('admin.email')}}</label>
                                                 <div class="col-md-9">
                                                     <input type="text" name="email" class="form-control input-inline input-medium" value="{{$user->email}}" placeholder="Enter text">
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                          <label class="col-md-3 control-label">Type</label>
+                                                          <label class="col-md-3 control-label">{{trans('admin.type')}}</label>
                                                           <div class="col-md-3">
                                                             <select class="form-control" name="status">
-                                                      <option value="pending" @if($user->status=='pending') selected='selected' @endif>pending</option>
-                                                      <option value="approved" @if($user->status=='approved') selected='selected' @endif>approved</option>
-                                                      <option value="rejected" @if($user->status=='rejected') selected='selected' @endif>rejected</option>
+                                                      <option value="pending" @if($user->status=='pending') selected='selected' @endif>{{trans('admin.pending')}}</option>
+                                                      <option value="approved" @if($user->status=='approved') selected='selected' @endif>{{trans('admin.approved')}}</option>
+                                                      <option value="rejected" @if($user->status=='rejected') selected='selected' @endif>{{trans('admin.rejected')}}</option>
                                                   </select>
                                                           </div>
                                                       </div>
                                             <div class="form-group">
-                                                <label class="col-md-3 control-label">Change Password</label>
+                                                <label class="col-md-3 control-label">{{trans('admin.change_password')}}</label>
                                                 <div class="col-md-9">
-                                                    <input type="password" name="password" class="form-control input-inline input-medium" placeholder="Enter password">
+                                                    <input type="password" name="password" class="form-control input-inline input-medium" placeholder="">
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="col-md-3 control-label">Confirm Password</label>
+                                                <label class="col-md-3 control-label">{{trans('admin.confirm_password')}}</label>
                                                 <div class="col-md-9">
-                                                    <input type="password" name="password_confirmation" class="form-control input-inline input-medium"  placeholder="Enter password">
+                                                    <input type="password" name="password_confirmation" class="form-control input-inline input-medium"  placeholder="">
                                                 </div>
                                             </div>
 
@@ -65,8 +65,8 @@
                                         <div class="form-actions">
                                             <div class="row">
                                                 <div class="col-md-offset-3 col-md-9">
-                                                    <button type="submit" class="btn green">Submit</button>
-                                                    <button type="button" class="btn default">Cancel</button>
+                                                    <button type="submit" class="btn green">{{trans('research.submit')}}</button>
+                                                    <button type="button" class="btn default">{{trans('research.cancel')}}</button>
                                                 </div>
                                             </div>
                                         </div>

@@ -69,6 +69,12 @@
     </div>
 <script type="text/javascript">
     $(document).ready(function () {
+
+      $.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+    }
+});
         // Add class selected navigator
         $('#main_fund, #sub4_fund').addClass("active open");
         $('#main_fund a, #sub4_fund a').append("<span class='selected'></span>");

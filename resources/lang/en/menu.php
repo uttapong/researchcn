@@ -28,6 +28,7 @@ return [
     'add_patent'=>'Add Patent',
     'administration'=>'Administration',
     'manage_users'=>'Manage Users',
+    'register'=>'Register',
 
 
 ];

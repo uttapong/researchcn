@@ -11,7 +11,7 @@ function showField(name){
                                             <div class="portlet-title">
                                                 <div class="caption">
                                                     <i class="icon-plus font-red-sunglo"></i>
-                                                    <span class="caption-subject font-red-sunglo bold uppercase">Add New Research</span>
+                                                    <span class="caption-subject font-red-sunglo bold uppercase">{{trans('research.new_research')}}</span>
                                                     <span class="caption-helper"></span>
                                                 </div>
 
@@ -27,21 +27,21 @@ function showField(name){
                                                       @include('message')
 
                                                       <div class="form-group">
-                                                          <label class="col-md-3 control-label">Type</label>
+                                                          <label class="col-md-3 control-label">{{trans('research.type')}}</label>
                                                           <div class="col-md-4">
                                                             <select class="form-control" name="type" onchange="showField($(this).val())">
-                                                      <option value="article">บทความวิจัย</option>
-                                                      <option value="research">ผลงานวิจัย</option>
-                                                      <option value="academic">ผลงานวิชาการ</option>
-                                                      <option value="book">ตำรา</option>
-                                                      <option value="invention">สิ่งประดิษฐ์</option>
-                                                      <option value="award">รางวัล</option>
+                                                      <option value="article">{{trans('research.article')}}</option>
+                                                      <option value="research">{{trans('research.research')}}</option>
+                                                      <option value="academic">{{trans('research.academic')}}</option>
+                                                      <option value="book">{{trans('research.book')}}</option>
+                                                      <option value="invention">{{trans('research.invention')}}</option>
+                                                      <option value="award">{{trans('research.award')}}</option>
                                                   </select>
                                                           </div>
                                                       </div>
 
                                                       <div class="form-group">
-                                                          <label class="col-md-3 control-label">Research Field</label>
+                                                          <label class="col-md-3 control-label">{{trans('research.field')}}</label>
                                                           <div class="col-md-4">
                                                             <select class="form-control" name="type">
                                                               @foreach($fields as $field)
@@ -52,85 +52,85 @@ function showField(name){
                                                       </div>
 
                                                         <div class="form-group">
-                                                            <label class="col-md-3 control-label">Title</label>
+                                                            <label class="col-md-3 control-label">{{trans('research.title')}}</label>
                                                             <div class="col-md-4">
                                                                 <input type="text" name="title" class="form-control" placeholder="">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="col-md-3 control-label">Authors</label>
+                                                            <label class="col-md-3 control-label">{{trans('research.authors')}}</label>
                                                             <div class="col-md-4">
                                                                 <input type="text"  name="authors" class="form-control" placeholder="">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="col-md-3 control-label">Keywords</label>
+                                                            <label class="col-md-3 control-label">{{trans('research.keywords')}}</label>
                                                             <div class="col-md-4">
                                                                 <input type="text"  name="keywords" class="form-control" placeholder="">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="col-md-3 control-label">Abstract</label>
+                                                            <label class="col-md-3 control-label">{{trans('research.abstract')}}</label>
                                                             <div class="col-md-4">
                                                                 <textarea class="form-control"  name="abstract" rows="4"></textarea>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="col-md-3 control-label">Full text file upload</label>
+                                                            <label class="col-md-3 control-label">{{trans('research.fulltext_upload')}}</label>
                                                             <div class="col-md-4">
                                                                 <input type="file" name="fulltext_file" >
                                                             </div>
                                                         </div>
                                                         <div class="form-group option article research academic book">
-                                                            <label class="col-md-3 control-label">Article file upload</label>
+                                                            <label class="col-md-3 control-label">{{trans('research.article_upload')}}</label>
                                                             <div class="col-md-4">
                                                                 <input type="file" name="article_file" >
                                                             </div>
                                                         </div>
                                                         <div class="form-group option book" style="display:none;">
-                                                            <label class="col-md-3 control-label">Cover,Table of Contents,Preface file upload</label>
+                                                            <label class="col-md-3 control-label">{{trans('research.cover_upload')}}Cover,Table of Contents,Preface file upload</label>
                                                             <div class="col-md-4">
                                                                 <input type="file" name="cover_file" >
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="col-md-3 control-label">Publication Name</label>
+                                                            <label class="col-md-3 control-label">{{trans('research.publication_name')}}</label>
                                                             <div class="col-md-4">
                                                                 <input type="text" class="form-control"  name="publication_name" placeholder="">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="col-md-3 control-label">Published Month</label>
+                                                            <label class="col-md-3 control-label">{{trans('research.published_month')}}</label>
                                                             <div class="col-md-4">
                                                                 <input type="text" class="form-control"  name="published_month" placeholder="">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="col-md-3 control-label">Published Year</label>
+                                                            <label class="col-md-3 control-label">{{trans('research.published_year')}}</label>
                                                             <div class="col-md-4">
                                                                 <input type="text" class="form-control"  name="published_year" placeholder="">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="col-md-3 control-label">Issue</label>
+                                                            <label class="col-md-3 control-label">{{trans('research.issue')}}</label>
                                                             <div class="col-md-4">
                                                                 <input type="text" class="form-control"  name="issue" placeholder="">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="col-md-3 control-label">Pages</label>
+                                                            <label class="col-md-3 control-label">{{trans('research.pages')}}</label>
                                                             <div class="col-md-4">
                                                                 <input type="text" class="form-control"  name="published_page" placeholder="">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="col-md-3 control-label">Cited Link</label>
+                                                            <label class="col-md-3 control-label">{{trans('research.cited_link')}}</label>
                                                             <div class="col-md-4">
                                                                 <input type="text" class="form-control"  name="cited" placeholder="">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="col-md-3 control-label">Cited Count</label>
+                                                            <label class="col-md-3 control-label">{{trans('research.cited_count')}}</label>
                                                             <div class="col-md-1">
                                                                 <input type="text" class="form-control"  name="cited_count" placeholder="">
                                                             </div>
@@ -140,8 +140,8 @@ function showField(name){
                                                     <div class="form-actions">
                                                         <div class="row">
                                                             <div class="col-md-offset-3 col-md-9">
-                                                                <button type="submit" class="btn green">Submit</button>
-                                                                <button type="button" class="btn default">Cancel</button>
+                                                                <button type="submit" class="btn green">{{trans('research.submit')}}</button>
+                                                                <button type="button" class="btn default">{{trans('research.cancel')}}</button>
                                                             </div>
                                                         </div>
                                                     </div>

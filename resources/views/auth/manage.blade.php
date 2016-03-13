@@ -9,7 +9,7 @@
                             <div class="portlet box green">
                                 <div class="portlet-title">
                                     <div class="caption">
-                                        <i class="fa fa-cogs"></i>User Management</div>
+                                        <i class="fa fa-cogs"></i>{{trans('admin.user_manage')}}</div>
                                 </div>
                                 <div class="portlet-body">
                                     <div class="table-responsive">
@@ -17,11 +17,11 @@
                                             <thead>
                                                 <tr>
                                                     <th> # </th>
-                                                    <th> Name </th>
-                                                    <th> Personal ID Card </th>
-                                                    <th> Email </th>
-                                                    <th> status </th>
-                                                    <th> Operation </th>
+                                                    <th> {{trans('admin.name')}} </th>
+                                                    <th> {{trans('admin.national_id')}}</th>
+                                                    <th> {{trans('admin.email')}} </th>
+                                                    <th> {{trans('admin.status')}} </th>
+                                                    <th> {{trans('admin.operation')}} </th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -32,13 +32,13 @@
                                                     <td> {{$user->idcard}} </td>
                                                     <td> {{$user->email}} </td>
                                                     <td> @if($user->status=='pending' or $user->status=='')
-                                                        <a class='btn btn-xs btn-primary' href='{{route('user_approve',['userid'=>$user->id,'status'=>'approved'])}}'>Approve</a>
-                                                        <a class='btn btn-xs btn-danger' href='{{route('user_approve',['userid'=>$user->id,'status'=>'rejected'])}}'>Reject</a>
+                                                        <a class='btn btn-xs btn-primary' href='{{route('user_approve',['userid'=>$user->id,'status'=>'approved'])}}'>{{trans('admin.approved')}}</a>
+                                                        <a class='btn btn-xs btn-danger' href='{{route('user_approve',['userid'=>$user->id,'status'=>'rejected'])}}'>{{trans('admin.rejected')}}</a>
                                                         @else
-                                                        {{$user->status}}
+                                                        {{trans('admin.'.$user->status)}}
                                                         @endif
                                                     </td>
-                                                    <td> <a class='btn btn-xs btn-info' href='{{route('user_detail',['userid'=>$user->id])}}'>Edit</a></td>
+                                                    <td> <a class='btn btn-xs btn-info' href='{{route('user_detail',['userid'=>$user->id])}}'>{{trans('admin.edit')}}</a></td>
                                                 </tr>
                                                 @endforeach
                                             </tbody>

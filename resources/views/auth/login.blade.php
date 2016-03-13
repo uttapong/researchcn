@@ -1,9 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-xs-12 col-md-12 col-lg-10 col-lg-offset-1">
             <div class="panel panel-default">
                 <div class="panel-heading">Login</div>
                 <div class="panel-body">
@@ -11,7 +10,7 @@
                         {!! csrf_field() !!}
 
                         <div class="form-group{{ $errors->has('idcard') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">เลขบัตรประชาชน</label>
+                            <label class="col-md-4 control-label">National ID Card</label>
 
                             <div class="col-md-6">
                                 <input type="text" class="form-control" name="idcard" value="{{ old('idcard') }}">
@@ -62,5 +61,4 @@
             </div>
         </div>
     </div>
-</div>
 @endsection

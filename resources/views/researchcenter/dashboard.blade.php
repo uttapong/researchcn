@@ -11,9 +11,9 @@
                                     <div class="number">
                                         <span data-counter="counterup" data-value="1349">6</span>
                                     </div>
-                                    <div class="desc"> ผู้ใช้งานทั้งหมด </div>
+                                    <div class="desc"> {{trans('research.all_users')}} </div>
                                 </div>
-                                <a class="more" href="javascript:;"> View more
+                                <a class="more" href="javascript:;"> {{trans('header.view_more')}}
                                     <i class="m-icon-swapright m-icon-white"></i>
                                 </a>
                             </div>
@@ -26,9 +26,9 @@
                                 <div class="details">
                                     <div class="number">
                                         <span data-counter="counterup" data-value="12,5">8</div>
-                                    <div class="desc"> งานวิจัยทั้งหมด </div>
+                                    <div class="desc"> {{trans('menu.all_research')}} </div>
                                 </div>
-                                <a class="more" href="{{route('base_rscn')}}"> View more
+                                <a class="more" href="{{route('base_rscn')}}"> {{trans('header.view_more')}}
                                     <i class="m-icon-swapright m-icon-white"></i>
                                 </a>
                             </div>
@@ -42,9 +42,9 @@
                                     <div class="number">
                                         <span data-counter="counterup" data-value="549">3</span>
                                     </div>
-                                    <div class="desc"> สิ่งประดิษฐ์และรางวัล </div>
+                                    <div class="desc"> {{trans('research.patent')}} </div>
                                 </div>
-                                <a class="more" href="javascript:;"> View more
+                                <a class="more" href="javascript:;"> {{trans('header.view_more')}}
                                     <i class="m-icon-swapright m-icon-white"></i>
                                 </a>
                             </div>
@@ -57,9 +57,9 @@
                                 <div class="details">
                                     <div class="number"> +
                                         <span data-counter="counterup" data-value="89">89</span>% </div>
-                                    <div class="desc"> Brand Popularity </div>
+                                    <div class="desc"> {{trans('research.patent')}} </div>
                                 </div>
-                                <a class="more" href="javascript:;"> View more
+                                <a class="more" href="javascript:;"> {{trans('header.view_more')}}
                                     <i class="m-icon-swapright m-icon-white"></i>
                                 </a>
                             </div>
@@ -73,15 +73,15 @@
                                 <div class="portlet-title">
                                     <div class="caption">
                                         <i class="icon-bar-chart font-green"></i>
-                                        <span class="caption-subject font-green bold uppercase">Site Visits</span>
-                                        <span class="caption-helper">weekly stats...</span>
+                                        <span class="caption-subject font-green bold uppercase">{{trans('research.site_visit')}}</span>
+                                        <span class="caption-helper">{{trans('weekly_stats')}}</span>
                                     </div>
                                     <div class="actions">
                                         <div class="btn-group btn-group-devided" data-toggle="buttons">
                                             <label class="btn red btn-outline btn-circle btn-sm active">
-                                                <input type="radio" name="options" class="toggle" id="option1">New</label>
+                                                <input type="radio" name="options" class="toggle" id="option1">{{trans('research.new')}}</label>
                                             <label class="btn red btn-outline btn-circle btn-sm">
-                                                <input type="radio" name="options" class="toggle" id="option2">Returning</label>
+                                                <input type="radio" name="options" class="toggle" id="option2">{{trans('research.returning')}}</label>
                                         </div>
                                     </div>
                                 </div>
@@ -101,8 +101,8 @@
                                 <div class="portlet-title">
                                     <div class="caption">
                                         <i class="icon-share font-red-sunglo hide"></i>
-                                        <span class="caption-subject font-red-sunglo bold uppercase">Revenue</span>
-                                        <span class="caption-helper">monthly stats...</span>
+                                        <span class="caption-subject font-red-sunglo bold uppercase">{{trans('research.patent')}}</span>
+                                        <span class="caption-helper">{{trans('research.monthly_stat')}}</span>
                                     </div>
                                     <div class="actions">
                                         <div class="btn-group">

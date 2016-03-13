@@ -160,8 +160,8 @@ class FundController extends Controller {
 				if ($download) {
 					array_push(
 						$completed,(object) array(
-							'name' => $fileName,'size' => $fileSize, 'url' => url('/').'/'.$filePath,
-							'deleteUrl' => route('fund_file_delete', array('download_id' => $download))
+							'name' => $fileName,'deleteType'=>'DELETE','size' => $fileSize, 'url' => url('/').'/'.$filePath,
+							'deleteUrl' => route('fund_file_delete',array('download_id' => $download))
 							// 'deleteUrl' => url('/').'/'.$filePath
 						)
 					);
