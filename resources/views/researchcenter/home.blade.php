@@ -142,8 +142,9 @@ function getPreview(id){
                                                   @if($research->article_file)  <a href="{{route('base')}}/uploads/{{$research->id}}/{{$research->article_file}}" class='btn btn-xs btn-info'><span class="glyphicon glyphicon-download" aria-hidden="true"></span> {{trans('research.article_download')}}</a>
                                                   @endif
                                                     @if($research->full_text_file)
-                                                  <a href="{{ route('get_research',['researchid'=>$research->id])}}" class='btn btn-xs btn-danger'><span class="glyphicon glyphicon-download" aria-hidden="true"></span> {{trans('research.fulltext_download')}}</a></p>
+                                                  <a href="{{ route('get_research',['researchid'=>$research->id])}}" class='btn btn-xs btn-danger'><span class="glyphicon glyphicon-download" aria-hidden="true"></span> {{trans('research.fulltext_download')}}</a>
                                                   @endif
+                                                  </p>
                                             </div>
                                         </li>
                                         @endforeach

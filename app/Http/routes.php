@@ -29,7 +29,7 @@ Route::group(['middleware' => 'web','prefix' => 'rscn'], function () {
 	Route::post('advance_search', [ 'as' => 'advance_search', 'uses' => 'ResearchCenterController@advancesearch']);
 	Route::get('new_research', 'ResearchCenterController@new_research');
 	Route::post('new_research', [ 'as' => 'new_research', 'uses' => 'ResearchCenterController@add']);
-  	Route::post('research_detail/{researchid}', [ 'as' => 'research_detail', 'uses' => 'ResearchCenterController@detail']);
+  Route::get('research_detail/{researchid}', [ 'as' => 'research_detail', 'uses' => 'ResearchCenterController@detail']);
 
 	Route::get('preview/{researchid}', [ 'as' => 'preview_research', 'uses' => 'ResearchCenterController@preview']);
 });
