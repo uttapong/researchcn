@@ -32,7 +32,7 @@ return [
     'form_user_request-success-message' => 'Document uploaded successfully',
     'form_user_request-submit_btn' => 'Save',
 
-    'applied_funds-title' => 'Your Applications',
+    'applied_funds-title' => 'Applied Funds',
     'applied_funds-not_have' => 'No Application',
     'applied_funds-table' => array(
         'title' => 'Fund Name',
