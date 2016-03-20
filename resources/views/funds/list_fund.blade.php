@@ -18,8 +18,11 @@
                                 <tbody>
                                     @foreach($funds as $fund)
                                         <tr>
-                                            <td align="left">
+                                            <td align="left" width="30%">
                                                 {{ $fund->name }}
+                                            </td>
+                                            <td align="left" width="30%">
+                                                {{ $fund->type }}
                                             </td>
                                             <td align="right">
                                                 @if(count($fund->downloads) > 0)

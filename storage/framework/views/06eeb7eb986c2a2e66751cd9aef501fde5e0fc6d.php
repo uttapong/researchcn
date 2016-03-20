@@ -23,7 +23,7 @@
                 <div class="portlet-title">
                     <div class="caption font-red">
                         <i class="icon-layers font-red"></i>
-                        <span class="caption-subject bold uppercase">&nbsp;ทำสัญญารับทุน</span>
+                        <span class="caption-subject bold">&nbsp;ทำสัญญารับทุน</span>
                     </div>
                 </div>
                 <div class="portlet-body">

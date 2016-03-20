@@ -16,8 +16,12 @@
                                 <tbody>
                                     <?php foreach($funds as $fund): ?>
                                         <tr>
-                                            <td align="left">
+                                            <td align="left" width="30%">
                                                 <?php echo e($fund->name); ?>
+
+                                            </td>
+                                            <td align="left" width="30%">
+                                                <?php echo e($fund->type); ?>
 
                                             </td>
                                             <td align="right">

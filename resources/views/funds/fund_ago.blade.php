@@ -21,6 +21,9 @@
                                             <td align="left">
                                                 {{ $fund->name }}
                                             </td>
+                                            <td align="right">
+                                                {{ $fund->type }}
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
