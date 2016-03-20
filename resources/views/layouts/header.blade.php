@@ -42,6 +42,7 @@
         <link href="{{ asset('layouts/layout2/css/layout.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('layouts/layout2/css/themes/blue.min.css') }}" rel="stylesheet" type="text/css" id="style_color" />
         <link href="{{ asset('layouts/layout2/css/custom.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('css/sweetalert.css') }}" rel="stylesheet" type="text/css" />
         <!-- END THEME LAYOUT STYLES -->
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
 
@@ -87,6 +88,7 @@
         <script src="{{ asset('layouts/layout2/scripts/layout.min.js') }}" type="text/javascript"></script>
         <script src="{{ asset('layouts/layout2/scripts/demo.min.js') }}" type="text/javascript"></script>
         <script src="{{ asset('layouts/global/scripts/quick-sidebar.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('scripts/sweetalert.min.js') }}" type="text/javascript"></script>
         <!-- END THEME LAYOUT SCRIPTS -->
     </head>
     <!-- END HEAD -->

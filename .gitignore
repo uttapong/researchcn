@@ -3,8 +3,9 @@
 Homestead.yaml
 Homestead.json
 .env
-/storage/logs/
+/storage/logs/*
 /storage/framework/views/
 /storage/framework/sessions/
-
+/public/uploads/*
+/public/translation/*
 *.log

@@ -32,6 +32,16 @@ Route::group(['middleware' => 'web','prefix' => 'rscn'], function () {
   Route::get('research_detail/{researchid}', [ 'as' => 'research_detail', 'uses' => 'ResearchCenterController@detail']);
 
 	Route::get('preview/{researchid}', [ 'as' => 'preview_research', 'uses' => 'ResearchCenterController@preview']);
+
+	Route::get('new_translate', [ 'as' => 'new_translate', 'uses' => 'TranslateController@addTranslate']);
+	Route::post('new_translate', [ 'as' => 'add_translate', 'uses' => 'TranslateController@newTranslate']);
+	Route::get('upload_translate/{type}/{translate_id}', [ 'as' => 'upload_translate', 'uses' => 'TranslateController@addTranslateFile']);
+	Route::post('upload_translate/{type}/{translate_id}', [ 'as' => 'upload_translatefiles','middleware' => 'auth', 'uses' => 'TranslateController@fileUpload']);
+	Route::any('translate_file_delete/{doc_id}',[ 'as' => 'translate_file_delete','middleware' => 'auth', 'uses' => 'TranslateController@fileDelete']);
+	Route::any('translate_file_list/{translate_id}',[ 'as' => 'translate_file_list','middleware' => 'auth', 'uses' => 'TranslateController@fileList']);
+	Route::any('translate_save_status/{translate_id}',[ 'as' => 'translate_save_status','middleware' => 'auth', 'uses' => 'TranslateController@saveStatus']);
+
+	Route::any('translate_list',[ 'as' => 'translate_list','middleware' => 'auth', 'uses' => 'TranslateController@listTranslate']);
 });
 /*
 |--------------------------------------------------------------------------
