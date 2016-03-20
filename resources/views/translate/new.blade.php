@@ -7,7 +7,7 @@
             <div class="portlet-title">
                 <div class="caption font-red">
                     <i class="icon-plus font-red"></i>
-                    <span class="bold">&nbsp;{{ trans('fund.add_translate') }}</span>
+                    <span class="bold">&nbsp;{{ trans('translate.add_translate') }}</span>
                 </div>
             </div>
             <div class="portlet-body">
@@ -18,7 +18,7 @@
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                         <div class="form-group margin-top-20">
-                            <label class="control-label col-md-3">{{ trans('fund.transation_note') }}
+                            <label class="control-label col-md-3">{{ trans('translate.transation_note') }}
                                 <span class="required"> * </span>
                             </label>
                             <div class="col-md-5">
@@ -35,7 +35,7 @@
                                 <div class="col-md-offset-3 col-md-9">
                                     <button type="submit" class="btn btn-lg btn-info swa-confirm">
                                         <i class="fa fa-plus"></i>
-                                        {{ trans('fund.add_translation') }}
+                                        {{ trans('translate.add_translation') }}
                                     </button>
                                 </div>
                             </div>
@@ -55,7 +55,7 @@
     e.preventDefault();
     var form = $(this).parents('form');
     swal({
-        title: "Are you sure you want to use translation service?",
+        title: "{{trans('translate.confirm_use_translate')}}",
         type: "warning",
         showCancelButton: true,
         confirmButtonColor: "#cc3f44",
@@ -74,7 +74,7 @@
 
     function confirmAdd(){
       var result=false;
-      swal({   title: "Are you sure you want to use translation service?",
+      swal({   title: "{{trans('translate.confirm_use_translate')}}",
          type: "warning",
          showCancelButton: true,
          confirmButtonColor: "#DD6B55",

@@ -9,7 +9,7 @@
                             <div class="portlet box green">
                                 <div class="portlet-title">
                                     <div class="caption">
-                                        <i class="fa fa-cogs"></i>{{trans('translate.user_manage')}}</div>
+                                        <i class="fa fa-cogs"></i>{{trans('translate.manage')}}</div>
                                 </div>
                                 <div class="portlet-body">
                                     <div class="table-responsive">
@@ -35,18 +35,22 @@
                                                     <td> {{$translate->id}} </td>
                                                     <td> {{$translate->creator->name}} </td>
                                                     <td>
-
+                                                        @if(Auth::user()&&Auth::user()->is('admin'))
                                                     <select class="form-control" name='status'>
                                                         <option value="รับงานแปล" @if($translate->status=='รับงานแปล') selected='selected' @endif>รับงานแปล</option>
                                                         <option value="ผู้เชี่ยวชาญชาวไทย"  @if($translate->status=='ผู้เชี่ยวชาญชาวไทย') selected='selected' @endif>ผู้เชี่ยวชาญชาวไทย</option>
                                                         <option value="ผู้เชี่ยวชาญต่างประเทศ"  @if($translate->status=='ผู้เชี่ยวชาญต่างประเทศ') selected='selected' @endif>ผู้เชี่ยวชาญต่างประเทศ</option>
                                                         <option value="พิจารณางานแปล"  @if($translate->status=='พิจารณางานแปล') selected='selected' @endif>พิจารณางานแปล</option>
                                                         <option value="ส่งมอบ/ชำระ"  @if($translate->status=='ส่งมอบ/ชำระ') selected='selected' @endif>ส่งมอบ/ชำระ</option>
-                                                    </select> </td>
+                                                    </select>
+                                                    @else
+                                                    {{$translate->status}}
+                                                  @endif
+                                                </td>
                                                     <td> {{$translate->note}} </td>
                                                     <td>
-                                                        <button type='submit' class='btn btn-primary' >{{trans('translate.save')}}</button>
-                                                        <a href='{{route('translate_file_list',['translate_id'=>$translate->id])}}' class='btn btn-info' >{{trans('translate.view_files')}}</a>
+                                                          @if(Auth::user()&&Auth::user()->is('admin'))<button type='submit' class='btn btn-primary' >{{trans('translate.save')}}</button>@endif
+                                                        <a href='{{route('upload_translate',['type='=>$type,'translate_id'=>$translate->id])}}' class='btn btn-info' >{{trans('translate.view_files')}}</a>
 
                                                     </td>
                                                   </form>

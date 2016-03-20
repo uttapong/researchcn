@@ -107,11 +107,20 @@ class TranslateController extends Controller {
 	}
 
   public function listTranslate(){
-    if(Auth::user()->is('admin'))
+    if(Auth::user()->is('admin')){
+		$type='admin';
     $translate=Translation::paginate(20);
-    else
-    $translate=Translation::where('owner', Auth::user()->id)->paginate(20);
-    return view('translate.list',['translates'=>$translate]);
+  }  else
+		{$type='user';
+    $translate=Translation::where('owner', Auth::user()->id)->paginate(20);}
+    return view('translate.list',['type'=>$type,'translates'=>$translate]);
+  }
+
+	public function listDoc($translate_id){
+
+    $docs_user=Translationdoc::where('translate_id',$translate_id)->where('type','user')->get();
+		$docs_admin=Translationdoc::where('translate_id',$translate_id)->where('type','admin')->get();
+    return view('translate.filelist',['docs_user'=>$docs_user,'docs_admin'=>$docs_admin]);
   }
 
 	public function fundDelete($id) {
@@ -143,14 +152,15 @@ class TranslateController extends Controller {
 
   public function addTranslateFile($type,$id){
 
-
+		$type=Auth::user()->is('admin')?'admin':'user';
 		$translation = Translation::find($id);
 		if (!$translation) {
 			return view('translate.new',['fields'=>$fields,'alert_type'=>'danger','msg'=>'Service Request Error, Please try again.']);
 		}
 
 		return view('translate.upload', [
-			'translation_id' => $translation->id
+			'translation_id' => $translation->id,
+			'type'=>$type
 		]);
   }
 
@@ -164,7 +174,7 @@ class TranslateController extends Controller {
   }
 	public function fileUpload(Request $request) {
 		$id = $request->input('id', 0);
-    $type = $request->input('type', 0);
+    $type = $request->input('type', 'user');
 
 		$completed=[];
 

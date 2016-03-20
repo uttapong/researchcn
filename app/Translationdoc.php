@@ -16,6 +16,7 @@ class Translationdoc extends Model
       return $this->belongsTo('App\Translation','translation_id');
   }
   public function filename(){
-    return str_replace("file/","",$this->file_path);
+    return str_replace("translation/","",$this->file_path);
   }
+
 }

@@ -13,8 +13,8 @@ class Translation extends Model
        return $this->belongsTo('App\User', 'owner');
     }
 
-    public function applications()
+    public function docs()
     {
-        return $this->hasMany('App\Translation_doc', 'translate_id');
+        return $this->hasMany('App\Translationdoc', 'translate_id');
     }
 }

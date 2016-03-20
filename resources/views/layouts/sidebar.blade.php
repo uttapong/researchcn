@@ -31,32 +31,25 @@
           </li>
           <li class="nav-item" id="main_fund">
               <a href="javascript:;" class="nav-link nav-toggle">
-                  <i class="icon-layers"></i>
+                  <i class="icon-speech"></i>
                   <span class="title" style="margin-top: 12px">{{trans('translate.menu')}}</span>
                   <span class="arrow"></span>
               </a>
               <ul class="sub-menu">
                   <li class="nav-item" id="sub1_fund">
                       <a href="{{route('add_translate')}}" class="nav-link">
-                          <i class="icon-layers"></i>
+                          <i class="icon-plus"></i>
                           <span class="title">{{trans('translate.new_translate')}}</span>
                       </a>
                   </li>
                   <li class="nav-item" id="sub2_fund">
                       <a href="{{route('translate_list')}}" class="nav-link">
-                          <i class="icon-layers"></i>
+                          <i class="icon-book-open"></i>
                           <span class="title">{{trans('translate.all_translate')}}</span>
                           <!-- <span class="badge badge-success">1</span> -->
                       </a>
                   </li>
               </ul>
-          </li>
-          <li class="nav-item" id="main_data_research">
-              <a href="{{route('new_translate')}}" class="nav-link nav-toggle">
-                  <i class="icon-layers"></i>
-                  <span class="title" style="margin-top: 12px">{{trans('menu.new_translate')}}</span>
-                  <span class="arrow"></span>
-              </a>
           </li>
           <li class="nav-item" id="main_fund">
               <a href="javascript:;" class="nav-link nav-toggle">
@@ -102,6 +95,28 @@
                     <span class="title" style="margin-top: 12px">{{trans('menu.search')}}</span>
                     <span class="arrow"></span>
                 </a>
+            </li>
+            <li class="nav-item" id="main_fund">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                    <i class="icon-speech"></i>
+                    <span class="title" style="margin-top: 12px">{{trans('translate.menu')}}</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="nav-item" id="sub1_fund">
+                        <a href="{{route('add_translate')}}" class="nav-link">
+                            <i class="icon-plus"></i>
+                            <span class="title">{{trans('translate.new_translate')}}</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" id="sub2_fund">
+                        <a href="{{route('translate_list')}}" class="nav-link">
+                            <i class="icon-book-open"></i>
+                            <span class="title">{{trans('translate.all_translate')}}</span>
+                            <!-- <span class="badge badge-success">1</span> -->
+                        </a>
+                    </li>
+                </ul>
             </li>
             <li class="nav-item" id="main_fund">
                 <a href="javascript:;" class="nav-link nav-toggle">

@@ -38,7 +38,7 @@ Route::group(['middleware' => 'web','prefix' => 'rscn'], function () {
 	Route::get('upload_translate/{type}/{translate_id}', [ 'as' => 'upload_translate', 'uses' => 'TranslateController@addTranslateFile']);
 	Route::post('upload_translate/{type}/{translate_id}', [ 'as' => 'upload_translatefiles','middleware' => 'auth', 'uses' => 'TranslateController@fileUpload']);
 	Route::any('translate_file_delete/{doc_id}',[ 'as' => 'translate_file_delete','middleware' => 'auth', 'uses' => 'TranslateController@fileDelete']);
-	Route::any('translate_file_list/{translate_id}',[ 'as' => 'translate_file_list','middleware' => 'auth', 'uses' => 'TranslateController@fileList']);
+	Route::any('translate_file_list/{translate_id}',[ 'as' => 'translate_file_list','middleware' => 'auth', 'uses' => 'TranslateController@listDoc']);
 	Route::any('translate_save_status/{translate_id}',[ 'as' => 'translate_save_status','middleware' => 'auth', 'uses' => 'TranslateController@saveStatus']);
 
 	Route::any('translate_list',[ 'as' => 'translate_list','middleware' => 'auth', 'uses' => 'TranslateController@listTranslate']);

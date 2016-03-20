@@ -2,6 +2,19 @@
 
 @section('content')
     <div class="row">
+      <div class="page-bar">
+                         <ul class="page-breadcrumb">
+                             <li>
+                                 <i class="icon-home"></i>
+                                 <a href="{{route('translate_list')}}">All Translations</a>
+                                 <i class="fa fa-angle-right"></i>
+                             </li>
+                             <li>
+                                 <span>Translation ID:{{$translation_id}}</span>
+                             </li>
+                         </ul>
+                     </div>
+
         <div class="col-xs-12 col-md-12 col-lg-10 col-lg-offset-1">
             <div class="portlet light portlet-fit portlet-form">
                 <div class="portlet-title">
@@ -15,7 +28,7 @@
                     <form id="fileupload" action="{{ route('upload_translatefiles',['type'=>'user','translate_id'=>$translation_id]) }}" method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <input type="hidden" name="id" value="{{ $translation_id }}">
-                        <input type="hidden" name="type" value="user">
+                        <input type="hidden" name="type" value="{{$type}}">
                         <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
                         <div class="form-body row fileupload-buttonbar">
                             <div class="col-lg-7">
@@ -49,27 +62,41 @@
                         <!-- The table listing the files available for upload/download -->
                         <table role="presentation" class="table table-striped"><tbody class="files"></tbody></table>
                     </form>
-                    <!-- The blueimp Gallery widget -->
-                    <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls" data-filter=":even">
-                        <div class="slides"></div>
-                        <h3 class="title"></h3>
-                        <a class="prev">‹</a>
-                        <a class="next">›</a>
-                        <a class="close">×</a>
-                        <a class="play-pause"></a>
-                        <ol class="indicator"></ol>
-                    </div>
+
                     <!-- The template to display files available for upload -->
+
                 </div>
-                <!-- END VALIDATION STATES-->
+                <div class="portlet-title">
+                    <div class="caption font-red">
+                        <i class="glyphicon glyphicon-upload font-red"></i>
+                        <span class="bold">&nbsp; {{ trans('translate.view_files') }}</span>
+                    </div>
+                </div>
+                <div >
+                  <div style="padding: 0px 40px 20px 40px;" id="all_files" ></div>
+                </div>
+
             </div>
-            <a href="{{ route('fund_form', array('id' => $translation_id)) }}" type="button" class="btn btn-default">
-            <i class="glyphicon glyphicon-chevron-left"></i> {{ trans('fund.add_funds_file_uplaod-back_btn') }}
+            <a href="{{route('add_translate')}}" type="button" class="btn btn-default">
+            <i class="glyphicon glyphicon-chevron-left"></i> {{ trans('translate.back_to_list') }}
             </a>
         </div>
     </div>
 <script type="text/javascript">
+function getFileList(){
+  $.ajax( "{{ route('base_rscn') }}/translate_file_list/"+{{$translation_id}} )
+  .done(function(msg) {
+    $('#all_files').html(msg);
+
+
+  });
+}
     $(document).ready(function () {
+
+
+
+
+      getFileList();
 
       $.ajaxSetup({
     headers: {
@@ -81,6 +108,7 @@
         $('#main_fund a, #sub4_fund a').append("<span class='selected'></span>");
 
         FormFileUpload.init();
+          $('#fileupload') .bind('fileuploaddone', function (e, data) {getFileList();})
     });
 
     var FormFileUpload = function() {
@@ -100,7 +128,8 @@
                     dataType: "json",
                     context: $("#fileupload")[0]
                 }).always(function() {
-                    $(this).removeClass("fileupload-processing")
+                    $(this).removeClass("fileupload-processing");
+
                 }).done(function(e) {
                     $(this).fileupload("option", "done").call(this, $.Event("done"), {
                         result: e
@@ -108,7 +137,37 @@
                 })
             }
         }
+
+
     }();
+
+    function confirmDelete(doc_id){
+
+
+        var result=false;
+        swal({   title: "{{ trans('translate.confirm_file_delete') }}",
+           type: "warning",
+           showCancelButton: true,
+           confirmButtonColor: "#DD6B55",
+              confirmButtonText: "Sure",
+              closeOnConfirm: true },
+              function(confirm){ if(confirm)removeDoc(doc_id);
+            return result;
+        });
+
+
+
+    }
+    function removeDoc(doc_id){
+      $.ajax({
+          url: "{{ route('base_rscn') }}/translate_file_delete/"+doc_id,
+          dataType: 'json'
+      })
+      .done(function(msg) {
+          if(msg.id)getFileList();
+          else $('#doc_'+doc_id+">.error").html("<span class='alert alert-danger'>"+msg.error+"</span>");
+      });
+    }
 </script>
 <script id="template-upload" type="text/x-tmpl">
 {% for (var i=0, file; file=o.files[i]; i++) { %}
