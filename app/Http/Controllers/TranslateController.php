@@ -135,6 +135,7 @@ class TranslateController extends Controller {
     	$translation = new Translation;
       $translation->note=$request->input('note');
       $translation->owner=Auth::user()->id;
+			$translation->status='รับงานแปล';
       if($translation->save()){
           return redirect()->route('upload_translate',['type'=>'user','translate_id'=>$translation->id]);
       }

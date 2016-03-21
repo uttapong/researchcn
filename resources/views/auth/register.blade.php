@@ -5,13 +5,13 @@
     <div class="row">
         <div class="col-xs-8 col-xs-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
+                <div class="panel-heading">{{trans('admin.register')}}</div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
                         {!! csrf_field() !!}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">ชื่อ - สกุล</label>
+                            <label class="col-md-4 control-label">{{trans('admin.first_lastname')}}</label>
 
                             <div class="col-md-6">
                                 <input type="text" class="form-control" name="name" value="{{ old('name') }}">
@@ -24,7 +24,7 @@
                             </div>
                         </div>
                         <div class="form-group{{ $errors->has('idcard') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">เลขบัตรประชาชน</label>
+                            <label class="col-md-4 control-label">{{trans('admin.id_card')}}</label>
 
                             <div class="col-md-6">
                                 <input type="text" class="form-control" name="idcard" value="{{ old('idcard') }}">
@@ -37,7 +37,7 @@
                             </div>
                         </div>
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">อีเมล์</label>
+                            <label class="col-md-4 control-label">{{trans('admin.email')}}</label>
 
                             <div class="col-md-6">
                                 <input type="email" class="form-control" name="email" value="{{ old('email') }}">
@@ -51,7 +51,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">Password</label>
+                            <label class="col-md-4 control-label">{{trans('admin.password')}}</label>
 
                             <div class="col-md-6">
                                 <input type="password" class="form-control" name="password">
@@ -65,7 +65,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">Confirm Password</label>
+                            <label class="col-md-4 control-label">{{trans('admin.confirm_password')}}</label>
 
                             <div class="col-md-6">
                                 <input type="password" class="form-control" name="password_confirmation">

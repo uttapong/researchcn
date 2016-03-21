@@ -19,5 +19,10 @@ return [
     'edit'=>'Edit',
     'user_manage'=>'User Management',
 
+    'register'=>'New User Registration',
+    'first_lastname'=>'Name',
+    'id_card'=>'National ID Number',
+    'password'=>'Password',
+
 
 ];

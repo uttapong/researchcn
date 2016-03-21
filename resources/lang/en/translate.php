@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'id' => 'เลขงานแปล',
+    'id' => 'Translation ID',
     'submitter'     => 'Submitter',
     'status' => 'Status',
     'note'     => 'Note',
@@ -35,6 +35,25 @@ return [
     'no_docs_user'=>"No user's upload file",
     'no_docs_admin'=>"No admin's upload file",
     'confim_delete_file'=>'Are you sure you want to remove this file?',
-    'confirm_use_translate'=>'Are you sure you want to use the service?'
+    'confirm_use_translate'=>'Are you sure you want to use the service?',
+
+    'weight'=>'Weight',
+    'article_level'=>'Article Level',
+    'title_thai'=>'Thai Title',
+    'book_type'=>'Book Type',
+    'subject'=>'Subject',
+    'course'=>'Course',
+    'degree'=>'Degree',
+    'subject_type'=>'Subject Type',
+    'project'=>'Project Name',
+    'bachelor'=>'Bachelor Degree',
+    'master'=>'Master Degree',
+    'doctor'=>'Doctor Degree',
+    'local'=>'Local',
+    'international'=>'International',
+    'prize_name'=>'Prize Name',
+    'prize_level'=>'Prize Level',
+    'issuer'=>'Issuer',
+
 
 ];

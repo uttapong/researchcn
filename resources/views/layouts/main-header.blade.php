@@ -204,9 +204,31 @@ a{
             @else
             <div class="top-menu">
                 <ul class="nav navbar-nav pull-right">
-
+                  <li class="dropdown dropdown-extended dropdown-inbox" id="header_inbox_bar">
+                      <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                          {{ trans('header.lang') }}
+                            <i class="fa fa-angle-down"></i>
+                      </a>
+                      <ul class="dropdown-menu">
+                          <li class="external">
+                              <h3>Select Language </h3>
+                          </li>
+                          <li>
+                              <ul class="dropdown-menu-list scroller" style="height: 275px;" data-handle-color="#637283">
+                                  <li>
+                                      <a href="{{ route('lang.switch', 'th') }}"><span class="subject">
+                                            ภาษาไทย
+                                          </span></a>
+                                          <a href="{{ route('lang.switch', 'en') }}"><span class="subject">
+                                                English
+                                              </span></a>
+                                  </li>
+                              </ul>
+                          </li>
+                      </ul>
+                  </li>
             <li class="dropdown dropdown-user">
-                <a href="{{route('login')}}" class="btn btn-info"> Sign in
+                <a href="{{route('login')}}" class="btn btn-info"> {{ trans('header.sign_in') }}
                 </a>
             </li>
           </ul>

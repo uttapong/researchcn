@@ -34,6 +34,7 @@ return [
     'abstract' => "Abstract",
     'fulltext_upload' => "Full Text File Upload",
     'article_upload' => "Article File Upload",
+    'cover_upload' =>'Cover,Table of Contents,Preface file upload',
     'publication_name' => "Publication Name",
     'published_month' => "Published Month",
     'published_year' => "Published Year",
@@ -44,5 +45,24 @@ return [
     'type' => "Type",
     'submit' => "Submit",
     'cancel' => "Cancel",
+
+
+    'weight'=>'Weight',
+    'article_level'=>'Article Level',
+    'title_thai'=>'Thai Title',
+    'book_type'=>'Book Type',
+    'subject'=>'Subject',
+    'course'=>'Course',
+    'degree'=>'Degree',
+    'subject_type'=>'Subject Type',
+    'project'=>'Project Name',
+    'bachelor'=>'Bachelor Degree',
+    'master'=>'Master Degree',
+    'doctor'=>'Doctor Degree',
+    'local'=>'Local',
+    'international'=>'International',
+    'prize_name'=>'Prize Name',
+    'prize_level'=>'Prize Level',
+    'issuer'=>'Issuer',
 
 ];

@@ -19,7 +19,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+
     }
 
     /**
@@ -43,20 +43,8 @@ class HomeController extends Controller
 
     public function dashboard()
   {
+      $this->middleware('auth');
      return view('dashboard');
   }
-    // public function test(){
-    //   //$user = Fund::find(1)->user;
-    //   $applications=Fund::find(1)->applications;
-    //   $test_var='adfafdadfadf';
-    //   return view('home',['test_var' => $applications]);
-    //
-    // }
-    public function testfund(){
-      //$user = Fund::find(1)->user;
-      $apps=Fund::find(1)->applications;
-      // $test_var='adfafdadfadf';
-      return view('home',['apps' => $apps]);
-
-    }
+    
 }

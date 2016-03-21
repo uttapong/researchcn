@@ -166,12 +166,6 @@
                     <span class="arrow"></span>
                 </a>
                 <ul class="sub-menu">
-                    <li class="nav-item" id="sub1_data_research">
-                        <a href="{{route('dashboard_rscn')}}" class="nav-link">
-                            <i class="icon-graph"></i>
-                            <span class="title">{{trans('menu.research_stat')}}
-                        </a>
-                    </li>
                     <li class="nav-item" id="sub2_data_research">
                         <a href="{{route('base_rscn')}}" class="nav-link">
                             <i class="icon-list"></i>
@@ -184,12 +178,6 @@
                             <span class="title">{{trans('menu.add_research')}}
                         </a>
                     </li>
-                    <!-- <li class="nav-item" id="sub4_data_research">
-                        <a href="{{route('fund_manage')}}" class="nav-link">
-                            <i class="icon-trophy"></i>
-                            <span class="title">{{trans('menu.add_patent')}}
-                        </a>
-                    </li> -->
                 </ul>
             </li>
 

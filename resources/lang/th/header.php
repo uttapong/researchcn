@@ -21,5 +21,6 @@ return [
     'pending_notification'=>'การแจ้งเตือนที่ไม่ได้อ่าน',
     'view_all'=>'ดูทั้งหมด',
     'view_more'=>'อ่านต่อ',
+    'sign_in'=>'เข้าสู่ระบบ'
 
 ];
