@@ -20,7 +20,7 @@ return [
     'log_out'=>'Log out',
     'pending_notification'=>'Pending notifications',
     'view_all'=>'View all',
-    'sign_in'=>'Sign In'
+    'sign_in'=>'Sign In',
 
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 
