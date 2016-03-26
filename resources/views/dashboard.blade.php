@@ -9,13 +9,20 @@
                                 </div>
                                 <div class="details">
                                     <div class="number">
-                                        <span data-counter="counterup" data-value="1349">6</span>
+                                        <span data-counter="counterup" data-value="1349">{{$users}}</span>
                                     </div>
-                                    <div class="desc"> ผู้ใช้งานทั้งหมด </div>
+                                    <div class="desc"> {{ trans('admin.all_users') }} </div>
                                 </div>
-                                <a class="more" href="javascript:;"> View more
+                                  @if(Auth::user()&&Auth::user()->is('admin'))
+                                <a class="more" href="{{route('user_manage')}}"> {{ trans('admin.view_more') }}
                                     <i class="m-icon-swapright m-icon-white"></i>
                                 </a>
+                                @else
+                                <a class="more" href="#">&nbsp;
+                                    <i class="m-icon-swapright m-icon-white"></i>
+                                </a>
+                                @endif
+
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -25,10 +32,10 @@
                                 </div>
                                 <div class="details">
                                     <div class="number">
-                                        <span data-counter="counterup" data-value="12,5">8</div>
-                                    <div class="desc"> งานวิจัยทั้งหมด </div>
+                                        <span data-counter="counterup" data-value="12,5">{{$researchs}}</div>
+                                    <div class="desc"> {{ trans('admin.all_researchs') }} </div>
                                 </div>
-                                <a class="more" href="{{route('base_rscn')}}"> View more
+                                <a class="more" href="{{route('base_rscn')}}"> {{ trans('admin.view_more') }}
                                     <i class="m-icon-swapright m-icon-white"></i>
                                 </a>
                             </div>
@@ -40,11 +47,11 @@
                                 </div>
                                 <div class="details">
                                     <div class="number">
-                                        <span data-counter="counterup" data-value="549">3</span>
+                                        <span data-counter="counterup" data-value="549">{{$funds}}</span>
                                     </div>
-                                    <div class="desc"> สิ่งประดิษฐ์และรางวัล </div>
+                                    <div class="desc"> {{ trans('admin.all_funds') }} </div>
                                 </div>
-                                <a class="more" href="javascript:;"> View more
+                                <a class="more" href="{{route('base_rswk')}}"> {{ trans('admin.view_more') }}
                                     <i class="m-icon-swapright m-icon-white"></i>
                                 </a>
                             </div>
@@ -55,11 +62,11 @@
                                     <i class="fa fa-globe"></i>
                                 </div>
                                 <div class="details">
-                                    <div class="number"> 
-                                        <span data-counter="counterup" data-value="89"> 34</div>
-                                    <div class="desc"> งานแปลทั้งหมด </div>
+                                    <div class="number">
+                                        <span data-counter="counterup" data-value="89"> {{$translations}}</div>
+                                    <div class="desc"> {{ trans('admin.all_translations') }} </div>
                                 </div>
-                                <a class="more" href="javascript:;"> View more
+                                <a class="more" href="{{route('translate_list')}}"> {{ trans('admin.view_more') }}
                                     <i class="m-icon-swapright m-icon-white"></i>
                                 </a>
                             </div>
@@ -73,15 +80,14 @@
                                 <div class="portlet-title">
                                     <div class="caption">
                                         <i class="icon-bar-chart font-green"></i>
-                                        <span class="caption-subject font-green bold uppercase">Site Visits</span>
-                                        <span class="caption-helper">weekly stats...</span>
+                                        <span class="caption-subject font-green bold uppercase">{{ trans('admin.site_visit') }}</span>
+
                                     </div>
                                     <div class="actions">
                                         <div class="btn-group btn-group-devided" data-toggle="buttons">
                                             <label class="btn red btn-outline btn-circle btn-sm active">
-                                                <input type="radio" name="options" class="toggle" id="option1">New</label>
-                                            <label class="btn red btn-outline btn-circle btn-sm">
-                                                <input type="radio" name="options" class="toggle" id="option2">Returning</label>
+                                                <input type="radio" name="options" class="toggle" id="option1">{{ trans('admin.new') }}</label>
+
                                         </div>
                                     </div>
                                 </div>
@@ -102,6 +108,64 @@
         // Add class selected navigator
         $('#main_stats').addClass("active open");
         $('#main_stats a').append("<span class='selected'></span>");
+
+        var chart = AmCharts.makeChart("site_statistics",{
+  "type": "serial",
+  "categoryField": "date",
+  "categoryAxis": {
+    "gridPosition": "start"
+  },
+  "graphs": [
+    {
+      "title": "daily users",
+      "valueField": "count"
+    }
+  ],
+  "valueAxes": [
+    {
+      "title": "Users"
+    }
+  ],
+  "legend": {
+    "useGraphSettings": true
+  },
+  "titles": [
+    {
+      "size": 15,
+      "text": "{{ trans('admin.site_visit') }}"
+    }
+  ],
+  "dataProvider": [
+    {
+      "date": "19 Mar 2016",
+      "count": 2
+    },
+    {
+      "date": "20 Mar 2016",
+      "count": 1
+    },
+    {
+      "date": "22 Mar 2016",
+      "count": 2
+    },
+    {
+      "date": "22 Mar 2016",
+      "count": 3
+    },
+    {
+      "date": "23 Mar 2016",
+      "count": 14
+    },
+    {
+      "date": "25 Mar 2016",
+      "count": 31
+    },
+    {
+      "date": "20 Mar 2016",
+      "count": 8
+    },
+  ]
+});
     });
 </script>
 @endsection

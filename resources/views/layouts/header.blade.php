@@ -64,6 +64,9 @@
         <script src="{{ asset('plugins/datatables/datatables.min.js') }}" type="text/javascript"></script>
         <script src="{{ asset('plugins/datatables/plugins/bootstrap/datatables.bootstrap.js') }}" type="text/javascript"></script>
 
+          <script src="{{ asset('plugins/amcharts/amcharts/amcharts.js') }}" type="text/javascript"></script>
+          <script src="{{ asset('plugins/amcharts/amcharts/serial.js') }}" type="text/javascript"></script>
+
         <script src="{{ asset('plugins/jquery-file-upload/js/vendor/jquery.ui.widget.js') }}" type="text/javascript"></script>
         <script src="{{ asset('plugins/jquery-file-upload/js/vendor/tmpl.min.js') }}" type="text/javascript"></script>
         <script src="{{ asset('plugins/jquery-file-upload/js/vendor/load-image.min.js') }}" type="text/javascript"></script>

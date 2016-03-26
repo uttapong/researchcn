@@ -63,9 +63,7 @@ Route::group(['middleware' => ['web']], function () {
 
 
   Route::get('lang/{lang}', ['as'=>'lang.switch', 'uses'=>'HomeController@switchLang']);
-  Route::any('/', [ 'as' => 'base', function () {
-    return view('dashboard');
-  }]);
+  Route::any('/', [ 'as' => 'base', 'uses'=>'HomeController@dashboard']);
 });
 // Route::get('login', 'Auth\AuthController@showLoginForm');
 
@@ -78,9 +76,7 @@ Route::group(['middleware' => ['web']], function () {
 
 Route::group(['middleware' => ['web','auth']], function () {
 
-  Route::any('home', [ 'as' => 'home', function () {
-  	return view('dashboard');
-  }]);
+Route::any('home', [ 'as' => 'home', 'uses'=>'HomeController@dashboard']);
 
 
 

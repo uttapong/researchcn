@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Fund as Fund;
+use App\Research as Research;
+use App\Translation as Translation;
+use App\User as User;
 use Bouncer;
 use Config;
 use Illuminate\Support\Facades\Session;
@@ -29,7 +32,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+      return redirect()->action('HomeController@dashboard');
     }
 
 
@@ -43,8 +46,12 @@ class HomeController extends Controller
 
     public function dashboard()
   {
-      $this->middleware('auth');
-     return view('dashboard');
+        // $this->middleware('auth');
+      $researchs = Research::count();
+      $funds = Fund::count();
+      $translations = Translation::count();
+      $users=User::count();
+     return view('dashboard',['researchs'=>$researchs,'funds'=>$funds,'translations'=>$translations,'users'=>$users]);
   }
-    
+
 }
