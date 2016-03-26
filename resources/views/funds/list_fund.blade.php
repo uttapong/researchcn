@@ -30,9 +30,9 @@
                                                         <i class="fa fa-download"></i> Download files
                                                     </button>
                                                 @endif
-                                                <button type="button" data-id="<?php print ($fund->id) ?>" class="btn btn-info" data-singleton="true" data-toggle="confirmation" data-placement="top" data-btn-ok-label="ตกลง" data-btn-cancel-label="ยกเลิก" data-original-title="{{ trans('fund.current_funds-confirm_apply') . ' ' . $fund->name }}" {{ $fund->registered ? 'disabled' : null }}>
+                                                <!-- <button type="button" data-id="<?php print ($fund->id) ?>" class="btn btn-info" data-singleton="true" data-toggle="confirmation" data-placement="top" data-btn-ok-label="ตกลง" data-btn-cancel-label="ยกเลิก" data-original-title="{{ trans('fund.current_funds-confirm_apply') . ' ' . $fund->name }}" {{ $fund->registered ? 'disabled' : null }}>
                                                     {{ $fund->registered ? trans('fund.current_funds-applied_btn') : trans('fund.current_funds-apply_btn') }}
-                                                </button>
+                                                </button> -->
                                             </td>
                                         </tr>
                                         <tr id="files_{{$fund->id}}" style="display:none;padding: 0 5px 5px 5px;background-color: #efefef;">

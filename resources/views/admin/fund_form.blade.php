@@ -46,11 +46,8 @@
                                     <i class="fa"></i>
                                     <select id="fund_type" class="form-control" name="type">
                                         <option value="">----- &nbsp;{{ trans('fund.add_funds-select') }}&nbsp; -----</option>
-                                        <option value="บทความวิจัย">บทความวิจัย</option>
-                                        <option value="ผลงานวิชาการ">ผลงานวิชาการ</option>
-                                        <option value="ตำรา">ตำรา</option>
-                                        <option value="สิ่งประดิษฐ์">สิ่งประดิษฐ์</option>
-                                        <option value="รางวัล">รางวัล</option>
+                                        <option value="ทุนภายใน">ทุนภายใน</option>
+                                        <option value="ทุนภายนอก">ทุนภายนอก</option>
                                     </select>
                                 </div>
                             </div>
@@ -108,7 +105,7 @@
                                 <span class="required"> * </span>
                             </label>
                             <div class="col-md-5">
-                                <div class="input-group date date-picker" data-date-format="dd-mm-yyyy" data-date-start-date="+0d">
+                                <div class="input-group date date-picker" data-date-format="dd-mm-yyyy" >
                                     <input type="text" class="form-control" readonly="" name="apply_start" value="{{ $fund ? $fund->apply_start : null }}">
                                     <span class="input-group-btn">
                                         <button class="btn default" type="button" style="height: 34px">
@@ -125,7 +122,7 @@
                             <div class="col-md-5">
                                 <div class="input-icon right">
                                     <i class="fa"></i>
-                                    <div class="input-group date date-picker" data-date-format="dd-mm-yyyy" data-date-start-date="+0d">
+                                    <div class="input-group date date-picker" data-date-format="dd-mm-yyyy" >
                                         <input type="text" class="form-control" readonly="" name="apply_end" value="{{ $fund ? $fund->apply_end : null }}">
                                         <span class="input-group-btn">
                                             <button class="btn default" type="button" style="height: 34px">
@@ -145,7 +142,7 @@
                             <div class="col-md-5">
                                 <div class="input-icon right">
                                     <i class="fa"></i>
-                                    <div class="input-group date date-picker" data-date-format="dd-mm-yyyy" data-date-start-date="+0d">
+                                    <div class="input-group date date-picker" data-date-format="dd-mm-yyyy" >
                                         <input type="text" class="form-control" readonly="" name="upload_start" value="{{ $fund ? $fund->upload_start : null }}">
                                         <span class="input-group-btn">
                                             <button class="btn default" type="button" style="height: 34px">
@@ -163,7 +160,7 @@
                             <div class="col-md-5">
                                 <div class="input-icon right">
                                     <i class="fa"></i>
-                                    <div class="input-group date date-picker" data-date-format="dd-mm-yyyy" data-date-start-date="+0d">
+                                    <div class="input-group date date-picker" data-date-format="dd-mm-yyyy" >
                                         <input type="text" class="form-control" readonly="" name="upload_end" value="{{ $fund ? $fund->upload_end : null }}">
                                         <span class="input-group-btn">
                                             <button class="btn default" type="button" style="height: 34px">
@@ -175,7 +172,7 @@
                             </div>
                         </div>
 
-                        <hr width="90%" style="margin: auto;" />
+                        <!-- <hr width="90%" style="margin: auto;" />
                         <div class="form-group margin-top-20">
                             <label class="control-label col-md-3">{{ trans('fund.add_funds-form2-5') }}
                                 <span class="required"> * </span>
@@ -193,7 +190,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="form-actions">
                             <div class="row">
                                 <div class="col-md-offset-3 col-md-9">
@@ -257,9 +254,9 @@
                 upload_end: {
                     required: !0
                 },
-                contract_end: {
-                    required: !0
-                }
+                // contract_end: {
+                //     required: !0
+                // }
             },
             invalidHandler: function(e, t) {
                 i.hide(), r.show(), App.scrollTo(r, -200)
