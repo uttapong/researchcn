@@ -121,14 +121,14 @@ function getPreview(id){
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="search-container ">
+                                <div class="search-container " >
                                   @if(count($researchs)<=0)
                                   <div class="alert  alert-danger" role="alert" style="margin-top: 10px;">{{trans('research.no_result_found')}}</div>
                                   @endif
                                     <ul>
                                       @foreach ($researchs as $research)
                                         <li class="search-item clearfix">
-                                            <div class="search-content">
+                                            <div class="search-content" style="float:left;">
                                                 <h2 class="search-title">
                                                     <a href="{{route('research_detail',['researchid'=>$research->id])}}" >{{$research->getShortTitle()}}</a>
                                                 </h2>
@@ -145,7 +145,16 @@ function getPreview(id){
                                                   <a href="{{ route('get_research',['researchid'=>$research->id])}}" class='btn btn-xs btn-danger'><span class="glyphicon glyphicon-download" aria-hidden="true"></span> {{trans('research.fulltext_download')}}</a>
                                                   @endif
                                                   </p>
+                                                  @if($research->type=='research'||$research->type=='article')
+                                                  <p class="search-desc">{{trans('research.cited')}}: {{$research->cited?$research->cited:'-'}}, {{trans('research.isi')}}: {{$research->isi?$research->isi:0}}, {{trans('research.scopus')}}: {{$research->scopus?$research->scopus:0}}, {{trans('research.tci')}}: {{$research->tci?$research->tci:0}}</p>
+                                                  @endif
                                             </div>
+                                            @if(Auth::user()&&Auth::user()->is('admin'))
+                                            <div style="float:right">
+                                              <a href="{{route('research',['researchid'=>$research->id])}}" class='btn btn-sm btn-warning'>Edit</a>
+                                              <button onclick="confirmDelete({{$research->id}})" class='btn btn-sm btn-danger'>Delete</button>
+                                            </div>
+                                            @endif
                                         </li>
                                         @endforeach
                                     </ul>
@@ -162,5 +171,22 @@ function getPreview(id){
         $('#main_search_research').addClass("active open");
         $('#main_search_research a').append("<span class='selected'></span>");
     });
+
+    function confirmDelete(id){
+
+
+        swal({   title: "Are you sure you want to delete this research?",
+           type: "warning",
+           showCancelButton: true,
+           confirmButtonColor: "#DD6B55",
+              confirmButtonText: "Sure",
+              closeOnConfirm: true },
+              function(confirm){ if(confirm)window.location.href = "{{route('base_rscn')}}/del_research/"+id;;
+            return result;
+        });
+
+
+
+    }
 </script>
 @endsection

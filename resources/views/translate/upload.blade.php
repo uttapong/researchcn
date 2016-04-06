@@ -80,6 +80,7 @@
             <a href="{{route('add_translate')}}" type="button" class="btn btn-default">
             <i class="glyphicon glyphicon-chevron-left"></i> {{ trans('translate.back_to_list') }}
             </a>
+
         </div>
     </div>
 <script type="text/javascript">

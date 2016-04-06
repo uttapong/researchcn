@@ -29,7 +29,8 @@ return [
     'all_translations'=>'Translation Services',
 
     'site_visit'=>'Site Visits',
-    'new'=>'New'
+    'new'=>'New',
+    'approve_notice'=>'Your account information would be approved during 8am to 4pm weekdays. If you have any inquiry please call (02)986-9213.'
 
 
 ];

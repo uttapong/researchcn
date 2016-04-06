@@ -14,7 +14,7 @@ class CreateRscnTables extends Migration
     {
         Schema::create('researchs', function (Blueprint $table) {
             $table->bigIncrements('id');//id ของทุน
-            $table->string('title',100);//ชื่อทุน ตรงนี้อาจสั้นบ้างยาวบ้าง
+            $table->string('title',200);//ชื่อทุน ตรงนี้อาจสั้นบ้างยาวบ้าง
             $table->string('authors',200);
             $table->string('keywords',200);
             $table->text('abstract');

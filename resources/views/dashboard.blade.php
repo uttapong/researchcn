@@ -154,15 +154,27 @@
     },
     {
       "date": "23 Mar 2016",
-      "count": 14
+      "count": 2
     },
     {
       "date": "25 Mar 2016",
-      "count": 31
+      "count": 4
     },
     {
-      "date": "20 Mar 2016",
-      "count": 8
+      "date": "26 Mar 2016",
+      "count": 1
+    },
+    {
+      "date": "27 Mar 2016",
+      "count": 6
+    },
+    {
+      "date": "28 Mar 2016",
+      "count": 4
+    },
+    {
+      "date": "29 Mar 2016",
+      "count": 1
     },
   ]
 });

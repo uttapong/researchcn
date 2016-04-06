@@ -18,7 +18,8 @@ class Research extends Model
         'published_month','published_page','creator','cited',
         'cited_count','full_text_file','article_file','cover_file',
         'title_thai','prize_name','issuer','prize_level','weight',
-        'article_level','book_type','subject','course','degree','subject_type','project'
+        'article_level','book_type','subject','course','degree','subject_type','project',
+        'funding_year','other_authors','isi','scopus','tci','isi_link','scopus_link','tci_link','research_tools'
     ];
 
     /**

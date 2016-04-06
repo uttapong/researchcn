@@ -173,9 +173,15 @@
                         </a>
                     </li>
                     <li class="nav-item" id="sub3_data_research">
-                        <a href="{{route('new_research')}}" class="nav-link">
+                        <a href="{{route('research')}}" class="nav-link">
                             <i class="icon-plus"></i>
                             <span class="title">{{trans('menu.add_research')}}
+                        </a>
+                    </li>
+                    <li class="nav-item" id="sub3_data_research">
+                        <a href="{{route('dashboard_rscn')}}" class="nav-link">
+                            <i class="icon-graph"></i>
+                            <span class="title">{{trans('menu.research_stat')}}
                         </a>
                     </li>
                 </ul>

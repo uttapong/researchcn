@@ -21,11 +21,18 @@
                             <label class="control-label col-md-3">{{ trans('translate.transation_note') }}
                                 <span class="required"> * </span>
                             </label>
-                            <div class="col-md-5">
-                                <div class="input-icon right">
-                                    <i class="fa"></i>
-                                    <textarea name="note" class="form-control" rows="3"></textarea>
-                                </div>
+                            <div class="col-md-9">
+                              <select class="form-control" name="note"  >
+                        <option value="บริการสืบค้นข้อมูลและสารสนเทศการวิจัย">บริการสืบค้นข้อมูลและสารสนเทศการวิจัย</option>
+                        <option value="บริการให้คำปรึกษาการออกแบบการวิจัยทั้งเชิงปริมาณและคุณภาพ">บริการให้คำปรึกษาการออกแบบการวิจัยทั้งเชิงปริมาณและคุณภาพ</option>
+                        <option value="บริการลงข้อมูลเพื่อการวิเคราะห์ผลทางสถิติ">บริการลงข้อมูลเพื่อการวิเคราะห์ผลทางสถิติ</option>
+                        <option value="บริการวิเคราะข้อมูลเชิงปริมาณ">บริการวิเคราะข้อมูลเชิงปริมาณ</option>
+                        <option value="บริการถอดเทปข้อมูลเชิงคุณภาพ">บริการถอดเทปข้อมูลเชิงคุณภาพ</option>
+                        <option value="บริการงานสำเนาเอกสารวิจัย">บริการงานสำเนาเอกสารวิจัย</option>
+                        <option value="บริการบันทึกข้อมูลลงแผ่นซีดี">บริการบันทึกข้อมูลลงแผ่นซีดี</option>
+                        <option value="บริการด้านการแปลบทความ">บริการด้านการแปลบทความ</option>
+                        <option value="บริการด้านบรรณาธิการบทความ">บริการด้านบรรณาธิการบทความ</option>
+                    </select>
                             </div>
                         </div>
 
@@ -46,6 +53,9 @@
             </div>
             <!-- END VALIDATION STATES-->
         </div>
+    </div>
+    <div class="col-xs-12 col-md-12 col-lg-10 col-lg-offset-1">
+      ติดต่อทางไลน์ <img src="http://www.nurse.tu.ac.th/researchcenter/wp-content/uploads/2016/03/center_banner_pink.png" /> 
     </div>
 </div>
 <script type="text/javascript">
