@@ -156,6 +156,20 @@ function showField(name){
                                                             <label class="col-md-3 control-label">{{trans('research.article_level')}}</label>
                                                             <div class="col-md-4">
                                                                 <input type="text" name="article_level" class="form-control" placeholder="" @if(isset($research)) value="{{$research->article_level}}" @endif>
+
+                                                                <input type="text" name="article_level[]" class="form-control">
+                                                                <input name="article_level[]" type="checkbox" value=""> ISI1
+                                                                <input name="article_level[]" type="checkbox" value=""> ISI2
+                                                                <input name="article_level[]" type="checkbox" value=""> ISI3
+                                                                <input name="article_level[]" type="checkbox" value=""> ISI4
+                                                                <input name="article_level[]" type="checkbox" value=""> SCOPUS
+                                                                <input name="article_level[]" type="checkbox" value=""> SCIMACO Q1
+                                                                <input name="article_level[]" type="checkbox" value=""> ISCIMACO Q1
+                                                                <input name="article_level[]" type="checkbox" value=""> SCIMACO Q1
+                                                                <input name="article_level[]" type="checkbox" value=""> SCIMACO Q1
+                                                                <input name="article_level[]" type="checkbox" value=""> Pubmed
+                                                                <input name="article_level[]" type="checkbox" value=""> EBSB Host
+                                                                <input name="article_level[]" type="checkbox" value=""> ISI
                                                             </div>
                                                         </div>
                                                         <!-- end article option -->

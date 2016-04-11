@@ -112,13 +112,7 @@ class ResearchCenterController extends Controller
       $this->validate($request, [
           'title' => 'required|max:200',
           'authors' => 'required|max:200',
-          'keywords' => 'required|max:200',
-          // 'abstract' => 'required',
-          // 'fulltext_file' => 'required|mimes:pdf,doc,docx',
-          'type' => 'required',
-          // 'publication_name' => 'required|max:200',
-          // 'published_year' => 'required|max:200',
-          'cited_count'=>'integer'
+          'keywords' => 'max:200'
       ]);
 
       if($request->hasFile('fulltext_file'))
