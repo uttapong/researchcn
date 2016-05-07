@@ -10,3 +10,4 @@ Homestead.json
 /public/translation/*
 *.log
 /file/*
+/uploads/*
