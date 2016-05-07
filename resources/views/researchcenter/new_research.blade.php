@@ -23,7 +23,7 @@ function showField(name){
                                                 <!-- BEGIN FORM-->
 
                                                   <form action="{{route('new_research')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
-                                                  <input id="_token" name="_token" type="hidden" value="{{ csrf_token() }}" >
+                                                  {{  csrf_field() }}
                                                    @if(isset($research))
                                                      <input name="research_id" type="hidden" value="{{ $research->id }}" >
                                                    @endif
@@ -93,6 +93,17 @@ function showField(name){
                                                             @if(isset($research->full_text_file))
                                                             <div class="col-md-5">
                                                               <a class='' href='{{route('base')}}/uploads/{{$research->id}}/{{$research->full_text_file}}'> View Uploaded File</a>
+                                                            </div>
+                                                            @endif
+                                                        </div>
+                                                        <div class="form-group option  article research academic">
+                                                            <label class="col-md-3 control-label">{{trans('research.abstract_upload')}}</label>
+                                                            <div class="col-md-4">
+                                                                <input type="file" name="abstract_file" >
+                                                            </div>
+                                                            @if(isset($research->abstract_file))
+                                                            <div class="col-md-5">
+                                                              <a class='' href='{{route('base')}}/uploads/{{$research->id}}/{{$research->abstract_file}}'> View Uploaded File</a>
                                                             </div>
                                                             @endif
                                                         </div>
@@ -255,12 +266,12 @@ function showField(name){
                                                                 <input type="text" class="form-control"  name="published_page" placeholder="" @if(isset($research)) value="{{$research->published_page}}" @endif>
                                                             </div>
                                                         </div>
-                                                        <div class="form-group  option article research">
+                                                        <!-- <div class="form-group  option article research">
                                                             <label class="col-md-3 control-label">{{trans('research.cited_link')}}</label>
                                                             <div class="col-md-4">
                                                                 <input type="text" class="form-control"  name="cited" placeholder="" @if(isset($research)) value="{{$research->cited}}" @endif>
                                                             </div>
-                                                        </div>
+                                                        </div> -->
                                                         <div class="form-group option article research">
                                                             <label class="col-md-3 control-label">{{trans('research.isi')}}</label>
                                                             <div class="col-md-1">

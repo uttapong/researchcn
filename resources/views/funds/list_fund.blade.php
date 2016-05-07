@@ -21,7 +21,7 @@
                                           Name
                                       </th>
                                       <th align="left" width="30%">
-                                        Last Application Date
+                                        Apply Date
                                       </th>
                                       <th align="right" style="text-align:right">
                                           Download
@@ -34,7 +34,7 @@
                                                 {{ $fund->name }}
                                             </td>
                                             <td align="left" width="30%">
-                                              {{ date('d F Y', strtotime($fund->created_at)) }}
+                                              {{ date('d F Y', strtotime($fund->apply_start)) }} - {{ date('d F Y', strtotime($fund->apply_end)) }}
                                             </td>
                                             <td align="right">
                                                 @if(count($fund->downloads) > 0)

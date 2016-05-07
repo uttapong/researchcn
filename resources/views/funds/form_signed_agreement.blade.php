@@ -45,6 +45,26 @@
                             </div>
                             <h3 class="form-section">{{ trans('fund.form_user_request-documentation') }}</h3>
                             <div class="form-group margin-top-20">
+                                <label class="control-label col-md-5" style="padding-top: 0">ข้อเสนอโครงการวิจัย
+                                </label>
+                                <div class="col-md-5">
+                                    {!!
+                                        $upload ?
+                                            $upload[0]->status == 'Reject'
+                                            ? '<input type="file" class="form-control" name="file_22"/><span class="help-block">' . trans("fund.form_user_request-old_file") . ' ' . '<a href="'. route('base') . '/' . $upload[0]->file_path . '" download  title="ดาวน์โหลดเอกสาร"><span aria-hidden="true" class="icon-arrow-down"></span></a></span>'
+                                            : $upload[0]->html
+                                        : '<input type="file" class="form-control" name="file_22"/>'
+                                    !!}
+                                </div>
+                                {!!
+                                    $upload ?
+                                        $upload[0]->status == 'Reject'
+                                        ? '<label class="col-md-2 icon-close font-red" style="padding: 7px"> <b class="font-red">' . ' ' . trans("fund.form_user_request-fail") . '</b></label>'
+                                        : null
+                                    : null
+                                !!}
+                            </div>
+                            <div class="form-group margin-top-20">
                                 <label class="control-label col-md-5" style="padding-top: 0">หน้าบุ๊คแบงค์ของสหกรณ์ออมทรัพย์ มหาวิทยาลัยธรรมศาสตร์
                                 </label>
                                 <div class="col-md-5">

@@ -74,6 +74,8 @@ return [
     'prize_level'=>'Prize Level',
     'issuer'=>'Issuer',
     'update'=>'Update',
-    'update_research'=>'Update Research Information'
+    'update_research'=>'Update Research Information',
+    'abstract_upload'=>'Abstract File Upload',
+    'abstract_download'=>"Abstract File"
 
 ];

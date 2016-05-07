@@ -107,7 +107,7 @@ class ResearchCenterController extends Controller
      return redirect()->route('base_rscn');
    }
     public function add(Request $request){
-      $this->middleware('auth');
+      //$this->middleware('auth');
 
       $this->validate($request, [
           'title' => 'required|max:200',
@@ -119,6 +119,14 @@ class ResearchCenterController extends Controller
       {
         $fulltext_file=$request->file('fulltext_file');
         $fulltext_filename=md5(microtime()).".".$fulltext_file->getClientOriginalExtension();
+
+        // $request->merge(array('full_text_file' =>$fulltext_filename));
+
+      }
+      if($request->hasFile('abstract_file'))
+      {
+        $abstract_file=$request->file('abstract_file');
+        $abstract_filename=md5(microtime()).".".$abstract_file->getClientOriginalExtension();
 
         // $request->merge(array('full_text_file' =>$fulltext_filename));
 
@@ -155,6 +163,11 @@ class ResearchCenterController extends Controller
         $research->full_text_file=$fulltext_filename;
         $research->save();
       }
+      if ($request->hasFile('abstract_file')){
+        $abstract_file->move($destinationPath, $abstract_filename);
+        $research->abstract_file=$abstract_filename;
+        $research->save();
+      }
       if ($request->hasFile('article_file')) {
         $article_file->move($destinationPath, $article_filename);
         $research->article_file=$article_filename;
@@ -173,19 +186,5 @@ class ResearchCenterController extends Controller
         else
           return view('researchcenter.new_research',['fields'=>$fields,'alert_type'=>'success','msg'=>'Successfully insert new research.']);
       }
-    }
-    // public function test(){
-    //   //$user = Fund::find(1)->user;
-    //   $applications=Fund::find(1)->applications;
-    //   $test_var='adfafdadfadf';
-    //   return view('home',['test_var' => $applications]);
-    //
-    // }
-    public function testfund(){
-      //$user = Fund::find(1)->user;
-      $apps=Fund::find(1)->applications;
-      // $test_var='adfafdadfadf';
-      return view('home',['apps' => $apps]);
-
     }
 }

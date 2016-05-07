@@ -209,6 +209,7 @@ class FundController extends Controller {
 	public function signedAgreementInsertUpdate(Request $request) {
 		$this->uploadFile($request, 'file_1');
 		$this->uploadFile($request, 'file_2');
+		$this->uploadFile($request, 'file_22');
 
 		$this->updateAppStatus($request, 'signed_agreement');
 
@@ -299,7 +300,7 @@ class FundController extends Controller {
 			return redirect()->route('fund_request');
 		}
 
-		$upload = $this->getFileUpload(array(12, 13), $application->id);
+		$upload = $this->getFileUpload(array(12, 13, 17, 18,19,20,21,23,24), $application->id);
 
 		return view('funds.form_finalized', [
 			'request_id' => $request_id,
@@ -308,10 +309,19 @@ class FundController extends Controller {
 	}
 
 	public function finalizedInsertUpdate(Request $request) {
-		$this->uploadFile($request, 'file_12');
-		$this->uploadFile($request, 'file_13');
+		// $this->uploadFile($request, 'file_12');
+		// $this->uploadFile($request, 'file_13');
 
-		$this->updateAppStatus($request, 'finalized');
+		$this->uploadFile($request, 'file_17');
+		$this->uploadFile($request, 'file_18');
+		$this->uploadFile($request, 'file_19');
+		$this->uploadFile($request, 'file_20');
+		$this->uploadFile($request, 'file_21');
+
+		$this->uploadFile($request, 'file_23');
+		$this->uploadFile($request, 'file_24');
+
+		$this->updateAppStatus($request, 'project_finished');
 
 		return redirect()->route('fund_request');
 	}
@@ -431,4 +441,6 @@ class FundController extends Controller {
 		$application->status = $status;
 		$application->save();
 	}
+
+	
 }

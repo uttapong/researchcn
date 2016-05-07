@@ -92,20 +92,20 @@ class ApplicationController extends Controller {
 				"statusTitle" => "Reject", "statusClass" => "danger"
 			),
 			"approved_second_progress_report" => array(
-				"currentStep" => "รายงานความก้าวหน้าครั้งที่ 2", "nextStep" => "ส่งผลงานครั้งสุดท้าย", "linkNextStep" => "form_finalized",
+				"currentStep" => "รายงานความก้าวหน้าครั้งที่ 2", "nextStep" => "ส่งผลงานเพื่อปิดโครงการ", "linkNextStep" => "form_finalized",
 				"statusTitle" => "Approve", "statusClass" => "success"
 			),
 
 			"finalized" => array(
-				"currentStep" => "ส่งผลงานครั้งสุดท้าย", "nextStep" => "", "linkNextStep" => "",
+				"currentStep" => "ส่งผลงานเพื่อปิดโครงการ", "nextStep" => "", "linkNextStep" => "",
 				"statusTitle" => "Pending", "statusClass" => "info"
 			),
 			"rejected_finalized" => array(
-				"currentStep" => "ส่งผลงานครั้งสุดท้าย", "nextStep" => "แก้ไขไฟล์ที่ไม่ผ่านการอนุมติ", "linkNextStep" => "form_finalized",
+				"currentStep" => "ส่งผลงานเพื่อปิดโครงการ", "nextStep" => "แก้ไขไฟล์ที่ไม่ผ่านการอนุมติ", "linkNextStep" => "form_finalized",
 				"statusTitle" => "Reject", "statusClass" => "danger"
 			),
 			"approved_finalized" => array(
-				"currentStep" => "ส่งผลงานครั้งสุดท้าย", "nextStep" => "ปิดโครงการ", "linkNextStep" => "form_project_finished",
+				"currentStep" => "ส่งผลงานเพื่อปิดโครงการ", "nextStep" => "ปิดโครงการ", "linkNextStep" => "form_project_finished",
 				"statusTitle" => "Approve", "statusClass" => "success"
 			),
 
@@ -118,7 +118,7 @@ class ApplicationController extends Controller {
 				"statusTitle" => "Reject", "statusClass" => "danger"
 			),
 			"approved_extend" => array(
-				"currentStep" => "ขอขยายเวลา", "nextStep" => "ส่งผลงานครั้งสุดท้าย", "linkNextStep" => "form_finalized",
+				"currentStep" => "ขอขยายเวลา", "nextStep" => "ส่งผลงานเพื่อปิดโครงการ", "linkNextStep" => "form_finalized",
 				"statusTitle" => "Approve", "statusClass" => "success"
 			),
 
@@ -177,10 +177,10 @@ class ApplicationController extends Controller {
 
 			"signed_agreement" => array(
 				"step" => "ทำสัญญารับทุน", "appStatus" => "Pending", "approve" => "approved_agreement", "reject" => "rejected_agreement",
-				"files" => array(1, 2)
+				"files" => array(1, 2,22)
 			),
 			"rejected_agreement" => array(
-				"step" => "ทำสัญญารับทุน", "appStatus" => "Reject", "files" => array(1, 2)
+				"step" => "ทำสัญญารับทุน", "appStatus" => "Reject", "files" => array(1, 2,22)
 			),
 			"approved_agreement" => array(
 				"step" => "ทำสัญญารับทุน", "appStatus" => "Approve"
@@ -218,14 +218,14 @@ class ApplicationController extends Controller {
 			),
 
 			"finalized" => array(
-				"step" => "ส่งผลงานครั้งสุดท้าย", "appStatus" => "Pending", "approve" => "approved_finalized", "reject" => "rejected_finalized",
-				"files" => array(12, 13)
+				"step" => "ส่งผลงานเพื่อปิดโครงการ", "appStatus" => "Pending", "approve" => "approved_finalized", "reject" => "rejected_finalized",
+				"files" => array(17, 18, 19, 20, 21,23,24)
 			),
 			"rejected_finalized" => array(
-				"step" => "ส่งผลงานครั้งสุดท้าย", "appStatus" => "Reject", "files" => array(12, 13)
+				"step" => "ส่งผลงานเพื่อปิดโครงการ", "appStatus" => "Reject", "files" => array(17, 18, 19, 20, 21,23,24)
 			),
 			"approved_finalized" => array(
-				"step" => "ส่งผลงานครั้งสุดท้าย", "appStatus" => "Approve"
+				"step" => "ส่งผลงานเพื่อปิดโครงการ", "appStatus" => "Approve"
 			),
 
 			"request_extend" => array(
@@ -243,10 +243,10 @@ class ApplicationController extends Controller {
 
 			"project_finished" => array(
 				"step" => "ปิดโครงการ", "appStatus" => "Pending", "approve" => "approved_project_finished", "reject" => "rejected_project_finished",
-				"files" => array(17, 18, 19, 20, 21)
+				"files" => array(17, 18, 19, 20, 21,23,24)
 			),
 			"rejected_project_finished" => array(
-				"step" => "ปิดโครงการ", "appStatus" => "Reject", "files" => array(17, 18, 19, 20, 21)
+				"step" => "ปิดโครงการ", "appStatus" => "Reject", "files" => array(17, 18, 19, 20, 21,23,24)
 			),
 			"approved_project_finished" => array(
 				"step" => "ปิดโครงการ", "appStatus" => "Approve"
@@ -313,6 +313,12 @@ class ApplicationController extends Controller {
 		$application->save();
 
 		return redirect()->route('fund_user_request', array('id' => $application->fund));
+	}
+
+	public function applicationDelete($id) {
+		$fund = Application::find($id);
+		echo $fund->delete();
+
 	}
 
 	public function fileUploadUpdate($uploadId, $status) {

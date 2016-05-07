@@ -20,9 +20,11 @@
                             <thead>
                                 <tr>
                                     <th width="5%"> # </th>
-                                    <th width="25%"> {{ trans('fund.applicator_user_requesst-table.title') }} </th>
+                                    <th width="15%"> {{ trans('fund.applicator_user_requesst-table.title') }} </th>
                                     <th width="25%"> {{ trans('fund.applicator_user_requesst-table.step') }} </th>
-                                    <th> {{ trans('fund.applicator_user_requesst-table.document') }} </th>
+                                    <th width="40%"> {{ trans('fund.applicator_user_requesst-table.document') }} </th>
+                                     <th width="7%">Notify Email</th>
+                                     <th width="7%">Delete</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -47,8 +49,8 @@
 
                                                         if ($application->documents[$i]['file_status'] == 'uploaded') {
                                                             print('<span class="pull-right">');
-                                                            print('<a href="file_upload_update/' . $application->documents[$i]['upload_id'] . '/Approve" class="btn btn-success">Approve</a>');
-                                                            print('&nbsp;<a href="file_upload_update/' . $application->documents[$i]['upload_id'] . '/Reject" class="btn btn-danger">Reject</a>');
+                                                            print('<a href="file_upload_update/' . $application->documents[$i]['upload_id'] . '/Approve" class="btn btn-xs btn-success">Approve</a>');
+                                                            print('&nbsp;<a href="file_upload_update/' . $application->documents[$i]['upload_id'] . '/Reject" class="btn btn-xs btn-danger">Reject</a>');
                                                             print('</span>');
                                                             print('</p>');
                                                         }
@@ -66,8 +68,8 @@
                                                 else {
                                                     if ($application->appStatus == 'Pending') {
                                                         print('<span class="pull-right">');
-                                                        print('<a href="application_update/' . $application->id . '/' . $application->approve . '" class="btn btn-success">Approve</a>');
-                                                        print('&nbsp;<a href="application_update/' . $application->id . '/' . $application->reject . '" class="btn btn-danger">Reject</a>');
+                                                        print('<a href="application_update/' . $application->id . '/' . $application->approve . '" class="btn btn-xs btn-success">Approve</a>');
+                                                        print('&nbsp;<a href="application_update/' . $application->id . '/' . $application->reject . '" class="btn btn-xs btn-danger">Reject</a>');
                                                         print('</span>');
                                                     }
                                                     else {
@@ -82,6 +84,8 @@
                                                 }
                                             ?>
                                         </td>
+                                        <td><button onclick="confirmSendMail({{$application->id}})" class='btn btn-info btn-xs'><i class="fa fa-paper-plane" aria-hidden="true"></i> Send</button></td>
+                                        <td><button onclick="confirmDelete({{$application->id}})" class='btn btn-danger btn-xs'><i class="fa fa-times" aria-hidden="true"></i> Delete</button></td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -129,5 +133,62 @@
             ]
         });
     });
+
+    function confirmSendMail(appid){
+      var result=false;
+      swal({   title: "Send notification email?",
+         type: "warning",
+         showCancelButton: true,
+         confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Sure",
+            closeOnConfirm: true },
+            function(confirm){ 
+
+                $.ajax({
+            url: "{{ route('manualnotify') }}",
+            data: { appid : appid }
+        })
+        .done(function(msg) {
+            if(msg=="success")swal("Success","Email sent successfully.","success");
+            else swal("Error", "Email sending error", "error");
+        });
+
+      });
+    }
+
+    function confirmDelete(appid){
+      var result=false;
+      swal({   title: "Are you sure you want to delete application?",
+         type: "warning",
+         showCancelButton: true,
+         confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Sure",
+            closeOnConfirm: true },
+            function(confirm){ 
+if(confirm){
+                $.ajax({
+            url: "{{ route('base_rswk') }}/deleteapp/"+appid,
+        })
+        .done(function(msg) {
+            if(msg=="1")swal(
+
+                {   title: "Application successfully deleted.",
+         type: "success",
+            closeOnConfirm: true },
+            function(confirm){
+                location.reload();
+            });
+            else swal("Error", "Error deleting application", "error");
+
+            
+            
+
+        });
+    }
+
+      });
+    }
 </script>
+
+
 @endsection

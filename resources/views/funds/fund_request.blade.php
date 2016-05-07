@@ -47,7 +47,7 @@
                                                 {{ $fund->currentStep }}
                                             </td>
                                             <td>
-                                                <span class="label label-sm label-{{ $fund->statusClass }}"> {{ $fund->statusTitle }}</span>
+                                                <span class="label label-sm label-{{ $fund->statusClass }}"> {{ trans('fund.'.$fund->statusTitle) }}</span>
                                             </td>
                                             <td>
                                                 {!!

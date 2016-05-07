@@ -22,6 +22,6 @@ class Fund extends Model
     }
 
     public function countAdminActive(){
-        return $this->applications()->where('status', 'in', '()')
+        return $this->applications()->where('status', 'in', '()');
     }
 }

@@ -88,5 +88,9 @@ return [
         'title' => 'User Name',
         'step' => 'Request Progress',
         'document' => 'Document',
-    )
+    ),
+    'Pending'=>'Pending',
+    'Approve'=>'Approve',
+    'เสร็จสิ้น'=>'Project Finished'
+
 ];
