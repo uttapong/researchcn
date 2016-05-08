@@ -92,7 +92,7 @@ return [
     ),
 
     'applicator_search_user_request' => 'สถานะผู้สมัครทุนทั้งหมด',
-    'applicator_search_user_request-noresult' => 'ไม่พบผลลัพธ์จากคําค้นหา'
+    'applicator_search_user_request-noresult' => 'ไม่พบผลลัพธ์จากคําค้นหา',
 
     'Pending'=>'รออนุมัติ',
     'Approve'=>'อนุมัติแล้ว',

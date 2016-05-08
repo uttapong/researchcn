@@ -11,3 +11,4 @@ Homestead.json
 *.log
 /file/*
 /uploads/*
+storage/logs/laravel.log

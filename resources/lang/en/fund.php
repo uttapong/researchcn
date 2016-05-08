@@ -93,7 +93,7 @@ return [
     ),
 
     'applicator_search_user_request' => 'Candidate status Fund',
-    'applicator_search_user_request-noresult' => 'No results from the search'
+    'applicator_search_user_request-noresult' => 'No results from the search',
 
     'Pending'=>'Pending',
     'Approve'=>'Approve',
