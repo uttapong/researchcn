@@ -22,6 +22,12 @@ class InitTables extends Migration
           $table->date('upload_start');//วันเริ่มต้นส่งเอกสาร
           $table->date('upload_end');//วันสุดท้ายของการส่งเอกสาร
           $table->date('contract_end');//วันสิ้นสุดวันส่งงานในสัญญา คือถ้าเลยวันนี้ไปจะเข้ามาส่งเอกสารไม่ได้ฮับ
+
+          $table->date('notice_1');
+          $table->date('notice_2');
+          $table->date('notice_3');
+          $table->date('notice_4');
+
           $table->integer('creator')->unsigned(); // id ของคนสร้างประกาศทุนนี้ครับ อ้างอิงจากตาราง users ฮับผม
           $table->index('creator');
           $table->foreign('creator')->references('id')->on('users')->onDelete('cascade');

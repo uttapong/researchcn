@@ -172,6 +172,85 @@
                             </div>
                         </div>
 
+                        <hr width="90%" style="margin: auto;" />
+                        <div class="form-group margin-top-20">
+                            <label class="control-label col-md-3">แจ้งเตือนครั้งที่ 1 รายงานความก้าวหน้าครั้งที่ 1
+                                <span class="required"> * </span>
+                            </label>
+                            <div class="col-md-5">
+                                <div class="input-icon right">
+                                    <i class="fa"></i>
+                                    <div class="input-group date date-picker" data-date-format="dd-mm-yyyy" >
+                                        <input type="text" class="form-control" readonly="" name="notice_1" value="{{ $fund ? $fund->notice_1 : null }}">
+                                        <span class="input-group-btn">
+                                            <button class="btn default" type="button" style="height: 34px">
+                                                <i class="fa fa-calendar"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group margin-top-20">
+                            <label class="control-label col-md-3">แจ้งเตือนครั้งที่ 2 รายงานความก้าวหน้าครั้งที่ 2
+                                <span class="required"> * </span>
+                            </label>
+                            <div class="col-md-5">
+                                <div class="input-icon right">
+                                    <i class="fa"></i>
+                                    <div class="input-group date date-picker" data-date-format="dd-mm-yyyy" >
+                                        <input type="text" class="form-control" readonly="" name="notice_2" value="{{ $fund ? $fund->notice_2 : null }}">
+                                        <span class="input-group-btn">
+                                            <button class="btn default" type="button" style="height: 34px">
+                                                <i class="fa fa-calendar"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group margin-top-20">
+                            <label class="control-label col-md-3">แจ้งเตือนครั้งที่ 3 แจ้งเตือนปิดโครงการ
+                                <span class="required"> * </span>
+                            </label>
+                            <div class="col-md-5">
+                                <div class="input-icon right">
+                                    <i class="fa"></i>
+                                    <div class="input-group date date-picker" data-date-format="dd-mm-yyyy" >
+                                        <input type="text" class="form-control" readonly="" name="notice_3" value="{{ $fund ? $fund->notice_3 : null }}">
+                                        <span class="input-group-btn">
+                                            <button class="btn default" type="button" style="height: 34px">
+                                                <i class="fa fa-calendar"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group margin-top-20">
+                            <label class="control-label col-md-3">แจ้งเตือนครั้งที่ 4 ขยายเวลาและเตือนสถานะ IRB
+                                <span class="required"> * </span>
+                            </label>
+                            <div class="col-md-5">
+                                <div class="input-icon right">
+                                    <i class="fa"></i>
+                                    <div class="input-group date date-picker" data-date-format="dd-mm-yyyy" >
+                                        <input type="text" class="form-control" readonly="" name="notice_4" value="{{ $fund ? $fund->notice_4 : null }}">
+                                        <span class="input-group-btn">
+                                            <button class="btn default" type="button" style="height: 34px">
+                                                <i class="fa fa-calendar"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
                         <!-- <hr width="90%" style="margin: auto;" />
                         <div class="form-group margin-top-20">
                             <label class="control-label col-md-3">{{ trans('fund.add_funds-form2-5') }}

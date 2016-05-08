@@ -83,6 +83,11 @@ class FundController extends Controller {
 		$upload_end = $request->input('upload_end');
 		$contract_end = $request->input('contract_end');
 
+		$notice_1 = $request->input('notice_1');
+		$notice_2 = $request->input('notice_2');
+		$notice_3 = $request->input('notice_3');
+		$notice_4 = $request->input('notice_4');
+
 		if ($id == 0) {
 			// Insert new record
 			$fund = new Fund;
@@ -103,6 +108,11 @@ class FundController extends Controller {
 		$fund->upload_start = date_format(date_create($upload_start), "Y-m-d");
 		$fund->upload_end = date_format(date_create($upload_end), "Y-m-d");
 		$fund->contract_end = date_format(date_create($contract_end), "Y-m-d");
+
+		$fund->notice_1 = date_format(date_create($notice_1), "Y-m-d");
+		$fund->notice_2 = date_format(date_create($notice_2), "Y-m-d");
+		$fund->notice_3 = date_format(date_create($notice_3), "Y-m-d");
+		$fund->notice_4 = date_format(date_create($notice_4), "Y-m-d");
 
 		if ($request->hasFile('contract_file')) {
 			if ($fund->contract_file) {
