@@ -23,9 +23,7 @@
                                       <th align="left" width="30%">
                                         Last Application Date
                                       </th>
-                                      <th align="right" style="text-align:right">
-                                          Download
-                                      </th>
+                                      <th align="right" style="text-align:right"></th>
                                   </tr>
                                     @foreach($funds as $fund)
 

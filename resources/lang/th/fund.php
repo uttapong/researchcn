@@ -84,8 +84,13 @@ return [
 
     'applicator_user_requesst-not_have' => 'ยังไม่มีการร้องขอจากผู้ขอทุน',
     'applicator_user_requesst-table' => array(
+        'fund_name' => 'ทุนที่สมัคร',
         'title' => 'ชื่อผู้สมัคร',
         'step' => 'ขั้นตอน',
+        'status' => 'สถานะ',
         'document' => 'เอกสาร',
-    )
+    ),
+
+    'applicator_search_user_request' => 'สถานะผู้สมัครทุนทั้งหมด',
+    'applicator_search_user_request-noresult' => 'ไม่พบผลลัพธ์จากคําค้นหา'
 ];

@@ -68,8 +68,8 @@
 <script type="text/javascript">
     $(document).ready(function () {
         // Add class selected navigator
-        $('#main_admin, #sub1_admin').addClass("active open");
-        $('#main_admin a, #sub1_admin a').append("<span class='selected'></span>");
+        $('#main_menu, #sub2_menu').addClass("active open");
+        $('#main_menu a, #sub2_menu a').append("<span class='selected'></span>");
     });
 </script>
 @endsection

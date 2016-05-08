@@ -14,14 +14,24 @@
                         <div class="table-scrollable table-scrollable-borderless">
                             <table class="table table-hover table-light">
                                 <tbody>
+                                  <tr>
+                                      <th align="left" width="30%">
+                                          Name
+                                      </th>
+                                      <th align="left" width="30%">
+                                        Last Application Date
+                                      </th>
+                                      <th align="right" style="text-align:right"></th>
+                                  </tr>
                                     <?php foreach($funds as $fund): ?>
+
                                         <tr>
                                             <td align="left" width="30%">
                                                 <?php echo e($fund->name); ?>
 
                                             </td>
                                             <td align="left" width="30%">
-                                                <?php echo e($fund->type); ?>
+                                              <?php echo e(date('d F Y', strtotime($fund->created_at))); ?>
 
                                             </td>
                                             <td align="right">

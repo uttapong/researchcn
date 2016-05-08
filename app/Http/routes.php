@@ -107,6 +107,7 @@ Route::group(['middleware' => 'web','prefix' => 'rswk'], function () {
 	Route::get('fund_manage', [ 'as' => 'fund_manage','middleware' => 'auth', 'uses' =>'FundController@fundManage']);
 	Route::get('fund_user_request_choose', [ 'as' => 'fund_user_request_choose','middleware' => 'auth', 'uses' =>'ApplicationController@applicationUserRequestChoose']);
 	Route::get('fund_user_request', [ 'as' => 'fund_user_request','middleware' => 'auth', 'uses' =>'ApplicationController@applicationUserRequest']);
+	Route::get('fund_search_user_request', [ 'as' => 'fund_search_user_request','middleware' => 'auth', 'uses' =>'ApplicationController@applicationSearchUserRequest']);
 	Route::post('fund_insert_update',[ 'as' => 'fund_insert_update','middleware' => 'auth', 'uses' => 'FundController@fundInsertUpdate']);
 	Route::any('fund_file_upload_insert',[ 'as' => 'fund_file_upload_insert','middleware' => 'auth', 'uses' => 'FundController@fundFileUploadInsert']);
   	Route::any('fund_file_delete/{download_id}',[ 'as' => 'fund_file_delete','middleware' => 'auth', 'uses' => 'FundController@fundFileDelete']);

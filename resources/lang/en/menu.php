@@ -20,6 +20,7 @@ return [
     'applied_funds'=>'Applied Funds',
     'manage_funds'=>'Manage Funds',
     'applicator_list'=>'Applications List',
+    'search_applicator_list'=>'Search Applications List',
     'research_stat'=>'Research Usage Statistics',
     'research_database'=>'Research Database',
     'all_research'=>'All Research',
@@ -28,5 +29,4 @@ return [
     'administration'=>'Administration',
     'manage_users'=>'Manage Users',
     'register'=>'Register',
-
 ];

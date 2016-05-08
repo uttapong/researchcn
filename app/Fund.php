@@ -21,7 +21,7 @@ class Fund extends Model
       return $this->hasMany('App\Download','fund_id');
     }
 
-    public function countAdminActive(){
-        return $this->applications()->where('status', 'in', '()')
-    }
+    // public function countAdminActive(){
+    //     return $this->applications()->where('status', 'in', '()')
+    // }
 }

@@ -85,8 +85,13 @@ return [
 
     'applicator_user_requesst-not_have' => 'No application avaliabled',
     'applicator_user_requesst-table' => array(
+        'fund_name' => 'Fund registered',
         'title' => 'User Name',
         'step' => 'Request Progress',
+        'status' => 'Status',
         'document' => 'Document',
-    )
+    ),
+
+    'applicator_search_user_request' => 'Candidate status Fund',
+    'applicator_search_user_request-noresult' => 'No results from the search'
 ];

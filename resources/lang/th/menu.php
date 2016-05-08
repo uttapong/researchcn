@@ -20,6 +20,7 @@ return [
     'applied_funds'=>'ทุนวิจัยที่ได้สมัครไว้',
     'manage_funds'=>'จัดการข้อมูลทุนวิจัย',
     'applicator_list'=>'จัดการข้อมูลการสมัครทุน',
+    'search_applicator_list'=>'ค้นหาข้อมูลการสมัครทุน',
     'research_stat'=>'ข้อมูลการใช้งานฐานข้อมูลวิจัย',
     'research_database'=>'ฐานข้อมูลงานวิจัย',
     'all_research'=>'งานวิจัยทั้งหมด',
@@ -27,6 +28,5 @@ return [
     'add_patent'=>'เพิ่มสิ่งประดิษฐ์',
     'administration'=>'ดูแลระบบ',
     'manage_users'=>'จัดการผู้ใช้งาน',
-
     'register'=>'ลงทะเบียนผู้ใช้งาน',
 ];

@@ -124,6 +124,16 @@
                 [10, 15, 20, -1],
                 [10, 15, 20, "All"]
             ],
+            columnDefs: [
+                {
+                    orderable: !1,
+                    targets: [3]
+                },
+                {
+                    searchable: !1,
+                    targets: [3]
+                }
+            ],
             order: [
                 [0, "asc"]
             ]

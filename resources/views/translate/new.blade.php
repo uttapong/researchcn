@@ -60,6 +60,9 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function () {
+        // Add class selected navigator
+        $('#main_menu, #sub1_menu').addClass("active open");
+        $('#main_menu a, #sub1_menu a').append("<span class='selected'></span>");
 
       $(".swa-confirm").on("click", function(e) {
     e.preventDefault();
