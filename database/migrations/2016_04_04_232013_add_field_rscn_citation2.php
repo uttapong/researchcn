@@ -19,6 +19,7 @@ class AddFieldRscnCitation2 extends Migration
           $table->string('scopus_link',300);
           $table->string('tci_link',300);
           $table->string('research_tools',300);
+          $table->string('abstract_file',200);
 
 
       });

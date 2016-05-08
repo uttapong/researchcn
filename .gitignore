@@ -9,3 +9,5 @@ Homestead.json
 /public/uploads/*
 /public/translation/*
 *.log
+/file/*
+/uploads/*

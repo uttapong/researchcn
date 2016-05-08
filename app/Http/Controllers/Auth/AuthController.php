@@ -9,6 +9,9 @@ use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Lang;
+
 class AuthController extends Controller
 {
     /*
@@ -22,7 +25,7 @@ class AuthController extends Controller
     |
     */
 
-    use AuthenticatesAndRegistersUsers, ThrottlesLogins;
+    use AuthenticatesAndRegistersUsers;
 
     /**
      * Where to redirect users after login / registration.
@@ -39,6 +42,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
+        // die('abc');
         $this->middleware('guest', ['except' => 'logout']);
     }
 
@@ -70,11 +74,37 @@ class AuthController extends Controller
         $user=User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'idcard' => $data['idcard'],
+            'idcard' => 'adfadfadf',
             'password' => bcrypt($data['password']),
+            'status' => 'pending'
+
         ]);
         $user->assign('reader');
         return $user;
     }
+
+    protected function handleUserWasAuthenticated(Request $request, $throttles)
+    {
+        if(Auth::user()->status !='approved'){
+            $request->session()->put('message',  'Your account has not been approved. Please contact administrator or call (02)986-9213');
+            Auth::logout();
+        }
+        else $request->session()->forget('message');
+
+
+        if ($throttles) {
+            $this->clearLoginAttempts($request);
+        }
+
+        if (method_exists($this, 'authenticated')) {
+
+            return $this->authenticated($request, Auth::guard($this->getGuard())->user());
+        }
+
+        return redirect()->intended($this->redirectPath());
+    }
+
+
+    
 
 }

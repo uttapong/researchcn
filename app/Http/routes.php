@@ -134,4 +134,9 @@ Route::group(['middleware' => 'web','prefix' => 'rswk'], function () {
 	Route::post('finalized_insert_update',[ 'as' => 'finalized_insert_update','middleware' => 'auth', 'uses' => 'FundController@finalizedInsertUpdate']);
 	Route::post('request_extend_insert_update',[ 'as' => 'request_extend_insert_update','middleware' => 'auth', 'uses' => 'FundController@requestExtendInsertUpdate']);
 	Route::post('project_finished_insert_update', [ 'as' => 'project_finished_insert_update','middleware' => 'auth', 'uses' =>'FundController@projectFinishedInsertUpdate']);
+
+	Route::get('emailnotify', [ 'as' => 'emailnotify', 'uses' =>'HomeController@emailnotify']);
+	Route::get('manualnotify', [ 'as' => 'manualnotify', 'uses' =>'HomeController@manualnotify']);
+	Route::get('deleteapp/{appid}', [ 'as' => 'deleteapp', 'uses' =>'ApplicationController@applicationDelete']);
+
 });

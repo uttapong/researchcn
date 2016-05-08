@@ -82,7 +82,7 @@ return [
     'applicator_list-title' => 'เลือกทุน',
     'applicator_list-not_have' => 'ยังไม่มีทุนใดใด',
 
-    'applicator_user_requesst-not_have' => 'ยังไม่มีการร้องขอจากผู้ขอทุน',
+    'applicator_user_requesst-not_have' => 'ยังไม่มีการสมัครทุน',
     'applicator_user_requesst-table' => array(
         'fund_name' => 'ทุนที่สมัคร',
         'title' => 'ชื่อผู้สมัคร',
@@ -93,4 +93,8 @@ return [
 
     'applicator_search_user_request' => 'สถานะผู้สมัครทุนทั้งหมด',
     'applicator_search_user_request-noresult' => 'ไม่พบผลลัพธ์จากคําค้นหา'
+
+    'Pending'=>'รออนุมัติ',
+    'Approve'=>'อนุมัติแล้ว',
+    'เสร็จสิ้น'=>'ปิดโครงการ'
 ];

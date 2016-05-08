@@ -25,7 +25,7 @@
                 <div class="portlet-title">
                     <div class="caption font-red">
                         <i class="icon-layers font-red"></i>
-                        <span class="caption-subject bold">&nbsp;ส่งผลงานครั้งสุดท้าย</span>
+                        <span class="caption-subject bold">&nbsp;ส่งผลงานเพื่อปิดโครงการ</span>
                     </div>
                 </div>
                 <div class="portlet-body">
@@ -44,7 +44,7 @@
                                 {{ trans('fund.form_user_request-success-message') }}
                             </div>
                             <h3 class="form-section">{{ trans('fund.form_user_request-documentation') }}</h3>
-                            <div class="form-group margin-top-20">
+                           <!--  <div class="form-group margin-top-20">
                                 <label class="control-label col-md-5">บันทึกนำส่ง
                                 </label>
                                 <div class="col-md-5">
@@ -79,6 +79,149 @@
                                 {!!
                                     $upload ?
                                         $upload[1]->status == 'Reject'
+                                        ? '<label class="col-md-2 icon-close font-red" style="padding: 7px"> <b class="font-red">' . ' ' . trans("fund.form_user_request-fail") . '</b></label>'
+                                        : null
+                                    : null
+                                !!}
+                            </div> -->
+
+                            <div class="form-group margin-top-20">
+                                <label class="control-label col-md-5">บันทึกขอปิดโครงการ
+                                </label>
+                                <div class="col-md-5">
+                                    {!!
+                                        $upload ?
+                                            $upload[0]->status == 'Reject'
+                                            ? '<input type="file" class="form-control" name="file_17"/><span class="help-block">' . trans("fund.form_user_request-old_file") . ' ' . '<a href="'. route('base') . '/' . $upload[0]->file_path . '" download  title="ดาวน์โหลดเอกสาร"><span aria-hidden="true" class="icon-arrow-down"></span></a></span>'
+                                            : $upload[0]->html
+                                        : '<input type="file" class="form-control" name="file_17"/>'
+                                    !!}
+                                </div>
+                                {!!
+                                    $upload ?
+                                        $upload[0]->status == 'Reject'
+                                        ? '<label class="col-md-2 icon-close font-red" style="padding: 7px"> <b class="font-red">' . ' ' . trans("fund.form_user_request-fail") . '</b></label>'
+                                        : null
+                                    : null
+                                !!}
+                            </div>
+                            <div class="form-group margin-top-20">
+                                <label class="control-label col-md-5">รายงานวิจัยฉบับสมบูรณ์ จำนวน 4 เล่ม
+                                </label>
+                                <div class="col-md-5">
+                                    {!!
+                                        $upload ?
+                                            $upload[1]->status == 'Reject'
+                                            ? '<input type="file" class="form-control" name="file_18"/><span class="help-block">' . trans("fund.form_user_request-old_file") . ' ' . '<a href="'. route('base') . '/' . $upload[1]->file_path . '" download  title="ดาวน์โหลดเอกสาร"><span aria-hidden="true" class="icon-arrow-down"></span></a></span>'
+                                            : $upload[1]->html
+                                        : '<input type="file" class="form-control" name="file_18"/>'
+                                    !!}
+                                </div>
+                                {!!
+                                    $upload ?
+                                        $upload[1]->status == 'Reject'
+                                        ? '<label class="col-md-2 icon-close font-red" style="padding: 7px"> <b class="font-red">' . ' ' . trans("fund.form_user_request-fail") . '</b></label>'
+                                        : null
+                                    : null
+                                !!}
+                            </div>
+                            <div class="form-group margin-top-20">
+                                <label class="control-label col-md-5">Manuscript
+                                </label>
+                                <div class="col-md-5">
+                                    {!!
+                                        $upload ?
+                                            $upload[2]->status == 'Reject'
+                                            ? '<input type="file" class="form-control" name="file_19"/><span class="help-block">' . trans("fund.form_user_request-old_file") . ' ' . '<a href="'. route('base') . '/' . $upload[2]->file_path . '" download  title="ดาวน์โหลดเอกสาร"><span aria-hidden="true" class="icon-arrow-down"></span></a></span>'
+                                            : $upload[2]->html
+                                        : '<input type="file" class="form-control" name="file_19"/>'
+                                    !!}
+                                </div>
+                                {!!
+                                    $upload ?
+                                        $upload[2]->status == 'Reject'
+                                        ? '<label class="col-md-2 icon-close font-red" style="padding: 7px"> <b class="font-red">' . ' ' . trans("fund.form_user_request-fail") . '</b></label>'
+                                        : null
+                                    : null
+                                !!}
+                            </div>
+                            <div class="form-group margin-top-20">
+                                <label class="control-label col-md-5">หลักฐานตอบรับการตีพิมพ์
+                                </label>
+                                <div class="col-md-5">
+                                    {!!
+                                        $upload ?
+                                            $upload[3]->status == 'Reject'
+                                            ? '<input type="file" class="form-control" name="file_20"/><span class="help-block">' . trans("fund.form_user_request-old_file") . ' ' . '<a href="'. route('base') . '/' . $upload[3]->file_path . '" download  title="ดาวน์โหลดเอกสาร"><span aria-hidden="true" class="icon-arrow-down"></span></a></span>'
+                                            : $upload[3]->html
+                                        : '<input type="file" class="form-control" name="file_20"/>'
+                                    !!}
+                                </div>
+                                {!!
+                                    $upload ?
+                                        $upload[3]->status == 'Reject'
+                                        ? '<label class="col-md-2 icon-close font-red" style="padding: 7px"> <b class="font-red">' . ' ' . trans("fund.form_user_request-fail") . '</b></label>'
+                                        : null
+                                    : null
+                                !!}
+                            </div>
+                            <div class="form-group margin-top-20">
+                                <label class="control-label col-md-5" style="padding-top: 0">หลักฐานการเบิกเงินงวดที่ 2 และ 3 พร้อมตารางสรุปค่าใช้จ่าย
+                                </label>
+                                <div class="col-md-5">
+                                    {!!
+                                        $upload ?
+                                            $upload[4]->status == 'Reject'
+                                            ? '<input type="file" class="form-control" name="file_21"/><span class="help-block">' . trans("fund.form_user_request-old_file") . ' ' . '<a href="'. route('base') . '/' . $upload[4]->file_path . '" download  title="ดาวน์โหลดเอกสาร"><span aria-hidden="true" class="icon-arrow-down"></span></a></span>'
+                                            : $upload[4]->html
+                                        : '<input type="file" class="form-control" name="file_21"/>'
+                                    !!}
+                                </div>
+                                {!!
+                                    $upload ?
+                                        $upload[4]->status == 'Reject'
+                                        ? '<label class="col-md-2 icon-close font-red" style="padding: 7px"> <b class="font-red">' . ' ' . trans("fund.form_user_request-fail") . '</b></label>'
+                                        : null
+                                    : null
+                                !!}
+                            </div>
+
+                            <div class="form-group margin-top-20">
+                                <label class="control-label col-md-5" style="padding-top: 0">บทคัดย่อ
+                                </label>
+                                <div class="col-md-5">
+                                    {!!
+                                        $upload ?
+                                            $upload[5]->status == 'Reject'
+                                            ? '<input type="file" class="form-control" name="file_23"/><span class="help-block">' . trans("fund.form_user_request-old_file") . ' ' . '<a href="'. route('base') . '/' . $upload[5]->file_path . '" download  title="ดาวน์โหลดเอกสาร"><span aria-hidden="true" class="icon-arrow-down"></span></a></span>'
+                                            : $upload[5]->html
+                                        : '<input type="file" class="form-control" name="file_23"/>'
+                                    !!}
+                                </div>
+                                {!!
+                                    $upload ?
+                                        $upload[5]->status == 'Reject'
+                                        ? '<label class="col-md-2 icon-close font-red" style="padding: 7px"> <b class="font-red">' . ' ' . trans("fund.form_user_request-fail") . '</b></label>'
+                                        : null
+                                    : null
+                                !!}
+                            </div>
+
+                            <div class="form-group margin-top-20">
+                                <label class="control-label col-md-5" style="padding-top: 0">บทความวิจัย
+                                </label>
+                                <div class="col-md-5">
+                                    {!!
+                                        $upload ?
+                                            $upload[6]->status == 'Reject'
+                                            ? '<input type="file" class="form-control" name="file_24"/><span class="help-block">' . trans("fund.form_user_request-old_file") . ' ' . '<a href="'. route('base') . '/' . $upload[6]->file_path . '" download  title="ดาวน์โหลดเอกสาร"><span aria-hidden="true" class="icon-arrow-down"></span></a></span>'
+                                            : $upload[6]->html
+                                        : '<input type="file" class="form-control" name="file_24"/>'
+                                    !!}
+                                </div>
+                                {!!
+                                    $upload ?
+                                        $upload[6]->status == 'Reject'
                                         ? '<label class="col-md-2 icon-close font-red" style="padding: 7px"> <b class="font-red">' . ' ' . trans("fund.form_user_request-fail") . '</b></label>'
                                         : null
                                     : null

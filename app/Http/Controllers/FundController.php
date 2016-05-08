@@ -83,6 +83,11 @@ class FundController extends Controller {
 		$upload_end = $request->input('upload_end');
 		$contract_end = $request->input('contract_end');
 
+		$notice_1 = $request->input('notice_1');
+		$notice_2 = $request->input('notice_2');
+		$notice_3 = $request->input('notice_3');
+		$notice_4 = $request->input('notice_4');
+
 		if ($id == 0) {
 			// Insert new record
 			$fund = new Fund;
@@ -103,6 +108,11 @@ class FundController extends Controller {
 		$fund->upload_start = date_format(date_create($upload_start), "Y-m-d");
 		$fund->upload_end = date_format(date_create($upload_end), "Y-m-d");
 		$fund->contract_end = date_format(date_create($contract_end), "Y-m-d");
+
+		$fund->notice_1 = date_format(date_create($notice_1), "Y-m-d");
+		$fund->notice_2 = date_format(date_create($notice_2), "Y-m-d");
+		$fund->notice_3 = date_format(date_create($notice_3), "Y-m-d");
+		$fund->notice_4 = date_format(date_create($notice_4), "Y-m-d");
 
 		if ($request->hasFile('contract_file')) {
 			if ($fund->contract_file) {
@@ -209,6 +219,7 @@ class FundController extends Controller {
 	public function signedAgreementInsertUpdate(Request $request) {
 		$this->uploadFile($request, 'file_1');
 		$this->uploadFile($request, 'file_2');
+		$this->uploadFile($request, 'file_22');
 
 		$this->updateAppStatus($request, 'signed_agreement');
 
@@ -299,7 +310,7 @@ class FundController extends Controller {
 			return redirect()->route('fund_request');
 		}
 
-		$upload = $this->getFileUpload(array(12, 13), $application->id);
+		$upload = $this->getFileUpload(array(12, 13, 17, 18,19,20,21,23,24), $application->id);
 
 		return view('funds.form_finalized', [
 			'request_id' => $request_id,
@@ -308,10 +319,19 @@ class FundController extends Controller {
 	}
 
 	public function finalizedInsertUpdate(Request $request) {
-		$this->uploadFile($request, 'file_12');
-		$this->uploadFile($request, 'file_13');
+		// $this->uploadFile($request, 'file_12');
+		// $this->uploadFile($request, 'file_13');
 
-		$this->updateAppStatus($request, 'finalized');
+		$this->uploadFile($request, 'file_17');
+		$this->uploadFile($request, 'file_18');
+		$this->uploadFile($request, 'file_19');
+		$this->uploadFile($request, 'file_20');
+		$this->uploadFile($request, 'file_21');
+
+		$this->uploadFile($request, 'file_23');
+		$this->uploadFile($request, 'file_24');
+
+		$this->updateAppStatus($request, 'project_finished');
 
 		return redirect()->route('fund_request');
 	}
@@ -431,4 +451,6 @@ class FundController extends Controller {
 		$application->status = $status;
 		$application->save();
 	}
+
+	
 }
