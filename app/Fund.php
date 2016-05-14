@@ -27,4 +27,10 @@ class Fund extends Model
 
         return count($allApp);
     }
+
+    public function countFinish(){
+        $allApp=Application::where('fund',$this->id)->whereIn('status', array('approved_project_finished'))->get();
+
+        return count($allApp);
+    }
 }

@@ -29,4 +29,5 @@ return [
     'administration'=>'Administration',
     'manage_users'=>'Manage Users',
     'register'=>'Register',
+    'fund_report'=>'Fund Report'
 ];

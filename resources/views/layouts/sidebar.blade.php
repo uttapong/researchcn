@@ -131,6 +131,12 @@
                             <span class="title">{{trans('menu.current_funds')}}</span>
                         </a>
                     </li>
+                    <li class="nav-item" id="sub1_fund">
+                        <a href="{{route('fund_report')}}" class="nav-link">
+                            <i class="icon-layers"></i>
+                            <span class="title">{{trans('menu.fund_report')}}</span>
+                        </a>
+                    </li>
                     <li class="nav-item" id="sub2_fund">
                         <a href="{{route('fund_ago')}}" class="nav-link">
                             <i class="icon-clock"></i>

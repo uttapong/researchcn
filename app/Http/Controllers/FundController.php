@@ -17,6 +17,11 @@ class FundController extends Controller {
         $this->middleware('auth');
     }
 
+    public function fundReport(){
+    	return view('funds.fund_report', ['funds'=>Fund::paginate(20)
+		]);
+    }
+
 	public function listFund() {
 		$userId = Auth::user()->id;
 		$applications = Application::where('owner', $userId)->get();
