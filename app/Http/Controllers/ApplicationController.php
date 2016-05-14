@@ -415,7 +415,7 @@ class ApplicationController extends Controller {
 		    	break;
 		    }
 		}
-
+		$per_page=20;
 		if ($result) {
 			$applications = DB::table('applications')
 			->join('funds', 'applications.fund', '=', 'funds.id')
@@ -425,9 +425,9 @@ class ApplicationController extends Controller {
 			->orWhere('applications.status', $result[0])
 			->orWhere('applications.status', $result[1])
 			->orWhere('applications.status', $result[2])
-			->select('applications.id', 'applications.status', 'funds.name as fundName', 'users.name as userName')
+			->select('applications.id', 'applications.status', 'funds.name as fundName', 'users.name as userName','applications.created_at')
 			->orderBy('applications.id', 'desc')
-			->get();
+			->paginate($per_page);
 		}
 		else {
 			$applications = DB::table('applications')
@@ -435,9 +435,9 @@ class ApplicationController extends Controller {
 			->join('users', 'applications.owner', '=', 'users.id')
 			->where('funds.name', 'like', '%' . $query . '%')
 			->orWhere('users.name', 'like', '%' . $query . '%')
-			->select('applications.id', 'applications.status', 'funds.name as fundName', 'users.name as userName')
+			->select('applications.id', 'applications.status', 'funds.name as fundName', 'users.name as userName','applications.created_at')
 			->orderBy('applications.id', 'desc')
-			->get();
+			->paginate($per_page);
 		}
 
 		

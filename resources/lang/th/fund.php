@@ -89,6 +89,7 @@ return [
         'step' => 'ขั้นตอน',
         'status' => 'สถานะ',
         'document' => 'เอกสาร',
+        'apply_date' => 'วันที่สมัคร',
     ),
 
     'applicator_search_user_request' => 'สถานะผู้สมัครทุนทั้งหมด',

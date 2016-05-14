@@ -90,6 +90,7 @@ return [
         'step' => 'Request Progress',
         'status' => 'Status',
         'document' => 'Document',
+        'apply_date' => 'Apply Date',
     ),
 
     'applicator_search_user_request' => 'Candidate status Fund',
