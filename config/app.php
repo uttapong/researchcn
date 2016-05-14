@@ -156,7 +156,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-        // Silber\Bouncer\BouncerServiceProvider::class,
+        Thomaswelton\LaravelGravatar\LaravelGravatarServiceProvider::class,
+
+        Silber\Bouncer\BouncerServiceProvider::class,
 
     ],
 
@@ -205,6 +207,8 @@ return [
         'View'      => Illuminate\Support\Facades\View::class,
 
         'Bouncer' => Silber\Bouncer\BouncerFacade::class,
+
+        'Gravatar' => Thomaswelton\LaravelGravatar\Facades\Gravatar::class
 
 
     ],
