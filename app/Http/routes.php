@@ -98,6 +98,7 @@ Route::group(['middleware' => 'web','prefix' => 'rswk'], function () {
 
 	Route::get('list_fund',[ 'as' => 'list_fund',  'uses' =>'FundController@listFund']);
 	Route::get('fund_report', [ 'as' => 'fund_report', 'uses' =>'FundController@fundReport']);
+	Route::get('application_upload/{app_id}', [ 'as' => 'application_upload', 'uses' =>'ApplicationController@allUploads']);
 	Route::get('fund_ago', [ 'as' => 'fund_ago', 'uses' =>'FundController@fundAgo']);
 	Route::get('fund_request',[ 'as' => 'fund_request', 'uses' => 'ApplicationController@fundStatus']);
 

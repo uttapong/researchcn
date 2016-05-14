@@ -21,6 +21,9 @@ class Fund extends Model
     public function downloads(){
       return $this->hasMany('App\Download','fund_id');
     }
+    public function fileType(){
+      return $this->belongsTo('App\Filetype','filetype');
+    }
 
     public function countAdminActive(){
         $allApp=Application::where('fund',$this->id)->whereIn('status', array('applied','signed_agreement','rejected_agreement','first_payment','second_payment','second_progress_report','finalized','request_extend','request_extend'))->get();

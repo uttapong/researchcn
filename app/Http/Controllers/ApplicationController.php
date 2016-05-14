@@ -496,6 +496,13 @@ class ApplicationController extends Controller {
 
 	}
 
+	public function allUploads($id){
+		$allUploadFile = Upload::where('application_id', $id)->get();
+		return view('admin.fund_application_upload', [
+			'uploads' => $allUploadFile
+		]);
+	}
+
 	public function fileUploadUpdate($uploadId, $status) {
 		$statusObject = array(
 			"applied" => array(

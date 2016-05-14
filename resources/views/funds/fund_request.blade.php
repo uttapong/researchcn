@@ -32,6 +32,7 @@
                                         <th> {{ trans('fund.applied_funds-table.step') }} </th>
                                         <th> {{ trans('fund.applied_funds-table.status') }} </th>
                                         <th> {{ trans('fund.applied_funds-table.next_step') }} </th>
+                                         <th> Uploaded Files</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -61,6 +62,7 @@
                                                         : null
                                                 !!}
                                             </td>
+                                            <td><a href="{{route('application_upload',array($fund->id))}}" class='btn btn-default btn-xs'><i class="fa fa-paper-plane" aria-hidden="true"></i> View</a></td>
                                         </tr>
                                     @endforeach
                                 </tbody>
