@@ -48,7 +48,11 @@ function getPreview(id){
   });
 }
 </script>
+<div class="col-xs-12 col-md-12" style="margin-left: 25px;">
+                        <p><a href="http://researchcenter.nurse.tu.ac.th"><i class="fa fa-home" aria-hidden="true"></i> {{trans('research.main_site')}}</a></p>
+                        </div>
 <div class="search-page search-content-1">
+                        
                         <div class="search-bar ">
                             <div class="row">
                                 <div class="col-md-7">

@@ -38,10 +38,10 @@
                                             {{ $upload->getFileType() }}
                                         </td>
                                         <td align="left">
-                                        {{ date('d F Y', strtotime($upload->created_at)) }}
+                                        {{ date('d F Y H:i:s', strtotime($upload->created_at)) }}
                                         </td>
                                          <td align="left">
-                                        <a href="{{route('base')}}/{{$upload->file_path}}" class="btn btn-xs btn-info">Download</a>
+                                        <a target="_blank" href="{{route('base')}}/{{$upload->file_path}}" class="btn btn-xs btn-info"><i class="fa fa-download" aria-hidden="true"></i> Download</a>
                                         </td>
                                     </tr>
                                 @endforeach

@@ -52,7 +52,16 @@ class ResearchCenterController extends Controller
       $pub=$request->input('publication');
       $year=$request->input('year');
       $authors=$request->input('authors');
-      $researchs = Research::where('title', 'like', "%{$title}%")->orWhere('abstract', 'like', "%{$text}%")->orWhere('keywords', 'like', "%{$kw}%")->orWhere('authors', 'like', "%{$authors}%")->orWhere('publication_name', 'like', "%{$pub}%")->orWhere('published_year', 'like', "%{$year}%")->orderBy('created_at', 'desc')->paginate(12);
+
+      $researchs = new Research;
+      if($title)$researchs=$researchs->where('title', 'like', "%{$title}%");
+      if($text)$researchs=$researchs->where('abstract', 'like', "%{$text}%");
+      if($kw)$researchs=$researchs->where('keywords', 'like', "%{$kw}%");
+      if($pub)$researchs=$researchs->where('publication_name', 'like', "%{$pub}%");
+      if($year)$researchs=$researchs->where('published_year', 'like', "%{$year}%");
+      if($authors)$researchs=$researchs->where('authors', 'like', "%{$authors}%");
+
+      $researchs = $researchs->paginate(12);
 
       return view('researchcenter.home', ['researchs' => $researchs]);
     }

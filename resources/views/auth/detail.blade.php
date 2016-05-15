@@ -19,6 +19,13 @@
                                         <div class="form-body">
                                           @include('message')
                                           <input type="hidden" name="id"  value="{{$user->id}}" />
+                                          
+                                          <div class="form-group">
+                                                <label class="col-md-3 control-label"></label>
+                                                <div class="col-md-9">
+                                                    <a target="_blank" href="http://pl.gravatar.com/accounts/signup"><img src="{{ Gravatar::src($user->email) }}"></a>
+                                                </div>
+                                            </div>
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label">{{trans('admin.name')}}</label>
                                                 <div class="col-md-9">

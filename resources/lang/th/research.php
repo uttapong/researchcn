@@ -74,7 +74,9 @@ return [
     'update'=>'ปรับปรุง',
     'update_research'=>'แก้ไขข้อมูลงานวิจัย',
     'abstract_upload'=>'อัพโหลดไฟล์บทคัดย่อ',
-    'abstract_download'=>"ดาวน์โหลดบทคัดย่อ"
+    'abstract_download'=>"ดาวน์โหลดบทคัดย่อ",
+    'no_result_found'=>'ไม่พบข้อมูลที่สืบค้น',
+    'main_site'=>'กลับสู่หน้าเว็บหลัก'
 
 
 ];
