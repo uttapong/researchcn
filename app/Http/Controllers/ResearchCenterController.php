@@ -41,7 +41,26 @@ class ResearchCenterController extends Controller
       $kw=$request->input('keyword');
       $researchs = Research::where('title', 'like', "%{$kw}%")->orWhere('abstract', 'like', "%{$kw}%")->orWhere('keywords', 'like', "%{$kw}%")->orWhere('authors', 'like', "%{$kw}%")->orWhere('publication_name', 'like', "%{$kw}%")->orderBy('created_at', 'desc')->paginate(12);
 
-      return view('researchcenter.home', ['researchs' => $researchs]);
+      $str_url=route('simpleexport', $request->all());
+      return view('researchcenter.home', ['researchs' => $researchs,'exporturl'=>$str_url ]);
+    }
+
+    public function simpleexport(Request $request)
+    {
+      // nuse League\Csv\Reader;
+      $kw=$request->input('keyword');
+      $researchs = Research::where('title', 'like', "%{$kw}%")->orWhere('abstract', 'like', "%{$kw}%")->orWhere('keywords', 'like', "%{$kw}%")->orWhere('authors', 'like', "%{$kw}%")->orWhere('publication_name', 'like', "%{$kw}%")->orderBy('created_at', 'desc')->paginate(9999);
+
+      $csv = \League\Csv\Writer::createFromFileObject(new \SplTempFileObject());
+
+      $csv->insertOne(\Schema::getColumnListing('researchs'));
+
+        foreach ($researchs as $research) {
+            $csv->insertOne($research->toArray());
+        }
+
+      $csv->output('publication_search_export.csv');
+
     }
 
     public function advancesearch(Request $request)
@@ -50,20 +69,60 @@ class ResearchCenterController extends Controller
       $text=$request->input('fulltext');
       $kw=$request->input('keyword');
       $pub=$request->input('publication');
-      $year=$request->input('year');
+      $start_year=$request->input('start_year');
+      $end_year=$request->input('end_year');
       $authors=$request->input('authors');
+      $type=$request->input('type');
 
       $researchs = new Research;
       if($title)$researchs=$researchs->where('title', 'like', "%{$title}%");
       if($text)$researchs=$researchs->where('abstract', 'like', "%{$text}%");
       if($kw)$researchs=$researchs->where('keywords', 'like', "%{$kw}%");
       if($pub)$researchs=$researchs->where('publication_name', 'like', "%{$pub}%");
-      if($year)$researchs=$researchs->where('published_year', 'like', "%{$year}%");
+      if($start_year&&$end_year)$researchs=$researchs->where('published_year', '>=', "{$start_year}")->where('published_year', '<=', "{$end_year}");
       if($authors)$researchs=$researchs->where('authors', 'like', "%{$authors}%");
+      if($authors)$researchs=$researchs->where('authors', 'like', "%{$authors}%");
+      if($type!="none")$researchs=$researchs->where('type', 'like', "%{$type}%");
 
       $researchs = $researchs->paginate(12);
+      $str_url=route('simpleexport', $request->all());
+      return view('researchcenter.home', ['researchs' => $researchs,'exporturl'=>$str_url]);
+    }
 
-      return view('researchcenter.home', ['researchs' => $researchs]);
+    public function advanceexport(Request $request)
+    {
+      
+      $title=$request->input('title');
+      $text=$request->input('fulltext');
+      $kw=$request->input('keyword');
+      $pub=$request->input('publication');
+      $start_year=$request->input('start_year');
+      $end_year=$request->input('end_year');
+      $authors=$request->input('authors');
+      $type=$request->input('type');
+
+      $researchs = new Research;
+      if($title)$researchs=$researchs->where('title', 'like', "%{$title}%");
+      if($text)$researchs=$researchs->where('abstract', 'like', "%{$text}%");
+      if($kw)$researchs=$researchs->where('keywords', 'like', "%{$kw}%");
+      if($pub)$researchs=$researchs->where('publication_name', 'like', "%{$pub}%");
+      if($start_year&&$end_year)$researchs=$researchs->where('published_year', '>=', "{$start_year}")->where('published_year', '<=', "{$end_year}");
+      if($authors)$researchs=$researchs->where('authors', 'like', "%{$authors}%");
+      if($authors)$researchs=$researchs->where('authors', 'like', "%{$authors}%");
+      if($type!="none")$researchs=$researchs->where('type', 'like', "%{$type}%");
+
+      $researchs = $researchs->paginate(9999);
+
+      $csv = \League\Csv\Writer::createFromFileObject(new \SplTempFileObject());
+
+      $csv->insertOne(\Schema::getColumnListing('researchs'));
+
+        foreach ($researchs as $research) {
+            $csv->insertOne($research->toArray());
+        }
+
+      $csv->output('publication_search_export.csv');
+
     }
 
     public function replace(array $input)
@@ -82,9 +141,12 @@ class ResearchCenterController extends Controller
   public function getfile($research_id){
     $this->middleware('auth');
     $research=Research::find($research_id);
-    if(Auth::user())
+    if(Auth::user()&&Auth::user()->status =='approved')
     return redirect("/uploads/{$research->id}/{$research->full_text_file}");
-
+    else{
+      session(['message' => 'Your account has not been approved. Please contact administrator or call (02)986-9213']);
+      Auth::logout();
+    }
     return redirect()->route('login');
   }
   public function merge(array $input)
@@ -100,10 +162,10 @@ class ResearchCenterController extends Controller
        $fields=Researchfield::all();
     if($researchid){
         $research=Research::find($researchid);
-        return view('researchcenter.new_research',['research'=>$research,'fields'=>$fields]);
+        return view('researchcenter.new_research',['research'=>$research,'fields'=>$fields,'authors_firstname'=>explode(',',$research->authors_firstname),'authors_lastname'=>explode(',',$research->authors_lastname)]);
     }
 
-     return view('researchcenter.new_research',['fields'=>$fields]);
+     return view('researchcenter.new_research',['fields'=>$fields,'authors_firstname'=>array(),'authors_lastname'=>array()]);
    }
 
    public function detail($id){
@@ -120,9 +182,20 @@ class ResearchCenterController extends Controller
 
       $this->validate($request, [
           'title' => 'required|max:200',
-          'authors' => 'required|max:200',
+          // 'authors' => 'required|max:200',
           'keywords' => 'max:200'
       ]);
+
+      // die(print_r($request->input('authors_firstname'),true));
+      $authors_name="";
+      $i=0;
+      foreach($request->input('authors_firstname') as $firstname){
+        $authors_name=$authors_name.$firstname." ".$request->input('authors_lastname')[$i].",";
+        $i++;
+      }
+      $request->merge(array('authors'=>$authors_name));
+      $request->merge(array('authors_firstname'=>implode(',', $request->input('authors_firstname'))));
+      $request->merge(array('authors_lastname'=>implode(',', $request->input('authors_lastname'))));
 
       if($request->hasFile('fulltext_file'))
       {
@@ -155,6 +228,10 @@ class ResearchCenterController extends Controller
       }
 
       $request->merge(array('creator'=>Auth::user()->id));
+
+      if(count($request->input('article_level'))>0){
+        $request->merge(array('article_level' => implode(',', $request->input('article_level'))));
+      }
 
       if($request->input('research_id',null)){
         $research=Research::find($request->input('research_id',null));

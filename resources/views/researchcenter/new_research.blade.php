@@ -9,6 +9,11 @@ function showField(name){
   $(".option").hide();
   $("."+name).show();
 }
+
+function appendAuthor(){
+  userinput='<div class="form-group"><label class="col-md-3 control-label"></label><div class="col-md-2"><input type="text"  placeholder="{{trans("research.author_firstname")}}" name="authors_firstname[]" class="form-control" placeholder=""  value="" ></div><div class="col-md-2"><input type="text"  placeholder="{{trans("research.author_lastname")}}" name="authors_lastname[]" class="form-control" placeholder=""  value="" ></div><div class="col-md-1"><button class="btn btn-danger" type="button" onclick="$(this).parents(\'.form-group\').remove()"><i class="fa fa-minus" aria-hidden="true"></i></button></div></div>';
+  $('#authors').after(userinput);
+}
 </script>
 <div class="portlet light bordered">
                                             <div class="portlet-title">
@@ -67,12 +72,26 @@ function showField(name){
                                                                 <input type="text" name="title_thai" class="form-control" placeholder="" @if(isset($research)) value="{{$research->thai_title}}" @endif>
                                                             </div>
                                                         </div>
-                                                        <div class="form-group">
-                                                            <label class="col-md-3 control-label">{{trans('research.authors')}}</label>
-                                                            <div class="col-md-4">
-                                                                <input type="text"  name="authors" class="form-control" placeholder="" @if(isset($research)) value="{{$research->authors}}" @endif>
+                                                        <div class="form-group" id="authors">
+                                                            <label class="col-md-3 control-label">{{trans('research.author_firstname')}}</label>
+                                                     
+                                                            <div class="col-md-2">
+                                                                <input type="text"  placeholder="{{trans('research.author_firstname')}}" name="authors_firstname[]" class="form-control" placeholder="" @if(isset($authors_firstname[0])) value="{{$authors_firstname[0]}}" @endif >
+                                                            </div>
+
+                                                           
+                                                            <div class="col-md-2">
+                                                                <input type="text"  placeholder="{{trans('research.author_lastname')}}" name="authors_lastname[]" class="form-control" placeholder="" @if(isset($research)) value="{{$authors_lastname[0]}}" @endif>
+                                                                
+                                                            </div>
+                                                            <div class="col-md-1">
+                                                                
+                                                                <button class='btn btn-success' type="button" onclick="appendAuthor()"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
                                                             </div>
                                                         </div>
+                                                        @for ($i = 1; $i < count($authors_firstname); $i++)
+    <div class="form-group"><label class="col-md-3 control-label"></label><div class="col-md-2"><input type="text"  placeholder="{{trans("research.author_firstname")}}" name="authors_firstname[]" class="form-control" placeholder="" value="{{$authors_firstname[$i]}}" ></div><div class="col-md-2"><input type="text"  placeholder="{{trans("research.author_lastname")}}" name="authors_lastname[]" class="form-control" placeholder="" value="{{$authors_lastname[$i]}}" ></div><div class="col-md-1"><button class="btn btn-danger" type="button" onclick="$(this).parents('.form-group').remove()"><i class="fa fa-minus" aria-hidden="true"></i></button></div></div>
+@endfor
                                                         <div class="form-group">
                                                             <label class="col-md-3 control-label">{{trans('research.keywords')}}</label>
                                                             <div class="col-md-4">
@@ -166,21 +185,20 @@ function showField(name){
                                                         <div class="form-group option article research">
                                                             <label class="col-md-3 control-label">{{trans('research.article_level')}}</label>
                                                             <div class="col-md-4">
-                                                                <input type="text" name="article_level" class="form-control" placeholder="" @if(isset($research)) value="{{$research->article_level}}" @endif>
 
                                                                 <input type="text" name="article_level[]" class="form-control">
-                                                                <input name="article_level[]" type="checkbox" value=""> ISI1
-                                                                <input name="article_level[]" type="checkbox" value=""> ISI2
-                                                                <input name="article_level[]" type="checkbox" value=""> ISI3
-                                                                <input name="article_level[]" type="checkbox" value=""> ISI4
-                                                                <input name="article_level[]" type="checkbox" value=""> SCOPUS
-                                                                <input name="article_level[]" type="checkbox" value=""> SCIMACO Q1
-                                                                <input name="article_level[]" type="checkbox" value=""> ISCIMACO Q1
-                                                                <input name="article_level[]" type="checkbox" value=""> SCIMACO Q1
-                                                                <input name="article_level[]" type="checkbox" value=""> SCIMACO Q1
-                                                                <input name="article_level[]" type="checkbox" value=""> Pubmed
-                                                                <input name="article_level[]" type="checkbox" value=""> EBSB Host
-                                                                <input name="article_level[]" type="checkbox" value=""> ISI
+                                                                <input name="article_level[]" type="checkbox" value="ISI1"> ISI1
+                                                                <input name="article_level[]" type="checkbox" value="ISI2"> ISI2
+                                                                <input name="article_level[]" type="checkbox" value="ISI3"> ISI3
+                                                                <input name="article_level[]" type="checkbox" value="ISI4"> ISI4
+                                                                <input name="article_level[]" type="checkbox" value="SCOPUS"> SCOPUS
+                                                                <input name="article_level[]" type="checkbox" value="SCIMACO Q1"> SCIMACO Q1
+                                                                <input name="article_level[]" type="checkbox" value="ISCIMACO Q1"> ISCIMACO Q1
+                                                                <input name="article_level[]" type="checkbox" value="SCIMACO Q1"> SCIMACO Q1
+                                                                <input name="article_level[]" type="checkbox" value="SCIMACO Q1"> SCIMACO Q1
+                                                                <input name="article_level[]" type="checkbox" value="Pubmed"> Pubmed
+                                                                <input name="article_level[]" type="checkbox" value="EBSB Host"> EBSB Host
+                                                                <input name="article_level[]" type="checkbox" value="ISI"> ISI
                                                             </div>
                                                         </div>
                                                         <!-- end article option -->

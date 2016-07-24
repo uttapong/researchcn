@@ -29,6 +29,7 @@
                                     <tr>
                                         <th> </th>
                                         <th> {{ trans('fund.applied_funds-table.title') }} </th>
+                                        <th> วันที่สมัคร </th>
                                         <th> {{ trans('fund.applied_funds-table.step') }} </th>
                                         <th> {{ trans('fund.applied_funds-table.status') }} </th>
                                         <th> {{ trans('fund.applied_funds-table.next_step') }} </th>
@@ -43,6 +44,9 @@
                                             </td>
                                             <td>
                                                 {{ $fund->name }}
+                                            </td>
+                                            <td>
+                                                {{ date('d F Y', strtotime($fund->created_at)) }}
                                             </td>
                                             <td>
                                                 {{ $fund->currentStep }}

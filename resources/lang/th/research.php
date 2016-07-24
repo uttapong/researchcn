@@ -17,7 +17,9 @@ return [
     'fulltext_abstract' => 'บทคัดย่อ',
     'advance_search' => 'ค้นหาแบบละเอียด',
     'search_desc' => 'ค้นหาทั้งหมด: ข้อมูลจะถูกค้นหาจากข้อมูลทั้งหมดของงานวิจัย',
-    'authors' => "เจ้าของผลงานชื่อแรก",
+    'authors' => "เจ้าของผลงาน",
+     'author_firstname' => "ชื่อผู้แต่ง",
+    'author_lastname' => "สกุล",
     'published_on' => "ตีพิมพ์เมื่อ",
     'article_download' => "ดาวน์โหลด บทความ",
     'fulltext_download' => "ดาวน์โหลดฉบับเต็ม",
@@ -76,7 +78,10 @@ return [
     'abstract_upload'=>'อัพโหลดไฟล์บทคัดย่อ',
     'abstract_download'=>"ดาวน์โหลดบทคัดย่อ",
     'no_result_found'=>'ไม่พบข้อมูลที่สืบค้น',
-    'main_site'=>'กลับสู่หน้าเว็บหลัก'
+    'main_site'=>'กลับสู่หน้าเว็บหลัก',
+
+    'start_year'=>'ปีเริ่มต้น',
+    'end_year'=>'ปีสิ้นสุด'
 
 
 ];

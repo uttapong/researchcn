@@ -14,6 +14,7 @@ return [
     */
 
     'id' => 'Service ID',
+    'name' => 'Service Name',
     'submitter'     => 'Submitter',
     'status' => 'Status',
     'note'     => 'Service Type',

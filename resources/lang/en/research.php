@@ -17,7 +17,9 @@ return [
     'fulltext_abstract' => 'Full Text/Abstract',
     'advance_search' => 'Advance Search',
     'search_desc' => 'Global Search; Search from all information of research',
-    'authors' => "First author",
+    'authors' => "Authors",
+    'author_firstname' => "First name",
+    'author_lastname' => "Last name",
     'published_on' => "Published on",
     'article_download' => "Article Download",
     'fulltext_download' => "Full Text Download",
@@ -79,5 +81,8 @@ return [
     'abstract_download'=>"Abstract File",
     'no_result_found'=>'No result found',
     'main_site'=>'Back to Research Center'
+
+    'start_year'=>'Start Year',
+    'end_year'=>'End Year'
 
 ];

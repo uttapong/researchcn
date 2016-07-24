@@ -134,6 +134,7 @@ class TranslateController extends Controller {
 
     	$translation = new Translation;
       $translation->note=$request->input('note');
+      $translation->name=$request->input('name');
       $translation->owner=Auth::user()->id;
 			$translation->status='รับงานแปล';
       if($translation->save()){
@@ -161,7 +162,8 @@ class TranslateController extends Controller {
 
 		return view('translate.upload', [
 			'translation_id' => $translation->id,
-			'type'=>$type
+			'type'=>$type,
+			'translation_name'=>$translation->name
 		]);
   }
 

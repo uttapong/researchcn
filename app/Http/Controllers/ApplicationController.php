@@ -139,7 +139,7 @@ class ApplicationController extends Controller {
 		$userId = Auth::user()->id;
 		$funds = DB::table('applications')
 		->join('funds', 'applications.fund', '=', 'funds.id')
-		->select('applications.id', 'funds.name', 'applications.status')
+		->select('applications.id', 'funds.name', 'applications.status','applications.created_at')
 		->where('applications.owner', $userId)
 		->get();
 

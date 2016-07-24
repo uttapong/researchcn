@@ -10,7 +10,7 @@
                                  <i class="fa fa-angle-right"></i>
                              </li>
                              <li>
-                                 <span>Translation ID:{{$translation_id}}</span>
+                                 <span>Name:{{$translation_name}}</span>
                              </li>
                          </ul>
                      </div>

@@ -91,11 +91,21 @@ function getPreview(id){
                                     <div class="input-group">
                                         <!-- <input type="text" class="form-control" placeholder="Search for..."> -->
                                         <div class="input-group">
-
+                                                            <select id="research_type" class="form-control" name="type" >
+                                                            <option value="none">ทุกประเภท</optin>
+                                                      <option value="research">{{trans('research.research')}}/{{trans('research.research_article')}}</option>
+                                                      <!-- <option value="article">{{trans('research.research_article')}}</option> -->
+                                                      <option value="academic" >{{trans('research.academic')}}</option>
+                                                      <option value="book" >{{trans('research.book')}}</option>
+                                                      <option value="invention" >{{trans('research.invention')}}</option>
+                                                      <option value="award">{{trans('research.award')}}</option>
+                                                  </select>
                                                             <input id="_token" name="_token" type="hidden" value="{{ csrf_token() }}" >
                                                             <input id="" class="form-control" type="text" name="title" placeholder="{{trans('research.title')}}">
                                                             <input id="" class="form-control" type="text" name="fulltext" placeholder="{{trans('research.fulltext_abstract')}}">
                                                             <input id="" class="form-control" type="text" name="publication" placeholder="{{trans('research.publication_name')}}">
+
+                                                            
                                         </div>
 
                                     </div>
@@ -106,16 +116,19 @@ function getPreview(id){
                                       <!-- <input type="text" class="form-control" placeholder="Search for..."> -->
                                       <div class="input-group">
 
-                                                          <input id="_token" name="_token" type="hidden" value="{{ csrf_token() }}" >
                                                           <input id="" class="form-control" type="text" name="keywords" placeholder="{{trans('research.keywords')}}">
                                                           <input id="" class="form-control" type="text" name="year" placeholder="{{trans('research.published_year')}}">
                                                           <input id="" class="form-control" type="text" name="authors" placeholder="{{trans('research.authors')}}">
+                                                          <input id="" class="form-control" type="text" name="start_year" placeholder="{{trans('research.start_year')}}" type="number" maxlength="4">
+                                                          <input id="" class="form-control" type="text" name="end_year" placeholder="{{trans('research.end_year')}}4" type="number" maxlength="">
 
 
                                       </div>
 
                                   </div>
+
                                 </div>
+                                
                                 <div class="col-md-2">
                                   <button  class="btn btn-success"><i class="fa fa-search-plus fa-fw"></i> {{trans('research.search')}}</button>
 
@@ -123,6 +136,12 @@ function getPreview(id){
                                 </form>
                             </div>
                         </div>
+                        @if(isset($exporturl))
+                        <div class="row">
+                        <a class="btn btn-info" href="{{$exporturl}}" style="margin-left: 20px;">
+                                                                <i class="fa fa-search fa-fw"></i>Export result</a>
+                        </div>
+                        @endif
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="search-container " >

@@ -26,7 +26,9 @@ Route::group(['middleware' => 'web','prefix' => 'rscn'], function () {
 	Route::get('home', [ 'as' => 'rscn_home', 'uses' => 'ResearchCenterController@index']);
 	Route::get('dashboard_rscn', [ 'as' => 'dashboard_rscn', 'uses' => 'ResearchCenterController@dashboard']);
 	Route::post('simple_search', [ 'as' => 'simple_search', 'uses' => 'ResearchCenterController@simplesearch']);
+	Route::get('simpleexport', [ 'as' => 'simpleexport', 'uses' => 'ResearchCenterController@simpleexport']);
 	Route::post('advance_search', [ 'as' => 'advance_search', 'uses' => 'ResearchCenterController@advancesearch']);
+	Route::get('advanceexport', [ 'as' => 'advanceexport', 'uses' => 'ResearchCenterController@advanceexport']);
 
     Route::get('new_research/{researchid?}', [ 'as' => 'research', 'uses' => 'ResearchCenterController@new_research']);
 	Route::post('new_research', [ 'as' => 'new_research', 'uses' => 'ResearchCenterController@add']);
@@ -142,3 +144,12 @@ Route::group(['middleware' => 'web','prefix' => 'rswk'], function () {
 	Route::get('deleteapp/{appid}', [ 'as' => 'deleteapp', 'uses' =>'ApplicationController@applicationDelete']);
 
 });
+
+// Route::filter('auth', function()
+// {
+//     if(Auth::user()->status !='approved'){
+//             $request->session()->put('message',  'Your account has not been approved. Please contact administrator or call (02)986-9213');
+//             Auth::logout();
+//         }
+//         else $request->session()->forget('message');
+// });

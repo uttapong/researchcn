@@ -132,10 +132,6 @@
                 {
                     orderable: !1,
                     targets: [3]
-                },
-                {
-                    searchable: !1,
-                    targets: [3]
                 }
             ],
             order: [

@@ -16,7 +16,14 @@
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <div class="form-body">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
+                        <div class="form-group margin-top-20">
+                            <label class="control-label col-md-3">ชื่อเรื่องขอบริการ
+                                <span class="required"> * </span>
+                            </label>
+                            <div class="col-md-9">
+                              <input type="text" class="form-control" name="name"/>
+                            </div>
+                        </div>
                         <div class="form-group margin-top-20">
                             <label class="control-label col-md-3">{{ trans('translate.transation_note') }}
                                 <span class="required"> * </span>
